@@ -1,2 +1,5 @@
-# blade-ui-kit-bootstrap
-Use Bootstrap styles to Blade UI Kit components (experimental)
+# Blade UI kit with Bootstrap
+
+Use Bootstrap styles to [Blade UI Kit](https://blade-ui-kit.com/) components.
+
+**EXPERIMENTAL**
