@@ -14,7 +14,5 @@ Require the project using Composer:
 
 ```
 composer require forxer/blade-ui-kit-bootstrap
-``
-
-Since this package "extends" [Blade UI Kit](https://blade-ui-kit.com/), you need to publish the configuration file for it in order to change the prefix.
+```
 
