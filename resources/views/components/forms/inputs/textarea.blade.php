@@ -1,12 +1,10 @@
-
-<input
+<textarea
     name="{{ $name }}"
-    type="{{ $type }}"
     id="{{ $id }}"
-    @if($value)value="{{ $value }}"@endif
+    rows="{{ $rows }}"
     @if($hasErrors)aria-describedby="validation-{{ $name }}-feedback"@endif
     {{ $attributes->class([
         'form-control',
         'is-invalid' => $hasErrors,
     ]) }}
-/>
+>{{ old($name, $slot) }}</textarea>
