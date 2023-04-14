@@ -123,7 +123,7 @@ You can then use the component as you would from [Blade UI Kit Input Component](
 The *only difference* is that if you want to apply [Bootstrap's validation CSS classes](https://getbootstrap.com/docs/5.2/forms/validation/#server-side), **you must** pass errors to the component:
 
 ```blade
-    <x-input name="search :errors="$errors" />
+<x-input name="search :errors="$errors" />
 ```
 
 [Back to index ^](#index)
@@ -148,7 +148,7 @@ By:
 You can then use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email) without forgetting to pass the possible errors in more:
 
 ```blade
-    <x-email :errors="$errors" />
+<x-email :errors="$errors" />
 ```
 
 [Back to index ^](#index)
@@ -173,7 +173,7 @@ By:
 You can then use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password) without forgetting to pass the possible errors in more:
 
 ```blade
-    <x-password :errors="$errors" />
+<x-password :errors="$errors" />
 ```
 
 [Back to index ^](#index)
@@ -198,7 +198,7 @@ By:
 You can then use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea) without forgetting to pass the possible errors in more:
 
 ```blade
-    <x-textarea name="about" :errors="$errors" />
+<x-textarea name="about" :errors="$errors" />
 ```
 
 [Back to index ^](#index)
@@ -223,7 +223,7 @@ By:
 You can then use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label).
 
 ```blade
-    <x-label for="search" />
+<x-label for="search" />
 ```
 
 Or composing the content:
@@ -256,7 +256,7 @@ By:
 You can then use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error) without forgetting to pass the possible errors in more:
 
 ```blade
-    <x-error name="search :errors="$errors" />
+<x-error name="search :errors="$errors" />
 ```
 
 [Back to index ^](#index)
