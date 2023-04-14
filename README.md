@@ -96,7 +96,7 @@ Usage
 
 Take for example the input form field.
 
-In the file `/config/blade-ui-kit.php` replace the "input" component class:
+If you manually installed, in the file `/config/blade-ui-kit.php` replace the "input" component class:
 
 ```php
     'components' => [
@@ -130,6 +130,8 @@ The *only difference* is that if you want to apply [Bootstrap's validation CSS c
 
 ### Email
 
+<details>
+<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -141,6 +143,7 @@ By:
 ```php
     'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
 ```
+</details>
 
 You can then use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email) without forgetting to pass the possible errors in more:
 
@@ -152,6 +155,8 @@ You can then use the component as you would from [Blade UI Kit Email component](
 
 ### Password
 
+<details>
+<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -163,6 +168,7 @@ By:
 ```php
     'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
 ```
+</details>
 
 You can then use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password) without forgetting to pass the possible errors in more:
 
@@ -174,6 +180,8 @@ You can then use the component as you would from [Blade UI Kit Password componen
 
 ### Textarea
 
+<details>
+<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -185,6 +193,7 @@ By:
 ```php
     'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
 ```
+</details>
 
 You can then use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea) without forgetting to pass the possible errors in more:
 
@@ -196,6 +205,8 @@ You can then use the component as you would from [Blade UI Kit Textarea componen
 
 ### Label
 
+<details>
+<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -207,6 +218,7 @@ By:
 ```php
     'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
 ```
+</details>
 
 You can then use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label).
 
@@ -226,6 +238,8 @@ Or composing the content:
 
 ### Error
 
+<details>
+<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -237,6 +251,7 @@ By:
 ```php
     'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
 ```
+</details>
 
 You can then use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error) without forgetting to pass the possible errors in more:
 
@@ -248,6 +263,8 @@ You can then use the component as you would from [Blade UI Kit Error component](
 
 ### Form
 
+<details>
+<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -259,6 +276,7 @@ By:
 ```php
     'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
 ```
+</details>
 
 You can then use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
 
@@ -273,6 +291,3 @@ If you do not want to use this attribute:
 ```
 
 [Back to index ^](#index)
-
-
-//    'alert' => Components\Alerts\Alert::class,
