@@ -7,17 +7,16 @@ namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 use BladeUIKitBootstrap\Concerns\CanHaveErrors;
 use BladeUIKit\Components\Forms\Inputs\Input as BukInput;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\ViewErrorBag;
 
 class Input extends BukInput
 {
     use CanHaveErrors;
 
-    public function __construct(ViewErrorBag $errors, string $name, string $id = null, string $type = 'text', ?string $value = '', ?string $errorBag = null)
+    public function __construct(string $name, string $id = null, string $type = 'text', ?string $value = '', ?string $errorBag = null)
     {
-        parent::__construct($name, $id, $type, $value, $errorBag);
+        parent::__construct($name, $id, $type, $value);
 
-        $this->bootCanHaveErrors($errors, $name, $errorBag);
+        $this->bootCanHaveErrors($name, $errorBag);
     }
 
     public function render(): View

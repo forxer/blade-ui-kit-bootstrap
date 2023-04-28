@@ -10,8 +10,8 @@ For example a typical form field with Bootstrap:
 ```blade
 <div class="mb-3">
     <x-label for="title" />
-    <x-input name="title" :errors="$errors" />
-    <x-error field="title" :errors="$errors" />
+    <x-input name="title" />
+    <x-error field="title" />
 </div>
 ```
 
@@ -96,7 +96,7 @@ Usage
 
 Take for example the input form field.
 
-If you manually installed, in the file `/config/blade-ui-kit.php` replace the "input" component class:
+In the file `/config/blade-ui-kit.php` replace the "input" component class:
 
 ```php
     'components' => [
@@ -120,18 +120,14 @@ This allows to load the component from this package instead of *Blade UI Kit*.
 
 You can then use the component as you would from [Blade UI Kit Input Component](https://blade-ui-kit.com/docs/input) but it will directly have the CSS classes from Bootstrap.
 
-The *only difference* is that if you want to apply [Bootstrap's validation CSS classes](https://getbootstrap.com/docs/5.2/forms/validation/#server-side), **you must** pass errors to the component:
-
 ```blade
-<x-input name="search :errors="$errors" />
+    <x-input name="search />
 ```
 
 [Back to index ^](#index)
 
 ### Email
 
-<details>
-<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -143,20 +139,17 @@ By:
 ```php
     'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
 ```
-</details>
 
-You can then use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email) without forgetting to pass the possible errors in more:
+You can then use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
 
 ```blade
-<x-email :errors="$errors" />
+    <x-email />
 ```
 
 [Back to index ^](#index)
 
 ### Password
 
-<details>
-<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -168,20 +161,17 @@ By:
 ```php
     'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
 ```
-</details>
 
-You can then use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password) without forgetting to pass the possible errors in more:
+You can then use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
 
 ```blade
-<x-password :errors="$errors" />
+    <x-password />
 ```
 
 [Back to index ^](#index)
 
 ### Textarea
 
-<details>
-<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -193,20 +183,17 @@ By:
 ```php
     'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
 ```
-</details>
 
-You can then use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea) without forgetting to pass the possible errors in more:
+You can then use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
 
 ```blade
-<x-textarea name="about" :errors="$errors" />
+    <x-textarea name="about" />
 ```
 
 [Back to index ^](#index)
 
 ### Label
 
-<details>
-<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -218,12 +205,11 @@ By:
 ```php
     'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
 ```
-</details>
 
-You can then use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label).
+You can then use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label):
 
 ```blade
-<x-label for="search" />
+    <x-label for="search" />
 ```
 
 Or composing the content:
@@ -238,8 +224,6 @@ Or composing the content:
 
 ### Error
 
-<details>
-<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -251,20 +235,17 @@ By:
 ```php
     'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
 ```
-</details>
 
-You can then use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error) without forgetting to pass the possible errors in more:
+You can then use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error).
 
 ```blade
-<x-error name="search :errors="$errors" />
+    <x-error name="search />
 ```
 
 [Back to index ^](#index)
 
 ### Form
 
-<details>
-<summary>If you manually installed</summary>
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -276,7 +257,6 @@ By:
 ```php
     'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
 ```
-</details>
 
 You can then use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
 
@@ -291,3 +271,6 @@ If you do not want to use this attribute:
 ```
 
 [Back to index ^](#index)
+
+
+//    'alert' => Components\Alerts\Alert::class,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Concerns;
 
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Support\ViewErrorBag;
 
 trait CanHaveErrors
@@ -26,12 +27,18 @@ trait CanHaveErrors
         return $bag->has($this->errorField) ? $bag->get($this->errorField) : [];
     }
 
-    protected function bootCanHaveErrors(ViewErrorBag $errors, string $errorField, ?string $errorBag): void
+    protected function bootCanHaveErrors(string $errorField, ?string $errorBag): void
     {
+        static $view = null;
+
+        if ($view === null) {
+            $view = resolve(ViewFactory::class);
+        }
+
+        $this->errors = $view->shared('errors', new ViewErrorBag);
+
         $this->errorField($errorField);
         $this->errorBag($errorBag);
-
-        $this->errors = $errors;
 
         $this->hasErrors = $this->hasErrors();
     }

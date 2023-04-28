@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\ViewErrorBag;
 
 class Password extends Input
 {
-    public function __construct(ViewErrorBag $errors, string $name = 'password', string $id = null, ?string $errorBag = null)
+    public function __construct(string $name = 'password', string $id = null, ?string $errorBag = null)
     {
-        parent::__construct($errors, $name, $id, 'password', null, $errorBag);
+        parent::__construct($name, $id, 'password', null, $errorBag);
     }
 
     public function render(): View

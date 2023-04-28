@@ -13,9 +13,9 @@ class Error extends BladeComponent
 {
     use CanHaveErrors;
 
-    public function __construct(ViewErrorBag $errors, string $field, string $bag = 'default')
+    public function __construct(string $field, string $bag = 'default')
     {
-        $this->bootCanHaveErrors($errors, $field, $bag);
+        $this->bootCanHaveErrors($field, $bag);
     }
 
     public function render(): View

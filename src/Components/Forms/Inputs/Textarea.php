@@ -13,11 +13,11 @@ class Textarea extends BukTextarea
 {
     use CanHaveErrors;
 
-    public function __construct(ViewErrorBag $errors, string $name, string $id = null, $rows = 3,  ?string $errorBag = null)
+    public function __construct(string $name, string $id = null, $rows = 3, ?string $errorBag = null)
     {
-        parent::__construct($name, $id, $rows, $errorBag);
+        parent::__construct($name, $id, $rows);
 
-        $this->bootCanHaveErrors($errors, $name, $errorBag);
+        $this->bootCanHaveErrors($name, $errorBag);
     }
 
     public function render(): View
