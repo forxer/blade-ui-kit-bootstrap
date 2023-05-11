@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
+use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
 use Illuminate\Contracts\View\View;
 
 class Password extends Input
 {
-    public function __construct(string $name = 'password', string $id = null, ?string $errorBag = null)
+    use HasBootstrapVersion;
+
+    public function __construct(string $name, string $id = null, ?string $errorBag = null)
     {
         parent::__construct($name, $id, 'password', null, $errorBag);
     }
 
     public function render(): View
     {
-        return view('blade-ui-kit-bootstrap::components.forms.inputs.password');
+        return view($this->viewPath('components.forms.inputs.password'));
     }
 }

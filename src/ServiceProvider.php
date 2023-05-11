@@ -1,20 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BladeUIKitBootstrap;
 
 use BladeUIKitBootstrap\Console\InstallCommand;
+use BladeUIKit\Components\BladeComponent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class ServiceProvider extends BaseServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/blade-ui-kit-bootstrap.php', 'blade-ui-kit-bootstrap');
     }
 
-    public function boot()
+    public function boot(): void
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'blade-ui-kit-bootstrap');
+        $this->bootResources();
+        $this->bootBladeComponents();
 
         if ($this->app->runningInConsole()) {
             $this->configurePublishing();
@@ -23,6 +28,23 @@ class ServiceProvider extends BaseServiceProvider
                 InstallCommand::class,
             ]);
         }
+    }
+
+    private function bootResources(): void
+    {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'blade-ui-kit-bootstrap');
+    }
+
+    private function bootBladeComponents(): void
+    {
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
+            $prefix = config('blade-ui-kit-bootstrap.prefix', '');
+
+            /** @var BladeComponent $component */
+            foreach (config('blade-ui-kit-bootstrap.components', []) as $alias => $component) {
+                $blade->component($component, $alias, $prefix);
+            }
+        });
     }
 
     private function configurePublishing(): void

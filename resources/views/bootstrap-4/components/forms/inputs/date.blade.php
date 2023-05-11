@@ -1,7 +1,6 @@
-
 <input
     name="{{ $name }}"
-    type="{{ $type }}"
+    type="date"
     id="{{ $id }}"
     @if($value)value="{{ $value }}"@endif
     @if($hasErrors)aria-describedby="validation-{{ $name }}-feedback"@endif
