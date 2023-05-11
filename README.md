@@ -3,9 +3,7 @@ Blade UI kit Bootstrap
 
 The primary purpose of this package is to provide Bootstrap styling for [Blade UI Kit](https://blade-ui-kit.com/) form components.
 
-Currently the Bootstrap classes used are those of version 5.
-
-For example a typical form field with Bootstrap:
+For example a typical form field with Bootstrap 5:
 
 ```blade
 <div class="mb-3">
@@ -47,9 +45,12 @@ Index
 - [Installation](#installation)
     - [Manually](#manually)
     - [Automatically](#automatically)
+- [Bootstrap version](#bootstrap-version)
 - [Usage](#usage)
     - [Input](#input)
     - [Email](#email)
+    - [Date](#date)
+    - [Time](#time)
     - [Password](#password)
     - [Label](#label)
     - [Error](#error)
@@ -88,6 +89,34 @@ php artisan blade-ui-kit-bootstrap:install
 ```
 
 This will publish the two configuration files and override the PHP classes.
+
+Bootstrap version
+-----------------
+
+By default the package uses version 5 of Bootstrap. To change the version to Bootstrap 4 for your whole app just change the value in the package configuration file.
+
+But if your application uses both Bootstrap 4 and Bootstrap 5 you should use the route middleware provided by the package. You will need to apply middelware on routes that need to use Bootstrap 4.
+
+To do this, add the route middelware alias to the `app/Http/Kernel.php` file:
+
+```php
+    protected $middlewareAliases = [
+        //...
+        'blade-ui-kit-bootstrap-4' => \BladeUIKitBootstrap\Http\Middleware\BladeUiKitBootstrap4::class,
+    ];
+```
+
+Then add this middleware to the routes where you want it to be applied, for example:
+
+```php
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware([
+        'auth',
+        'blade-ui-kit-bootstrap-4',
+    ])
+    ->group(__DIR__.'/web/admin.php');
+```
 
 Usage
 -----
@@ -128,6 +157,9 @@ You can then use the component as you would from [Blade UI Kit Input Component](
 
 ### Email
 
+<details>
+<summary>If you did not use automatic installation</summary>
+
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -139,8 +171,9 @@ By:
 ```php
     'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
 ```
+</details>
 
-You can then use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
+You can use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
 
 ```blade
     <x-email />
@@ -148,7 +181,34 @@ You can then use the component as you would from [Blade UI Kit Email component](
 
 [Back to index ^](#index)
 
+### Date
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+You can use this component in the same way as the "input text" or "input email" components, for example.
+
+```blade
+    <x-date />
+```
+
+[Back to index ^](#index)
+
+### Time
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+You can use this component in the same way as the "input text" or "input email" components, for example.
+
+```blade
+    <x-time />
+```
+
+[Back to index ^](#index)
+
 ### Password
+
+<details>
+<summary>If you did not use automatic installation</summary>
 
 In the file `/config/blade-ui-kit.php` you must replace:
 
@@ -161,8 +221,9 @@ By:
 ```php
     'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
 ```
+</details>
 
-You can then use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
+You can use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
 
 ```blade
     <x-password />
@@ -171,6 +232,9 @@ You can then use the component as you would from [Blade UI Kit Password componen
 [Back to index ^](#index)
 
 ### Textarea
+
+<details>
+<summary>If you did not use automatic installation</summary>
 
 In the file `/config/blade-ui-kit.php` you must replace:
 
@@ -183,8 +247,9 @@ By:
 ```php
     'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
 ```
+</details>
 
-You can then use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
+You can use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
 
 ```blade
     <x-textarea name="about" />
@@ -193,6 +258,9 @@ You can then use the component as you would from [Blade UI Kit Textarea componen
 [Back to index ^](#index)
 
 ### Label
+
+<details>
+<summary>If you did not use automatic installation</summary>
 
 In the file `/config/blade-ui-kit.php` you must replace:
 
@@ -205,8 +273,9 @@ By:
 ```php
     'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
 ```
+</details>
 
-You can then use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label):
+You can use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label):
 
 ```blade
     <x-label for="search" />
@@ -224,6 +293,9 @@ Or composing the content:
 
 ### Error
 
+<details>
+<summary>If you did not use automatic installation</summary>
+
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
@@ -235,8 +307,9 @@ By:
 ```php
     'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
 ```
+</details>
 
-You can then use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error).
+You can use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error).
 
 ```blade
     <x-error name="search />
@@ -245,6 +318,9 @@ You can then use the component as you would from [Blade UI Kit Error component](
 [Back to index ^](#index)
 
 ### Form
+
+<details>
+<summary>If you did not use automatic installation</summary>
 
 In the file `/config/blade-ui-kit.php` you must replace:
 
@@ -257,8 +333,9 @@ By:
 ```php
     'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
 ```
+</details>
 
-You can then use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
+You can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
 
 The only difference is that the "novalidate" attribute is set by default in order to avoid browser validation and to use consistent error styles on all types of form fields.
 

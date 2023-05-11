@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+0.3.0 (2023-05-11)
+------------------
+
+- Support multiple Bootstrap versions
+- Added ability to define prefix
+- Added built-in components:
+    - Date
+    - Time
+    - Hidden
+
 0.2.0 (2023-04-29)
 ------------------
 
