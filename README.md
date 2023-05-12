@@ -20,7 +20,7 @@ Will render the following HTML:
     <label for="title" class="form-label">
         Title
     </label>
-    <input name="title" type="text" id="title" class="form-control"/>
+    <input name="title" type="text" id="title" class="form-control" />
 </div>
 ```
 
@@ -43,18 +43,21 @@ Index
 -----
 
 - [Installation](#installation)
-    - [Manually](#manually)
     - [Automatically](#automatically)
+    - [Manually](#manually)
 - [Bootstrap version](#bootstrap-version)
-- [Usage](#usage)
+- [Forms](#forms)
+    - [Form](#form)
+    - [Label](#label)
+    - [Error](#error)
+- [Inputs](#inputs)
     - [Input](#input)
+    - [Password](#password)
     - [Email](#email)
     - [Date](#date)
     - [Time](#time)
-    - [Password](#password)
-    - [Label](#label)
-    - [Error](#error)
-    - [Form](#form)
+    - [Hidden](#hidden)
+    - [Select](#select)
 
 
 Installation
@@ -68,6 +71,16 @@ Install the package by using Composer:
 composer require forxer/blade-ui-kit-bootstrap
 ```
 
+### Automatically
+
+In the usage examples below you are asked to override PHP classes in the Blade UI Kit configuration file for each of the components. It is possible to achieve this automatically via the following command:
+
+```
+php artisan blade-ui-kit-bootstrap:install
+```
+
+This will publish the two configuration files `/config/blade-ui-kit.php` and `/config/blade-ui-kit-bootstrap.php` and then override the PHP classes for each of the components to replace the classes of the base package.
+
 ### Manually
 
 Publish the *Blade UI Kit* configuration file:
@@ -80,15 +93,14 @@ This will publish a file `/config/blade-ui-kit.php`
 
 You will then need for each of the components to replace the classes of the base package in its configuration file with those of this package.
 
-### Automatically
-
-In the usage examples below you are asked to override PHP classes in the Blade UI Kit configuration file for each of the components. It is possible to achieve this automatically via the following command:
+Then publish configuration file of this package:
 
 ```
-php artisan blade-ui-kit-bootstrap:install
+php artisan vendor:publish --blade-ui-kit-bootstrap-config
 ```
 
-This will publish the two configuration files and override the PHP classes.
+This will publish a file `/config/blade-ui-kit-bootstrap.php`
+
 
 Bootstrap version
 -----------------
@@ -118,44 +130,10 @@ Route::prefix('admin')
     ->group(__DIR__.'/web/admin.php');
 ```
 
-Usage
+Forms
 -----
 
-### Input
-
-Take for example the input form field.
-
-In the file `/config/blade-ui-kit.php` replace the "input" component class:
-
-```php
-    'components' => [
-        //...
-        'input' => Components\Forms\Inputs\Input::class,
-        //...
-    ],
-```
-
-By the class from this package:
-
-```php
-    'components' => [
-        //...
-        'input' => BladeUIKitBootstrap\Components\Forms\Inputs\Input::class,
-        //...
-    ],
-```
-
-This allows to load the component from this package instead of *Blade UI Kit*.
-
-You can then use the component as you would from [Blade UI Kit Input Component](https://blade-ui-kit.com/docs/input) but it will directly have the CSS classes from Bootstrap.
-
-```blade
-    <x-input name="search />
-```
-
-[Back to index ^](#index)
-
-### Email
+### Form
 
 <details>
 <summary>If you did not use automatic installation</summary>
@@ -163,96 +141,26 @@ You can then use the component as you would from [Blade UI Kit Input Component](
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
-    'email' => Components\Forms\Inputs\Email::class,
+    'form' => Components\Forms\Form::class,
 ```
 
 By:
 
 ```php
-    'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
+    'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
 ```
 </details>
 
-You can use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
+You can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
+
+The only difference is that the "novalidate" attribute is set by default in order to avoid browser validation and to use consistent error styles on all types of form fields.
+
+If you do not want to use this attribute:
 
 ```blade
-    <x-email />
-```
-
-[Back to index ^](#index)
-
-### Date
-
-This component is only present in this package, it is not available in blade-ui-kit.
-
-You can use this component in the same way as the "input text" or "input email" components, for example.
-
-```blade
-    <x-date />
-```
-
-[Back to index ^](#index)
-
-### Time
-
-This component is only present in this package, it is not available in blade-ui-kit.
-
-You can use this component in the same way as the "input text" or "input email" components, for example.
-
-```blade
-    <x-time />
-```
-
-[Back to index ^](#index)
-
-### Password
-
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'password' => Components\Forms\Inputs\Password::class,
-```
-
-By:
-
-```php
-    'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
-
-```blade
-    <x-password />
-```
-
-[Back to index ^](#index)
-
-### Textarea
-
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'textarea' => Components\Forms\Inputs\Textarea::class,
-```
-
-By:
-
-```php
-    'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
-
-```blade
-    <x-textarea name="about" />
+<x-form action="http://example.com" :novalidate="false">
+    Form fields...
+</x-form>
 ```
 
 [Back to index ^](#index)
@@ -289,6 +197,8 @@ Or composing the content:
 </x-label>
 ```
 
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)
+
 [Back to index ^](#index)
 
 ### Error
@@ -317,7 +227,51 @@ You can use the component as you would from [Blade UI Kit Error component](https
 
 [Back to index ^](#index)
 
-### Form
+
+Inputs
+------
+
+### Input
+
+Take for example the input form field.
+
+In the file `/config/blade-ui-kit.php` replace the "input" component class:
+
+```php
+    'components' => [
+        //...
+        'input' => Components\Forms\Inputs\Input::class,
+        //...
+    ],
+```
+
+By the class from this package:
+
+```php
+    'components' => [
+        //...
+        'input' => BladeUIKitBootstrap\Components\Forms\Inputs\Input::class,
+        //...
+    ],
+```
+
+This allows to load the component from this package instead of *Blade UI Kit*.
+
+You can then use the component as you would from [Blade UI Kit Input Component](https://blade-ui-kit.com/docs/input) but it will directly have the CSS classes from Bootstrap.
+
+```blade
+    <x-input name="search />
+```
+
+The default type attribute is "text" but of course you can change it.
+
+There are "helper" components (see below) to simplify things: [Password](#password), [Email](#email), [Hidden](#hidden), etc.
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
+
+[Back to index ^](#index)
+
+### Password
 
 <details>
 <summary>If you did not use automatic installation</summary>
@@ -325,29 +279,132 @@ You can use the component as you would from [Blade UI Kit Error component](https
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
-    'form' => Components\Forms\Form::class,
+    'password' => Components\Forms\Inputs\Password::class,
 ```
 
 By:
 
 ```php
-    'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
+    'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
 ```
 </details>
 
-You can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
-
-The only difference is that the "novalidate" attribute is set by default in order to avoid browser validation and to use consistent error styles on all types of form fields.
-
-If you do not want to use this attribute:
+You can use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
 
 ```blade
-<x-form action="http://example.com" :novalidate="false">
-    Form fields...
-</x-form>
+    <x-password />
 ```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)
 
 [Back to index ^](#index)
 
+### Email
 
-//    'alert' => Components\Alerts\Alert::class,
+<details>
+<summary>If you did not use automatic installation</summary>
+
+In the file `/config/blade-ui-kit.php` you must replace:
+
+```php
+    'email' => Components\Forms\Inputs\Email::class,
+```
+
+By:
+
+```php
+    'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
+```
+</details>
+
+You can use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
+
+```blade
+    <x-email />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email)
+
+[Back to index ^](#index)
+
+### Date
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+You can use this component in the same way as the "input text" or "input email" components, for example.
+
+```blade
+    <x-date />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date)
+
+[Back to index ^](#index)
+
+### Time
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+You can use this component in the same way as the "input text" or "input email" components, for example.
+
+```blade
+    <x-time />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time)
+
+[Back to index ^](#index)
+
+### Hidden
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+You can use this component in the same way as the "input text" or "input email" components, for example.
+
+```blade
+    <x-hidden />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden)
+
+[Back to index ^](#index)
+
+### Textarea
+
+<details>
+<summary>If you did not use automatic installation</summary>
+
+In the file `/config/blade-ui-kit.php` you must replace:
+
+```php
+    'textarea' => Components\Forms\Inputs\Textarea::class,
+```
+
+By:
+
+```php
+    'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
+```
+</details>
+
+You can use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
+
+```blade
+    <x-textarea name="about" />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
+
+[Back to index ^](#index)
+
+### Select
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+```blade
+    <x-select name="country" :options="$counties" :selected="$user->country" />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
+
+[Back to index ^](#index)
