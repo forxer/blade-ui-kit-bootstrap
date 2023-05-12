@@ -17,8 +17,9 @@ return [
 
     'components' => [
         'date' => Components\Forms\Inputs\Date::class,
-        'time' => Components\Forms\Inputs\Time::class,
         'hidden' => Components\Forms\Inputs\Hidden::class,
+        'select' => Components\Forms\Inputs\Select::class,
+        'time' => Components\Forms\Inputs\Time::class,
     ],
 
     /*
