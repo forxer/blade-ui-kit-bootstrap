@@ -46,6 +46,8 @@ Index
     - [Automatically](#automatically)
     - [Manually](#manually)
 - [Bootstrap version](#bootstrap-version)
+- [Buttons](#buttons)
+    - [Form Button](#form-button)
 - [Forms](#forms)
     - [Form](#form)
     - [Label](#label)
@@ -128,6 +130,57 @@ Route::prefix('admin')
         'blade-ui-kit-bootstrap-4',
     ])
     ->group(__DIR__.'/web/admin.php');
+```
+
+Buttons
+-------
+
+### Form Button
+
+<details>
+<summary>If you did not use automatic installation</summary>
+
+In the file `/config/blade-ui-kit.php` you must replace:
+
+```php
+    'form-button' => Components\Buttons\FormButton::class,
+```
+
+By:
+
+```php
+    'form' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
+```
+</details>
+
+This component is overloaded because Bootstrap buttons can be elements of "button groups". The Blade UI Kit implementation does not allow this because the button is wrapped in the "form" element.
+
+In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute).
+
+This extracts the button from its form. But on the other hand, you need a place to display the form. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
+
+So **you have to place the call** to the "form button" stack where you need it, in a view or a layout, before your closing `</body>` tag:
+
+```blade
+    @stack('button-forms')
+```
+
+Then, you can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form-button).
+
+```blade
+    <x-form-button :action="route('do-something')">
+        Do something
+    </x-form-button>
+```
+
+Also, the difference is that you can specify a form ID targeted by the button. If you don't specify a form id, it will be randomly generated for each request using a random string of characters.
+
+But this is not ideal, it is preferable that you identify yourself the form on which the button acts. It will be easier to navigate and this with better performance.
+
+```blade
+    <x-form-button :formId="'do-something-'.$model->id">
+        Do something
+    </x-form-button>
 ```
 
 Forms
