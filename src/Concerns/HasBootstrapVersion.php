@@ -6,7 +6,7 @@ namespace BladeUIKitBootstrap\Concerns;
 
 trait HasBootstrapVersion
 {
-    public static function viewPath(?string $view = null): string
+    public static function viewPath(string $view = null): string
     {
         static $bootstrapVersion = null;
 
