@@ -149,7 +149,7 @@ In the file `/config/blade-ui-kit.php` you must replace:
 By:
 
 ```php
-    'form' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
+    'form-button' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
 ```
 </details>
 
@@ -182,6 +182,30 @@ But this is not ideal, it is preferable that you identify yourself the form on w
         Do something
     </x-form-button>
 ```
+
+### Logout
+
+<details>
+<summary>If you did not use automatic installation</summary>
+
+In the file `/config/blade-ui-kit.php` you must replace:
+
+```php
+    'form-button' => Components\Buttons\Logout::class,
+```
+
+By:
+
+```php
+    'form-button' => BladeUIKitBootstrap\Components\Buttons\Logout::class,
+```
+</details>
+
+The logout component does not directly extend that of Blade UI Kit but the FormButton component of this package. This is to overcome the same problems with the FormButton component.
+
+You **must** therefore install the above FormButton component of this package to use this component.
+
+
 
 Forms
 -----
@@ -455,8 +479,16 @@ You can use the component as you would from [Blade UI Kit Textarea component](ht
 This component is only present in this package, it is not available in blade-ui-kit.
 
 ```blade
-    <x-select name="country" :options="$counties" :selected="$user->country" />
+    <x-select name="country" :options="$countries" :selected="$user->country" />
 ```
+
+The `options` attribute can be an array or a Collection.
+
+If it is an array, the keys of this one will be the values of the options and the values of the array will be the labels.
+
+If it is a collection, this collection must have `name` and `id` elements for the labels and the values of the options respectively. Otherwise you can specify them with the `labelAttribute` and `valueAttribute` attributes.
+
+The `selected` attribute can be a single value or an array of values.
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 

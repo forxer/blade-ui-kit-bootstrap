@@ -16,6 +16,7 @@ class InstallCommand extends Command
 
     protected array $classsesReplacement = [
         'Components\Buttons\FormButton::class' => 'BladeUIKitBootstrap\Components\Buttons\FormButton::class',
+        'Components\Buttons\Logout::class' => 'BladeUIKitBootstrap\Components\Buttons\Logout::class',
         'Components\Forms\Inputs\Email::class' => 'BladeUIKitBootstrap\Components\Forms\Inputs\Email::class',
         'Components\Forms\Error::class' => 'BladeUIKitBootstrap\Components\Forms\Error::class',
         'Components\Forms\Form::class' => 'BladeUIKitBootstrap\Components\Forms\Form::class',
