@@ -198,7 +198,7 @@ This component is overloaded because Bootstrap buttons can be elements of "butto
 
 In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute). This extracts the button from its form.
 
-Then, you can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form-button).
+Then, you can use the component as you would from [Blade UI Kit Form Button component](https://blade-ui-kit.com/docs/form-button).
 
 ```blade
     <x-form-button :action="route('do-something')">
@@ -211,7 +211,7 @@ Also, the difference is that you can specify a form ID targeted by the button. I
 But this is not ideal, it is preferable that you identify yourself the form on which the button acts. It will be easier to navigate and this with better performance.
 
 ```blade
-    <x-form-button :formId="'do-something-'.$model->id">
+    <x-form-button :action="route('do-something', $model)" :formId="'do-something-'.$model->id">
         Do something
     </x-form-button>
 ```
@@ -224,13 +224,13 @@ But this is not ideal, it is preferable that you identify yourself the form on w
 In the file `/config/blade-ui-kit.php` you must replace:
 
 ```php
-    'form-button' => Components\Buttons\Logout::class,
+    'logout' => Components\Buttons\Logout::class,
 ```
 
 By:
 
 ```php
-    'form-button' => BladeUIKitBootstrap\Components\Buttons\Logout::class,
+    'logout' => BladeUIKitBootstrap\Components\Buttons\Logout::class,
 ```
 </details>
 
@@ -238,7 +238,17 @@ The logout component does not directly extend that of Blade UI Kit but the FormB
 
 You **must** therefore install the above FormButton component of this package to use this component.
 
+Then, you can use the component as you would from [Blade UI Kit Logout component](https://blade-ui-kit.com/docs/logout).
 
+```blade
+    <x-logout />
+```
+
+```blade
+    <x-logout :action="route('auth.logout')" :formId="'logout-'.auth()->id()">
+        {{ trans('logout') }}
+    </x-logout>
+```
 
 Forms
 -----
