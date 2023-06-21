@@ -2,7 +2,7 @@
     {!! $slot !!}
 </button>
 
-@push ('button-forms')
+@push ('blade-ui-kit-bs-html')
     <form id="{{ $formId }}" method="POST" @isset($action) action="{{ $action }}" @endisset>
         @csrf
         @method($method)

@@ -45,6 +45,7 @@ Index
 - [Installation](#installation)
     - [Automatically](#automatically)
     - [Manually](#manually)
+    - [Blade Stacks](#blade-stacks)
 - [Bootstrap version](#bootstrap-version)
 - [Buttons](#buttons)
     - [Form Button](#form-button)
@@ -103,6 +104,46 @@ php artisan vendor:publish --blade-ui-kit-bootstrap-config
 
 This will publish a file `/config/blade-ui-kit-bootstrap.php`
 
+### Blade Stacks
+
+Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
+
+You must add 3 Blade stack in your templates/views :
+
+- `@stack('blade-ui-kit-bs-styles')`
+- `@stack('blade-ui-kit-bs-html')`
+- `@stack('blade-ui-kit-bs-scripts')`
+
+Place the `@stack('blade-ui-kit-bs-styles')` stack call right before your closing </head> tag and after styles from libraries like Livewire.
+
+Place the `@stack('blade-ui-kit-bs-html')` stack call right before your scripts tags and other libraries like Livewire.
+
+Place the `@stack('blade-ui-kit-bs-scripts')` stack call right before your closing </body> tag and after scripts from libraries like Livewire.
+
+For example like this:
+
+```blade
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <!-- ... ->
+    <link href="{{ mix('assets/css/app.css') }}" rel="preload" as="style" media='all'>
+    @livewireStyles
+    @stack('blade-ui-kit-bs-styles')
+</head>
+<body>
+    <main>
+        @yield ('content')
+    </main>
+
+    @stack('blade-ui-kit-bs-html')
+
+    @livewireScripts
+    <script src="{{ mix('assets/js/app.js') }}"></script>
+    @stack('blade-ui-kit-bs-scripts')
+</body>
+</html>
+```
 
 Bootstrap version
 -----------------
@@ -155,15 +196,7 @@ By:
 
 This component is overloaded because Bootstrap buttons can be elements of "button groups". The Blade UI Kit implementation does not allow this because the button is wrapped in the "form" element.
 
-In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute).
-
-This extracts the button from its form. But on the other hand, you need a place to display the form. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
-
-So **you have to place the call** to the "form button" stack where you need it, in a view or a layout, before your closing `</body>` tag:
-
-```blade
-    @stack('button-forms')
-```
+In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute). This extracts the button from its form.
 
 Then, you can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form-button).
 
