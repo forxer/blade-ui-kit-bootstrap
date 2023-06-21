@@ -45,6 +45,7 @@ Index
 - [Installation](#installation)
     - [Automatically](#automatically)
     - [Manually](#manually)
+    - [Blade Stacks](#blade-stacks)
 - [Bootstrap version](#bootstrap-version)
 - [Buttons](#buttons)
     - [Form Button](#form-button)
@@ -103,6 +104,46 @@ php artisan vendor:publish --blade-ui-kit-bootstrap-config
 
 This will publish a file `/config/blade-ui-kit-bootstrap.php`
 
+### Blade Stacks
+
+Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
+
+You must add 3 Blade stack in your templates/views :
+
+- `@stack('blade-ui-kit-bs-styles')`
+- `@stack('blade-ui-kit-bs-html')`
+- `@stack('blade-ui-kit-bs-scripts')`
+
+Place the `@stack('blade-ui-kit-bs-styles')` stack call right before your closing </head> tag and after styles from libraries like Livewire.
+
+Place the `@stack('blade-ui-kit-bs-html')` stack call right before your scripts tags and other libraries like Livewire.
+
+Place the `@stack('blade-ui-kit-bs-scripts')` stack call right before your closing </body> tag and after scripts from libraries like Livewire.
+
+For example like this:
+
+```blade
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <!-- ... ->
+    <link href="{{ mix('assets/css/app.css') }}" rel="preload" as="style" media='all'>
+    @livewireStyles
+    @stack('blade-ui-kit-bs-styles')
+</head>
+<body>
+    <main>
+        @yield ('content')
+    </main>
+
+    @stack('blade-ui-kit-bs-html')
+
+    @livewireScripts
+    <script src="{{ mix('assets/js/app.js') }}"></script>
+    @stack('blade-ui-kit-bs-scripts')
+</body>
+</html>
+```
 
 Bootstrap version
 -----------------
@@ -149,21 +190,13 @@ In the file `/config/blade-ui-kit.php` you must replace:
 By:
 
 ```php
-    'form' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
+    'form-button' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
 ```
 </details>
 
 This component is overloaded because Bootstrap buttons can be elements of "button groups". The Blade UI Kit implementation does not allow this because the button is wrapped in the "form" element.
 
-In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute).
-
-This extracts the button from its form. But on the other hand, you need a place to display the form. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
-
-So **you have to place the call** to the "form button" stack where you need it, in a view or a layout, before your closing `</body>` tag:
-
-```blade
-    @stack('button-forms')
-```
+In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute). This extracts the button from its form.
 
 Then, you can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form-button).
 
@@ -182,6 +215,30 @@ But this is not ideal, it is preferable that you identify yourself the form on w
         Do something
     </x-form-button>
 ```
+
+### Logout
+
+<details>
+<summary>If you did not use automatic installation</summary>
+
+In the file `/config/blade-ui-kit.php` you must replace:
+
+```php
+    'form-button' => Components\Buttons\Logout::class,
+```
+
+By:
+
+```php
+    'form-button' => BladeUIKitBootstrap\Components\Buttons\Logout::class,
+```
+</details>
+
+The logout component does not directly extend that of Blade UI Kit but the FormButton component of this package. This is to overcome the same problems with the FormButton component.
+
+You **must** therefore install the above FormButton component of this package to use this component.
+
+
 
 Forms
 -----
@@ -455,8 +512,16 @@ You can use the component as you would from [Blade UI Kit Textarea component](ht
 This component is only present in this package, it is not available in blade-ui-kit.
 
 ```blade
-    <x-select name="country" :options="$counties" :selected="$user->country" />
+    <x-select name="country" :options="$countries" :selected="$user->country" />
 ```
+
+The `options` attribute can be an array or a Collection.
+
+If it is an array, the keys of this one will be the values of the options and the values of the array will be the labels.
+
+If it is a collection, this collection must have `name` and `id` elements for the labels and the values of the options respectively. Otherwise you can specify them with the `labelAttribute` and `valueAttribute` attributes.
+
+The `selected` attribute can be a single value or an array of values.
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 
