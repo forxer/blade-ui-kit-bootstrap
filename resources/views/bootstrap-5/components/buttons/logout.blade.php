@@ -1,5 +1,5 @@
 <button type="submit" form="{{ $formId }}" {{ $attributes }}>
-    {{ $slot->isEmpty() ? __('Log out') : $slot }}
+    {{ $slot->isEmpty() ? trans('Log out') : $slot }}
 </button>
 
 @push ('blade-ui-kit-bs-html')

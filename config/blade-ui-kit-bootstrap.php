@@ -20,6 +20,7 @@ return [
         'hidden' => Components\Forms\Inputs\Hidden::class,
         'select' => Components\Forms\Inputs\Select::class,
         'time' => Components\Forms\Inputs\Time::class,
+        'modal' => Components\Modals\Modal::class,
     ],
 
     /*
