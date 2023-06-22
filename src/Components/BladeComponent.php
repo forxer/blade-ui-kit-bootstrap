@@ -2,10 +2,15 @@
 
 declare(strict_types=1);
 
-namespace BladeUIKitBootstrap\Concerns;
+namespace BladeUIKitBootstrap\Components;
 
-trait HasBootstrapVersion
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component as IlluminateComponent;
+
+abstract class BladeComponent extends IlluminateComponent
 {
+    abstract function viewName(): string;
+
     public function viewPath(string $view): string
     {
         static $bootstrapVersion = null;
@@ -15,5 +20,10 @@ trait HasBootstrapVersion
         }
 
         return $bootstrapVersion.$view;
+    }
+
+    public function render(): View
+    {
+        return view($this->viewPath($this->viewName()));
     }
 }

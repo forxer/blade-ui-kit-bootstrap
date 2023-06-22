@@ -49,6 +49,7 @@ Index
 - [Bootstrap version](#bootstrap-version)
 - [Buttons](#buttons)
     - [Form Button](#form-button)
+    - [Logout](#logout)
 - [Forms](#forms)
     - [Form](#form)
     - [Label](#label)
@@ -61,7 +62,9 @@ Index
     - [Time](#time)
     - [Hidden](#hidden)
     - [Select](#select)
-
+- [Modals](#modals)
+    - [Normal modal](#normal-modal)
+    - [Confirm modal](#confirm-modal)
 
 Installation
 ------------
@@ -536,3 +539,63 @@ The `selected` attribute can be a single value or an array of values.
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 
 [Back to index ^](#index)
+
+Modals
+------
+
+### Normal modal
+
+This component is only present in this package, it is not available in blade-ui-kit.
+
+First, you need an element to launch the modal, typically a button.
+
+With Bootstrap 4:
+
+```blade
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+```
+
+With Bootstrap 5:
+
+```blade
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+```
+
+Then you can use the component like this :
+
+```blade
+<x-modal id="exampleModal" title="Example Modal" class="fade">
+    <p>Modal example content</p>
+</x-modal>
+```
+
+You can remove the close button with `:dismissable="false"` attribute.
+
+You can customize the header with the `<x-slot:header>` slot.
+
+Finally you can add a footer with the `<x-slot:footer>` slot.
+
+Obviously you can use the attributes as you wish.
+
+```blade
+<x-modal id="exampleModal" title="Example Modal" :dismissable="false" class="fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <x-slot:header>
+        <h5 class="modal-title" id="{{ $component->titleLabel }}">{{ $component->title }}</h5>
+    </x-slot>
+
+    <p>Modal example content</p>
+
+    <x-slot:footer>
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </x-slot>
+</x-modal>
+```
+
+[Back to index ^](#index)
+
+### Confirm modal
