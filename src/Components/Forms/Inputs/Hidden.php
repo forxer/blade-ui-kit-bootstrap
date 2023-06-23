@@ -11,9 +11,9 @@ class Hidden extends Input
 {
     use HasBootstrapVersion;
 
-    public function __construct(string $name, string $id = null, ?string $value = '', ?string $errorBag = null)
+    public function __construct(string $name, string $id = null, ?string $value = '')
     {
-        parent::__construct($name, $id, 'hidden', $value, $errorBag);
+        parent::__construct($name, $id, 'hidden', $value);
     }
 
     public function render(): View
