@@ -617,3 +617,4 @@ It is simply necessary to add the `data-confirm` attribute to the button with th
 **Note that this is a first implementation** and that this component will certainly evolve soon in order to provide more customization possibilities.
 
 [Back to index ^](#index)
+
