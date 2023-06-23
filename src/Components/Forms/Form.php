@@ -4,26 +4,25 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Forms;
 
-use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
-use BladeUIKit\Components\Forms\Form as BukForm;
-use Illuminate\Contracts\View\View;
+use BladeUIKitBootstrap\Components\BladeComponent;
 
-class Form extends BukForm
+class Form extends BladeComponent
 {
-    use HasBootstrapVersion;
-
-    /** @var bool */
-    public $novalidate;
+    public ?string $action;
+    public string $method;
+    public bool $hasFiles;
+    public bool $novalidate;
 
     public function __construct(string $action = null, string $method = 'POST', bool $hasFiles = false, bool $novalidate = true)
     {
-        parent::__construct($action, $method, $hasFiles);
-
+        $this->action = $action;
+        $this->method = strtoupper($method);
+        $this->hasFiles = $hasFiles;
         $this->novalidate = $novalidate;
     }
 
-    public function render(): View
+    public function viewName(): string
     {
-        return view($this->viewPath('components.forms.form'));
+        return 'components.forms.form';
     }
 }

@@ -4,21 +4,23 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Forms;
 
-use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
-use BladeUIKit\Components\Forms\Label as BukLabel;
-use Illuminate\Contracts\View\View;
+use BladeUIKitBootstrap\Components\BladeComponent;
+use Illuminate\Support\Str;
 
-class Label extends BukLabel
+class Label extends BladeComponent
 {
-    use HasBootstrapVersion;
-
-    public function __construct(string $for)
-    {
-        parent::__construct($for);
+    public function __construct(
+        public string $for,
+    ) {
     }
 
-    public function render(): View
+    public function fallback(): string
     {
-        return view($this->viewPath('components.forms.label'));
+        return Str::ucfirst(str_replace('_', ' ', $this->for));
+    }
+
+    public function viewName(): string
+    {
+        return 'components.forms.label';
     }
 }

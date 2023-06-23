@@ -19,10 +19,10 @@
         "source": "https://github.com/forxer/blade-ui-kit-bootstrap"
     },
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "blade-ui-kit/blade-ui-kit": "^0.4.0",
-        "illuminate/support": "^9.0|^10.0",
-        "illuminate/view": "^9.0|^10.0"
+        "illuminate/support": "^10.0",
+        "illuminate/view": "^10.0"
     },
     "autoload": {
         "psr-4": {

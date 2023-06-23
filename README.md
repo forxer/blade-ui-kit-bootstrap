@@ -1,7 +1,9 @@
 Blade UI kit Bootstrap
 ======================
 
-The primary purpose of this package is to provide Bootstrap styling for [Blade UI Kit](https://blade-ui-kit.com/) form components.
+This package provides several Blade components prepared for use with Bootstrap (4 and/or 5).
+
+This package was initially an extension of [Blade UI Kit](https://blade-ui-kit.com/) to provide pre-styled components for Bootstrap. But by making it evolve we decided to decouple it from its illustrious parent. This simplifies the code as well as its use.
 
 For example a typical form field with Bootstrap 5:
 
@@ -43,8 +45,6 @@ Index
 -----
 
 - [Installation](#installation)
-    - [Automatically](#automatically)
-    - [Manually](#manually)
     - [Blade Stacks](#blade-stacks)
 - [Bootstrap version](#bootstrap-version)
 - [Buttons](#buttons)
@@ -69,49 +69,17 @@ Index
 Installation
 ------------
 
-**You should familiarize yourself with the [Blade UI Kit](https://blade-ui-kit.com/docs) package at first before using this one.**
-
 Install the package by using Composer:
 
 ```
 composer require forxer/blade-ui-kit-bootstrap
 ```
 
-### Automatically
-
-In the usage examples below you are asked to override PHP classes in the Blade UI Kit configuration file for each of the components. It is possible to achieve this automatically via the following command:
-
-```
-php artisan blade-ui-kit-bootstrap:install
-```
-
-This will publish the two configuration files `/config/blade-ui-kit.php` and `/config/blade-ui-kit-bootstrap.php` and then override the PHP classes for each of the components to replace the classes of the base package.
-
-### Manually
-
-Publish the *Blade UI Kit* configuration file:
-
-```
-php artisan vendor:publish --tag=blade-ui-kit-config
-```
-
-This will publish a file `/config/blade-ui-kit.php`
-
-You will then need for each of the components to replace the classes of the base package in its configuration file with those of this package.
-
-Then publish configuration file of this package:
-
-```
-php artisan vendor:publish --blade-ui-kit-bootstrap-config
-```
-
-This will publish a file `/config/blade-ui-kit-bootstrap.php`
-
 ### Blade Stacks
 
-Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
+Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature of Laravel: [Blade stacks](https://laravel.com/docs/blade#stacks).
 
-You must add 3 Blade stack in your templates/views :
+So you must add 3 Blade stacks in your templates/views :
 
 - `@stack('blade-ui-kit-bs-styles')`
 - `@stack('blade-ui-kit-bs-html')`
@@ -181,23 +149,7 @@ Buttons
 
 ### Form Button
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'form-button' => Components\Buttons\FormButton::class,
-```
-
-By:
-
-```php
-    'form-button' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
-```
-</details>
-
-This component is overloaded because Bootstrap buttons can be elements of "button groups". The Blade UI Kit implementation does not allow this because the button is wrapped in the "form" element.
+This component is implemented because Bootstrap buttons can be elements of "button groups". And we don't want the form element to be directly in the "button groups" otherwise it "breaks" the display.
 
 In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute). This extracts the button from its form.
 
@@ -221,22 +173,6 @@ But this is not ideal, it is preferable that you identify yourself the form on w
 
 ### Logout
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'logout' => Components\Buttons\Logout::class,
-```
-
-By:
-
-```php
-    'logout' => BladeUIKitBootstrap\Components\Buttons\Logout::class,
-```
-</details>
-
 The logout component does not directly extend that of Blade UI Kit but the FormButton component of this package. This is to overcome the same problems with the FormButton component.
 
 You **must** therefore install the above FormButton component of this package to use this component.
@@ -258,22 +194,6 @@ Forms
 
 ### Form
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'form' => Components\Forms\Form::class,
-```
-
-By:
-
-```php
-    'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
-```
-</details>
-
 You can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
 
 The only difference is that the "novalidate" attribute is set by default in order to avoid browser validation and to use consistent error styles on all types of form fields.
@@ -289,22 +209,6 @@ If you do not want to use this attribute:
 [Back to index ^](#index)
 
 ### Label
-
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'input' => Components\Forms\Error::class,
-```
-
-By:
-
-```php
-    'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
-```
-</details>
 
 You can use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label):
 
@@ -325,22 +229,6 @@ Or composing the content:
 [Back to index ^](#index)
 
 ### Error
-
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'input' => Components\Forms\Error::class,
-```
-
-By:
-
-```php
-    'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
-```
-</details>
 
 You can use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error).
 
@@ -396,22 +284,6 @@ There are "helper" components (see below) to simplify things: [Password](#passwo
 
 ### Password
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'password' => Components\Forms\Inputs\Password::class,
-```
-
-By:
-
-```php
-    'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
-```
-</details>
-
 You can use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
 
 ```blade
@@ -423,22 +295,6 @@ You can use the component as you would from [Blade UI Kit Password component](ht
 [Back to index ^](#index)
 
 ### Email
-
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'email' => Components\Forms\Inputs\Email::class,
-```
-
-By:
-
-```php
-    'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
-```
-</details>
 
 You can use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
 
@@ -452,8 +308,6 @@ You can use the component as you would from [Blade UI Kit Email component](https
 
 ### Date
 
-This component is only present in this package, it is not available in blade-ui-kit.
-
 You can use this component in the same way as the "input text" or "input email" components, for example.
 
 ```blade
@@ -465,8 +319,6 @@ You can use this component in the same way as the "input text" or "input email" 
 [Back to index ^](#index)
 
 ### Time
-
-This component is only present in this package, it is not available in blade-ui-kit.
 
 You can use this component in the same way as the "input text" or "input email" components, for example.
 
@@ -480,8 +332,6 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Hidden
 
-This component is only present in this package, it is not available in blade-ui-kit.
-
 You can use this component in the same way as the "input text" or "input email" components, for example.
 
 ```blade
@@ -494,22 +344,6 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Textarea
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'textarea' => Components\Forms\Inputs\Textarea::class,
-```
-
-By:
-
-```php
-    'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
-```
-</details>
-
 You can use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
 
 ```blade
@@ -521,8 +355,6 @@ You can use the component as you would from [Blade UI Kit Textarea component](ht
 [Back to index ^](#index)
 
 ### Select
-
-This component is only present in this package, it is not available in blade-ui-kit.
 
 ```blade
     <x-select name="country" :options="$countries" :selected="$user->country" />
@@ -544,8 +376,6 @@ Modals
 ------
 
 ### Classic modal
-
-This component is only present in this package, it is not available in blade-ui-kit.
 
 First, you need an element to launch the modal, typically a button.
 
