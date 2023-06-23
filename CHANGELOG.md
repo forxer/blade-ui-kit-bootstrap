@@ -5,6 +5,7 @@ CHANGELOG
 ------------------
 
 - Added Confirm Modal component
+- Added missing input hidden views
 
 
 0.6.0 (2023-06-22)
