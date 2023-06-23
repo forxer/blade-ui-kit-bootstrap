@@ -21,6 +21,7 @@ return [
         'select' => Components\Forms\Inputs\Select::class,
         'time' => Components\Forms\Inputs\Time::class,
         'modal' => Components\Modals\Modal::class,
+        'modal-confirm' => Components\Modals\Confirm::class,
     ],
 
     /*
