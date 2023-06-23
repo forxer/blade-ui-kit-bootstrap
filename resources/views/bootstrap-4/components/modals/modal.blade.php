@@ -11,7 +11,7 @@
                             <h5 class="modal-title" id="{{ $titleLabel }}">{{ $title }}</h5>
                     @endif
                         @if ($dismissable)
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="{!! trans('blade-ui-kit-bootstrap::modal.close') !!}">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         @endif

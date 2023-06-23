@@ -1,4 +1,3 @@
-
 @push ('blade-ui-kit-bs-html')
     <div {{ $attributes->class(['modal']) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
         <div class="modal-dialog">
@@ -11,7 +10,7 @@
                             <h5 class="modal-title" id="{{ $titleLabel }}">{{ $title }}</h5>
                     @endif
                         @if ($dismissable)
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{!! trans('blade-ui-kit-bootstrap::modal.close') !!}"></button>
                         @endif
                     </div>
                 <div class="modal-body">

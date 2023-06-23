@@ -63,7 +63,7 @@ Index
     - [Hidden](#hidden)
     - [Select](#select)
 - [Modals](#modals)
-    - [Normal modal](#normal-modal)
+    - [Classic modal](#classic-modal)
     - [Confirm modal](#confirm-modal)
 
 Installation
@@ -543,7 +543,7 @@ The `selected` attribute can be a single value or an array of values.
 Modals
 ------
 
-### Normal modal
+### Classic modal
 
 This component is only present in this package, it is not available in blade-ui-kit.
 
@@ -599,3 +599,22 @@ Obviously you can use the attributes as you wish.
 [Back to index ^](#index)
 
 ### Confirm modal
+
+This modal allows you to request confirmation of an action. You can use the Form Button component to simplify writing.
+
+It is simply necessary to add the `data-confirm` attribute to the button with the message you want to display in the confirmation modal.
+
+```blade
+<x-form-button class="btn btn-danger" method="delete"
+    :action="route('model.delete', $model)"
+    :formId="'form-delete-'.$model->id"
+    data-confirm="Are you sure you want to delete this model?">
+        Delete
+</x-form-button>
+
+<x-modal-confirm title="Confirmation" />
+```
+**Note that this is a first implementation** and that this component will certainly evolve soon in order to provide more customization possibilities.
+
+[Back to index ^](#index)
+
