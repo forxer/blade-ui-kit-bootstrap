@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Buttons;
 
-use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
-use BladeUIKit\Components\Buttons\FormButton as BukFormButton;
-use Illuminate\Contracts\View\View;
+use BladeUIKitBootstrap\Components\BladeComponent;
 use Illuminate\Support\Str;
 
-class FormButton extends BukFormButton
+class FormButton extends BladeComponent
 {
-    use HasBootstrapVersion;
-
     /** @var string */
     public $formId;
+
+    /** @var string|null */
+    public $action;
+
+    /** @var string */
+    public $method;
 
     public function __construct(string $formId = null, string $action = null, string $method = 'POST')
     {
@@ -23,8 +25,8 @@ class FormButton extends BukFormButton
         $this->method = strtoupper($method);
     }
 
-    public function render(): View
+    public function viewName(): string
     {
-        return view($this->viewPath('components.buttons.form-button'));
+        return 'components.buttons.form-button';
     }
 }
