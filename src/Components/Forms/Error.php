@@ -4,23 +4,26 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Forms;
 
+use BladeUIKitBootstrap\Components\BladeComponent;
 use BladeUIKitBootstrap\Concerns\CanHaveErrors;
-use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
-use BladeUIKit\Components\BladeComponent;
-use Illuminate\View\View;
 
 class Error extends BladeComponent
 {
     use CanHaveErrors;
-    use HasBootstrapVersion;
+
+    /** @var string */
+    public $field;
+
+    /** @var string */
+    public $bag;
 
     public function __construct(string $field, string $bag = 'default')
     {
         $this->bootCanHaveErrors($field, $bag);
     }
 
-    public function render(): View
+    public function viewName(): string
     {
-        return view($this->viewPath('components.forms.error'));
+        return 'components.forms.error';
     }
 }

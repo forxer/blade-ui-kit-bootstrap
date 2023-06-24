@@ -8,9 +8,16 @@ use BladeUIKitBootstrap\Components\BladeComponent;
 
 class Form extends BladeComponent
 {
-    public ?string $action;
-    public string $method;
-    public bool $hasFiles;
+    /** @var string|null */
+    public $action;
+
+    /** @var string */
+    public $method;
+
+    /** @var bool */
+    public $hasFiles;
+
+    /** @var bool */
     public bool $novalidate;
 
     public function __construct(string $action = null, string $method = 'POST', bool $hasFiles = false, bool $novalidate = true)
