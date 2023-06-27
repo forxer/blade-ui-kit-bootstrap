@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.8.0 (2023-06-xx)
+0.8.0 (2023-06-27)
 ------------------
 
 - Decoupling of Blade UI Kit, the package is now independent

@@ -20,7 +20,6 @@
     },
     "require": {
         "php": "^8.2",
-        "blade-ui-kit/blade-ui-kit": "^0.4.0",
         "illuminate/support": "^10.0",
         "illuminate/view": "^10.0"
     },

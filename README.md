@@ -3,9 +3,9 @@ Blade UI kit Bootstrap
 
 This package provides several Blade components prepared for use with Bootstrap (4 and/or 5).
 
-This package was initially an extension of [Blade UI Kit](https://blade-ui-kit.com/) to provide pre-styled components for Bootstrap. But by making it evolve we decided to decouple it from its illustrious parent. This simplifies the code as well as its use.
+This package was initially an extension of [Blade UI Kit](https://blade-ui-kit.com/) to provide pre-styled components for Bootstrap. But by making it evolve we decided to decouple it from its parent. This simplifies the code as well as its use in our case.
 
-This package is therefore largely inspired by [Blade UI Kit](https://blade-ui-kit.com/) and we sincerely thank its contributors for the idea and what they have developed. This package wouldn't exist without it.
+This package is therefore largely inspired by [Blade UI Kit](https://blade-ui-kit.com/). A very large part of the documentation comes from it. And we sincerely thank its contributors for the idea and what they have developed. This package wouldn't exist without it.
 
 Example
 -------
@@ -312,7 +312,7 @@ This will output the following HTML:
 
 #### Browers validation
 
-By default the `novalidate` attribute is set to `true` in order to avoid browser validation *and* to use consistent error styles on all types of form fields.
+By default the `novalidate` attribute, in order to avoid browser validation *and* to use consistent error styles on all types of form fields, is set to `true`.
 
 If you do not want to use this attribute simply set it to `false`:
 
@@ -327,7 +327,7 @@ If you do not want to use this attribute simply set it to `false`:
 By default a `POST` HTTP method will be set. Of course, you can customize this:
 
 ```blade
-<x-form action="http://example.com" method="PUT>
+<x-form action="http://example.com" method="PUT">
     Form fields...
 </x-form>
 ```
@@ -397,8 +397,10 @@ Or composing the content:
 The `error` component provides an easy way to work with Laravel's `$error` message bag in its Blade views. You can use it to display (multiple) error messages for form fields.
 
 ```blade
-    <x-error name="search />
+<x-error name="first_name />
 ```
+
+This component works well with input tags to apply Bootstrap style validations and aria tags ([see example](#example)).
 
 [Back to index ^](#index)
 
@@ -407,37 +409,44 @@ Inputs
 
 ### Input
 
-Take for example the input form field.
-
-In the file `/config/blade-ui-kit.php` replace the "input" component class:
-
-```php
-    'components' => [
-        //...
-        'input' => Components\Forms\Inputs\Input::class,
-        //...
-    ],
-```
-
-By the class from this package:
-
-```php
-    'components' => [
-        //...
-        'input' => BladeUIKitBootstrap\Components\Forms\Inputs\Input::class,
-        //...
-    ],
-```
-
-This allows to load the component from this package instead of *Blade UI Kit*.
-
-You can then use the component as you would from [Blade UI Kit Input Component](https://blade-ui-kit.com/docs/input) but it will directly have the CSS classes from Bootstrap.
+The most basic usage of the component is to set its name attribute:
 
 ```blade
-    <x-input name="search />
+    <x-input name="first_name" />
 ```
 
-The default type attribute is "text" but of course you can change it.
+This will output the following HTML:
+
+```html
+<input name="first_name" type="text" id="first_name" class="form-control" />
+```
+
+By default a `text` type will be set for the input field as well as an `id` that allows it to be easily referenced by a `label` element.
+
+Of course, you can also specifically set a type and overwrite the id attribute:
+
+```blade
+<x-input name="confirm_password" id="confirmPassword" type="password" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="confirm_password" type="password" id="confirmPassword" class="form-control" />
+```
+Of course you can set a default value.
+
+```blade
+    <x-input name="first_name" :value="$user->first_name" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="first_name" type="text" id="first_name" class="form-control" value="John" />
+```
+
+The input component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their input data when you re-render the form with any validation errors. When re-rendering the form, the input component will remember the old value.
 
 There are "helper" components (see below) to simplify things: [Password](#password), [Email](#email), [Hidden](#hidden), etc.
 
@@ -447,11 +456,30 @@ There are "helper" components (see below) to simplify things: [Password](#passwo
 
 ### Password
 
-You can use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
+The most basic usage of the component is as a self-closing component:
 
 ```blade
-    <x-password />
+<x-password />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="password" type="password" id="password" class="form-control" />
+```
+
+By default a `password` type will be set for the input field as well as an `id` that allows it to be easily referenced by a label element.
+
+Of course, you can also specifically set a `name` attribute:
+
+```blade
+<x-password name="my_password" />
+```
+
+```html
+<input name="my_password" type="password" id="my_password" class="form-control" />
+```
+Of course, unlike the other input fields in Blade UI Kit Bootstrap, old values for password fields are never re-set after validation.
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)
 
@@ -459,11 +487,19 @@ You can use the component as you would from [Blade UI Kit Password component](ht
 
 ### Email
 
-You can use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
+The most basic usage of the component is to simply reference it:
 
 ```blade
-    <x-email />
+    <x-email name="email_address" />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="email_address" type="email" id="email_address" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email)
 
@@ -471,11 +507,19 @@ You can use the component as you would from [Blade UI Kit Email component](https
 
 ### Date
 
-You can use this component in the same way as the "input text" or "input email" components, for example.
+The most basic usage of the component is to simply reference it with a `name` attribute:
 
 ```blade
-    <x-date />
+<x-date name="someday" />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="someday" type="date" id="someday" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date)
 
@@ -483,11 +527,19 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Time
 
-You can use this component in the same way as the "input text" or "input email" components, for example.
+The most basic usage of the component is to simply reference it with a `name` attribute:
 
 ```blade
-    <x-time />
+<x-time name="created_at" />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="someday" type="date" id="someday" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time)
 
@@ -495,10 +547,10 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Hidden
 
-You can use this component in the same way as the "input text" or "input email" components, for example.
+The most basic usage of the component is to simply reference it with a `name` and value attribute:
 
 ```blade
-    <x-hidden />
+    <x-hidden name="foo" value="bar" />
 ```
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden)
@@ -507,10 +559,10 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Textarea
 
-You can use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
+The most basic usage of the component is to simply reference it with a `name` attribute:
 
 ```blade
-    <x-textarea name="about" />
+<x-textarea name="about" />
 ```
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
@@ -519,8 +571,10 @@ You can use the component as you would from [Blade UI Kit Textarea component](ht
 
 ### Select
 
+You can create a select tag by passing it at least a name and a list of options:
+
 ```blade
-    <x-select name="country" :options="$countries" :selected="$user->country" />
+    <x-select name="country" :options="$countries" />
 ```
 
 The `options` attribute can be an array or a Collection.
@@ -529,7 +583,16 @@ If it is an array, the keys of this one will be the values of the options and th
 
 If it is a collection, this collection must have `name` and `id` elements for the labels and the values of the options respectively. Otherwise you can specify them with the `labelAttribute` and `valueAttribute` attributes.
 
+Of course you can set a default selected value.
+
+```blade
+    <x-select name="country" :options="$countries" :selected="$user->country" />
+```
+
 The `selected` attribute can be a single value or an array of values.
+
+The select component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their selected values when you re-render the form with any validation errors. When re-rendering the form, the select component will remember the old selected values.
+
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 

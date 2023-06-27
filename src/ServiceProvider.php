@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap;
 
-use BladeUIKitBootstrap\Console\InstallCommand;
 use BladeUIKit\Components\BladeComponent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
