@@ -1,7 +1,14 @@
 Blade UI kit Bootstrap
 ======================
 
-The primary purpose of this package is to provide Bootstrap styling for [Blade UI Kit](https://blade-ui-kit.com/) form components.
+This package provides several Blade components prepared for use with Bootstrap (4 and/or 5).
+
+This package was initially an extension of [Blade UI Kit](https://blade-ui-kit.com/) to provide pre-styled components for Bootstrap. But by making it evolve we decided to decouple it from its parent. This simplifies the code as well as its use in our case.
+
+This package is therefore largely inspired by [Blade UI Kit](https://blade-ui-kit.com/). A very large part of the documentation comes from it. And we sincerely thank its contributors for the idea and what they have developed. This package wouldn't exist without it.
+
+Example
+-------
 
 For example a typical form field with Bootstrap 5:
 
@@ -24,7 +31,7 @@ Will render the following HTML:
 </div>
 ```
 
-And with a validation error:
+And if there are validation errors:
 
 ```html
 <div class="mb-3">
@@ -43,9 +50,8 @@ Index
 -----
 
 - [Installation](#installation)
-    - [Automatically](#automatically)
-    - [Manually](#manually)
     - [Blade Stacks](#blade-stacks)
+    - [Publish files](#publish-files)
 - [Bootstrap version](#bootstrap-version)
 - [Buttons](#buttons)
     - [Form Button](#form-button)
@@ -69,49 +75,17 @@ Index
 Installation
 ------------
 
-**You should familiarize yourself with the [Blade UI Kit](https://blade-ui-kit.com/docs) package at first before using this one.**
-
 Install the package by using Composer:
 
 ```
 composer require forxer/blade-ui-kit-bootstrap
 ```
 
-### Automatically
-
-In the usage examples below you are asked to override PHP classes in the Blade UI Kit configuration file for each of the components. It is possible to achieve this automatically via the following command:
-
-```
-php artisan blade-ui-kit-bootstrap:install
-```
-
-This will publish the two configuration files `/config/blade-ui-kit.php` and `/config/blade-ui-kit-bootstrap.php` and then override the PHP classes for each of the components to replace the classes of the base package.
-
-### Manually
-
-Publish the *Blade UI Kit* configuration file:
-
-```
-php artisan vendor:publish --tag=blade-ui-kit-config
-```
-
-This will publish a file `/config/blade-ui-kit.php`
-
-You will then need for each of the components to replace the classes of the base package in its configuration file with those of this package.
-
-Then publish configuration file of this package:
-
-```
-php artisan vendor:publish --blade-ui-kit-bootstrap-config
-```
-
-This will publish a file `/config/blade-ui-kit-bootstrap.php`
-
 ### Blade Stacks
 
-Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature, [Blade stacks](https://laravel.com/docs/blade#stacks).
+Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature of Laravel: [Blade stacks](https://laravel.com/docs/blade#stacks).
 
-You must add 3 Blade stack in your templates/views :
+So you must add 3 Blade stacks in your templates/views, typically in a layout view :
 
 - `@stack('blade-ui-kit-bs-styles')`
 - `@stack('blade-ui-kit-bs-html')`
@@ -148,6 +122,32 @@ For example like this:
 </html>
 ```
 
+### Publish files
+
+You don't have to, but you can publish: the configuration file, the views and the translation files.
+
+Publish the configuration file with this command:
+
+```
+php artisan vendor:publish --tag="blade-ui-kit-bootstrap-config"
+```
+
+Publish views with this command:
+
+```
+php artisan vendor:publish --tag="blade-ui-kit-bootstrap-views"
+```
+
+Note that it is not necessary to publish all views in your application. It is even recommended that you only keep published views that you have modified in your application.
+
+Publish translation files with this command:
+
+```
+php artisan vendor:publish --tag="blade-ui-kit-bootstrap-translations"
+```
+
+[Back to index ^](#index)
+
 Bootstrap version
 -----------------
 
@@ -176,109 +176,145 @@ Route::prefix('admin')
     ->group(__DIR__.'/web/admin.php');
 ```
 
+[Back to index ^](#index)
+
 Buttons
 -------
 
 ### Form Button
 
-<details>
-<summary>If you did not use automatic installation</summary>
+The `form-button` component enables you to perform HTTP requests using any HTTP method you wish. By applying an HTML `form` tag behind the scenes it hides all of the bulk work of setting up the entire form.
 
-In the file `/config/blade-ui-kit.php` you must replace:
+Also this component is implemented because Bootstrap buttons can be elements of "button groups". And we don't want the form element to be directly in the "button groups" otherwise it "breaks" the display.
 
-```php
-    'form-button' => Components\Buttons\FormButton::class,
-```
-
-By:
-
-```php
-    'form-button' => BladeUIKitBootstrap\Components\Buttons\FormButton::class,
-```
-</details>
-
-This component is overloaded because Bootstrap buttons can be elements of "button groups". The Blade UI Kit implementation does not allow this because the button is wrapped in the "form" element.
-
-In order to avoid this we use the "form" attribute of the button element which has [good support](https://caniuse.com/form-attribute). This extracts the button from its form.
-
-Then, you can use the component as you would from [Blade UI Kit Form Button component](https://blade-ui-kit.com/docs/form-button).
+In order to avoid this we use the `form` attribute of the button element which has [good support](https://caniuse.com/form-attribute). This extracts the button from its form. The form itself will be displayed in the `blade-ui-kit-bs-html` stack.
 
 ```blade
-    <x-form-button :action="route('do-something')">
+    <x-form-button :action="route('do-something')" class="btn btn-primary">
         Do something
     </x-form-button>
 ```
 
-Also, the difference is that you can specify a form ID targeted by the button. If you don't specify a form id, it will be randomly generated for each request using a random string of characters.
+This will output the following HTML:
+
+```html
+<button type="submit" form="form-button-toFuKoZ8bPwhijAlV9vIFdPokYkOhTeT" class="btn btn-primary">
+    Do something
+</button>
+
+<!--... -->
+
+<form id="form-button-toFuKoZ8bPwhijAlV9vIFdPokYkOhTeT" method="POST" action="https://localhost/do-something" >
+    <input type="hidden" name="_token" value="...">
+    <input type="hidden" name="_method" value="POST">
+</form>
+```
+
+All attributes set on the component are piped through on the button element.
+
+You can specify a form ID targeted by the button. If you don't specify a form id, as you can see, it will be randomly generated for each request using a random string of characters.
 
 But this is not ideal, it is preferable that you identify yourself the form on which the button acts. It will be easier to navigate and this with better performance.
 
 ```blade
-    <x-form-button :action="route('do-something', $model)" :formId="'do-something-'.$model->id">
+    <x-form-button
+        :action="route('do-something', $model)"
+        :formId="'do-something-'.$model->id"
+        class="btn btn-primary"
+    >
         Do something
     </x-form-button>
 ```
 
+This will output the following HTML:
+
+```html
+<button type="submit" form="form-button-do-something-1" class="btn btn-primary">
+    Do something
+</button>
+
+<!--... -->
+
+<form id="form-button-do-something-1" method="POST" action="https://localhost/do-something/1" >
+    <input type="hidden" name="_token" value="...">
+    <input type="hidden" name="_method" value="POST">
+</form>
+```
+
+You can set a different HTTP method if you like with the `method` attibute:
+
+```blade
+    <x-form-button
+        :action="route('do-something', $model)"
+        :formId="'do-something-'.$model->id"
+        class="btn btn-primary"
+        method="PATCH"
+    >
+        Do something
+    </x-form-button>
+```
+
+[Back to index ^](#index)
+
 ### Logout
 
-<details>
-<summary>If you did not use automatic installation</summary>
+The `logout` component is a small convenience component for a widely used concept in an app, the logout link. Often this action sits in a menu item with other hyperlinks. But a logout is meant as an actionable link rather than a `GET` request. Therefor a `POST` request is better suited. And thus it deserves its own component.
 
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'logout' => Components\Buttons\Logout::class,
-```
-
-By:
-
-```php
-    'logout' => BladeUIKitBootstrap\Components\Buttons\Logout::class,
-```
-</details>
-
-The logout component does not directly extend that of Blade UI Kit but the FormButton component of this package. This is to overcome the same problems with the FormButton component.
-
-You **must** therefore install the above FormButton component of this package to use this component.
-
-Then, you can use the component as you would from [Blade UI Kit Logout component](https://blade-ui-kit.com/docs/logout).
+Behind the scenes, the `logout` component extends the `form-button` component.
 
 ```blade
-    <x-logout />
-```
-
-```blade
-    <x-logout :action="route('auth.logout')" :formId="'logout-'.auth()->id()">
+    <x-logout :action="route('auth.logout')" :formId="'logout-'.auth()->id()" class="btn btn-danger">
         {{ trans('logout') }}
     </x-logout>
 ```
+
+This will output the following HTML:
+
+```html
+<button type="submit" form="form-button-logout-1" class="btn btn-primary">
+    logout
+</button>
+
+<!--... -->
+
+<form id="form-button-logout-1" method="POST" action="https://localhost/logout" >
+    <input type="hidden" name="_token" value="...">
+</form>
+```
+
+[Back to index ^](#index)
 
 Forms
 -----
 
 ### Form
 
-<details>
-<summary>If you did not use automatic installation</summary>
+The `form` component helps you with removing the bulk work when setting up forms in Laravel. By default, it sets the HTTP method and CSRF directives and allows for an easier to use syntax than the default HTML form tag.
 
-In the file `/config/blade-ui-kit.php` you must replace:
+The most basic usage of the form component is wrapping some form elements and setting an action attribute:
 
-```php
-    'form' => Components\Forms\Form::class,
+```blade
+<x-form action="http://example.com">
+    Form fields...
+</x-form>
 ```
 
-By:
+This will output the following HTML:
 
-```php
-    'form' => BladeUIKitBootstrap\Components\Forms\Form::class,
+```html
+<form method="POST" action="http://example.com" novalidate="true">
+    <input type="hidden" name="_token" value="...">
+    <input type="hidden" name="_method" value="POST">
+
+    Form fields...
+</form>
 ```
-</details>
 
-You can use the component as you would from [Blade UI Kit Form component](https://blade-ui-kit.com/docs/form).
+#### Browers validation
 
-The only difference is that the "novalidate" attribute is set by default in order to avoid browser validation and to use consistent error styles on all types of form fields.
+By default the `novalidate` attribute, in order to avoid browser validation *and* to use consistent error styles on all types of form fields, is set to `true`.
 
-If you do not want to use this attribute:
+If you do not want to use this attribute simply set it to `false`:
 
 ```blade
 <x-form action="http://example.com" :novalidate="false">
@@ -286,37 +322,69 @@ If you do not want to use this attribute:
 </x-form>
 ```
 
+#### HTTP method
+
+By default a `POST` HTTP method will be set. Of course, you can customize this:
+
+```blade
+<x-form action="http://example.com" method="PUT">
+    Form fields...
+</x-form>
+```
+
+This will output the following HTML:
+
+```html
+<form method="POST" action="http://example.com" novalidate="true">
+    <input type="hidden" name="_token" value="...">
+    <input type="hidden" name="_method" value="PUT">
+
+    Form fields...
+</form>
+```
+
+#### File uploads
+
+To enable file uploads in a form you can make use of the `has-files` attribute:
+
+```blade
+<x-form action="http://example.com" has-files>
+    Form fields...
+</x-form>
+```
+
+This will output the following HTML:
+
+```html
+<form method="POST" action="http://example.com" novalidate="true" enctype="multipart/form-data">
+    <input type="hidden" name="_token" value="...">
+    Form fields...
+</form>
+```
+
 [Back to index ^](#index)
 
 ### Label
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'input' => Components\Forms\Error::class,
-```
-
-By:
-
-```php
-    'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Label component](https://blade-ui-kit.com/docs/label):
+The `label` component is a small and practical convenience component to use in your forms. When you set the `for` attribute, it'll generate a label tag for a subsequent input field with the same `id` attribute and automatically generate the label title.
 
 ```blade
-    <x-label for="search" />
+    <x-label for="first_name" />
+```
+
+This will output the following HTML:
+
+```html
+<label for="first_name">
+    First name
+</label>
 ```
 
 Or composing the content:
 
 ```blade
-<x-label for="search">
-    {!! trans('search') !!}
+<x-label for="first_name">
+    {!! trans('first_name') !!}
 </x-label>
 ```
 
@@ -326,67 +394,59 @@ Or composing the content:
 
 ### Error
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'input' => Components\Forms\Error::class,
-```
-
-By:
-
-```php
-    'error' => BladeUIKitBootstrap\Components\Forms\Error::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Error component](https://blade-ui-kit.com/docs/error).
+The `error` component provides an easy way to work with Laravel's `$error` message bag in its Blade views. You can use it to display (multiple) error messages for form fields.
 
 ```blade
-    <x-error name="search />
+<x-error name="first_name />
 ```
 
-[Back to index ^](#index)
+This component works well with input tags to apply Bootstrap style validations and aria tags ([see example](#example)).
 
+[Back to index ^](#index)
 
 Inputs
 ------
 
 ### Input
 
-Take for example the input form field.
-
-In the file `/config/blade-ui-kit.php` replace the "input" component class:
-
-```php
-    'components' => [
-        //...
-        'input' => Components\Forms\Inputs\Input::class,
-        //...
-    ],
-```
-
-By the class from this package:
-
-```php
-    'components' => [
-        //...
-        'input' => BladeUIKitBootstrap\Components\Forms\Inputs\Input::class,
-        //...
-    ],
-```
-
-This allows to load the component from this package instead of *Blade UI Kit*.
-
-You can then use the component as you would from [Blade UI Kit Input Component](https://blade-ui-kit.com/docs/input) but it will directly have the CSS classes from Bootstrap.
+The most basic usage of the component is to set its name attribute:
 
 ```blade
-    <x-input name="search />
+    <x-input name="first_name" />
 ```
 
-The default type attribute is "text" but of course you can change it.
+This will output the following HTML:
+
+```html
+<input name="first_name" type="text" id="first_name" class="form-control" />
+```
+
+By default a `text` type will be set for the input field as well as an `id` that allows it to be easily referenced by a `label` element.
+
+Of course, you can also specifically set a type and overwrite the id attribute:
+
+```blade
+<x-input name="confirm_password" id="confirmPassword" type="password" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="confirm_password" type="password" id="confirmPassword" class="form-control" />
+```
+Of course you can set a default value.
+
+```blade
+    <x-input name="first_name" :value="$user->first_name" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="first_name" type="text" id="first_name" class="form-control" value="John" />
+```
+
+The input component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their input data when you re-render the form with any validation errors. When re-rendering the form, the input component will remember the old value.
 
 There are "helper" components (see below) to simplify things: [Password](#password), [Email](#email), [Hidden](#hidden), etc.
 
@@ -396,27 +456,30 @@ There are "helper" components (see below) to simplify things: [Password](#passwo
 
 ### Password
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'password' => Components\Forms\Inputs\Password::class,
-```
-
-By:
-
-```php
-    'password' => BladeUIKitBootstrap\Components\Forms\Inputs\Password::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Password component](https://blade-ui-kit.com/docs/password):
+The most basic usage of the component is as a self-closing component:
 
 ```blade
-    <x-password />
+<x-password />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="password" type="password" id="password" class="form-control" />
+```
+
+By default a `password` type will be set for the input field as well as an `id` that allows it to be easily referenced by a label element.
+
+Of course, you can also specifically set a `name` attribute:
+
+```blade
+<x-password name="my_password" />
+```
+
+```html
+<input name="my_password" type="password" id="my_password" class="form-control" />
+```
+Of course, unlike the other input fields in Blade UI Kit Bootstrap, old values for password fields are never re-set after validation.
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)
 
@@ -424,27 +487,19 @@ You can use the component as you would from [Blade UI Kit Password component](ht
 
 ### Email
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'email' => Components\Forms\Inputs\Email::class,
-```
-
-By:
-
-```php
-    'email' => BladeUIKitBootstrap\Components\Forms\Inputs\Email::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Email component](https://blade-ui-kit.com/docs/email):
+The most basic usage of the component is to simply reference it:
 
 ```blade
-    <x-email />
+    <x-email name="email_address" />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="email_address" type="email" id="email_address" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email)
 
@@ -452,13 +507,19 @@ You can use the component as you would from [Blade UI Kit Email component](https
 
 ### Date
 
-This component is only present in this package, it is not available in blade-ui-kit.
-
-You can use this component in the same way as the "input text" or "input email" components, for example.
+The most basic usage of the component is to simply reference it with a `name` attribute:
 
 ```blade
-    <x-date />
+<x-date name="someday" />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="someday" type="date" id="someday" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date)
 
@@ -466,13 +527,19 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Time
 
-This component is only present in this package, it is not available in blade-ui-kit.
-
-You can use this component in the same way as the "input text" or "input email" components, for example.
+The most basic usage of the component is to simply reference it with a `name` attribute:
 
 ```blade
-    <x-time />
+<x-time name="created_at" />
 ```
+
+This will output the following HTML:
+
+```html
+<input name="someday" type="date" id="someday" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time)
 
@@ -480,12 +547,10 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Hidden
 
-This component is only present in this package, it is not available in blade-ui-kit.
-
-You can use this component in the same way as the "input text" or "input email" components, for example.
+The most basic usage of the component is to simply reference it with a `name` and value attribute:
 
 ```blade
-    <x-hidden />
+    <x-hidden name="foo" value="bar" />
 ```
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden)
@@ -494,26 +559,10 @@ You can use this component in the same way as the "input text" or "input email" 
 
 ### Textarea
 
-<details>
-<summary>If you did not use automatic installation</summary>
-
-In the file `/config/blade-ui-kit.php` you must replace:
-
-```php
-    'textarea' => Components\Forms\Inputs\Textarea::class,
-```
-
-By:
-
-```php
-    'textarea' => BladeUIKitBootstrap\Components\Forms\Inputs\Textarea::class,
-```
-</details>
-
-You can use the component as you would from [Blade UI Kit Textarea component](https://blade-ui-kit.com/docs/textarea):
+The most basic usage of the component is to simply reference it with a `name` attribute:
 
 ```blade
-    <x-textarea name="about" />
+<x-textarea name="about" />
 ```
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
@@ -522,10 +571,10 @@ You can use the component as you would from [Blade UI Kit Textarea component](ht
 
 ### Select
 
-This component is only present in this package, it is not available in blade-ui-kit.
+You can create a select tag by passing it at least a name and a list of options:
 
 ```blade
-    <x-select name="country" :options="$countries" :selected="$user->country" />
+    <x-select name="country" :options="$countries" />
 ```
 
 The `options` attribute can be an array or a Collection.
@@ -534,7 +583,16 @@ If it is an array, the keys of this one will be the values of the options and th
 
 If it is a collection, this collection must have `name` and `id` elements for the labels and the values of the options respectively. Otherwise you can specify them with the `labelAttribute` and `valueAttribute` attributes.
 
+Of course you can set a default selected value.
+
+```blade
+    <x-select name="country" :options="$countries" :selected="$user->country" />
+```
+
 The `selected` attribute can be a single value or an array of values.
+
+The select component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their selected values when you re-render the form with any validation errors. When re-rendering the form, the select component will remember the old selected values.
+
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 
@@ -544,8 +602,6 @@ Modals
 ------
 
 ### Classic modal
-
-This component is only present in this package, it is not available in blade-ui-kit.
 
 First, you need an element to launch the modal, typically a button.
 

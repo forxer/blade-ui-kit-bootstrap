@@ -4,25 +4,37 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
+use BladeUIKitBootstrap\Components\BladeComponent;
 use BladeUIKitBootstrap\Concerns\CanHaveErrors;
-use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
-use BladeUIKit\Components\Forms\Inputs\Input as BukInput;
-use Illuminate\Contracts\View\View;
 
-class Input extends BukInput
+class Input extends BladeComponent
 {
     use CanHaveErrors;
-    use HasBootstrapVersion;
+
+    /** @var string */
+    public $name;
+
+    /** @var string */
+    public $id;
+
+    /** @var string */
+    public $type;
+
+    /** @var string */
+    public $value;
 
     public function __construct(string $name, string $id = null, string $type = 'text', ?string $value = '', ?string $errorBag = null)
     {
-        parent::__construct($name, $id, $type, $value);
+        $this->name = $name;
+        $this->id = $id ?? $name;
+        $this->type = $type;
+        $this->value = old($name, $value ?? '');
 
         $this->bootCanHaveErrors($name, $errorBag);
     }
 
-    public function render(): View
+    public function viewName(): string
     {
-        return view($this->viewPath('components.forms.inputs.input'));
+        return 'components.forms.inputs.input';
     }
 }

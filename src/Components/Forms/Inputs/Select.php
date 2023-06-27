@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
+use BladeUIKitBootstrap\Components\BladeComponent;
 use BladeUIKitBootstrap\Concerns\CanHaveErrors;
-use BladeUIKitBootstrap\Concerns\HasBootstrapVersion;
-use BladeUIKit\Components\BladeComponent;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use \InvalidArgumentException;
 
 class Select extends BladeComponent
 {
     use CanHaveErrors;
-    use HasBootstrapVersion;
 
     /** @var string */
     public $name;
@@ -68,8 +65,8 @@ class Select extends BladeComponent
         return $value === $selected;
     }
 
-    public function render(): View
+    public function viewName(): string
     {
-        return view($this->viewPath('components.forms.inputs.select'));
+        return 'components.forms.inputs.select';
     }
 }

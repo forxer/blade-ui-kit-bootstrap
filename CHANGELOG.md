@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+0.8.0 (2023-06-27)
+------------------
+
+- Decoupling of Blade UI Kit, the package is now independent
+- Dropped support for Laravel < 10
+- Dropped support for PHP < 8.2
+
+
 0.7.0 (2023-06-23)
 ------------------
 
