@@ -593,6 +593,11 @@ The `selected` attribute can be a single value or an array of values.
 
 The select component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their selected values when you re-render the form with any validation errors. When re-rendering the form, the select component will remember the old selected values.
 
+If you use a select multiple you probably have a `name` attribute like this: `name="countries[]"` in this case you **should** define an `id` attribute:
+
+```blade
+    <x-select name="countries[]" id="countries" :options="$countries" multiple />
+```
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 
