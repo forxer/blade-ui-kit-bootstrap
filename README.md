@@ -448,7 +448,22 @@ This will output the following HTML:
 
 The input component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their input data when you re-render the form with any validation errors. When re-rendering the form, the input component will remember the old value.
 
-There are "helper" components (see below) to simplify things: [Password](#password), [Email](#email), [Hidden](#hidden), etc.
+
+**Warning:** do not escape the value passed to the `value` attribute, this is done in the components view.
+
+If you do it this wrong way, for example like this:
+
+```blade
+    <x-input name="first_name" value="{{ $user->first_name }}" />
+```
+
+The value will be escaped twice and for example the character `'` will be displayed `&#039;`.
+
+If you need to pass a plain string directly, you must do it this way:
+
+```blade
+    <x-input name="first_name" :value="'John'" />
+```
 
 [Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
 
