@@ -1,6 +1,6 @@
 {
     "name": "forxer/blade-ui-kit-bootstrap",
-    "description": "Use Bootstrap styles to Blade UI Kit components",
+    "description": "Blade UI Kit components with Bootstrap styles and classes",
     "homepage": "https://github.com/forxer/blade-ui-kit-bootstrap",
     "license": "MIT",
     "keywords": [
@@ -22,6 +22,10 @@
         "php": "^8.2",
         "illuminate/support": "^10.0",
         "illuminate/view": "^10.0"
+    },
+    "require-dev": {
+        "driftingly/rector-laravel": "^0.21",
+        "rector/rector": "^0.17"
     },
     "autoload": {
         "psr-4": {
