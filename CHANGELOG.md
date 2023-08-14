@@ -1,6 +1,19 @@
 CHANGELOG
 =========
 
+0.8.2 (2023-08-14)
+------------------
+
+- Added QA tools
+
+
+0.8.1 (2023-08-02)
+------------------
+
+- Added an important note regarding values passed to input fields
+- Added a note for select multiple
+
+
 0.8.0 (2023-06-27)
 ------------------
 

@@ -9,12 +9,15 @@ use BladeUIKitBootstrap\Components\BladeComponent;
 class Modal extends BladeComponent
 {
     public string $id;
+
     public string $title;
+
     public bool $dismissable;
 
     public string $titleLabel;
 
     public $header;
+
     public $footer;
 
     public function __construct(string $id, string $title, bool $dismissable = true)

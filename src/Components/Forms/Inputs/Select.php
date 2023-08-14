@@ -7,7 +7,7 @@ namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 use BladeUIKitBootstrap\Components\BladeComponent;
 use BladeUIKitBootstrap\Concerns\CanHaveErrors;
 use Illuminate\Support\Collection;
-use \InvalidArgumentException;
+use InvalidArgumentException;
 
 class Select extends BladeComponent
 {

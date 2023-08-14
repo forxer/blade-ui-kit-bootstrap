@@ -9,7 +9,7 @@ use Illuminate\View\Component as IlluminateComponent;
 
 abstract class BladeComponent extends IlluminateComponent
 {
-    abstract function viewName(): string;
+    abstract public function viewName(): string;
 
     public function viewPath(string $view): string
     {
