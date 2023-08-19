@@ -6,9 +6,13 @@ namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
 class Date extends Input
 {
-    public function __construct(string $name, string $id = null, ?string $value = '', ?string $errorBag = null)
-    {
-        parent::__construct($name, $id, 'date', $value, $errorBag);
+    public function __construct(
+        string $name,
+        ?string $value = null,
+        ?string $id = null,
+        ?string $errorBag = null
+    ) {
+        parent::__construct($name, 'date', $value, $id, $errorBag);
     }
 
     public function viewName(): string

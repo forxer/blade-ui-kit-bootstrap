@@ -1,5 +1,20 @@
 <?php
 
+use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Email;
+use BladeUIKitBootstrap\Components\Forms\Error;
+use BladeUIKitBootstrap\Components\Forms\Form;
+use BladeUIKitBootstrap\Components\Buttons\FormButton;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Hidden;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Input;
+use BladeUIKitBootstrap\Components\Forms\Label;
+use BladeUIKitBootstrap\Components\Buttons\Logout;
+use BladeUIKitBootstrap\Components\Modals\Modal;
+use BladeUIKitBootstrap\Components\Modals\Confirm;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Password;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Select;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Textarea;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Time;
 use BladeUIKitBootstrap\Components;
 
 return [
@@ -16,21 +31,21 @@ return [
     */
 
     'components' => [
-        'date' => Components\Forms\Inputs\Date::class,
-        'email' => Components\Forms\Inputs\Email::class,
-        'error' => Components\Forms\Error::class,
-        'form' => Components\Forms\Form::class,
-        'form-button' => Components\Buttons\FormButton::class,
-        'hidden' => Components\Forms\Inputs\Hidden::class,
-        'input' => Components\Forms\Inputs\Input::class,
-        'label' => Components\Forms\Label::class,
-        'logout' => Components\Buttons\Logout::class,
-        'modal' => Components\Modals\Modal::class,
-        'modal-confirm' => Components\Modals\Confirm::class,
-        'password' => Components\Forms\Inputs\Password::class,
-        'select' => Components\Forms\Inputs\Select::class,
-        'textarea' => Components\Forms\Inputs\Textarea::class,
-        'time' => Components\Forms\Inputs\Time::class,
+        'date' => Date::class,
+        'email' => Email::class,
+        'error' => Error::class,
+        'form' => Form::class,
+        'form-button' => FormButton::class,
+        'hidden' => Hidden::class,
+        'input' => Input::class,
+        'label' => Label::class,
+        'logout' => Logout::class,
+        'modal' => Modal::class,
+        'modal-confirm' => Confirm::class,
+        'password' => Password::class,
+        'select' => Select::class,
+        'textarea' => Textarea::class,
+        'time' => Time::class,
     ],
 
     /*

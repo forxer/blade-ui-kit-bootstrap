@@ -11,20 +11,14 @@ class Textarea extends BladeComponent
 {
     use CanHaveErrors;
 
-    /** @var string */
-    public $name;
+    public string $id;
 
-    /** @var string */
-    public $id;
-
-    /** @var int */
-    public $rows;
-
-    public function __construct(string $name, string $id = null, $rows = 3, ?string $errorBag = null)
-    {
-        $this->name = $name;
+    public function __construct(
+        public string $name,
+        ?string $id = null,
+        ?string $errorBag = null
+    ) {
         $this->id = $id ?? $name;
-        $this->rows = $rows;
 
         $this->bootCanHaveErrors($name, $errorBag);
     }

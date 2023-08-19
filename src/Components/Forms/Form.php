@@ -5,27 +5,19 @@ declare(strict_types=1);
 namespace BladeUIKitBootstrap\Components\Forms;
 
 use BladeUIKitBootstrap\Components\BladeComponent;
+use BladeUIKitBootstrap\Concerns\HasFormMethod;
 
 class Form extends BladeComponent
 {
-    /** @var string|null */
-    public $action;
+    use HasFormMethod;
 
-    /** @var string */
-    public $method;
-
-    /** @var bool */
-    public $hasFiles;
-
-    /** @var bool */
-    public bool $novalidate;
-
-    public function __construct(string $action = null, string $method = 'POST', bool $hasFiles = false, bool $novalidate = true)
-    {
-        $this->action = $action;
-        $this->method = strtoupper($method);
-        $this->hasFiles = $hasFiles;
-        $this->novalidate = $novalidate;
+    public function __construct(
+        public ?string $action = null,
+        string $method = 'POST',
+        public bool $hasFiles = false,
+        public bool $novalidate = true
+    ) {
+        $this->method = $this->validFormMethod($method);
     }
 
     public function viewName(): string
