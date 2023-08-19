@@ -11,14 +11,10 @@ class Error extends BladeComponent
 {
     use CanHaveErrors;
 
-    /** @var string */
-    public $field;
-
-    /** @var string */
-    public $bag;
-
-    public function __construct(string $field, string $bag = 'default')
-    {
+    public function __construct(
+        public string $field,
+        public string $bag = 'default'
+    ) {
         $this->bootCanHaveErrors($field, $bag);
     }
 

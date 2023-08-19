@@ -11,24 +11,19 @@ class Input extends BladeComponent
 {
     use CanHaveErrors;
 
-    /** @var string */
-    public $name;
+    public string $id;
 
-    /** @var string */
-    public $id;
+    public string $value;
 
-    /** @var string */
-    public $type;
-
-    /** @var string */
-    public $value;
-
-    public function __construct(string $name, string $id = null, string $type = 'text', ?string $value = '', ?string $errorBag = null)
-    {
-        $this->name = $name;
-        $this->id = $id ?? $name;
-        $this->type = $type;
+    public function __construct(
+        public string $name,
+        public string $type = 'text',
+        ?string $value = null,
+        ?string $id = null,
+        ?string $errorBag = null
+    ) {
         $this->value = old($name, $value ?? '');
+        $this->id = $id ?? $name;
 
         $this->bootCanHaveErrors($name, $errorBag);
     }

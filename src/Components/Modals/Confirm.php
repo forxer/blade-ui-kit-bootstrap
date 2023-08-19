@@ -6,8 +6,10 @@ namespace BladeUIKitBootstrap\Components\Modals;
 
 class Confirm extends Modal
 {
-    public function __construct(string $title, bool $dismissable = true)
-    {
+    public function __construct(
+        public string $title,
+        public bool $dismissable = true
+    ) {
         parent::__construct('confirmModal', $title, $dismissable);
     }
 

@@ -6,9 +6,13 @@ namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
 class Email extends Input
 {
-    public function __construct(string $name, string $id = null, ?string $value = '', ?string $errorBag = null)
-    {
-        parent::__construct($name, $id, 'email', $value, $errorBag);
+    public function __construct(
+        string $name,
+        ?string $value = null,
+        ?string $id = null,
+        ?string $errorBag = null
+    ) {
+        parent::__construct($name, 'email', $value, $id, $errorBag);
     }
 
     public function viewName(): string

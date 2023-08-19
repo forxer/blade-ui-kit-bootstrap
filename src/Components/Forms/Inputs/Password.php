@@ -6,9 +6,12 @@ namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 
 class Password extends Input
 {
-    public function __construct(string $name = 'password', string $id = null, ?string $errorBag = null)
-    {
-        parent::__construct($name, $id, 'password', null, $errorBag);
+    public function __construct(
+        string $name,
+        ?string $id = null,
+        ?string $errorBag = null
+    ) {
+        parent::__construct($name, 'password', null, $id, $errorBag);
     }
 
     public function viewName(): string

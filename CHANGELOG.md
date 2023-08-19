@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+0.8.3 (2023-08-19)
+------------------
+
+- Removed CRSF token on form with GET method
+- Removed textarea rows attribute
+- Enhanced strict type declarations
+
+
 0.8.2 (2023-08-14)
 ------------------
 
