@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+UNRELEASED
+----------
+
+- Moved documentation in `/docs` directory
+
+
 0.8.4 (2023-11-03)
 ------------------
 

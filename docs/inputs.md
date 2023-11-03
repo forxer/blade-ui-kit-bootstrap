@@ -1,0 +1,204 @@
+Inputs
+======
+
+Input
+-----
+
+The most basic usage of the component is to set its name attribute:
+
+```blade
+    <x-input name="first_name" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="first_name" type="text" id="first_name" class="form-control" />
+```
+
+By default a `text` type will be set for the input field as well as an `id` that allows it to be easily referenced by a `label` element.
+
+Of course, you can also specifically set a type and overwrite the id attribute:
+
+```blade
+<x-input name="confirm_password" id="confirmPassword" type="password" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="confirm_password" type="password" id="confirmPassword" class="form-control" />
+```
+Of course you can set a default value.
+
+```blade
+    <x-input name="first_name" :value="$user->first_name" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="first_name" type="text" id="first_name" class="form-control" value="John" />
+```
+
+The input component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their input data when you re-render the form with any validation errors. When re-rendering the form, the input component will remember the old value.
+
+**Warning:** do not escape the value passed to the `value` attribute, this is done in the components view.
+
+If you do it this wrong way, for example like this:
+
+```blade
+    <x-input name="first_name" value="{{ $user->first_name }}" />
+```
+
+The value will be escaped twice and for example the character `'` will be displayed `&#039;`.
+
+If you need to pass a plain string directly, you must do it this way:
+
+```blade
+    <x-input name="first_name" :value="'John'" />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
+
+Password
+--------
+
+The most basic usage of the component is as a self-closing component:
+
+```blade
+<x-password />
+```
+
+This will output the following HTML:
+
+```html
+<input name="password" type="password" id="password" class="form-control" />
+```
+
+By default a `password` type will be set for the input field as well as an `id` that allows it to be easily referenced by a label element.
+
+Of course, you can also specifically set a `name` attribute:
+
+```blade
+<x-password name="my_password" />
+```
+
+```html
+<input name="my_password" type="password" id="my_password" class="form-control" />
+```
+Of course, unlike the other input fields in Blade UI Kit Bootstrap, old values for password fields are never re-set after validation.
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)
+
+Email
+-----
+
+The most basic usage of the component is to simply reference it:
+
+```blade
+    <x-email name="email_address" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="email_address" type="email" id="email_address" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email)
+
+Date
+----
+
+The most basic usage of the component is to simply reference it with a `name` attribute:
+
+```blade
+<x-date name="someday" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="someday" type="date" id="someday" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date)
+
+Time
+----
+
+The most basic usage of the component is to simply reference it with a `name` attribute:
+
+```blade
+<x-time name="created_at" />
+```
+
+This will output the following HTML:
+
+```html
+<input name="someday" type="date" id="someday" class="form-control">
+```
+
+*You can use this component in the same way as the "[Input text](#input)" component because it extends it.*
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time)
+
+Hidden
+------
+
+The most basic usage of the component is to simply reference it with a `name` and value attribute:
+
+```blade
+    <x-hidden name="foo" value="bar" />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden)
+
+Textarea
+--------
+
+The most basic usage of the component is to simply reference it with a `name` attribute:
+
+```blade
+<x-textarea name="about" />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
+
+Select
+------
+
+You can create a select tag by passing it at least a name and a list of options:
+
+```blade
+    <x-select name="country" :options="$countries" />
+```
+
+The `options` attribute can be an array or a Collection.
+
+If it is an array, the keys of this one will be the values of the options and the values of the array will be the labels.
+
+If it is a collection, this collection must have `name` and `id` elements for the labels and the values of the options respectively. Otherwise you can specify them with the `labelAttribute` and `valueAttribute` attributes.
+
+Of course you can set a default selected value.
+
+```blade
+    <x-select name="country" :options="$countries" :selected="$user->country" />
+```
+
+The `selected` attribute can be a single value or an array of values.
+
+The select component also supports old values that were set. For example, you might want to apply some validation in the backend, but also make sure the user doesn't lose their selected values when you re-render the form with any validation errors. When re-rendering the form, the select component will remember the old selected values.
+
+If you use a select multiple you probably have a `name` attribute like this: `name="countries[]"` in this case you **should** define an `id` attribute:
+
+```blade
+    <x-select name="countries[]" id="countries" :options="$countries" multiple />
+```
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
