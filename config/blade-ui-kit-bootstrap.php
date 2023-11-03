@@ -1,21 +1,21 @@
 <?php
 
-use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Email;
+use BladeUIKitBootstrap\Components;
+use BladeUIKitBootstrap\Components\Buttons\FormButton;
+use BladeUIKitBootstrap\Components\Buttons\Logout;
 use BladeUIKitBootstrap\Components\Forms\Error;
 use BladeUIKitBootstrap\Components\Forms\Form;
-use BladeUIKitBootstrap\Components\Buttons\FormButton;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Email;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Hidden;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Input;
-use BladeUIKitBootstrap\Components\Forms\Label;
-use BladeUIKitBootstrap\Components\Buttons\Logout;
-use BladeUIKitBootstrap\Components\Modals\Modal;
-use BladeUIKitBootstrap\Components\Modals\Confirm;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Password;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Select;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Textarea;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Time;
-use BladeUIKitBootstrap\Components;
+use BladeUIKitBootstrap\Components\Forms\Label;
+use BladeUIKitBootstrap\Components\Modals\Confirm;
+use BladeUIKitBootstrap\Components\Modals\Modal;
 
 return [
 

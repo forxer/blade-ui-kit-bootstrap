@@ -18,7 +18,7 @@ class FormButton extends BladeComponent
         string $method = 'POST',
         public bool $hasFiles = false,
         public bool $novalidate = true
-    ){
+    ) {
         $this->formId = 'form-button-'.($formId ?? Str::random(32));
         $this->method = $this->validFormMethod($method);
     }

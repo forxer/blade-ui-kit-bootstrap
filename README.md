@@ -5,7 +5,7 @@ This package provides several Blade components prepared for use with Bootstrap (
 
 This package was initially an extension of [Blade UI Kit](https://blade-ui-kit.com/) to provide pre-styled components for Bootstrap. But by making it evolve we decided to decouple it from its parent. This simplifies the code as well as its use in our case.
 
-This package is therefore largely inspired by [Blade UI Kit](https://blade-ui-kit.com/). A very large part of the documentation comes from it. And we sincerely thank its contributors for the idea and what they have developed. This package wouldn't exist without it.
+This package is therefore largely inspired by [Blade UI Kit](https://blade-ui-kit.com/). A large part of the documentation comes from it. And we sincerely thank its contributors for the idea and what they have developed. This package wouldn't exist without it.
 
 Example
 -------
@@ -128,13 +128,13 @@ You don't have to, but you can publish: the configuration file, the views and th
 
 Publish the configuration file with this command:
 
-```
+```bash
 php artisan vendor:publish --tag="blade-ui-kit-bootstrap-config"
 ```
 
 Publish views with this command:
 
-```
+```bash
 php artisan vendor:publish --tag="blade-ui-kit-bootstrap-views"
 ```
 
@@ -142,7 +142,7 @@ Note that it is not necessary to publish all views in your application. It is ev
 
 Publish translation files with this command:
 
-```
+```bash
 php artisan vendor:publish --tag="blade-ui-kit-bootstrap-translations"
 ```
 

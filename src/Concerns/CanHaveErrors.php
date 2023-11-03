@@ -24,7 +24,7 @@ trait CanHaveErrors
         return $bag->has($this->errorField) ? $bag->get($this->errorField) : [];
     }
 
-    protected function bootCanHaveErrors(string $errorField, ?string $errorBag = null): void
+    protected function bootCanHaveErrors(string $errorField, string $errorBag = null): void
     {
         static $view = null;
 
@@ -32,7 +32,7 @@ trait CanHaveErrors
             $view = resolve(ViewFactory::class);
         }
 
-        $this->errors = $view->shared('errors', new ViewErrorBag);
+        $this->errors = $view->shared('errors', new ViewErrorBag());
 
         $this->errorField($errorField);
         $this->errorBag($errorBag);
@@ -45,7 +45,7 @@ trait CanHaveErrors
         $this->errorField = $errorField;
     }
 
-    protected function errorBag(?string $errorBag = null): void
+    protected function errorBag(string $errorBag = null): void
     {
         if (is_null($errorBag)) {
             return;

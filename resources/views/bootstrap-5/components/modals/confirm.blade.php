@@ -1,4 +1,3 @@
-
 @push ('blade-ui-kit-bs-html')
     <div {{ $attributes->class(['modal']) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
         <div class="modal-dialog">
