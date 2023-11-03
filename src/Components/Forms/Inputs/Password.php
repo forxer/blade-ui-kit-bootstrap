@@ -8,8 +8,8 @@ class Password extends Input
 {
     public function __construct(
         string $name,
-        ?string $id = null,
-        ?string $errorBag = null
+        string $id = null,
+        string $errorBag = null
     ) {
         parent::__construct($name, 'password', null, $id, $errorBag);
     }
