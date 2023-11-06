@@ -11,7 +11,13 @@ class Password extends Input
         string $id = null,
         string $errorBag = null
     ) {
-        parent::__construct($name, 'password', null, $id, $errorBag);
+        parent::__construct(
+            name: $name,
+            type: 'password',
+            value: null,
+            id: $id,
+            errorBag: $errorBag,
+        );
     }
 
     public function viewName(): string

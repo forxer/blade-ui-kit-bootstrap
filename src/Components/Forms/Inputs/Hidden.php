@@ -11,7 +11,12 @@ class Hidden extends Input
         string $value = null,
         string $id = null,
     ) {
-        parent::__construct($name, 'hidden', $value, $id);
+        parent::__construct(
+            name: $name,
+            type: 'hidden',
+            value: $value,
+            id: $id,
+        );
     }
 
     public function viewName(): string

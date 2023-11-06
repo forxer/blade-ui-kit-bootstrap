@@ -16,7 +16,7 @@ class Label extends BladeComponent
 
     public function fallback(): string
     {
-        return Str::ucfirst(str_replace('_', ' ', $this->for));
+        return \str($this->for)->replace('_', ' ')->ucfirst->toString();
     }
 
     public function viewName(): string

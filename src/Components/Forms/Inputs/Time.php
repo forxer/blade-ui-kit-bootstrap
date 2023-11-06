@@ -12,7 +12,13 @@ class Time extends Input
         string $id = null,
         string $errorBag = null
     ) {
-        parent::__construct($name, 'time', $value, $id, $errorBag);
+        parent::__construct(
+            name: $name,
+            type: 'time',
+            value: $value,
+            id: $id,
+            errorBag: $errorBag,
+        );
     }
 
     public function viewName(): string

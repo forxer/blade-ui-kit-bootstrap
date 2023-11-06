@@ -15,7 +15,7 @@ class BladeUiKitBootstrap4
      */
     public function handle(Request $request, Closure $next): Response
     {
-        app('config')->set(['blade-ui-kit-bootstrap.boostrap_version' => 'bootstrap-4']);
+        \app('config')->set(['blade-ui-kit-bootstrap.boostrap_version' => 'bootstrap-4']);
 
         return $next($request);
     }

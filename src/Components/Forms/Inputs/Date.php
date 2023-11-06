@@ -10,9 +10,15 @@ class Date extends Input
         string $name,
         string $value = null,
         string $id = null,
-        string $errorBag = null
+        string $errorBag = null,
     ) {
-        parent::__construct($name, 'date', $value, $id, $errorBag);
+        parent::__construct(
+            name: $name,
+            type: 'date',
+            value: $value,
+            id: $id,
+            errorBag: $errorBag,
+        );
     }
 
     public function viewName(): string

@@ -10,9 +10,15 @@ class Email extends Input
         string $name,
         string $value = null,
         string $id = null,
-        string $errorBag = null
+        string $errorBag = null,
     ) {
-        parent::__construct($name, 'email', $value, $id, $errorBag);
+        parent::__construct(
+            name: $name,
+            type: 'email',
+            value: $value,
+            id: $id,
+            errorBag: $errorBag,
+        );
     }
 
     public function viewName(): string

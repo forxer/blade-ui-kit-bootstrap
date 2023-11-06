@@ -1,21 +1,9 @@
 <?php
 
-use BladeUIKitBootstrap\Components;
-use BladeUIKitBootstrap\Components\Buttons\FormButton;
-use BladeUIKitBootstrap\Components\Buttons\Logout;
-use BladeUIKitBootstrap\Components\Forms\Error;
-use BladeUIKitBootstrap\Components\Forms\Form;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Email;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Hidden;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Input;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Password;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Select;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Textarea;
-use BladeUIKitBootstrap\Components\Forms\Inputs\Time;
-use BladeUIKitBootstrap\Components\Forms\Label;
-use BladeUIKitBootstrap\Components\Modals\Confirm;
-use BladeUIKitBootstrap\Components\Modals\Modal;
+use BladeUIKitBootstrap\Components\Buttons;
+use BladeUIKitBootstrap\Components\Forms;
+use BladeUIKitBootstrap\Components\Forms\Inputs;
+use BladeUIKitBootstrap\Components\Modals;
 
 return [
 
@@ -31,21 +19,30 @@ return [
     */
 
     'components' => [
-        'date' => Date::class,
-        'email' => Email::class,
-        'error' => Error::class,
-        'form' => Form::class,
-        'form-button' => FormButton::class,
-        'hidden' => Hidden::class,
-        'input' => Input::class,
-        'label' => Label::class,
-        'logout' => Logout::class,
-        'modal' => Modal::class,
-        'modal-confirm' => Confirm::class,
-        'password' => Password::class,
-        'select' => Select::class,
-        'textarea' => Textarea::class,
-        'time' => Time::class,
+        # Buttons
+        'form-button' => Buttons\FormButton::class,
+        'link-button' => Buttons\LinkButton::class,
+        'logout' => Buttons\Logout::class,
+
+        # Forms
+        'form' => Forms\Form::class,
+        'label' => Forms\Label::class,
+        'error' => Forms\Error::class,
+
+        # Inputs
+        'input' => Inputs\Input::class,
+        'text' => Inputs\Text::class,
+        'textarea' => Inputs\Textarea::class,
+        'select' => Inputs\Select::class,
+        'password' => Inputs\Password::class,
+        'email' => Inputs\Email::class,
+        'date' => Inputs\Date::class,
+        'time' => Inputs\Time::class,
+        'hidden' => Inputs\Hidden::class,
+
+        # Modals
+        'modal' => Modals\Modal::class,
+        'modal-confirm' => Modals\Confirm::class,
     ],
 
     /*

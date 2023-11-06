@@ -1,11 +1,10 @@
-<form method="{{ $method !== 'GET' ? 'POST' : 'GET' }}"
-    @isset($action) action="{{ $action }}" @endisset
-    {!! $hasFiles ? 'enctype="multipart/form-data"' : '' !!}
+<form method="{!! $formMethodValue() !!}"
+    action="{{ $action }}"
+    {!! $hasFiles === true ? 'enctype="multipart/form-data"' : '' !!}
+    @if ($novalidate === true) novalidate="true" @endif
     {{ $attributes }}
-    @if ($novalidate) novalidate="true" @endif
 >
     @csrf
     @method($method)
-
-    {{ $slot }}
+    {!! $slot !!}
 </form>
