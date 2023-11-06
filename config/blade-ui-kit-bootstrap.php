@@ -19,17 +19,17 @@ return [
     */
 
     'components' => [
-        # Buttons
+        // Buttons
         'form-button' => Buttons\FormButton::class,
         'link-button' => Buttons\LinkButton::class,
         'logout' => Buttons\Logout::class,
 
-        # Forms
+        // Forms
         'form' => Forms\Form::class,
         'label' => Forms\Label::class,
         'error' => Forms\Error::class,
 
-        # Inputs
+        // Inputs
         'input' => Inputs\Input::class,
         'text' => Inputs\Text::class,
         'textarea' => Inputs\Textarea::class,
@@ -40,7 +40,7 @@ return [
         'time' => Inputs\Time::class,
         'hidden' => Inputs\Hidden::class,
 
-        # Modals
+        // Modals
         'modal' => Modals\Modal::class,
         'modal-confirm' => Modals\Confirm::class,
     ],

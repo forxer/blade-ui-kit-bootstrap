@@ -9,10 +9,10 @@ use Illuminate\Support\Str;
 class Logout extends FormButton
 {
     public function __construct(
-        ?string $url = null,
-        ?string $formId = null,
-        ?string $title = null,
-        ?string $confirm = null,
+        string $url = null,
+        string $formId = null,
+        string $title = null,
+        string $confirm = null,
         bool $disabled = false,
         bool $novalidate = true,
     ) {

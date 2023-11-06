@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace BladeUIKitBootstrap\Components\Forms;
 
 use BladeUIKitBootstrap\Components\BladeComponent;
-use Illuminate\Support\Str;
 
 class Label extends BladeComponent
 {

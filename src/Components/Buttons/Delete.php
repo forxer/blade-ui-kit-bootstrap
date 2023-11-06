@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Buttons;
 
-use BladeUIKitBootstrap\Concerns\FormMethod;
-
 class Delete extends FormButton
 {
     public function __construct(
