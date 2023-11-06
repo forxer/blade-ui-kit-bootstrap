@@ -1,9 +1,5 @@
-<button type="submit" form="{{ $formId }}" {{ $attributes }}>
-    {{ $slot->isEmpty() ? trans('Log out') : $slot }}
-</button>
-
-@push ('blade-ui-kit-bs-html')
-    <form id="{{ $formId }}" method="POST" @isset($action) action="{{ $action }}" @endisset>
-        @csrf
-    </form>
-@endpush
+{{--
+    This view serves no more purpose than that of its parent component.
+    It is only there so that it can be published and overloaded.
+--}}
+@include('blade-ui-kit-bootstrap::bootstrap-5.components.buttons.form-button')

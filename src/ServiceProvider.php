@@ -34,10 +34,10 @@ class ServiceProvider extends BaseServiceProvider
     private function bootBladeComponents(): void
     {
         $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade): void {
-            $prefix = config('blade-ui-kit-bootstrap.prefix', '');
+            $prefix = \config('blade-ui-kit-bootstrap.prefix', '');
 
             /** @var BladeComponent $component */
-            foreach (config('blade-ui-kit-bootstrap.components', []) as $alias => $component) {
+            foreach (\config('blade-ui-kit-bootstrap.components', []) as $alias => $component) {
                 $blade->component($component, $alias, $prefix);
             }
         });

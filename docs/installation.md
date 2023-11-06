@@ -1,16 +1,18 @@
 Installation
 ============
 
+First of all, obviously your project must have [Bootstrap](https://getbootstrap.com/) installed to use the components of this package.
+
 Install the package by using Composer:
 
-```
+```bash
 composer require forxer/blade-ui-kit-bootstrap
 ```
 
 Blade Stacks
 ------------
 
-Some components require additional styles and/or additional HTML and/or additional javascript. For this we have chosen to use a basic feature of Laravel: [Blade stacks](https://laravel.com/docs/blade#stacks).
+Some components require additional styles and/or additional HTML and/or additional Javascript. For this we have chosen to use a basic feature of Laravel: [Blade stacks](https://laravel.com/docs/blade#stacks).
 
 So you must add 3 Blade stacks in your templates/views, typically in a layout view :
 
@@ -28,7 +30,7 @@ For example like this:
 
 ```blade
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html>
 <head>
     <!-- ... ->
     <link href="{{ mix('assets/css/app.css') }}" rel="preload" as="style" media='all'>

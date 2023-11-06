@@ -13,7 +13,7 @@ class Error extends BladeComponent
 
     public function __construct(
         public string $field,
-        public string $bag = 'default'
+        public string $bag = 'default',
     ) {
         $this->bootCanHaveErrors($field, $bag);
     }

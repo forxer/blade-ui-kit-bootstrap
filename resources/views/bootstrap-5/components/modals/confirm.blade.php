@@ -30,7 +30,6 @@
         </div>
     </div>
 @endpush
-
 @push ('blade-ui-kit-bs-scripts')
     @once
         <script>
@@ -43,7 +42,7 @@
 
                         event.preventDefault();
 
-                        let confirmModal = document.getElementById('confirmModal');
+                        let confirmModal = document.getElementById(element.dataset.confirmModal);
 
                         confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.confirm+'</p>';
 

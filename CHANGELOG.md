@@ -5,6 +5,11 @@ UNRELEASED
 ----------
 
 - Moved documentation in `/docs` directory
+- Added `title`, `confirm` and `disabled` properties to the `FormButton` component
+- Added `LinkButton` component
+- Added `Text` input component
+- Renamed `HasFormMethod` trait to `FormMethod`
+- Inherited views for child components
 
 
 0.8.4 (2023-11-03)

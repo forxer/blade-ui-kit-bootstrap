@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components;
 
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component as IlluminateComponent;
 
 abstract class BladeComponent extends IlluminateComponent
@@ -16,14 +15,14 @@ abstract class BladeComponent extends IlluminateComponent
         static $bootstrapVersion = null;
 
         if ($bootstrapVersion === null) {
-            $bootstrapVersion = 'blade-ui-kit-bootstrap::'.config('blade-ui-kit-bootstrap.boostrap_version').'.';
+            $bootstrapVersion = 'blade-ui-kit-bootstrap::'.\config('blade-ui-kit-bootstrap.boostrap_version').'.';
         }
 
         return $bootstrapVersion.$view;
     }
 
-    public function render(): View
+    public function render()
     {
-        return view($this->viewPath($this->viewName()));
+        return \view($this->viewPath($this->viewName()));
     }
 }

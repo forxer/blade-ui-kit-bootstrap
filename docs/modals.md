@@ -6,18 +6,18 @@ Classic modal
 
 First, you need an element to launch the modal, typically a button.
 
-With Bootstrap 4:
-
-```blade
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-</button>
-```
-
 With Bootstrap 5:
 
 ```blade
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+```
+
+With Bootstrap 4:
+
+```blade
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
 </button>
 ```
@@ -56,20 +56,17 @@ Obviously you can use the attributes as you wish.
 Confirm modal
 -------------
 
-This modal allows you to request confirmation of an action. You can use the Form Button component to simplify writing.
+This modal allows you to request confirmation of an action.
 
-It is simply necessary to add the `data-confirm` attribute to the button with the message you want to display in the confirmation modal.
+It is simply necessary to add the `data-confirm` attribute to an actionable element with the message you want to display in the confirmation modal. You must also associate this button with the confirmation modal by specifying its ID via the `data-confirm-modal` attribute.
+
 
 ```blade
-<x-form-button class="btn btn-danger" method="delete"
-    :action="route('model.delete', $model)"
-    :formId="'form-delete-'.$model->id"
-    data-confirm="Are you sure you want to delete this model?">
+<a href="{{ route('model.delete', $model) }}" class="btn btn-danger"
+    data-confirm="Are you sure you want to delete this model?"
+    data-confirm-modal="confirm-modal-delete-{{ $model->id }}">
         Delete
-</x-form-button>
+</a>
 
-<x-modal-confirm title="Confirmation" />
+<x-modal-confirm id="confirm-modal-delete-{{ $model->id }}" title="Confirmation" />
 ```
-**Note that this is a first implementation** and that this component will certainly evolve soon in order to provide more customization possibilities.
-
-
