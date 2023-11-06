@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-UNRELEASED
-----------
+0.9.0 (2023-11-06)
+------------------
 
 - Moved documentation in `/docs` directory
 - Added `title`, `confirm` and `disabled` properties to the `FormButton` component
