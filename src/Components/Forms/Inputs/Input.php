@@ -13,7 +13,7 @@ class Input extends BladeComponent
 
     public string $id;
 
-    public string $value;
+    public ?string $value;
 
     public function __construct(
         public string $name,
