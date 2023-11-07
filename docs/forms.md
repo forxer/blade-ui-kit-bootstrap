@@ -113,4 +113,4 @@ The `error` component provides an easy way to work with Laravel's `$error` messa
 <x-error name="first_name />
 ```
 
-This component works well with input tags to apply Bootstrap style validations and aria tags ([see example](#example)).
+This component works well with input tags to apply Bootstrap style validations and aria tags.

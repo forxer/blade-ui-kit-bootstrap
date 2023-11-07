@@ -3,14 +3,15 @@ Inputs
 
 A set of components to make it easier to write form elements.
 
+* [The `<input>` element](#input)
 * [Text](./docs/inputs/inputs.md#input)
-* [Password](./docs/inputs/password.md)
-* [Email](./docs/inputs/email.md)
-* [Date](./docs/inputs/date.md)
-* [Time](./docs/inputs/time.md)
-* [Hidden](./docs/inputs/hidden.md)
-* [Textarea](./docs/inputs/textarea.md)
-* [Select](./docs/inputs/select.md)
+* [Textarea](./textarea.md)
+* [Select](./select.md)
+* [Password](./password.md)
+* [Email](./email.md)
+* [Date](./date.md)
+* [Time](./time.md)
+* [Hidden](./hidden.md)
 
 Input
 -----

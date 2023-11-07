@@ -83,5 +83,3 @@ Publish translation files with this command:
 ```bash
 php artisan vendor:publish --tag="blade-ui-kit-bootstrap-translations"
 ```
-
-[Back to index ^](#index)
