@@ -13,7 +13,6 @@ use RectorLaravel\Set\LaravelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
-        __DIR__.'/config',
         __DIR__.'/lang',
         __DIR__.'/src',
     ]);

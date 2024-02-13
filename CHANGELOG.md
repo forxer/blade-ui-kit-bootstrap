@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.10.0 (2024-xx-xx)
+0.10.0 (2024-02-13)
 -------------------
 
 - Added `text` and `variant` properties to `FormButton` and `LinkButton` components
