@@ -52,6 +52,7 @@ Index
 - [Installation](./docs/installation.md)
 - [Bootstrap version](./docs/bootstrap-version.md)
 - [Buttons](./docs/buttons/buttons.md)
+    - [Action Buttons](./docs/buttons/action-buttons.md)
     - [Form Button](./docs/buttons/form-button.md)
     - [Form Button](./docs/buttons/link-button.md)
     - [Logout](./docs/buttons/logout.md)

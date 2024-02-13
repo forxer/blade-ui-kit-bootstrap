@@ -11,10 +11,10 @@ Basic usage
 -----------
 
 ```blade
-    <x-form-button :action="route('do-something')" class="btn btn-primary">
-        Do something
-    </x-form-button>
+    <x-form-button :action="route('do-something')" text="Do something" />
 ```
+
+The `action` attribute is mandatory.
 
 This will output the following HTML:
 
@@ -23,7 +23,7 @@ This will output the following HTML:
     Do something
 </button>
 
-<!--... -->
+<!-- ... -->
 
 <form id="form-button-toFuKoZ8bPwhijAlV9vIFdPokYkOhTeT" method="POST" action="https://localhost/do-something">
     <input type="hidden" name="_token" value="...">
@@ -31,10 +31,27 @@ This will output the following HTML:
 </form>
 ```
 
-All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts [attributes common to buttons](./buttons.md#common-buttons-attributes).
+Form button specific attributes
+-------------------------------
 
-Form ID
--------
+All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [button specific attributes](./buttons.md#button-specific-attributes):
+- [Text](./buttons.md#text)
+- [Variant](./buttons.md#variant)
+- [Title](./buttons.md#title)
+- [Confirm](./buttons.md#confirm)
+- [Disabled](./buttons.md#disabled)
+
+### Action
+
+This button attribute corresponds to the "action" attribute of the form that the button must submit. It is required.
+
+```blade
+    <x-form-button :action="route('do-something')">
+        Do something
+    </x-form-button>
+```
+
+### Form ID
 
 You can specify a form ID targeted by the button. If you don't specify a form id, as you can see, it will be randomly generated for each request using a random string of characters.
 
@@ -43,8 +60,7 @@ But this is not ideal, it is preferable that you identify yourself the form on w
 ```blade
     <x-form-button
         :action="route('do-something', $model)"
-        :formId="'do-something-'.$model->id"
-        class="btn btn-primary"
+        :form-id="'do-something-'.$model->id"
     >
         Do something
     </x-form-button>
@@ -53,7 +69,7 @@ But this is not ideal, it is preferable that you identify yourself the form on w
 This will output the following HTML:
 
 ```html
-<button type="submit" form="form-button-do-something-1" class="btn btn-primary">
+<button type="submit" form="form-button-do-something-42" class="btn btn-primary">
     Do something
 </button>
 
@@ -65,16 +81,14 @@ This will output the following HTML:
 </form>
 ```
 
-HTTP method
------------
+### HTTP method
 
 You can set a different HTTP method if you like with the `method` attibute:
 
 ```blade
     <x-form-button
         :action="route('do-something', $model)"
-        :formId="'do-something-'.$model->id"
-        class="btn btn-primary"
+        :form-id="'do-something-'.$model->id"
         method="patch"
     >
         Do something
@@ -84,13 +98,13 @@ You can set a different HTTP method if you like with the `method` attibute:
 This will output the following HTML:
 
 ```html
-<button type="submit" form="form-button-do-something-1" class="btn btn-primary">
+<button type="submit" form="form-button-do-something-42" class="btn btn-primary">
     Do something
 </button>
 
 <!--... -->
 
-<form id="form-button-do-something-1" method="POST" action="https://localhost/do-something/1" >
+<form id="form-button-do-something-42" method="POST" action="https://localhost/do-something/1" >
     <input type="hidden" name="_token" value="...">
     <input type="hidden" name="_method" value="PATCH">
 </form>

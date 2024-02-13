@@ -42,9 +42,9 @@
 
                         event.preventDefault();
 
-                        let confirmModal = document.getElementById(element.dataset.confirmModal);
+                        let confirmModal = document.getElementById(element.dataset.bsConfirmModal);
 
-                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.confirm+'</p>';
+                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.bsConfirm+'</p>';
 
                         new bootstrap.Modal(confirmModal).show();
 
@@ -57,7 +57,7 @@
             }
 
             document.addEventListener('DOMContentLoaded', function() {
-                askConfirm('[data-confirm]');
+                askConfirm('[data-bs-confirm]');
             });
         </script>
     @endonce

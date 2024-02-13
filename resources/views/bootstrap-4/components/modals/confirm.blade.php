@@ -42,11 +42,11 @@
                             return true;
                         }
 
-                        event.preventDefault();
+                        event.preventDefault(element.dataset);
 
-                        let confirmModal = document.getElementById(element.dataset.confirmModal);
+                        let confirmModal = document.getElementById(element.dataset.bsConfirmModal);
 
-                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.confirm+'</p>';
+                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.bsConfirm+'</p>';
 
                         $(confirmModal).modal().show();
 
@@ -59,7 +59,7 @@
             }
 
             document.addEventListener('DOMContentLoaded', function() {
-                askConfirm('[data-confirm]');
+                askConfirm('[data-bs-confirm]');
             });
         </script>
     @endonce

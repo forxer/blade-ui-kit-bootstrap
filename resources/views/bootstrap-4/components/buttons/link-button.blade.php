@@ -1,17 +1,23 @@
 <a
     @if ($disabled === false)
         href="{{ $url }}"
-        {{ $attributes->class(['btn'])->merge(['role' => 'button']) }}
+        {{ $attributes->merge(['role' => 'button', 'class' => 'btn btn-'.$variant]) }}
     @else
-        {{ $attributes->class(['btn', 'disabled'])->merge(['role' => 'button', 'aria-disabled' => 'true', 'tabindex' => '-1']) }}
+        {{ $attributes->merge(['role' => 'button', 'class' => 'disabled btn btn-'.$variant, 'aria-disabled' => 'true', 'tabindex' => '-1']) }}
     @endif
     @if ($title)
         data-toggle="tooltip"
         title="{!! $title !!}"
     @endif
     @if ($confirm !== null)
-        data-confirm="{!! $confirm !!}"
-        data-confirm-modal="confirm-modal-{!! $formId !!}"
-        <x-modal-confirm :id="'confirm-modal-'.$formId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
+        data-bs-confirm="{!! $confirm !!}"
+        data-bs-confirm-modal="confirm-modal-{!! $confirmId !!}"
+        <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
     @endif
->{!! $slot !!}</a>
+>
+    @if ($slot->isEmpty())
+        {{ $text }}
+    @else
+        {{ $slot }}
+    @endif
+</a>

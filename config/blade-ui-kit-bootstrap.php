@@ -1,6 +1,7 @@
 <?php
 
 use BladeUIKitBootstrap\Components\Buttons;
+use BladeUIKitBootstrap\Components\Buttons\Actions;
 use BladeUIKitBootstrap\Components\Forms;
 use BladeUIKitBootstrap\Components\Forms\Inputs;
 use BladeUIKitBootstrap\Components\Modals;
@@ -20,9 +21,16 @@ return [
 
     'components' => [
         // Buttons
+        'btn' => Buttons\Button::class,
         'form-button' => Buttons\FormButton::class,
         'link-button' => Buttons\LinkButton::class,
-        'logout' => Buttons\Logout::class,
+
+        // Actions buttons
+        'btn-create' => Actions\Create::class,
+        'btn-edit' => Actions\Edit::class,
+        'btn-delete' => Actions\Delete::class,
+        'btn-destroy' => Actions\Destroy::class,
+        'btn-logout' => Actions\Logout::class,
 
         // Forms
         'form' => Forms\Form::class,

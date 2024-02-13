@@ -1,6 +1,6 @@
 <label for="{{ $for }}" {{ $attributes }}>
     @if ($slot->isEmpty())
-        {{ $fallback }}
+        {{ $fallback() }}
     @else
         {{ $slot }}
     @endif

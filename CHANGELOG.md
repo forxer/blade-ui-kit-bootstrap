@@ -1,6 +1,22 @@
 CHANGELOG
 =========
 
+0.10.0 (2024-xx-xx)
+-------------------
+
+- Added `text` and `variant` properties to `FormButton` and `LinkButton` components
+- Added `confirmId` property to `LinkButton` component
+- Added "Simple Button" component
+- Added first "Action buttons" components:
+    - Create button
+    - Edit button
+    - Delete button
+    - Destroy button
+- The "logout" button becomes an "Action button"
+- Renamed confirm modal data attributes
+- Fixed button tooltip for `title` property in Bootstrap 5
+
+
 0.9.1 (2023-11-07)
 ------------------
 
