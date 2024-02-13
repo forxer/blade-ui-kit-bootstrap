@@ -22,8 +22,8 @@ class Select extends BladeComponent
         public ?string $placeholder = null,
         string $labelAttribute = 'name',
         string $valueAttribute = 'id',
-        string $id = null,
-        string $errorBag = null
+        ?string $id = null,
+        ?string $errorBag = null
     ) {
         $this->id = $id ?? $name;
 

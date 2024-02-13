@@ -32,6 +32,7 @@ trait BtnVariant
     private function validBtnVariant(string $variant): string
     {
         $allowedVariants = self::ALLOWED_BS5_VARIANTS;
+
         if (\app('config')->get('blade-ui-kit-bootstrap.boostrap_version') === 'bootstrap-4') {
             $allowedVariants = self::ALLOWED_BS4_VARIANTS;
         }

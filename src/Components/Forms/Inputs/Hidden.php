@@ -8,8 +8,8 @@ class Hidden extends Input
 {
     public function __construct(
         string $name,
-        string $value = null,
-        string $id = null,
+        ?string $value = null,
+        ?string $id = null,
     ) {
         parent::__construct(
             name: $name,

@@ -8,9 +8,9 @@ class Date extends Input
 {
     public function __construct(
         string $name,
-        string $value = null,
-        string $id = null,
-        string $errorBag = null,
+        ?string $value = null,
+        ?string $id = null,
+        ?string $errorBag = null,
     ) {
         parent::__construct(
             name: $name,

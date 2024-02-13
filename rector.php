@@ -3,9 +3,12 @@
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodingStyle\Rector\ArrowFunction\StaticArrowFunctionRector;
 use Rector\CodingStyle\Rector\Closure\StaticClosureRector;
+use Rector\CodingStyle\Rector\PostInc\PostIncDecToPreIncDecRector;
 use Rector\Config\RectorConfig;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\Set\ValueObject\SetList;
+use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
+use RectorLaravel\Rector\PropertyFetch\OptionalToNullsafeOperatorRector;
 use RectorLaravel\Set\LaravelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -16,7 +19,7 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->parallel(
-        seconds: 360,
+        processTimeout: 360,
         maxNumberOfProcess: 16,
         jobSize: 20
     );
@@ -35,12 +38,22 @@ return static function (RectorConfig $rectorConfig): void {
     // skip paths and/or rules
     //----------------------------------------------------------
     $rectorConfig->skip([
+        // Rector transforme $foo++ en ++$foo et derrière Pint transforme ++$foo en $foo++
+        // du coup je désactive, laissant pour le moment la priorité à Pint
+        // @todo : voir qu'est-ce qui est le mieux
+        PostIncDecToPreIncDecRector::class,
+
         // Transforms false positives, I prefer to disable that (PHP 8.1)
         NullToStrictStringFuncCallArgRector::class,
 
         // Ne pas changer les closure et Arrow Function en Static
         StaticClosureRector::class,
         StaticArrowFunctionRector::class,
+    ]);
+
+    $rectorConfig->rules([
+        OptionalToNullsafeOperatorRector::class,
+        RemoveDumpDataDeadCodeRector::class,
     ]);
 
     // define what sets of rules will be applied
