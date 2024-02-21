@@ -25,4 +25,19 @@ abstract class BladeComponent extends IlluminateComponent
     {
         return \view($this->viewPath($this->viewName()));
     }
+
+    protected function config(string $key): mixed
+    {
+        static $config = null;
+
+        if ($config === null) {
+            $config = \app('config')->get('blade-ui-kit-bootstrap');
+        }
+
+        if ($key === null) {
+            return $config;
+        }
+
+        return $config[$key];
+    }
 }

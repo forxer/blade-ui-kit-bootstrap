@@ -9,17 +9,17 @@ First, you need an element to launch the modal, typically a button.
 With Bootstrap 5:
 
 ```blade
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<x-btn variant="primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
-</button>
+</x-btn>
 ```
 
 With Bootstrap 4:
 
 ```blade
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<x-btn variant="primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
-</button>
+</x-btn>
 ```
 
 Then you can use the component like this :

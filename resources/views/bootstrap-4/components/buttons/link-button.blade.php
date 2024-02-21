@@ -5,7 +5,7 @@
     @else
         {{ $attributes->merge(['role' => 'button', 'class' => 'disabled btn btn-'.$variant, 'aria-disabled' => 'true', 'tabindex' => '-1']) }}
     @endif
-    @if ($title)
+    @if ($title !== null)
         data-toggle="tooltip"
         title="{!! $title !!}"
     @endif

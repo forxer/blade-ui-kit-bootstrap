@@ -5,7 +5,7 @@
         form="{!! $formId !!}"
     @endif
     @if ($title !== null)
-        data-bs-toggle="tooltip"
+        data-toggle="tooltip"
         title="{!! $title !!}"
     @endif
     @if ($confirm !== null)

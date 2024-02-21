@@ -1,12 +1,31 @@
 CHANGELOG
 =========
 
+0.11.0 (2024-02-21)
+-------------------
+
+- Renamed `Button` component to `SimpleButton`
+- Added `outline` property to buttons, with possibility of global configuration and associated `no-outline` property
+- Added `confirm`, `confirmId` and `formId` properties to `SimpleButton` components
+- Added `type` property to `FormButton` and `SimpleButton` components
+- Added new "Action buttons" components:
+    - Show button
+    - Restore button
+    - Back button
+    - Save button
+    - Archive button
+    - Archives button
+    - Recycle Bin button
+- Added missing "Simple Button" view for Bootstrap 4
+- Fixed alloweb button variants
+
+
 0.10.0 (2024-02-13)
 -------------------
 
 - Added `text` and `variant` properties to `FormButton` and `LinkButton` components
 - Added `confirmId` property to `LinkButton` component
-- Added "Simple Button" component
+- Added `Button` component
 - Added first "Action buttons" components:
     - Create button
     - Edit button

@@ -1,7 +1,7 @@
 <form method="{!! $formMethodValue() !!}"
     action="{{ $action }}"
     {!! $hasFiles === true ? 'enctype="multipart/form-data"' : '' !!}
-    @if ($novalidate === true) novalidate="true" @endif
+    @if ($novalidate === true) novalidate @endif
     {{ $attributes }}
 >
     @csrf

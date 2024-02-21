@@ -15,6 +15,8 @@ class Delete extends FormButton
         public ?string $formId = null,
         public ?string $title = null,
         public ?string $confirm = null,
+        public bool $outline = false,
+        public bool $noOutline = false,
         public bool $disabled = false,
         public bool $novalidate = true,
         string $method = 'PATCH',
@@ -23,6 +25,6 @@ class Delete extends FormButton
         $text ??= ucfirst(trans('actions.delete'));
         $formId ??= 'delete-'.Str::random(32);
 
-        parent::__construct($action, $text, $formId, $title, $confirm, $disabled, $novalidate, $method, $variant);
+        parent::__construct($action, $text, $formId, $title, $confirm, $outline, $noOutline, $disabled, $novalidate, $method, $variant);
     }
 }

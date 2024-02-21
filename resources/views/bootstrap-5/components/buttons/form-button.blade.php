@@ -1,7 +1,8 @@
 <button
-    {{ $attributes->merge(['class' => 'btn btn-'.$variant, 'type' => 'submit']) }}
+    {{ $attributes->merge(['class' => 'btn btn-'.$variant]) }}
+    type="{{ $type }}"
     form="{!! $formId !!}"
-    @if ($title)
+    @if ($title !== null)
         data-bs-toggle="tooltip"
         title="{!! $title !!}"
     @endif

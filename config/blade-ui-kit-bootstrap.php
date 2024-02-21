@@ -21,16 +21,24 @@ return [
 
     'components' => [
         // Buttons
-        'btn' => Buttons\Button::class,
+        'btn' => Buttons\SimpleButton::class,
         'form-button' => Buttons\FormButton::class,
         'link-button' => Buttons\LinkButton::class,
 
         // Actions buttons
         'btn-create' => Actions\Create::class,
         'btn-edit' => Actions\Edit::class,
+        'btn-archive' => Actions\Archive::class,
         'btn-delete' => Actions\Delete::class,
+        'btn-restore' => Actions\Restore::class,
         'btn-destroy' => Actions\Destroy::class,
         'btn-logout' => Actions\Logout::class,
+        'btn-show' => Actions\Show::class,
+        'btn-back' => Actions\Back::class,
+        'btn-save' => Actions\Save::class,
+        'btn-archives' => Actions\Archives::class,
+        'btn-archives' => Actions\Archives::class,
+        'btn-recycle-bin' => Actions\RecycleBin::class,
 
         // Forms
         'form' => Forms\Form::class,
@@ -84,4 +92,18 @@ return [
     */
 
     'prefix' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | All buttons outline
+    |--------------------------------------------------------------------------
+    |
+    | If this option is "true" all buttons will automatically
+    | have the "outline" attribute.
+    |
+    | Only since Bootstrap 5
+    |
+    */
+
+    'all_buttons_outline' => true,
 ];

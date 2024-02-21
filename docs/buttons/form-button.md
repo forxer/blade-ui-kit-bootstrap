@@ -37,6 +37,7 @@ Form button specific attributes
 All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [button specific attributes](./buttons.md#button-specific-attributes):
 - [Text](./buttons.md#text)
 - [Variant](./buttons.md#variant)
+- [Outline and no-outline](buttons.md#outline-and-no-outline)
 - [Title](./buttons.md#title)
 - [Confirm](./buttons.md#confirm)
 - [Disabled](./buttons.md#disabled)
@@ -108,4 +109,18 @@ This will output the following HTML:
     <input type="hidden" name="_token" value="...">
     <input type="hidden" name="_method" value="PATCH">
 </form>
+```
+
+### Type
+
+The default type is "submit" but you can obviously modify it. Possible values are: `button`, `submit` or `reset`.
+
+```blade
+    <x-form-button type="submit" />
+```
+
+It is a property of the component rather than a simple attribute to make it easier to extend the class component, or necessary in certain edge cases.
+
+```blade
+    <x-form-button :type="$buttonType" />
 ```

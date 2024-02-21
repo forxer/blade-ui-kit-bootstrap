@@ -23,6 +23,7 @@ Form button specific attributes
 All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [button specific attributes](./buttons.md#button-specific-attributes):
 - [Text](./buttons.md#text)
 - [Variant](./buttons.md#variant)
+- [Outline and no-outline](buttons.md#outline-and-no-outline)
 - [Title](./buttons.md#title)
 - [Confirm](./buttons.md#confirm)
 - [Disabled](./buttons.md#disabled)
@@ -39,9 +40,9 @@ This button attribute corresponds to the "href" attribute of the link that the b
 
 ### Confirm ID
 
-If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "confirm modal" must be specified.
+If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "[confirmation modal](./../modals.md)" must be specified.
 
-You can specify a confirm ID targeted by the button. If you don't specify a confirm id, as you can see, it will be randomly generated for each request using a random string of characters.
+You can specify a confirm ID targeted by the button. If you don't specify a confirm id, it will be randomly generated for each request using a random string of characters.
 
 But this is not ideal, it is preferable that you identify yourself the target on which the button acts. It will be easier to navigate and this with better performance.
 

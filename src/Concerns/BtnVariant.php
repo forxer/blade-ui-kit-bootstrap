@@ -12,29 +12,52 @@ trait BtnVariant
 
     private const ALLOWED_BS4_VARIANTS = [
         'primary',
-        'default',
+        'secondary',
         'success',
-        'info',
-        'warning',
         'danger',
+        'warning',
+        'info',
+        'light',
+        'dark',
+        'link',
     ];
 
     private const ALLOWED_BS5_VARIANTS = [
         'primary',
         'secondary',
         'success',
-        'info',
-        'warning',
         'danger',
+        'warning',
+        'info',
         'light',
+        'dark',
+        'link',
+        'outline-primary',
+        'outline-secondary',
+        'outline-success',
+        'outline-danger',
+        'outline-warning',
+        'outline-info',
+        'outline-light',
+        'outline-dark',
     ];
 
-    private function validBtnVariant(string $variant): string
+    private function validBtnVariant(string $variant, bool $outline, bool $noOutline): string
     {
-        $allowedVariants = self::ALLOWED_BS5_VARIANTS;
+        static $allButtonsOutline = null;
 
-        if (\app('config')->get('blade-ui-kit-bootstrap.boostrap_version') === 'bootstrap-4') {
-            $allowedVariants = self::ALLOWED_BS4_VARIANTS;
+        $allowedVariants = self::ALLOWED_BS4_VARIANTS;
+
+        if ($this->config('boostrap_version') === 'bootstrap-5') {
+            $allowedVariants = self::ALLOWED_BS5_VARIANTS;
+
+            if ($allButtonsOutline === null) {
+                $allButtonsOutline = $this->config('all_buttons_outline');
+            }
+
+            if ($noOutline === false && ($allButtonsOutline === true || $outline)) {
+                $variant = 'outline-'.$variant;
+            }
         }
 
         if (! \in_array($variant, $allowedVariants)) {

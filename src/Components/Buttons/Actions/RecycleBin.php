@@ -7,7 +7,7 @@ namespace BladeUIKitBootstrap\Components\Buttons\Actions;
 use BladeUIKitBootstrap\Components\Buttons\LinkButton;
 use Illuminate\Support\Str;
 
-class Edit extends LinkButton
+class RecycleBin extends LinkButton
 {
     public function __construct(
         public string $action,
@@ -18,12 +18,12 @@ class Edit extends LinkButton
         public bool $outline = false,
         public bool $noOutline = false,
         public bool $disabled = false,
-        string $variant = 'primary',
+        string $variant = 'secondary',
     ) {
-        $text ??= ucfirst(trans('actions.edit'));
+        $text ??= ucfirst(trans('misc.recycle_bin'));
 
         if ($confirm !== null) {
-            $confirmId ??= 'edit-'.Str::random(32);
+            $confirmId ??= 'recycle-bin-'.Str::random(32);
         }
 
         parent::__construct($action, $text, $title, $confirm, $confirmId, $outline, $noOutline, $disabled, $variant);

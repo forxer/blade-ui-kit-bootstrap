@@ -15,6 +15,8 @@ class Create extends LinkButton
         public ?string $title = null,
         public ?string $confirm = null,
         public ?string $confirmId = null,
+        public bool $outline = false,
+        public bool $noOutline = false,
         public bool $disabled = false,
         string $variant = 'primary',
     ) {
@@ -24,6 +26,6 @@ class Create extends LinkButton
             $confirmId ??= 'create-'.Str::random(32);
         }
 
-        parent::__construct($action, $text, $title, $confirm, $confirmId, $disabled, $variant);
+        parent::__construct($action, $text, $title, $confirm, $confirmId, $outline, $noOutline, $disabled, $variant);
     }
 }
