@@ -24,7 +24,7 @@ For example a simple form with Bootstrap 5:
 Will render the following HTML:
 
 ```html
-<form method="POST" action="http://example.com" novalidate="true">
+<form method="POST" action="http://example.com" novalidate>
     <input type="hidden" name="_token" value="...">
     <input type="hidden" name="_method" value="POST">
     <div class="mb-3">
@@ -42,6 +42,7 @@ Will render the following HTML:
 And if there are validation errors:
 
 ```html
+<!-- ... -->
     <label for="title" class="form-label">
         Title
     </label>
@@ -50,7 +51,7 @@ And if there are validation errors:
     <div id="validation-title-feedback" class="invalid-feedback">
         The title field is mandatory.
     </div>
-<!-- .. -->
+<!-- ... -->
 ```
 
 Index

@@ -105,5 +105,5 @@ return [
     |
     */
 
-    'all_buttons_outline' => true,
+    'all_buttons_outline' => false,
 ];

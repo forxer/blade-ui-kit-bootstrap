@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.11.1 (2024-02-21)
+-------------------
+
+- Default `all_buttons_outline` config value to `false`
+
+
 0.11.0 (2024-02-21)
 -------------------
 
