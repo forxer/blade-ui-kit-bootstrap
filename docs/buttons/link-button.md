@@ -20,10 +20,10 @@ This will output the following HTML:
 Form button specific attributes
 -------------------------------
 
-All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [button specific attributes](./buttons.md#button-specific-attributes):
+All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [common button attributes](./buttons.md#common-button-attributes):
 - [Text](./buttons.md#text)
 - [Variant](./buttons.md#variant)
-- [Outline and no-outline](buttons.md#outline-and-no-outline)
+- [Outline and no-outline](./buttons.md#outline-and-no-outline)
 - [Title](./buttons.md#title)
 - [Confirm](./buttons.md#confirm)
 - [Disabled](./buttons.md#disabled)

@@ -11,15 +11,24 @@ A set of button components. There are basic components and components that exten
 - [Link button](./link-button.md)
 - [Action Buttons](./action-buttons.md)
 
-Button specific attributes
---------------------------
+Common button attributes
+------------------------
+
+- [Text](#text)
+- [Hide text](#hide-text)
+- [Variant](#variant)
+- [Outline and no-outline](#outline-and-no-outline)
+- [Sizes](#sizes)
+- [Title](#title)
+- [Confirm](#confirm)
+- [Disabled](#disabled)
 
 ### Text
 
 You can write the content of the button in two different ways: either using the "text" attribute or in the "slot".
 
 ```blade
-<x-btn :text="trans('my_button_text')" />
+<x-btn :text="trans('do_something')" />
 ```
 
 Or in plain text:
@@ -48,6 +57,29 @@ For more customization you can use the slot:
 <x-btn>
     <span>Do something</span>
 </x-btn>
+```
+
+Hide text
+---------
+
+Visually hide button text but keep them accessible to assistive technologies.
+
+```blade
+<x-btn text="Do something" hide-text />
+```
+
+This will output the following HTML:
+
+```html
+<button type="button">
+    <span class="visually-hidden">Do something</span>
+</button>
+```
+
+In some cases you may need to do this programmatically by passing a boolean value to the `hide-text` attribute:
+
+```blade
+<x-btn text="Do something" :hide-text="$booleanCondition" />
 ```
 
 ### Variant
@@ -81,18 +113,18 @@ This will output the following HTML:
 
 Since Bootstrap 5 it is possible to use "Outline Buttons".
 
-To do this, several options are available to you: use `variant` attribute, `outline` attribute and global configuration
+To do this, several options are available to you: use `variant` attribute, `outline` attribute and global configuration.
 
 You can use the "outline-`variant`" variant:
 
 ```blade
-<x-btn variant="outline-success" />
+<x-btn variant="outline-primary" />
 ```
 
 This will output the following HTML:
 
 ```html
-<button type="button" class="btn btn-outline-success">
+<button type="button" class="btn btn-outline-primary">
     ...
 </button>
 ```
@@ -100,13 +132,18 @@ This will output the following HTML:
 But the simplest is to use the `outline` attribute:
 
 ```blade
-<x-btn variant="success" outline />
+<x-btn />
+<x-btn outline />
 ```
 
 This will output the following HTML:
 
 ```html
-<button type="button" class="btn btn-outline-success">
+<button type="button" class="btn btn-primary">
+    ...
+</button>
+
+<button type="button" class="btn btn-outline-primary">
     ...
 </button>
 ```
@@ -122,21 +159,62 @@ In the configuration file, you can change the value of `all_buttons_outline` to 
 No need to specify the "outline" attribute. Conversely in this case, if you want a button not to have this property you can use the `no-outline`  attribute so that the button has its normal display.
 
 ```blade
-<x-btn variant="success" />
-<x-btn variant="success" no-outline />
+<x-btn />
+<x-btn no-outline />
 ```
 
 This will output the following HTML:
 
 ```html
-<button type="button" class="btn btn-outline-success" >
+<button type="button" class="btn btn-outline-primary">
     ...
 </button>
 
-<button type="button" class="btn btn-success" >
+<button type="button" class="btn btn-primary">
     ...
 </button>
 ```
+
+### Sizes
+
+Want bigger or smaller buttons? Add `lg` or `sm` attributes for additional sizes:
+
+```blade
+<x-btn />
+<x-btn lg />
+<x-btn sm />
+```
+
+This will output the following HTML:
+
+```html
+<button type="button" class="btn btn-primary">
+    ...
+</button>
+
+<button type="button" class="btn btn-primary btn-lg">
+    ...
+</button>
+
+<button type="button" class="btn btn-primary btn-sm">
+    ...
+</button>
+```
+
+In some cases you may need to do this programmatically by passing a boolean value to the `lg` or `sm` attributes:
+
+```blade
+<x-btn :lg="$booleanCondition" />
+<x-btn :sm="$booleanCondition" />
+```
+
+You also have at your disposal the `size` attribute which must return one of the two strings `lg` or `sm`:
+
+```blade
+<x-btn :size="$size" />
+```
+
+Note that the `size` attribute *has priority* over the other two attributes `lg` and `sm`.
 
 ### Title
 

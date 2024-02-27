@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components\Buttons\Actions;
 
-use BladeUIKitBootstrap\Components\Buttons\FormButton;
+use BladeUIKitBootstrap\Components\Buttons\LinkButton;
 use Illuminate\Support\Str;
 
-class Archive extends FormButton
+class Preview extends LinkButton
 {
     public function __construct(
         public string $action,
         public ?string $text = null,
+        public bool $hideText = false,
         public ?string $title = null,
-        public string $variant = 'danger',
+        public string $variant = 'info',
         public bool $outline = false,
         public bool $noOutline = false,
         public ?string $size = null,
@@ -21,17 +22,18 @@ class Archive extends FormButton
         public bool $sm = false,
         public bool $disabled = false,
         public ?string $confirm = null,
-        public ?string $formId = null,
-        public string $method = 'PATCH',
-        public string $type = 'submit',
-        public bool $novalidate = true,
+        public ?string $confirmId = null,
     ) {
-        $text ??= Str::ucfirst(trans('action.archive'));
-        $formId ??= 'archive-'.Str::random(32);
+        $text ??= Str::ucfirst(trans('action.preview'));
+
+        if ($confirm !== null) {
+            $confirmId ??= 'show-'.Str::random(32);
+        }
 
         parent::__construct(
-            action: $action,
+            url: $action,
             text: $text,
+            hideText: $hideText,
             title: $title,
             variant: $variant,
             outline: $outline,
@@ -41,10 +43,7 @@ class Archive extends FormButton
             sm: $sm,
             disabled: $disabled,
             confirm: $confirm,
-            formId: $formId,
-            method: $method,
-            type: $type,
-            novalidate: $novalidate,
+            confirmId: $confirmId,
         );
     }
 }

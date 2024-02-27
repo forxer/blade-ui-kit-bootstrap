@@ -7,13 +7,14 @@ namespace BladeUIKitBootstrap\Components\Buttons\Actions;
 use BladeUIKitBootstrap\Components\Buttons\FormButton;
 use Illuminate\Support\Str;
 
-class Archive extends FormButton
+class Enabled extends FormButton
 {
     public function __construct(
         public string $action,
         public ?string $text = null,
+        public bool $hideText = false,
         public ?string $title = null,
-        public string $variant = 'danger',
+        public string $variant = 'warning',
         public bool $outline = false,
         public bool $noOutline = false,
         public ?string $size = null,
@@ -26,12 +27,13 @@ class Archive extends FormButton
         public string $type = 'submit',
         public bool $novalidate = true,
     ) {
-        $text ??= Str::ucfirst(trans('action.archive'));
-        $formId ??= 'archive-'.Str::random(32);
+        $text ??= Str::ucfirst(trans('status.disabled'));
+        $formId ??= 'disable-'.Str::random(32);
 
         parent::__construct(
             action: $action,
             text: $text,
+            hideText: $hideText,
             title: $title,
             variant: $variant,
             outline: $outline,

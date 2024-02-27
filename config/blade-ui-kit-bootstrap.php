@@ -5,6 +5,7 @@ use BladeUIKitBootstrap\Components\Buttons\Actions;
 use BladeUIKitBootstrap\Components\Forms;
 use BladeUIKitBootstrap\Components\Forms\Inputs;
 use BladeUIKitBootstrap\Components\Modals;
+use BladeUIKitBootstrap\Enums\BootstrapVersion;
 
 return [
 
@@ -26,19 +27,27 @@ return [
         'link-button' => Buttons\LinkButton::class,
 
         // Actions buttons
-        'btn-create' => Actions\Create::class,
-        'btn-edit' => Actions\Edit::class,
+        'btn-back' => Actions\Back\Back::class,
+        'btn-back-list' => Actions\Back\BackList::class,
+        'btn-back-home' => Actions\Back\BackHome::class,
         'btn-archive' => Actions\Archive::class,
+        'btn-archives' => Actions\Archives::class,
+        'btn-create' => Actions\Create::class,
         'btn-delete' => Actions\Delete::class,
-        'btn-restore' => Actions\Restore::class,
         'btn-destroy' => Actions\Destroy::class,
+        'btn-disable' => Actions\Disable::class,
+        'btn-disabled' => Actions\Disabled::class,
+        'btn-edit' => Actions\Edit::class,
+        'btn-enable' => Actions\Enable::class,
+        'btn-enabled' => Actions\Enabled::class,
         'btn-logout' => Actions\Logout::class,
-        'btn-show' => Actions\Show::class,
-        'btn-back' => Actions\Back::class,
-        'btn-save' => Actions\Save::class,
-        'btn-archives' => Actions\Archives::class,
-        'btn-archives' => Actions\Archives::class,
+        'btn-move-down' => Actions\MoveDown::class,
+        'btn-move-up' => Actions\MoveUp::class,
+        'btn-preview' =>  Actions\Preview::class,
         'btn-recycle-bin' => Actions\RecycleBin::class,
+        'btn-restore' => Actions\Restore::class,
+        'btn-save' => Actions\Save::class,
+        'btn-show' => Actions\Show::class,
 
         // Forms
         'form' => Forms\Form::class,
@@ -69,12 +78,12 @@ return [
     | Here you can set the default Boostrap version to use for rendering
     | views components. Possible values:
     |
-    |   - bootstrap-4
-    |   - bootstrap-5
+    |   - BootstrapVersion::V4
+    |   - BootstrapVersion::V5
     |
     */
 
-    'boostrap_version' => 'bootstrap-5',
+    'boostrap_version' => BootstrapVersion::V5,
 
     /*
     |--------------------------------------------------------------------------

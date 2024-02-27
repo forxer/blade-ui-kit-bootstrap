@@ -1,9 +1,9 @@
 <a
     @if ($disabled === false)
         href="{{ $url }}"
-        {{ $attributes->merge(['class' => 'btn btn-'.$variant, 'role' => 'button']) }}
+        {{ $attributes->merge(['class' => 'btn btn-'.$variant.($size !== null ? ' btn-'.$size : ''), 'role' => 'button']) }}
     @else
-        {{ $attributes->merge(['class' => 'disabled btn btn-'.$variant, 'role' => 'button', 'aria-disabled' => 'true', 'tabindex' => '-1']) }}
+        {{ $attributes->merge(['class' => 'disabled btn btn-'.$variant.($size !== null ? ' btn-'.$size : ''), 'role' => 'button', 'aria-disabled' => 'true', 'tabindex' => '-1']) }}
     @endif
     @if ($title !== null)
         data-bs-toggle="tooltip"
@@ -16,8 +16,14 @@
     @endif
 >
     @if ($slot->isEmpty())
-        {{ $text }}
+        @if ($hideText)
+            <span class="visually-hidden">
+                {!! $text !!}
+            </span>
+        @else
+            {!! $text !!}
+        @endif
     @else
-        {{ $slot }}
+        {!! $slot !!}
     @endif
 </a>

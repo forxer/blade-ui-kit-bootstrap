@@ -8,8 +8,6 @@ use InvalidArgumentException;
 
 trait FormMethod
 {
-    public string $method = 'POST';
-
     private const ALLOWED_FORM_METHOD = [
         'GET',
         'POST',

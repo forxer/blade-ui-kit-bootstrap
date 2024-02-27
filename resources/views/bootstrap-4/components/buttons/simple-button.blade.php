@@ -1,11 +1,11 @@
 <button
-    {{ $attributes->merge(['class' => 'btn btn-'.$variant]) }}
+    {{ $attributes->merge(['class' => 'btn btn-'.$variant.($size !== null ? ' btn-'.$size : '')]) }}
     type="{{ $type }}"
     @if ($formId !== null)
         form="{!! $formId !!}"
     @endif
     @if ($title !== null)
-        data-bs-toggle="tooltip"
+        data-toggle="tooltip"
         title="{!! $title !!}"
     @endif
     @if ($confirm !== null)
@@ -16,8 +16,14 @@
     @if ($disabled === true) disabled @endif
 >
     @if ($slot->isEmpty())
-        {{ $text }}
+        @if ($hideText)
+            <span class="sr-only">
+                {!! $text !!}
+            </span>
+        @else
+            {!! $text !!}
+        @endif
     @else
-        {{ $slot }}
+        {!! $slot !!}
     @endif
 </button>

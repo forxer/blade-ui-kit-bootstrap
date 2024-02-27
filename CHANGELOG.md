@@ -1,6 +1,25 @@
 CHANGELOG
 =========
 
+0.12.0 (2024-02-27)
+-------------------
+
+- Added `BootstrapVersion` enum
+- Added `size`, `lg` and `sm` properties to buttons
+- Added `hide-text` property to buttons for future features...
+- Added new "Action buttons" components:
+    - Preview button
+    - Move up button
+    - Move down button
+    - Enable button
+    - Disable button
+    - Enabled button
+    - Disabled button
+- Renamed `button.blade.php` views to `simple-button.blade.php`
+- Rewrote all button component class constructor signatures
+- Replaced the native PHP function `ucfirst()` with the Laravel method `Str::ucfirst()` to support multi-byte strings
+
+
 0.11.1 (2024-02-21)
 -------------------
 

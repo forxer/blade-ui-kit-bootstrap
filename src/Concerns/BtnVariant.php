@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Concerns;
 
+use BladeUIKitBootstrap\Enums\BootstrapVersion;
 use InvalidArgumentException;
 
 trait BtnVariant
 {
-    public string $variant = 'primary';
-
     private const ALLOWED_BS4_VARIANTS = [
         'primary',
         'secondary',
@@ -48,7 +47,7 @@ trait BtnVariant
 
         $allowedVariants = self::ALLOWED_BS4_VARIANTS;
 
-        if ($this->config('boostrap_version') === 'bootstrap-5') {
+        if ($this->config('boostrap_version') === BootstrapVersion::V5) {
             $allowedVariants = self::ALLOWED_BS5_VARIANTS;
 
             if ($allButtonsOutline === null) {

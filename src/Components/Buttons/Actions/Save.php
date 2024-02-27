@@ -11,22 +11,41 @@ class Save extends SimpleButton
 {
     public function __construct(
         public ?string $text = null,
+        public bool $hideText = false,
         public ?string $title = null,
         public ?string $formId = null,
         public ?string $confirm = null,
         public ?string $confirmId = null,
         public bool $outline = false,
         public bool $noOutline = false,
+        public ?string $size = null,
+        public bool $lg = false,
+        public bool $sm = false,
         public bool $disabled = false,
-        string $variant = 'primary',
-        string $type = 'submit',
+        public string $variant = 'primary',
+        public string $type = 'submit',
     ) {
-        $text ??= ucfirst(trans('actions.save'));
+        $text ??= Str::ucfirst(trans('action.save'));
 
         if ($confirm !== null) {
-            $confirmId ??= 'create-'.Str::random(32);
+            $confirmId ??= 'save-'.Str::random(32);
         }
 
-        parent::__construct($text, $title, $formId, $confirm, $confirmId, $outline, $noOutline, $disabled, $variant, $type);
+        parent::__construct(
+            text: $text,
+            hideText: $hideText,
+            title: $title,
+            variant: $variant,
+            outline: $outline,
+            noOutline: $noOutline,
+            size: $size,
+            lg: $lg,
+            sm: $sm,
+            disabled: $disabled,
+            confirm: $confirm,
+            confirmId: $confirmId,
+            formId: $formId,
+            type: $type,
+        );
     }
 }

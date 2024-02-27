@@ -8,16 +8,16 @@ use InvalidArgumentException;
 
 trait BtnType
 {
-    public string $type = 'button';
-
     private const ALLOWED_BUTTON_TYPE = [
         'button',
         'reset',
         'submit',
     ];
 
-    private function validType(string $type): string
+    private function validBtnType(string $type): string
     {
+        $type = \strtolower(\trim($type));
+
         if (! \in_array($type, self::ALLOWED_BUTTON_TYPE)) {
             throw new InvalidArgumentException(\sprintf(
                 'The button type "%s" is not allowed. Allowed type are: %s.',

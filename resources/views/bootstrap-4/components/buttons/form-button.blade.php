@@ -1,5 +1,5 @@
 <button
-    {{ $attributes->merge(['class' => 'btn btn-'.$variant]) }}
+    {{ $attributes->merge(['class' => 'btn btn-'.$variant.($size !== null ? ' btn-'.$size : '')]) }}
     type="{{ $type }}"
     form="{!! $formId !!}"
     @if ($title !== null)
@@ -14,9 +14,15 @@
     @if ($disabled === true) disabled @endif
 >
     @if ($slot->isEmpty())
-        {{ $text }}
+        @if ($hideText)
+            <span class="sr-only">
+                {!! $text !!}
+            </span>
+        @else
+            {!! $text !!}
+        @endif
     @else
-        {{ $slot }}
+        {!! $slot !!}
     @endif
 </button>
 

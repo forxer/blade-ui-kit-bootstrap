@@ -13,19 +13,35 @@ class Archives extends LinkButton
         public string $action,
         public ?string $text = null,
         public ?string $title = null,
-        public ?string $confirm = null,
-        public ?string $confirmId = null,
+        public string $variant = 'secondary',
         public bool $outline = false,
         public bool $noOutline = false,
+        public ?string $size = null,
+        public bool $lg = false,
+        public bool $sm = false,
         public bool $disabled = false,
-        string $variant = 'secondary',
+        public ?string $confirm = null,
+        public ?string $confirmId = null,
     ) {
-        $text ??= ucfirst(trans('misc.archives'));
+        $text ??= Str::ucfirst(trans('misc.archives'));
 
         if ($confirm !== null) {
             $confirmId ??= 'archives-'.Str::random(32);
         }
 
-        parent::__construct($action, $text, $title, $confirm, $confirmId, $outline, $noOutline, $disabled, $variant);
+        parent::__construct(
+            url: $action,
+            text: $text,
+            title: $title,
+            variant: $variant,
+            outline: $outline,
+            noOutline: $noOutline,
+            size: $size,
+            lg: $lg,
+            sm: $sm,
+            disabled: $disabled,
+            confirm: $confirm,
+            confirmId: $confirmId,
+        );
     }
 }

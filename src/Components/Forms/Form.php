@@ -15,7 +15,7 @@ class Form extends BladeComponent
         public string $action,
         public bool $hasFiles = false,
         public bool $novalidate = true,
-        string $method = 'POST',
+        public string $method = 'POST',
     ) {
         $this->method = $this->validFormMethod($method);
     }

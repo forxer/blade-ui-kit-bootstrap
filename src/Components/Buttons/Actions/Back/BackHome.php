@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace BladeUIKitBootstrap\Components\Buttons\Actions;
+namespace BladeUIKitBootstrap\Components\Buttons\Actions\Back;
 
-use BladeUIKitBootstrap\Components\Buttons\FormButton;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Back\Back;
 use Illuminate\Support\Str;
 
-class Archive extends FormButton
+class BackHome extends Back
 {
     public function __construct(
         public string $action,
         public ?string $text = null,
         public ?string $title = null,
-        public string $variant = 'danger',
+        public string $variant = 'primary',
         public bool $outline = false,
         public bool $noOutline = false,
         public ?string $size = null,
@@ -21,13 +21,9 @@ class Archive extends FormButton
         public bool $sm = false,
         public bool $disabled = false,
         public ?string $confirm = null,
-        public ?string $formId = null,
-        public string $method = 'PATCH',
-        public string $type = 'submit',
-        public bool $novalidate = true,
+        public ?string $confirmId = null,
     ) {
-        $text ??= Str::ucfirst(trans('action.archive'));
-        $formId ??= 'archive-'.Str::random(32);
+        $text ??= Str::ucfirst(trans('back.home'));
 
         parent::__construct(
             action: $action,
@@ -41,10 +37,7 @@ class Archive extends FormButton
             sm: $sm,
             disabled: $disabled,
             confirm: $confirm,
-            formId: $formId,
-            method: $method,
-            type: $type,
-            novalidate: $novalidate,
+            confirmId: $confirmId,
         );
     }
 }
