@@ -17,9 +17,9 @@ trait BtnSize
     {
         if ($size !== null) {
             $size = \strtolower(\trim($size));
-        } elseif ($lg === true) {
+        } elseif ($lg) {
             $size = 'lg';
-        } elseif ($sm === true) {
+        } elseif ($sm) {
             $size = 'sm';
         } else {
             return null;

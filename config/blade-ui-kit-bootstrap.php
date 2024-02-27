@@ -43,7 +43,7 @@ return [
         'btn-logout' => Actions\Logout::class,
         'btn-move-down' => Actions\MoveDown::class,
         'btn-move-up' => Actions\MoveUp::class,
-        'btn-preview' =>  Actions\Preview::class,
+        'btn-preview' => Actions\Preview::class,
         'btn-recycle-bin' => Actions\RecycleBin::class,
         'btn-restore' => Actions\Restore::class,
         'btn-save' => Actions\Save::class,
