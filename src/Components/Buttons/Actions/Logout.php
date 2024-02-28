@@ -28,7 +28,7 @@ class Logout extends FormButton
         public bool $novalidate = true,
     ) {
         $action = $action === '' ? \route('logout') : $action;
-        $text ??= Str::ucfirst('Logout');
+        $text ??= Str::ucfirst('action.logout');
         $formId ??= 'logout-'.Str::random(32);
 
         parent::__construct(
