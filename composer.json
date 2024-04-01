@@ -21,7 +21,7 @@
     "require": {
         "php": "^8.2",
         "forxer/generic-term-translations-for-laravel": "^1.5",
-        "laravel/framework": "^10.0"
+        "laravel/framework": "^10.0 || ^11.0"
     },
     "require-dev": {
         "laravel/pint": "^1.14.0",
