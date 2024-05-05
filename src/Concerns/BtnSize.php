@@ -16,7 +16,7 @@ trait BtnSize
     private function validBtnSize(?string $size = null, bool $lg = false, bool $sm = false): ?string
     {
         if ($size !== null) {
-            $size = \strtolower(\trim($size));
+            $size = strtolower(trim($size));
         } elseif ($lg) {
             $size = 'lg';
         } elseif ($sm) {
@@ -26,10 +26,10 @@ trait BtnSize
         }
 
         if (! \in_array($size, self::ALLOWED_BUTTON_SIZE)) {
-            throw new InvalidArgumentException(\sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The button size "%s" is not allowed. Allowed size are: %s.',
                 e($size),
-                \implode(', ', self::ALLOWED_BUTTON_SIZE)
+                implode(', ', self::ALLOWED_BUTTON_SIZE)
             ));
         }
 

@@ -23,13 +23,13 @@ trait FormMethod
 
     private function validFormMethod(string $method): string
     {
-        $method = \strtoupper(\trim($method));
+        $method = strtoupper(trim($method));
 
         if (! \in_array($method, self::ALLOWED_FORM_METHOD)) {
-            throw new InvalidArgumentException(\sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The HTTP method "%s" is not allowed. Allowed method are: %s.',
                 e($method),
-                \implode(', ', self::ALLOWED_FORM_METHOD)
+                implode(', ', self::ALLOWED_FORM_METHOD)
             ));
         }
 

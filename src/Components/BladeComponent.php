@@ -13,7 +13,7 @@ abstract class BladeComponent extends IlluminateComponent
 
     public function render(): View
     {
-        return \view($this->viewPath($this->viewName()));
+        return view($this->viewPath($this->viewName()));
     }
 
     protected function viewPath(string $view): string
@@ -32,7 +32,7 @@ abstract class BladeComponent extends IlluminateComponent
         static $config = null;
 
         if ($config === null) {
-            $config = \app('config')->get('blade-ui-kit-bootstrap');
+            $config = app('config')->get('blade-ui-kit-bootstrap');
         }
 
         if ($key === null) {

@@ -16,13 +16,13 @@ trait BtnType
 
     private function validBtnType(string $type): string
     {
-        $type = \strtolower(\trim($type));
+        $type = strtolower(trim($type));
 
         if (! \in_array($type, self::ALLOWED_BUTTON_TYPE)) {
-            throw new InvalidArgumentException(\sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The button type "%s" is not allowed. Allowed type are: %s.',
                 e($type),
-                \implode(', ', self::ALLOWED_BUTTON_TYPE)
+                implode(', ', self::ALLOWED_BUTTON_TYPE)
             ));
         }
 

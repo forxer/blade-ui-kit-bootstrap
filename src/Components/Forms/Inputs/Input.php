@@ -22,7 +22,7 @@ class Input extends BladeComponent
         ?string $id = null,
         ?string $errorBag = null
     ) {
-        $this->value = \old($name, $value ?? '');
+        $this->value = old($name, $value ?? '');
         $this->id = $id ?? $name;
 
         $this->bootCanHaveErrors($name, $errorBag);

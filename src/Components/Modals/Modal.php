@@ -19,7 +19,7 @@ class Modal extends BladeComponent
         public string $title,
         public bool $dismissable = true,
     ) {
-        $this->titleLabel = \str($id)->kebab()->append('-label')->toString();
+        $this->titleLabel = str($id)->kebab()->append('-label')->toString();
     }
 
     public function viewName(): string

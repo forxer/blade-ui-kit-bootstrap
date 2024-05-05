@@ -47,7 +47,7 @@ trait CanHaveErrors
 
     protected function errorBag(?string $errorBag = null): void
     {
-        if (is_null($errorBag)) {
+        if (\is_null($errorBag)) {
             return;
         }
 

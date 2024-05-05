@@ -60,10 +60,10 @@ trait BtnVariant
         }
 
         if (! \in_array($variant, $allowedVariants)) {
-            throw new InvalidArgumentException(\sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The variant "%s" is not allowed. Allowed variant are: %s.',
                 e($variant),
-                \implode(', ', $allowedVariants)
+                implode(', ', $allowedVariants)
             ));
         }
 

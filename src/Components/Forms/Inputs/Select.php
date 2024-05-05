@@ -27,7 +27,7 @@ class Select extends BladeComponent
     ) {
         $this->id = $id ?? $name;
 
-        if (is_array($options)) {
+        if (\is_array($options)) {
             $this->options = $options;
         } elseif ($options instanceof Collection) {
             $this->options = $options->pluck($labelAttribute, $valueAttribute);
@@ -42,8 +42,8 @@ class Select extends BladeComponent
     {
         $selected = old($this->name, $this->selected);
 
-        if (is_array($selected)) {
-            return in_array($value, $selected, true);
+        if (\is_array($selected)) {
+            return \in_array($value, $selected, true);
         }
 
         return $value === $selected;
