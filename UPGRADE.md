@@ -9,11 +9,11 @@ From 0.11.x to 0.12.x
 With the addition of the `BootstrapVersion` enum you should use it.
 
 You will probably only need to modify the configuration file by replacing:
-- `'bootstrap-4'` by `BootstrapVersion::V5`
+- `'bootstrap-4'` by `BootstrapVersion::V4`
 - `'bootstrap-5'` by `BootstrapVersion::V5`
 
 If you used character strings outside the configuration file you must replace:
-- `'bootstrap-4'` by `BootstrapVersion::V5->value`
+- `'bootstrap-4'` by `BootstrapVersion::V4->value`
 - `'bootstrap-5'` by `BootstrapVersion::V5->value`
 
 ### Renamed "button" views
