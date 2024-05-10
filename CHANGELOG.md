@@ -1,10 +1,16 @@
 CHANGELOG
 =========
 
+0.13.1 (2024-05-10)
+-------------------
+
+- Small typos
+
+
 0.13.0 (2024-04-01)
 -------------------
 
-- Add support for Laravel 11
+- Added support for Laravel 11
 
 
 0.12.2 (2024-02-28)
