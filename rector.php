@@ -55,9 +55,6 @@ return static function (RectorConfig $rectorConfig): void {
         RemoveDumpDataDeadCodeRector::class,
     ]);
 
-    // define what sets of rules will be applied
-    // tip: use "SetList" class to autocomplete sets with your IDE
-    //----------------------------------------------------------
     $rectorConfig->sets([
         LaravelSetList::LARAVEL_FACADE_ALIASES_TO_FULL_NAMES,
         SetList::PHP_82,
