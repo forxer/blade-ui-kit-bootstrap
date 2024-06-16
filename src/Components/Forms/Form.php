@@ -14,10 +14,12 @@ class Form extends BladeComponent
     public function __construct(
         public string $action,
         public bool $hasFiles = false,
-        public bool $novalidate = true,
         public string $method = 'POST',
+        public ?bool $novalidate = null,
     ) {
         $this->method = $this->validFormMethod($method);
+
+        $this->novalidate = $novalidate ?? $this->config('all_forms_with_novalidate');
     }
 
     public function viewName(): string

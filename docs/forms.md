@@ -1,5 +1,5 @@
 Forms
------
+=====
 
 Form
 ----
@@ -25,16 +25,23 @@ This will output the following HTML:
 </form>
 ```
 
-### Browers validation
-
-By default the `novalidate` attribute, in order to avoid browser validation *and* to use consistent error styles on all types of form fields, is set to `true`.
-
-If you do not want to use this attribute simply set it to `false`:
+Of course, you can use PHP in the `action` attribute, for example a named route:
 
 ```blade
-<x-form action="http://example.com" :novalidate="false">
+<x-form :action="route('home')">
     Form fields...
 </x-form>
+```
+
+This will output the following HTML:
+
+```html
+<form method="POST" action="http://example.com" novalidate="true">
+    <input type="hidden" name="_token" value="...">
+    <input type="hidden" name="_method" value="POST">
+
+    Form fields...
+</form>
 ```
 
 ### HTTP method
@@ -42,7 +49,7 @@ If you do not want to use this attribute simply set it to `false`:
 By default a `POST` HTTP method will be set. Of course, you can customize this:
 
 ```blade
-<x-form action="http://example.com" method="PUT">
+<x-form :action="route('home')" method="PUT">
     Form fields...
 </x-form>
 ```
@@ -63,7 +70,7 @@ This will output the following HTML:
 To enable file uploads in a form you can make use of the `has-files` attribute:
 
 ```blade
-<x-form action="http://example.com" has-files>
+<x-form :action="route('home')" has-files>
     Form fields...
 </x-form>
 ```
@@ -75,6 +82,28 @@ This will output the following HTML:
     <input type="hidden" name="_token" value="...">
     Form fields...
 </form>
+```
+
+### Browers validation
+
+By default the `novalidate` attribute, in order to avoid browser validation *and* to use consistent error styles on all types of form fields, is set to `true`.
+
+If you do not want to use this attribute simply set it to `false`:
+
+```blade
+<x-form :action="route('home')" :novalidate="false">
+    Form fields...
+</x-form>
+```
+
+If you want this attribute to never be automatically added, you can disable it globally for all forms. To do this, change the value `all_forms_with_novalidate` to `false` in the configuration file.
+
+It will always be possible to use it occasionally by setting it to `true`:
+
+```blade
+<x-form :action="route('home')" :novalidate="true">
+    Form fields...
+</x-form>
 ```
 
 Label

@@ -4,7 +4,7 @@ Inputs
 A set of components to make it easier to write form elements.
 
 * [The `<input>` element](#input)
-* [Text](./docs/inputs/inputs.md#input)
+* [Text](./text.md)
 * [Textarea](./textarea.md)
 * [Select](./select.md)
 * [Password](./password.md)

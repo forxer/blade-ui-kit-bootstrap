@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.14.0 (2024-06-16)
+-------------------
+
+- Added `all_forms_with_novalidate` global configuration value
+
+
 0.13.1 (2024-05-10)
 -------------------
 
