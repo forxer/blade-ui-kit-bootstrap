@@ -25,9 +25,9 @@
         "laravel/framework": "^10.0 || ^11.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.16.0",
-        "driftingly/rector-laravel": "^1.2",
-        "rector/rector": "^1.1.0"
+        "laravel/pint": "^1.17.2",
+        "driftingly/rector-laravel": "^1.2.1",
+        "rector/rector": "^1.2.4"
     },
     "autoload": {
         "psr-4": {
