@@ -26,7 +26,7 @@ trait BtnSize
         }
 
         if (! \in_array($size, self::ALLOWED_BUTTON_SIZE)) {
-            throw new InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(\sprintf(
                 'The button size "%s" is not allowed. Allowed size are: %s.',
                 e($size),
                 implode(', ', self::ALLOWED_BUTTON_SIZE)

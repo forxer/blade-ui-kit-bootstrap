@@ -10,8 +10,7 @@ class Label extends BladeComponent
 {
     public function __construct(
         public string $for,
-    ) {
-    }
+    ) {}
 
     public function fallback(): string
     {
