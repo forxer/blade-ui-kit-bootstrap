@@ -9,9 +9,8 @@
     @if ($confirm !== null)
         data-bs-confirm="{!! $confirm !!}"
         data-bs-confirm-modal="confirm-modal-{!! $formId !!}"
-        <x-modal-confirm :id="'confirm-modal-'.$formId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
     @endif
-    @if ($disabled === true) disabled @endif
+    @disabled($disabled)
 >
     @if ($startContent !== null)
         {!! $startContent !!}
@@ -32,9 +31,13 @@
     @endif
 </button>
 
-@push ('blade-ui-kit-bs-html')
+@push('blade-ui-kit-bs-html')
     <form id="{{ $formId }}" method="{!! $formMethodValue() !!}" action="{{ $action }}" @if ($novalidate === true) novalidate="true" @endif>
         @csrf
         @method($method)
     </form>
 @endpush
+
+@if ($confirm !== null)
+    <x-modal-confirm :id="'confirm-modal-'.$formId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
+@endif

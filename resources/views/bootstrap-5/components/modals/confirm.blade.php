@@ -1,4 +1,4 @@
-@push ('blade-ui-kit-bs-html')
+@push('blade-ui-kit-bs-html')
     <div {{ $attributes->class(['modal']) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -30,7 +30,7 @@
         </div>
     </div>
 @endpush
-@push ('blade-ui-kit-bs-scripts')
+@push('blade-ui-kit-bs-scripts')
     @once
         <script>
             function askConfirm(selector) {

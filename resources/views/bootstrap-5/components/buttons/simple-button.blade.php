@@ -11,9 +11,8 @@
     @if ($confirm !== null)
         data-bs-confirm="{!! $confirm !!}"
         data-bs-confirm-modal="confirm-modal-{!! $confirmId !!}"
-        <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
     @endif
-    @if ($disabled === true) disabled @endif
+    @disabled($disabled)
 >
     @if ($startContent !== null)
         {!! $startContent !!}
@@ -24,7 +23,9 @@
                 {!! $text !!}
             </span>
         @else
-            {!! $text !!}
+            <span class="d-none d-lg-inline">
+                {!! $text !!}
+            </span>
         @endif
     @else
         {!! $slot !!}
@@ -33,3 +34,7 @@
         {!! $endContent !!}
     @endif
 </button>
+
+@if ($confirm !== null)
+    <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
+@endif
