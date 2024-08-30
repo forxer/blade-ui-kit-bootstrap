@@ -51,4 +51,9 @@ class Destroy extends FormButton
             endContent: $endContent,
         );
     }
+
+    public function viewName(): string
+    {
+        return 'components.buttons.actions.destroy';
+    }
 }

@@ -43,4 +43,9 @@ class BackList extends Back
             endContent: $endContent,
         );
     }
+
+    public function viewName(): string
+    {
+        return 'components.buttons.actions.back.back-list';
+    }
 }

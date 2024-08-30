@@ -51,4 +51,9 @@ class Delete extends FormButton
             endContent: $endContent,
         );
     }
+
+    public function viewName(): string
+    {
+        return 'components.buttons.actions.delete';
+    }
 }

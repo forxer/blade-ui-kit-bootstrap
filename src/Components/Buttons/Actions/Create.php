@@ -48,4 +48,9 @@ class Create extends LinkButton
             endContent: $endContent,
         );
     }
+
+    public function viewName(): string
+    {
+        return 'components.buttons.actions.create';
+    }
 }
