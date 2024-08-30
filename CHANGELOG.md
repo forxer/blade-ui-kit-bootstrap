@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.14.3 (2024-08-30)
+-------------------
+
+- Experimental : added dedicated views for action button components (only for Boostrap 5 first)
+- Various consolidations
+
+
 0.14.2 (2024-08-30)
 -------------------
 
