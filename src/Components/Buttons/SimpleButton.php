@@ -31,6 +31,8 @@ class SimpleButton extends BladeComponent
         public ?string $confirmId = null,
         public ?string $formId = null,
         public string $type = 'button',
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         if ($confirm !== null) {
             $this->confirmId = $confirmId ?? Str::random(32);

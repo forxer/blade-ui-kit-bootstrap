@@ -25,6 +25,8 @@ class Destroy extends FormButton
         public string $method = 'DELETE',
         public string $type = 'submit',
         public bool $novalidate = true,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('action.delete'));
         $formId ??= 'destroy-'.Str::random(32);
@@ -45,6 +47,8 @@ class Destroy extends FormButton
             method: $method,
             type: $type,
             novalidate: $novalidate,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

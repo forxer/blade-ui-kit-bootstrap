@@ -14,7 +14,7 @@ class Enabled extends FormButton
         public ?string $text = null,
         public bool $hideText = false,
         public ?string $title = null,
-        public string $variant = 'warning',
+        public string $variant = 'success',
         public bool $outline = false,
         public bool $noOutline = false,
         public ?string $size = null,
@@ -26,8 +26,10 @@ class Enabled extends FormButton
         public string $method = 'PATCH',
         public string $type = 'submit',
         public bool $novalidate = true,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
-        $text ??= Str::ucfirst(trans('status.disabled'));
+        $text ??= Str::ucfirst(trans('status.enabled'));
         $formId ??= 'disable-'.Str::random(32);
 
         parent::__construct(
@@ -47,6 +49,8 @@ class Enabled extends FormButton
             method: $method,
             type: $type,
             novalidate: $novalidate,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

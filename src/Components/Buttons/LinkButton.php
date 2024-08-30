@@ -28,6 +28,8 @@ class LinkButton extends BladeComponent
         public bool $disabled = false,
         public ?string $confirm = null,
         public ?string $confirmId = null,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         if ($confirm !== null) {
             $this->confirmId = $confirmId ?? Str::random(32);

@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.14.2 (2024-08-30)
+-------------------
+
+- Fixed "Disabled" and "Enabled" action buttons
+- Experimental : added `$startContent` and `$endContent` properties to button components
+
+
 0.14.1 (2024-08-28)
 -------------------
 

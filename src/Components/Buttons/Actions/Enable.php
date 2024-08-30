@@ -26,6 +26,8 @@ class Enable extends FormButton
         public string $method = 'PATCH',
         public string $type = 'submit',
         public bool $novalidate = true,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('action.enable'));
         $formId ??= 'enable-'.Str::random(32);
@@ -47,6 +49,8 @@ class Enable extends FormButton
             method: $method,
             type: $type,
             novalidate: $novalidate,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

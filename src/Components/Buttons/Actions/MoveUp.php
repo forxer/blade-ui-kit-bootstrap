@@ -26,6 +26,8 @@ class MoveUp extends FormButton
         public string $method = 'PATCH',
         public string $type = 'submit',
         public bool $novalidate = true,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('action.up'));
         $formId ??= 'move-up-'.Str::random(32);
@@ -47,6 +49,8 @@ class MoveUp extends FormButton
             method: $method,
             type: $type,
             novalidate: $novalidate,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

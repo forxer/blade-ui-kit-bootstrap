@@ -21,6 +21,8 @@ class BackList extends Back
         public bool $disabled = false,
         public ?string $confirm = null,
         public ?string $confirmId = null,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('back.list'));
 
@@ -37,6 +39,8 @@ class BackList extends Back
             disabled: $disabled,
             confirm: $confirm,
             confirmId: $confirmId,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

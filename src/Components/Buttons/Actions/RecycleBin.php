@@ -23,6 +23,8 @@ class RecycleBin extends LinkButton
         public bool $disabled = false,
         public ?string $confirm = null,
         public ?string $confirmId = null,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('misc.recycle_bin'));
 
@@ -44,6 +46,8 @@ class RecycleBin extends LinkButton
             disabled: $disabled,
             confirm: $confirm,
             confirmId: $confirmId,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

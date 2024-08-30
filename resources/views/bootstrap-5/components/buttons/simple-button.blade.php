@@ -15,6 +15,9 @@
     @endif
     @if ($disabled === true) disabled @endif
 >
+    @if ($startContent !== null)
+        {!! $startContent !!}
+    @endif
     @if ($slot->isEmpty())
         @if ($hideText)
             <span class="visually-hidden">
@@ -25,5 +28,8 @@
         @endif
     @else
         {!! $slot !!}
+    @endif
+    @if ($endContent !== null)
+        {!! $endContent !!}
     @endif
 </button>

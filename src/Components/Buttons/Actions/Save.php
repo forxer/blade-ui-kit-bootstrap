@@ -24,6 +24,8 @@ class Save extends SimpleButton
         public bool $disabled = false,
         public string $variant = 'primary',
         public string $type = 'submit',
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('action.save'));
 
@@ -46,6 +48,8 @@ class Save extends SimpleButton
             confirmId: $confirmId,
             formId: $formId,
             type: $type,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

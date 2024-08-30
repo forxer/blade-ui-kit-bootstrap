@@ -15,6 +15,9 @@
         <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
     @endif
 >
+    @if ($startContent !== null)
+        {!! $startContent !!}
+    @endif
     @if ($slot->isEmpty())
         @if ($hideText)
             <span class="visually-hidden">
@@ -25,5 +28,8 @@
         @endif
     @else
         {!! $slot !!}
+    @endif
+    @if ($endContent !== null)
+        {!! $endContent !!}
     @endif
 </a>

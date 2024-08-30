@@ -25,6 +25,8 @@ class Archive extends FormButton
         public string $method = 'PATCH',
         public string $type = 'submit',
         public bool $novalidate = true,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $text ??= Str::ucfirst(trans('action.archive'));
         $formId ??= 'archive-'.Str::random(32);
@@ -45,6 +47,8 @@ class Archive extends FormButton
             method: $method,
             type: $type,
             novalidate: $novalidate,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }

@@ -26,6 +26,8 @@ class Logout extends FormButton
         public string $method = 'POST',
         public string $type = 'submit',
         public bool $novalidate = true,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {
         $action = $action === '' ? route('logout') : $action;
         $text ??= Str::ucfirst(trans('action.logout'));
@@ -48,6 +50,8 @@ class Logout extends FormButton
             method: $method,
             type: $type,
             novalidate: $novalidate,
+            startContent: $startContent,
+            endContent: $endContent,
         );
     }
 }
