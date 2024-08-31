@@ -22,8 +22,11 @@ Form button specific attributes
 
 All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [common button attributes](./buttons.md#common-button-attributes):
 - [Text](./buttons.md#text)
+- [Hide text](./buttons.md#hide-text)
+- [Start and end content](./buttons.md#start-and-end-content)
 - [Variant](./buttons.md#variant)
 - [Outline and no-outline](./buttons.md#outline-and-no-outline)
+- [Sizes](./buttons.md#sizes)
 - [Title](./buttons.md#title)
 - [Confirm](./buttons.md#confirm)
 - [Disabled](./buttons.md#disabled)
