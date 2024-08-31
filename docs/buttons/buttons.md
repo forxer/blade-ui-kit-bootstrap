@@ -16,6 +16,7 @@ Common button attributes
 
 - [Text](#text)
 - [Hide text](#hide-text)
+- [Start and end content](#start-and-end-content)
 - [Variant](#variant)
 - [Outline and no-outline](#outline-and-no-outline)
 - [Sizes](#sizes)
@@ -25,7 +26,7 @@ Common button attributes
 
 ### Text
 
-You can write the content of the button in two different ways: either using the "text" attribute or in the "slot".
+You can write the main text of the button in two different ways: either using the "text" attribute or in the "slot".
 
 ```blade
 <x-btn :text="trans('do_something')" />
@@ -80,6 +81,49 @@ In some cases you may need to do this programmatically by passing a boolean valu
 
 ```blade
 <x-btn text="Do something" :hide-text="$booleanCondition" />
+```
+
+### Start and end content
+
+You can add content to the buttons on either side of the text.
+
+You can do this in two different ways: either by using the "startContent" and/or "endContent" attributes, or by using the "x-slot:start-content" and/or ''x-slot:end-content''.
+
+
+```php
+    $customStart = 'X - ';
+    $customEnd = '?';
+```
+
+```blade
+<x-btn :startContent="$customStart" :endContent="$customEnd" />
+```
+
+This will output the following HTML:
+
+```html
+<button type="button">
+    X - Do something?
+</button>
+```
+
+**Warning:** it's up to YOU to escape the value if you pass untrusted data:
+
+```blade
+<x-btn :startContent="e($customStart)" :endContent="e($customEnd)" />
+```
+
+For more advanced customizations you can use the dedicated “x-slots”:
+
+```blade
+<x-btn>
+    <x-slot:start-content>
+        <span>{{ $customStart }}</span>
+    </x-slot>
+    <x-slot:end-content>
+        <span>{{ $customEnd }}</span>
+    </x-slot>
+</x-btn>
 ```
 
 ### Variant
