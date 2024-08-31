@@ -60,8 +60,7 @@ For more customization you can use the slot:
 </x-btn>
 ```
 
-Hide text
----------
+### Hide text
 
 Visually hide button text but keep them accessible to assistive technologies.
 
