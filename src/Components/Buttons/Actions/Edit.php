@@ -25,6 +25,9 @@ class Edit extends LinkButton
         public ?string $confirmId = null,
         public ?string $startContent = null,
         public ?string $endContent = null,
+        public ?string $icon = null,
+        public ?string $startIcon = null,
+        public ?string $endIcon = null,
     ) {
         $text ??= Str::ucfirst(trans('action.edit'));
 
@@ -48,6 +51,9 @@ class Edit extends LinkButton
             confirmId: $confirmId,
             startContent: $startContent,
             endContent: $endContent,
+            icon: $icon,
+            startIcon: $startIcon,
+            endIcon: $endIcon,
         );
     }
 

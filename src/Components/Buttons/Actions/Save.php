@@ -26,6 +26,9 @@ class Save extends SimpleButton
         public string $type = 'submit',
         public ?string $startContent = null,
         public ?string $endContent = null,
+        public ?string $icon = null,
+        public ?string $startIcon = null,
+        public ?string $endIcon = null,
     ) {
         $text ??= Str::ucfirst(trans('action.save'));
 
@@ -50,6 +53,9 @@ class Save extends SimpleButton
             type: $type,
             startContent: $startContent,
             endContent: $endContent,
+            icon: $icon,
+            startIcon: $startIcon,
+            endIcon: $endIcon,
         );
     }
 
