@@ -127,4 +127,36 @@ return [
     */
 
     'all_buttons_outline' => false,
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Button Icon Formats
+    |--------------------------------------------------------------------------
+    |
+    | These two configuration options allow you to define formats
+    | for PHP's native sprintf() function.
+    |
+    | This is to easily and consistently add icons to buttons.
+    |
+    | For example using Bootstrap Icons (https://icons.getbootstrap.com/).
+    |
+    | With the icon fonts:
+    |
+    |   'btn_start_icon_format' => '<i class="bi bi-%s"></i>',
+    |
+    | Or with the SVG sprite:
+    |
+    |   'btn_start_icon_format' => '<svg class="bi" fill="currentColor"><use xlink:href="bootstrap-icons.svg#%s"/></svg>',
+    |
+    | Want to use FontAwesome (https://fontawesome.com/) instead?
+    | No problem, for example:
+    |
+    |   'btn_start_icon_format' => '<i class="fa-solid fa-%s"></i>',
+    |
+    */
+
+    'btn_start_icon_format' => null,
+
+    'btn_end_icon_format' => null,
 ];

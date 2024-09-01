@@ -12,6 +12,9 @@
     @endif
     @disabled($disabled)
 >
+    @if ($startIcon !== null)
+        {!! $startIcon !!}
+    @endif
     @if ($startContent !== null)
         {!! $startContent !!}
     @endif
@@ -28,6 +31,9 @@
     @endif
     @if ($endContent !== null)
         {!! $endContent !!}
+    @endif
+    @if ($endIcon !== null)
+        {!! $endIcon !!}
     @endif
 </button>
 

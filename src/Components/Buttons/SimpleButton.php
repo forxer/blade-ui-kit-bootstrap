@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BladeUIKitBootstrap\Components\Buttons;
 
 use BladeUIKitBootstrap\Components\BladeComponent;
+use BladeUIKitBootstrap\Concerns\BtnIcons;
 use BladeUIKitBootstrap\Concerns\BtnSize;
 use BladeUIKitBootstrap\Concerns\BtnType;
 use BladeUIKitBootstrap\Concerns\BtnVariant;
@@ -12,6 +13,7 @@ use Illuminate\Support\Str;
 
 class SimpleButton extends BladeComponent
 {
+    use BtnIcons;
     use BtnSize;
     use BtnType;
     use BtnVariant;
@@ -33,6 +35,9 @@ class SimpleButton extends BladeComponent
         public string $type = 'button',
         public ?string $startContent = null,
         public ?string $endContent = null,
+        public ?string $icon = null,
+        public ?string $startIcon = null,
+        public ?string $endIcon = null,
     ) {
         if ($confirm !== null) {
             $this->confirmId = $confirmId ?? Str::random(32);
@@ -41,6 +46,8 @@ class SimpleButton extends BladeComponent
         $this->type = $this->validBtnType($type);
         $this->variant = $this->validBtnVariant($variant, $outline, $noOutline);
         $this->size = $this->validBtnSize($size, $lg, $sm);
+        $this->startIcon = $this->validBtnStartIcon($icon, $startIcon);
+        $this->endIcon = $this->validBtnEndIcon($endIcon);
     }
 
     public function viewName(): string

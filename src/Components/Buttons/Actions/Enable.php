@@ -28,6 +28,9 @@ class Enable extends FormButton
         public bool $novalidate = true,
         public ?string $startContent = null,
         public ?string $endContent = null,
+        public ?string $icon = null,
+        public ?string $startIcon = null,
+        public ?string $endIcon = null,
     ) {
         $text ??= Str::ucfirst(trans('action.enable'));
         $formId ??= 'enable-'.Str::random(32);
@@ -51,6 +54,9 @@ class Enable extends FormButton
             novalidate: $novalidate,
             startContent: $startContent,
             endContent: $endContent,
+            icon: $icon,
+            startIcon: $startIcon,
+            endIcon: $endIcon,
         );
     }
 

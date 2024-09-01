@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.15.0 (2024-09-01)
+-------------------
+
+- Added `$icon`, `$startIcon` and `$endIcon` properties to button components
+
+
 0.14.5 (2024-08-31)
 -------------------
 

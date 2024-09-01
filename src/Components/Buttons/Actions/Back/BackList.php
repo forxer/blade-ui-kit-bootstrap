@@ -23,6 +23,9 @@ class BackList extends Back
         public ?string $confirmId = null,
         public ?string $startContent = null,
         public ?string $endContent = null,
+        public ?string $icon = null,
+        public ?string $startIcon = null,
+        public ?string $endIcon = null,
     ) {
         $text ??= Str::ucfirst(trans('back.list'));
 
@@ -41,6 +44,9 @@ class BackList extends Back
             confirmId: $confirmId,
             startContent: $startContent,
             endContent: $endContent,
+            icon: $icon,
+            startIcon: $startIcon,
+            endIcon: $endIcon,
         );
     }
 
