@@ -38,7 +38,7 @@
 </button>
 
 @push('blade-ui-kit-bs-html')
-    <form id="{{ $formId }}" method="{!! $formMethodValue() !!}" action="{{ $action }}" @if ($novalidate === true) novalidate="true" @endif>
+    <form id="{{ $formId }}" method="{!! $formMethodValue() !!}" action="{{ $url }}" @if ($novalidate === true) novalidate="true" @endif>
         @csrf
         @method($method)
     </form>

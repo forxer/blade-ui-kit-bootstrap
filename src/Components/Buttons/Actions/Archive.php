@@ -9,53 +9,18 @@ use Illuminate\Support\Str;
 
 class Archive extends FormButton
 {
-    public function __construct(
-        public string $action,
-        public ?string $text = null,
-        public ?string $title = null,
-        public string $variant = 'danger',
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public bool $disabled = false,
-        public ?string $confirm = null,
-        public ?string $formId = null,
-        public string $method = 'PATCH',
-        public string $type = 'submit',
-        public bool $novalidate = true,
-        public ?string $startContent = null,
-        public ?string $endContent = null,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-        public ?string $endIcon = null,
-    ) {
-        $text ??= Str::ucfirst(trans('action.archive'));
-        $formId ??= 'archive-'.Str::random(32);
+    protected function initAttributes(): void
+    {
+        $this->method = 'PATCH';
+        $this->variant = 'danger';
 
-        parent::__construct(
-            action: $action,
-            text: $text,
-            title: $title,
-            variant: $variant,
-            outline: $outline,
-            noOutline: $noOutline,
-            size: $size,
-            lg: $lg,
-            sm: $sm,
-            disabled: $disabled,
-            confirm: $confirm,
-            formId: $formId,
-            method: $method,
-            type: $type,
-            novalidate: $novalidate,
-            startContent: $startContent,
-            endContent: $endContent,
-            icon: $icon,
-            startIcon: $startIcon,
-            endIcon: $endIcon,
-        );
+        if ($this->text === null) {
+            $this->text = Str::ucfirst(trans('action.archive'));
+        }
+
+        if ($this->formId === null) {
+            $this->formId = 'archive-'.Str::random(32);
+        }
     }
 
     public function viewName(): string

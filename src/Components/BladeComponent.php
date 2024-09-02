@@ -41,4 +41,14 @@ abstract class BladeComponent extends IlluminateComponent
 
         return $config[$key];
     }
+
+    protected function initAttributes(): void
+    {
+        //
+    }
+
+    protected function onConstructing(): void
+    {
+        //
+    }
 }

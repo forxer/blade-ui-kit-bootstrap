@@ -14,18 +14,16 @@ trait BtnType
         'submit',
     ];
 
-    private function validBtnType(string $type): string
+    private function validBtnType(): void
     {
-        $type = strtolower(trim($type));
+        $this->type = strtolower(trim($this->type));
 
-        if (! \in_array($type, self::ALLOWED_BUTTON_TYPE)) {
+        if (! \in_array($this->type, self::ALLOWED_BUTTON_TYPE)) {
             throw new InvalidArgumentException(\sprintf(
                 'The button type "%s" is not allowed. Allowed type are: %s.',
-                e($type),
+                e($this->type),
                 implode(', ', self::ALLOWED_BUTTON_TYPE)
             ));
         }
-
-        return $type;
     }
 }

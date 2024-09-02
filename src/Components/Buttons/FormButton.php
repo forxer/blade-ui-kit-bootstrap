@@ -21,7 +21,7 @@ class FormButton extends BladeComponent
     use FormMethod;
 
     public function __construct(
-        public string $action,
+        public string $url,
         public ?string $text = null,
         public bool $hideText = false,
         public ?string $title = null,
@@ -43,13 +43,19 @@ class FormButton extends BladeComponent
         public ?string $startIcon = null,
         public ?string $endIcon = null,
     ) {
-        $this->formId = $formId ?? 'form-button-'.Str::random(32);
-        $this->method = $this->validFormMethod($method);
-        $this->type = $this->validBtnType($type);
-        $this->variant = $this->validBtnVariant($variant, $outline, $noOutline);
-        $this->size = $this->validBtnSize($size, $lg, $sm);
-        $this->startIcon = $this->validBtnStartIcon($icon, $startIcon);
-        $this->endIcon = $this->validBtnEndIcon($endIcon);
+        $this->initAttributes();
+        $this->onConstructing();
+
+        if ($this->formId === null) {
+            $this->formId = 'form-button-'.Str::random(32);
+        }
+
+        $this->validFormMethod();
+        $this->validBtnType();
+        $this->validBtnVariant();
+        $this->validBtnSize();
+        $this->validBtnStartIcon();
+        $this->validBtnEndIcon();
     }
 
     public function viewName(): string
