@@ -8,46 +8,13 @@ use Illuminate\Support\Str;
 
 class BackHome extends Back
 {
-    public function __construct(
-        public string $action,
-        public ?string $text = null,
-        public ?string $title = null,
-        public string $variant = 'primary',
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public bool $disabled = false,
-        public ?string $confirm = null,
-        public ?string $confirmId = null,
-        public ?string $startContent = null,
-        public ?string $endContent = null,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-        public ?string $endIcon = null,
-    ) {
-        $text ??= Str::ucfirst(trans('back.home'));
+    protected function initAttributes(): void
+    {
+        $this->variant = 'primary';
 
-        parent::__construct(
-            action: $action,
-            text: $text,
-            title: $title,
-            variant: $variant,
-            outline: $outline,
-            noOutline: $noOutline,
-            size: $size,
-            lg: $lg,
-            sm: $sm,
-            disabled: $disabled,
-            confirm: $confirm,
-            confirmId: $confirmId,
-            startContent: $startContent,
-            endContent: $endContent,
-            icon: $icon,
-            startIcon: $startIcon,
-            endIcon: $endIcon,
-        );
+        if ($this->text === null) {
+            $this->text = Str::ucfirst(trans('back.home'));
+        }
     }
 
     public function viewName(): string
