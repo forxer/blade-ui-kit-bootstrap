@@ -12,15 +12,11 @@ class Restore extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
-        $this->variant = 'warning';
+        $this->variant ??= 'warning';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.restore'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.restore'));
 
-        if ($this->formId === null) {
-            $this->formId = 'restore-'.Str::random(32);
-        }
+        $this->formId ??= 'restore-'.Str::random(32);
     }
 
     public function viewName(): string

@@ -10,7 +10,7 @@ class BackList extends Back
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'secondary';
+        $this->variant ??= 'secondary';
 
         $this->text ??= Str::ucfirst(trans('back.list'));
     }

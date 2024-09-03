@@ -11,11 +11,9 @@ class Show extends LinkButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'info';
+        $this->variant ??= 'info';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.show'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.show'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'show-'.Str::random(32);

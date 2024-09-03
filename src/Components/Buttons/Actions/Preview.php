@@ -11,11 +11,9 @@ class Preview extends LinkButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'info';
+        $this->variant ??= 'info';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.preview'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.preview'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'show-'.Str::random(32);

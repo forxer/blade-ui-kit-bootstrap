@@ -11,11 +11,9 @@ class RecycleBin extends LinkButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'secondary';
+        $this->variant ??= 'secondary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('misc.recycle_bin'));
-        }
+        $this->text ??= Str::ucfirst(trans('misc.recycle_bin'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'recycle-bin-'.Str::random(32);

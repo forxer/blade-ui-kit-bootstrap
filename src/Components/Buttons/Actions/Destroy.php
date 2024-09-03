@@ -12,15 +12,11 @@ class Destroy extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'DELETE';
-        $this->variant = 'danger';
+        $this->variant ??= 'danger';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.delete'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.delete'));
 
-        if ($this->formId === null) {
-            $this->formId = 'destroy-'.Str::random(32);
-        }
+        $this->formId ??= 'destroy-'.Str::random(32);
     }
 
     public function viewName(): string

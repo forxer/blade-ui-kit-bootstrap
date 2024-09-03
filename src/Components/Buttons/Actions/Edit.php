@@ -11,11 +11,9 @@ class Edit extends LinkButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'primary';
+        $this->variant ??= 'primary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.edit'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.edit'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'edit-'.Str::random(32);

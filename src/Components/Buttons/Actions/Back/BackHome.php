@@ -10,7 +10,7 @@ class BackHome extends Back
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'primary';
+        $this->variant ??= 'primary';
 
         $this->text ??= Str::ucfirst(trans('back.home'));
     }

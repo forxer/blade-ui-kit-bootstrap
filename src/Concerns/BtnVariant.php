@@ -9,6 +9,8 @@ use InvalidArgumentException;
 
 trait BtnVariant
 {
+    private const DEFAULT_VARIANT = 'primary';
+
     private const ALLOWED_BS4_VARIANTS = [
         'primary',
         'secondary',
@@ -44,6 +46,8 @@ trait BtnVariant
     private function validBtnVariant(): void
     {
         static $allButtonsOutline = null;
+
+        $this->variant ??= self::DEFAULT_VARIANT;
 
         $allowedVariants = self::ALLOWED_BS4_VARIANTS;
 

@@ -12,15 +12,11 @@ class Archive extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
-        $this->variant = 'danger';
+        $this->variant ??= 'danger';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.archive'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.archive'));
 
-        if ($this->formId === null) {
-            $this->formId = 'archive-'.Str::random(32);
-        }
+        $this->formId ??= 'archive-'.Str::random(32);
     }
 
     public function viewName(): string

@@ -12,15 +12,11 @@ class Disabled extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
-        $this->variant = 'warning';
+        $this->variant ??= 'warning';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('status.disabled'));
-        }
+        $this->text ??= Str::ucfirst(trans('status.disabled'));
 
-        if ($this->formId === null) {
-            $this->formId = 'enable-'.Str::random(32);
-        }
+        $this->formId ??= 'enable-'.Str::random(32);
     }
 
     public function viewName(): string

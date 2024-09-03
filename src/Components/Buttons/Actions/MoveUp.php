@@ -12,15 +12,11 @@ class MoveUp extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
-        $this->variant = 'secondary';
+        $this->variant ??= 'secondary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.up'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.up'));
 
-        if ($this->formId === null) {
-            $this->formId = 'move-up-'.Str::random(32);
-        }
+        $this->formId ??= 'move-up-'.Str::random(32);
     }
 
     public function viewName(): string

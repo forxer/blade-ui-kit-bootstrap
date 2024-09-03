@@ -12,15 +12,11 @@ class Logout extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'POST';
-        $this->variant = 'secondary';
+        $this->variant ??= 'secondary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.logout'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.logout'));
 
-        if ($this->formId === null) {
-            $this->formId = 'logout-'.Str::random(32);
-        }
+        $this->formId ??= 'logout-'.Str::random(32);
     }
 
     public function viewName(): string

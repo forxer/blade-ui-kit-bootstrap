@@ -11,11 +11,9 @@ class Archives extends LinkButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'secondary';
+        $this->variant ??= 'secondary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('misc.archives'));
-        }
+        $this->text ??= Str::ucfirst(trans('misc.archives'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'archives-'.Str::random(32);

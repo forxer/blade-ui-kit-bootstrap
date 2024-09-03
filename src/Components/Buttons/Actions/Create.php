@@ -11,11 +11,9 @@ class Create extends LinkButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'primary';
+        $this->variant ??= 'primary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.add'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.add'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'create-'.Str::random(32);

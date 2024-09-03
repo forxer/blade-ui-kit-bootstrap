@@ -22,7 +22,7 @@ class SimpleButton extends BladeComponent
         public ?string $text = null,
         public bool $hideText = false,
         public ?string $title = null,
-        public string $variant = 'primary',
+        public ?string $variant = null,
         public bool $outline = false,
         public bool $noOutline = false,
         public ?string $size = null,

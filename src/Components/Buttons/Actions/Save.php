@@ -11,11 +11,9 @@ class Save extends SimpleButton
 {
     protected function initAttributes(): void
     {
-        $this->variant = 'primary';
+        $this->variant ??= 'primary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('action.save'));
-        }
+        $this->text ??= Str::ucfirst(trans('action.save'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'save-'.Str::random(32);
