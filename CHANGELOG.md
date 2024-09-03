@@ -4,6 +4,7 @@ CHANGELOG
 0.16.0 (2024-09-03)
 -------------------
 
+- Introduced `initAttributes()` and `onConstructing()` methods
 - Renamed `action` attribute to `url` for "FormButton" component
 - Renamed `action` attribute to `url` for every "Action buttons" components
 
