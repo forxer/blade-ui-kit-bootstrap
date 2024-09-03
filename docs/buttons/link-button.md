@@ -24,6 +24,7 @@ All attributes set on the component are piped through on the button element. Als
 - [Text](./buttons.md#text)
 - [Hide text](./buttons.md#hide-text)
 - [Start and end content](./buttons.md#start-and-end-content)
+- [Icons](./buttons.md#icons)
 - [Variant](./buttons.md#variant)
 - [Outline and no-outline](./buttons.md#outline-and-no-outline)
 - [Sizes](./buttons.md#sizes)
