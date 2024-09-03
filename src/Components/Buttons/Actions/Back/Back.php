@@ -13,9 +13,7 @@ class Back extends LinkButton
     {
         $this->variant = 'secondary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('back.simple'));
-        }
+        $this->text ??= Str::ucfirst(trans('back.simple'));
 
         if ($this->confirm !== null && $this->confirmId === null) {
             $this->confirmId = 'back-'.Str::random(32);

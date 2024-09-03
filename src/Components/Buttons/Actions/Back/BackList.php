@@ -12,9 +12,7 @@ class BackList extends Back
     {
         $this->variant = 'secondary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('back.list'));
-        }
+        $this->text ??= Str::ucfirst(trans('back.list'));
     }
 
     public function viewName(): string

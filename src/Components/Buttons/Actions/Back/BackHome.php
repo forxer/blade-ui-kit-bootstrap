@@ -12,9 +12,7 @@ class BackHome extends Back
     {
         $this->variant = 'primary';
 
-        if ($this->text === null) {
-            $this->text = Str::ucfirst(trans('back.home'));
-        }
+        $this->text ??= Str::ucfirst(trans('back.home'));
     }
 
     public function viewName(): string
