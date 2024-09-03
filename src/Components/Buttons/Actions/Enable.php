@@ -12,7 +12,7 @@ class Enable extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
-        $this->variant ??= 'warning';
+        $this->variant ??= 'success';
 
         $this->text ??= Str::ucfirst(trans('action.enable'));
 
