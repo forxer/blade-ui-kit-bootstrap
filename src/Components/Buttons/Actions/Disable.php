@@ -12,7 +12,7 @@ class Disable extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
-        $this->variant ??= 'success';
+        $this->variant ??= 'warning';
 
         $this->text ??= Str::ucfirst(trans('action.disable'));
 
