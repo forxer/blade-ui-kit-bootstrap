@@ -8,6 +8,8 @@ use InvalidArgumentException;
 
 trait FormMethod
 {
+    private const DEFAULT_FORM_METHOD = 'POST';
+
     private const ALLOWED_FORM_METHOD = [
         'GET',
         'POST',
@@ -23,6 +25,8 @@ trait FormMethod
 
     private function validFormMethod(): void
     {
+        $this->method ??= self::DEFAULT_FORM_METHOD;
+
         $this->method = strtoupper(trim($this->method));
 
         if (! \in_array($this->method, self::ALLOWED_FORM_METHOD)) {

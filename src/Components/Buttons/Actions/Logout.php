@@ -11,7 +11,7 @@ class Logout extends FormButton
 {
     protected function initAttributes(): void
     {
-        $this->method = 'POST';
+        $this->method ??= 'POST';
         $this->variant = 'secondary';
 
         if ($this->text === null) {

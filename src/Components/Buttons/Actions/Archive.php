@@ -11,7 +11,7 @@ class Archive extends FormButton
 {
     protected function initAttributes(): void
     {
-        $this->method = 'PATCH';
+        $this->method ??= 'PATCH';
         $this->variant = 'danger';
 
         if ($this->text === null) {

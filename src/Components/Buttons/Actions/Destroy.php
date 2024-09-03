@@ -11,7 +11,7 @@ class Destroy extends FormButton
 {
     protected function initAttributes(): void
     {
-        $this->method = 'DELETE';
+        $this->method ??= 'DELETE';
         $this->variant = 'danger';
 
         if ($this->text === null) {

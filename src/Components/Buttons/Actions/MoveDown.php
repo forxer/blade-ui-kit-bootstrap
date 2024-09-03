@@ -11,7 +11,7 @@ class MoveDown extends FormButton
 {
     protected function initAttributes(): void
     {
-        $this->method = 'PATCH';
+        $this->method ??= 'PATCH';
         $this->variant = 'secondary';
 
         if ($this->text === null) {

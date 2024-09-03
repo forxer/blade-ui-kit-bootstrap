@@ -11,7 +11,7 @@ class Enabled extends FormButton
 {
     protected function initAttributes(): void
     {
-        $this->method = 'PATCH';
+        $this->method ??= 'PATCH';
         $this->variant = 'success';
 
         if ($this->text === null) {
