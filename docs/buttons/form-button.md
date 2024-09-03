@@ -11,10 +11,10 @@ Basic usage
 -----------
 
 ```blade
-    <x-form-button :action="route('do-something')" text="Do something" />
+    <x-form-button :url="route('do-something')" text="Do something" />
 ```
 
-The `action` attribute is mandatory.
+The `url` attribute is required. It represents the URL passed to the form's `action` attribute.
 
 This will output the following HTML:
 
@@ -38,6 +38,7 @@ All attributes set on the component are piped through on the button element. Als
 - [Text](./buttons.md#text)
 - [Hide text](./buttons.md#hide-text)
 - [Start and end content](./buttons.md#start-and-end-content)
+- [Icons](./buttons.md#icons)
 - [Variant](./buttons.md#variant)
 - [Outline and no-outline](./buttons.md#outline-and-no-outline)
 - [Sizes](./buttons.md#sizes)

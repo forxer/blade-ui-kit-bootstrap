@@ -1,6 +1,48 @@
 Upgrade
 =======
 
+From 0.15.x to 0.16.x
+---------------------
+
+The `action` FormButton attribute have been renamed to `url`.
+
+So you need to replace `:action="` with `:url="` for :
+
+- `<x-form-button />`
+- `<x-btn-create />`
+- `<x-btn-edit />`
+- `<x-btn-archive />`
+- `<x-btn-delete />`
+- `<x-btn-restore />`
+- `<x-btn-destroy />`
+- `<x-btn-show />`
+- `<x-btn-preview />`
+- `<x-btn-move-up />`
+- `<x-btn-move-down />`
+- `<x-btn-enable />`
+- `<x-btn-disable />`
+- `<x-btn-enabled />`
+- `<x-btn-disabled />`
+- `<x-btn-back />`
+- `<x-btn-back-list />`
+- `<x-btn-back-home />`
+- `<x-btn-logout />`
+- `<x-btn-archives />`
+- `<x-btn-recycle-bin />`
+
+
+From 0.14.x to 0.15.x
+---------------------
+
+With the addition of `icon`, `startIcon` and `endIcon` properties on the button components, the class constructor signature of these components has changed. If you have extended these classes you must modify them accordingly.
+
+
+From 0.13.x to 0.14.x
+---------------------
+
+With the addition of `startContent` and `endContent` properties on the button components, the class constructor signature of these components has changed. If you have extended these classes you must modify them accordingly.
+
+
 From 0.11.x to 0.12.x
 ---------------------
 

@@ -9,54 +9,15 @@ use Illuminate\Support\Str;
 
 class Save extends SimpleButton
 {
-    public function __construct(
-        public ?string $text = null,
-        public bool $hideText = false,
-        public ?string $title = null,
-        public ?string $formId = null,
-        public ?string $confirm = null,
-        public ?string $confirmId = null,
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public bool $disabled = false,
-        public string $variant = 'primary',
-        public string $type = 'submit',
-        public ?string $startContent = null,
-        public ?string $endContent = null,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-        public ?string $endIcon = null,
-    ) {
-        $text ??= Str::ucfirst(trans('action.save'));
+    protected function initAttributes(): void
+    {
+        $this->variant ??= 'primary';
 
-        if ($confirm !== null) {
-            $confirmId ??= 'save-'.Str::random(32);
+        $this->text ??= Str::ucfirst(trans('action.save'));
+
+        if ($this->confirm !== null && $this->confirmId === null) {
+            $this->confirmId = 'save-'.Str::random(32);
         }
-
-        parent::__construct(
-            text: $text,
-            hideText: $hideText,
-            title: $title,
-            variant: $variant,
-            outline: $outline,
-            noOutline: $noOutline,
-            size: $size,
-            lg: $lg,
-            sm: $sm,
-            disabled: $disabled,
-            confirm: $confirm,
-            confirmId: $confirmId,
-            formId: $formId,
-            type: $type,
-            startContent: $startContent,
-            endContent: $endContent,
-            icon: $icon,
-            startIcon: $startIcon,
-            endIcon: $endIcon,
-        );
     }
 
     public function viewName(): string

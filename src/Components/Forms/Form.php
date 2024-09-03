@@ -17,9 +17,11 @@ class Form extends BladeComponent
         public string $method = 'POST',
         public ?bool $novalidate = null,
     ) {
-        $this->method = $this->validFormMethod($method);
+        $this->validFormMethod();
 
-        $this->novalidate = $novalidate ?? $this->config('all_forms_with_novalidate');
+        if ($this->novalidate === null) {
+            $this->novalidate = $this->config('all_forms_with_novalidate');
+        }
     }
 
     public function viewName(): string

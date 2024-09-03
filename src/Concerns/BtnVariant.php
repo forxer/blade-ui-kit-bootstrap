@@ -9,6 +9,8 @@ use InvalidArgumentException;
 
 trait BtnVariant
 {
+    private const DEFAULT_VARIANT = 'primary';
+
     private const ALLOWED_BS4_VARIANTS = [
         'primary',
         'secondary',
@@ -41,9 +43,11 @@ trait BtnVariant
         'outline-dark',
     ];
 
-    private function validBtnVariant(string $variant, bool $outline, bool $noOutline): string
+    private function validBtnVariant(): void
     {
         static $allButtonsOutline = null;
+
+        $this->variant ??= self::DEFAULT_VARIANT;
 
         $allowedVariants = self::ALLOWED_BS4_VARIANTS;
 
@@ -54,19 +58,17 @@ trait BtnVariant
                 $allButtonsOutline = $this->config('all_buttons_outline');
             }
 
-            if ($noOutline === false && ($allButtonsOutline === true || $outline)) {
-                $variant = 'outline-'.$variant;
+            if ($this->noOutline === false && ($allButtonsOutline === true || $this->outline)) {
+                $this->variant = 'outline-'.$this->variant;
             }
         }
 
-        if (! \in_array($variant, $allowedVariants)) {
+        if (! \in_array($this->variant, $allowedVariants)) {
             throw new InvalidArgumentException(\sprintf(
                 'The variant "%s" is not allowed. Allowed variant are: %s.',
-                e($variant),
+                e($this->variant),
                 implode(', ', $allowedVariants)
             ));
         }
-
-        return $variant;
     }
 }

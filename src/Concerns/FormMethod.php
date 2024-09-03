@@ -8,6 +8,8 @@ use InvalidArgumentException;
 
 trait FormMethod
 {
+    private const DEFAULT_FORM_METHOD = 'POST';
+
     private const ALLOWED_FORM_METHOD = [
         'GET',
         'POST',
@@ -21,18 +23,18 @@ trait FormMethod
         return \in_array($this->method, ['POST', 'PUT', 'PATCH', 'DELETE']) ? 'POST' : 'GET';
     }
 
-    private function validFormMethod(string $method): string
+    private function validFormMethod(): void
     {
-        $method = strtoupper(trim($method));
+        $this->method ??= self::DEFAULT_FORM_METHOD;
 
-        if (! \in_array($method, self::ALLOWED_FORM_METHOD)) {
+        $this->method = strtoupper(trim($this->method));
+
+        if (! \in_array($this->method, self::ALLOWED_FORM_METHOD)) {
             throw new InvalidArgumentException(\sprintf(
                 'The HTTP method "%s" is not allowed. Allowed method are: %s.',
-                e($method),
+                e($this->method),
                 implode(', ', self::ALLOWED_FORM_METHOD)
             ));
         }
-
-        return $method;
     }
 }

@@ -21,7 +21,7 @@ class LinkButton extends BladeComponent
         public ?string $text = null,
         public bool $hideText = false,
         public ?string $title = null,
-        public string $variant = 'primary',
+        public ?string $variant = null,
         public bool $outline = false,
         public bool $noOutline = false,
         public ?string $size = null,
@@ -36,14 +36,17 @@ class LinkButton extends BladeComponent
         public ?string $startIcon = null,
         public ?string $endIcon = null,
     ) {
-        if ($confirm !== null) {
-            $this->confirmId = $confirmId ?? Str::random(32);
+        $this->initAttributes();
+        $this->onConstructing();
+
+        if ($this->confirm !== null && $this->confirmId === null) {
+            $this->confirmId = Str::random(32);
         }
 
-        $this->variant = $this->validBtnVariant($variant, $outline, $noOutline);
-        $this->size = $this->validBtnSize($size, $lg, $sm);
-        $this->startIcon = $this->validBtnStartIcon($icon, $startIcon);
-        $this->endIcon = $this->validBtnEndIcon($endIcon);
+        $this->validBtnVariant();
+        $this->validBtnSize();
+        $this->validBtnStartIcon();
+        $this->validBtnEndIcon();
     }
 
     public function viewName(): string
