@@ -12,6 +12,7 @@ class Logout extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'POST';
+
         $this->variant ??= 'secondary';
 
         $this->text ??= Str::ucfirst(trans('action.logout'));

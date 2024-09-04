@@ -12,6 +12,7 @@ class Delete extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
+
         $this->variant ??= 'danger';
 
         $this->text ??= Str::ucfirst(trans('action.delete'));
