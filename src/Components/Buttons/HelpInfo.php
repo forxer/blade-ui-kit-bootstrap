@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladeUIKitBootstrap\Components\Buttons\Actions;
+namespace BladeUIKitBootstrap\Components\Buttons;
 
 use BladeUIKitBootstrap\Components\BladeComponent;
 use BladeUIKitBootstrap\Concerns\BtnIcons;
