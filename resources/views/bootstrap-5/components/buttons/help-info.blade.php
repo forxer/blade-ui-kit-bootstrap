@@ -10,7 +10,8 @@
     @if ($title !== null)
         data-bs-title="{!! $title !!}"
     @endif
-    data-bs-content="{!! $content !!}">
+    data-bs-content="{!! $content !!}"
+>
     @if ($startIcon !== null)
         {!! $startIcon !!}
     @endif

@@ -17,7 +17,7 @@ This will output the following HTML:
 </a>
 ```
 
-Form button specific attributes
+Link button specific attributes
 -------------------------------
 
 All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [common button attributes](./buttons.md#common-button-attributes):

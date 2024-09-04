@@ -10,6 +10,7 @@ A set of button components. There are basic components and components that exten
 - [Form button](./form-button.md)
 - [Link button](./link-button.md)
 - [Action Buttons](./action-buttons.md)
+- [Help info button](./help-info-button.md)
 
 Common button attributes
 ------------------------

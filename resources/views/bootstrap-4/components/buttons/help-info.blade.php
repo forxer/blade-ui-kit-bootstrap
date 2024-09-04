@@ -10,7 +10,8 @@
     @if ($title !== null)
         title="{!! $title !!}"
     @endif
-    data-content="{!! $content !!}">
+    data-content="{!! $content !!}"
+>
     @if ($startIcon !== null)
         {!! $startIcon !!}
     @endif
