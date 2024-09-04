@@ -12,6 +12,7 @@ class MoveDown extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'PATCH';
+
         $this->variant ??= 'secondary';
 
         $this->text ??= Str::ucfirst(trans('action.down'));

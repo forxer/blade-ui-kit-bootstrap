@@ -12,6 +12,7 @@ class Destroy extends FormButton
     protected function initAttributes(): void
     {
         $this->method ??= 'DELETE';
+
         $this->variant ??= 'danger';
 
         $this->text ??= Str::ucfirst(trans('action.delete'));
