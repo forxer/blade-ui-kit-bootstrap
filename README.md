@@ -64,6 +64,7 @@ Index
     - [Form button](./docs/buttons/form-button.md)
     - [Link button](./docs/buttons/link-button.md)
     - [Action Buttons](./docs/buttons/action-buttons.md)
+    - [Help info button](./docs/buttons/help-info-button.md)
 - [Forms](./docs/forms.md)
     - [Form](./docs/forms.md#form)
     - [Label](./docs/forms.md#label)

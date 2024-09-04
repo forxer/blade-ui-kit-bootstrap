@@ -1,6 +1,18 @@
 Upgrade
 =======
 
+From 0.16.x to 0.17.x
+---------------------
+
+With the addition of the `Help info button` component, if you have published the configuration file and want to use it, you need to add it to this file.
+
+```php
+    'components' => [
+        // Buttons ...
+        'help-info' => Buttons\HelpInfo::class,
+```
+
+
 From 0.15.x to 0.16.x
 ---------------------
 

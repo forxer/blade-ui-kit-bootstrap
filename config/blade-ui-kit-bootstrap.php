@@ -25,6 +25,7 @@ return [
         'btn' => Buttons\SimpleButton::class,
         'form-button' => Buttons\FormButton::class,
         'link-button' => Buttons\LinkButton::class,
+        'help-info' => Buttons\HelpInfo::class,
 
         // Actions buttons
         'btn-back' => Actions\Back\Back::class,
