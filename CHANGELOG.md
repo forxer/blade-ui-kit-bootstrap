@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.17.2 (2024-09-05)
+-------------------
+
+- Set default button type and let user define one
+
+
 0.17.1 (2024-09-04)
 -------------------
 

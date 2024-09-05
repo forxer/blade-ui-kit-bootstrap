@@ -129,7 +129,6 @@ return [
 
     'all_buttons_outline' => false,
 
-
     /*
     |--------------------------------------------------------------------------
     | Button Icon Formats

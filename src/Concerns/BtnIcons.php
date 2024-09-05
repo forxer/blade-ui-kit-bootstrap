@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Concerns;
 
-use LogicException ;
+use LogicException;
 
 trait BtnIcons
 {
@@ -27,7 +27,7 @@ trait BtnIcons
             throw new LogicException('In order to use the "icon" and/or "start-icon" attributes you must have previously defined a "btn_start_icon_format" format in the configuration file.');
         }
 
-        $this->startIcon = sprintf($btnStartIconFormat, $this->startIcon);
+        $this->startIcon = \sprintf($btnStartIconFormat, $this->startIcon);
     }
 
     /**
@@ -45,6 +45,6 @@ trait BtnIcons
             throw new LogicException('In order to use the "end-icon" attribute you must have previously defined a "btn_end_icon_format" format in the configuration file.');
         }
 
-        $this->endIcon = sprintf($btnEndIconFormat, $this->endIcon);
+        $this->endIcon = \sprintf($btnEndIconFormat, $this->endIcon);
     }
 }

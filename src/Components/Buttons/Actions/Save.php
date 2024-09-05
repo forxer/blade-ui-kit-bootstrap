@@ -11,7 +11,7 @@ class Save extends SimpleButton
 {
     protected function initAttributes(): void
     {
-        $this->type = 'submit';
+        $this->type ??= 'submit';
 
         $this->variant ??= 'primary';
 
