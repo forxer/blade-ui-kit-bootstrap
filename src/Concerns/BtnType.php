@@ -8,14 +8,20 @@ use InvalidArgumentException;
 
 trait BtnType
 {
+    private const DEFAULT_BUTTON_TYPE = 'button';
+
+    private const DEFAULT_FORM_BUTTON_TYPE = 'submit';
+
     private const ALLOWED_BUTTON_TYPE = [
         'button',
         'reset',
         'submit',
     ];
 
-    private function validBtnType(): void
+    private function validBtnType(string $default): void
     {
+        $this->type ??= self::DEFAULT_BUTTON_TYPE;
+
         $this->type = strtolower(trim($this->type));
 
         if (! \in_array($this->type, self::ALLOWED_BUTTON_TYPE)) {

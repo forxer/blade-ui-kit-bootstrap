@@ -35,7 +35,7 @@ class FormButton extends BladeComponent
         public ?string $confirm = null,
         public ?string $formId = null,
         public ?string $method = null,
-        public string $type = 'submit',
+        public ?string $type = 'submit',
         public bool $novalidate = true,
         public ?string $startContent = null,
         public ?string $endContent = null,
@@ -49,7 +49,7 @@ class FormButton extends BladeComponent
         $this->formId ??= 'form-button-'.Str::random(32);
 
         $this->validFormMethod();
-        $this->validBtnType();
+        $this->validBtnType(self::DEFAULT_FORM_BUTTON_TYPE);
         $this->validBtnVariant();
         $this->validBtnSize();
         $this->validBtnStartIcon();

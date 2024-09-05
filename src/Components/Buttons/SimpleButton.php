@@ -32,7 +32,7 @@ class SimpleButton extends BladeComponent
         public ?string $confirm = null,
         public ?string $confirmId = null,
         public ?string $formId = null,
-        public string $type = 'button',
+        public ?string $type = null,
         public ?string $startContent = null,
         public ?string $endContent = null,
         public ?string $icon = null,
@@ -46,7 +46,7 @@ class SimpleButton extends BladeComponent
             $this->confirmId = Str::random(32);
         }
 
-        $this->validBtnType();
+        $this->validBtnType(self::DEFAULT_BUTTON_TYPE);
         $this->validBtnVariant();
         $this->validBtnSize();
         $this->validBtnStartIcon();
