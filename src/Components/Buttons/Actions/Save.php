@@ -13,7 +13,7 @@ class Save extends SimpleButton
     {
         $this->type ??= 'submit';
 
-        $this->variant ??= 'primary';
+        $this->variant ??= 'success';
 
         $this->text ??= Str::ucfirst(trans('action.save'));
 
