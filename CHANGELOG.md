@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.18.0
+-------------------
+
+- The "confirm modal" attributes have been renamed from `data-bs-*` to `data-buk-*`
+- Systematically add a prefix to "action buttons" components
+
+
 0.17.3 (2024-09-12)
 -------------------
 

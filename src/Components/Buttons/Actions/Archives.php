@@ -15,8 +15,8 @@ class Archives extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('misc.archives'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'archives-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'archives-'.($this->confirmId ?? Str::random(32));
         }
     }
 

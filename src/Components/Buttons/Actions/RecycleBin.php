@@ -15,8 +15,8 @@ class RecycleBin extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('misc.recycle_bin'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'recycle-bin-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'recycle-bin-'.($this->confirmId ?? Str::random(32));
         }
     }
 

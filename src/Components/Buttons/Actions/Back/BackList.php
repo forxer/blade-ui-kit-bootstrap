@@ -15,8 +15,8 @@ class BackList extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('back.list'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'back-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'back-list-'.($this->confirmId ?? Str::random(32));
         }
     }
 

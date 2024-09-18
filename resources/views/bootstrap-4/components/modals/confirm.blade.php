@@ -24,7 +24,7 @@
                     </div>
                 @else
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-confirm-trigger="yes">{!! trans('blade-ui-kit-bootstrap::modal.yes') !!}</button>
+                        <button type="button" class="btn btn-danger" data-buk-confirm-trigger="yes">{!! trans('blade-ui-kit-bootstrap::modal.yes') !!}</button>
                         <button type="button" class="btn btn-success" data-dismiss="modal">{!! trans('blade-ui-kit-bootstrap::modal.no') !!}</button>
                     </div>
                 @endif
@@ -44,13 +44,13 @@
 
                         event.preventDefault(element.dataset);
 
-                        let confirmModal = document.getElementById(element.dataset.bsConfirmModal);
+                        let confirmModal = document.getElementById(element.dataset.bukConfirmModal);
 
-                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.bsConfirm+'</p>';
+                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.bukConfirm+'</p>';
 
                         $(confirmModal).modal().show();
 
-                        confirmModal.querySelector('[data-confirm-trigger="yes"]').addEventListener('click', () => {
+                        confirmModal.querySelector('[data-buk-confirm-trigger="yes"]').addEventListener('click', () => {
                             element.dataset.confirmed = 1;
                             element.click();
                         });
@@ -59,7 +59,7 @@
             }
 
             document.addEventListener('DOMContentLoaded', function() {
-                askConfirm('[data-bs-confirm]');
+                askConfirm('[data-buk-confirm]');
             });
         </script>
     @endonce

@@ -15,8 +15,8 @@ class Edit extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('action.edit'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'edit-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'edit-'.($this->confirmId ?? Str::random(32));
         }
     }
 

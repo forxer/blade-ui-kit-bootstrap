@@ -15,8 +15,8 @@ class Preview extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('action.preview'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'show-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'preview-'.($this->confirmId ?? Str::random(32));
         }
     }
 

@@ -7,8 +7,8 @@
         title="{!! $title !!}"
     @endif
     @if ($confirm !== null)
-        data-bs-confirm="{!! $confirm !!}"
-        data-bs-confirm-modal="confirm-modal-{!! $formId !!}"
+        data-buk-confirm="{!! $confirm !!}"
+        data-buk-confirm-modal="confirm-modal-{!! $confirmId !!}"
     @endif
     @disabled($disabled)
 >
@@ -45,5 +45,5 @@
 @endpush
 
 @if ($confirm !== null)
-    <x-modal-confirm :id="'confirm-modal-'.$formId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
+    <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
 @endif

@@ -17,7 +17,7 @@ class Enable extends FormButton
 
         $this->text ??= Str::ucfirst(trans('action.enable'));
 
-        $this->formId ??= 'enable-'.Str::random(32);
+        $this->formId = 'enable-'.($this->formId ?? Str::random(32));
     }
 
     public function viewName(): string

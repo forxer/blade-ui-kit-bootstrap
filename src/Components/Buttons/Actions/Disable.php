@@ -17,9 +17,7 @@ class Disable extends FormButton
 
         $this->text ??= Str::ucfirst(trans('action.disable'));
 
-        if ($this->formId === null) {
-            $this->formId = 'disable-'.Str::random(32);
-        }
+        $this->formId = 'disable-'.($this->formId ?? Str::random(32));
     }
 
     public function viewName(): string
