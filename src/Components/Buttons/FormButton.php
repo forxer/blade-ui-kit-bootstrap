@@ -32,8 +32,9 @@ class FormButton extends BladeComponent
         public bool $lg = false,
         public bool $sm = false,
         public bool $disabled = false,
-        public ?string $confirm = null,
         public ?string $formId = null,
+        public ?string $confirm = null,
+        public ?string $confirmId = null,
         public ?string $method = null,
         public ?string $type = 'submit',
         public bool $novalidate = true,
@@ -47,6 +48,10 @@ class FormButton extends BladeComponent
         $this->onConstructing();
 
         $this->formId ??= 'form-button-'.Str::random(32);
+
+        if ($this->confirm !== null) {
+            $this->confirmId ??= $this->formId;
+        }
 
         $this->validFormMethod();
         $this->validBtnType(self::DEFAULT_FORM_BUTTON_TYPE);

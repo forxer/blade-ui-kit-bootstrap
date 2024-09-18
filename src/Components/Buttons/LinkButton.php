@@ -39,8 +39,8 @@ class LinkButton extends BladeComponent
         $this->initAttributes();
         $this->onConstructing();
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'link-button-'.($this->confirmId ?? Str::random(32));
         }
 
         $this->validBtnVariant();

@@ -15,8 +15,8 @@ class BackHome extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('back.home'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'back-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'back-home-'.($this->confirmId ?? Str::random(32));
         }
     }
 

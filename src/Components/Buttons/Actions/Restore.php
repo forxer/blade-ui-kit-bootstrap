@@ -17,7 +17,7 @@ class Restore extends FormButton
 
         $this->text ??= Str::ucfirst(trans('action.restore'));
 
-        $this->formId ??= 'restore-'.Str::random(32);
+        $this->formId = 'restore-'.($this->formId ?? Str::random(32));
     }
 
     public function viewName(): string

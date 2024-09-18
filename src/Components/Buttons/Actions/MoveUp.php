@@ -17,7 +17,7 @@ class MoveUp extends FormButton
 
         $this->text ??= Str::ucfirst(trans('action.up'));
 
-        $this->formId ??= 'move-up-'.Str::random(32);
+        $this->formId = 'move-up-'.($this->formId ?? Str::random(32));
     }
 
     public function viewName(): string

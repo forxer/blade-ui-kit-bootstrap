@@ -15,8 +15,8 @@ class Show extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('action.show'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'show-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'show-'.($this->confirmId ?? Str::random(32));
         }
     }
 

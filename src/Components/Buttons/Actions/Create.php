@@ -15,8 +15,8 @@ class Create extends LinkButton
 
         $this->text ??= Str::ucfirst(trans('action.add'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'create-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'create-'.($this->confirmId ?? Str::random(32));
         }
     }
 

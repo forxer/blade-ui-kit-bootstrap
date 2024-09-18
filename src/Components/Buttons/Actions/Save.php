@@ -17,8 +17,8 @@ class Save extends SimpleButton
 
         $this->text ??= Str::ucfirst(trans('action.save'));
 
-        if ($this->confirm !== null && $this->confirmId === null) {
-            $this->confirmId = 'save-'.Str::random(32);
+        if ($this->confirm !== null) {
+            $this->confirmId = 'save-'.($this->confirmId ?? Str::random(32));
         }
     }
 
