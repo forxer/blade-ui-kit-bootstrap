@@ -1,6 +1,18 @@
 Upgrade
 =======
 
+From 0.17.x to 0.18.x
+---------------------
+
+### Confirm modal
+
+The "confirm modal" attributes have been renamed:
+
+- from `data-bs-confirm` to `data-buk-confirm`
+- from `data-bs-confirm-modal` to `data-buk-confirm-modal`
+- from `data-confirm-trigger` to `data-buk-confirm-trigger`
+
+
 From 0.16.x to 0.17.x
 ---------------------
 

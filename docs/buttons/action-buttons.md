@@ -104,8 +104,8 @@ This will output the following HTML (and the javascript to manage the confirmati
 <button type="submit"
     form="archive-post-42"
     title="Archive post “The Post Title“" data-bs-toggle="tooltip"
-    data-bs-confirm="Are you sure you want to archive this post?"
-    data-bs-confirm-modal="confirm-modal-archive-post-42"
+    data-buk-confirm="Are you sure you want to archive this post?"
+    data-buk-confirm-modal="confirm-modal-archive-post-42"
     class="btn btn-outline-warning">
         Archive
 </button>

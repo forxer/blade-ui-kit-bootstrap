@@ -9,8 +9,8 @@
         title="{!! $title !!}"
     @endif
     @if ($confirm !== null)
-        data-bs-confirm="{!! $confirm !!}"
-        data-bs-confirm-modal="confirm-modal-{!! $confirmId !!}"
+        data-buk-confirm="{!! $confirm !!}"
+        data-buk-confirm-modal="confirm-modal-{!! $confirmId !!}"
     @endif
     @disabled($disabled)
 >
