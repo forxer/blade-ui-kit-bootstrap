@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.18.0
+0.18.0 (2024-09-18)
 -------------------
 
 - The "confirm modal" attributes have been renamed from `data-bs-*` to `data-buk-*`
