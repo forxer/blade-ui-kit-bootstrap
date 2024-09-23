@@ -15,7 +15,7 @@
                             @endif
                         </div>
                         <div class="modal-body">
-                            {!! $slot !!} edgrdggd
+                            {!! $slot !!}
                         </div>
                     @if ($footer)
                         <div {{ $footer->attributes->class(['modal-footer']) }}>
@@ -23,9 +23,9 @@
                         </div>
                     @else
                         <div class="modal-footer">
-                            <div class="btn-group">
-                                <x-btn-save />
+                            <div class="btn-group" role="group">
                                 <x-btn-cancel data-bs-dismiss="modal" />
+                                <x-btn-save />
                             </div>
                         </div>
                     @endif
