@@ -23,7 +23,7 @@
                         </div>
                     @else
                         <div class="modal-footer">
-                            <div class="btn-group">
+                            <div class="btn-group" role="group">
                                 <x-btn-save />
                                 <x-btn-cancel data-bs-dismiss="modal" />
                             </div>
