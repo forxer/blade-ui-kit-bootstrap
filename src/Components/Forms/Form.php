@@ -13,8 +13,8 @@ class Form extends BladeComponent
 
     public function __construct(
         public string $action,
-        public bool $hasFiles = false,
         public string $method = 'POST',
+        public bool $hasFiles = false,
         public ?bool $novalidate = null,
     ) {
         $this->validFormMethod();

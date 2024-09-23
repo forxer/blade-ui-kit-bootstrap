@@ -1,6 +1,5 @@
-<form method="{!! $formMethodValue() !!}"
-    action="{{ $action }}"
-    {!! $hasFiles === true ? 'enctype="multipart/form-data"' : '' !!}
+<form method="{!! $formMethodValue() !!}" action="{{ $action }}"
+    @if ($hasFiles) enctype="multipart/form-data" @endif
     @if ($novalidate === true) novalidate @endif
     {{ $attributes }}
 >

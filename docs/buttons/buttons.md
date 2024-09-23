@@ -392,7 +392,7 @@ This will output the following HTML:
 
 ### Confirm
 
-You can add the `confirm` attribute with the message you want to display in the [confirmation modal](./../modals.md).
+You can add the `confirm` attribute with the message you want to display in the [confirmation modal](./../modals.md#confirm-modal).
 
 ```blade
 <x-btn :confirm="trans('confirmation_message')" />

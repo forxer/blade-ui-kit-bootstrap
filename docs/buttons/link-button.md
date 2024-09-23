@@ -44,7 +44,7 @@ This button attribute corresponds to the "href" attribute of the link that the b
 
 ### Confirm ID
 
-If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "[confirmation modal](./../modals.md)" must be specified.
+If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "[confirmation modal](./../modals.md#confirm-modal)" must be specified.
 
 You can specify a confirm ID targeted by the button. If you don't specify a confirm id, it will be randomly generated for each request using a random string of characters.
 

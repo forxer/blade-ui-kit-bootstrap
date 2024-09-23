@@ -31,6 +31,7 @@ class SimpleButton extends BladeComponent
         public bool $disabled = false,
         public ?string $confirm = null,
         public ?string $confirmId = null,
+        public ?string $confirmTitle = null,
         public ?string $formId = null,
         public ?string $type = null,
         public ?string $startContent = null,

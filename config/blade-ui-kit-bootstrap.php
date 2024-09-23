@@ -33,6 +33,7 @@ return [
         'btn-back-home' => Actions\Back\BackHome::class,
         'btn-archive' => Actions\Archive::class,
         'btn-archives' => Actions\Archives::class,
+        'btn-cancel' => Actions\Cancel::class,
         'btn-create' => Actions\Create::class,
         'btn-delete' => Actions\Delete::class,
         'btn-destroy' => Actions\Destroy::class,
@@ -42,6 +43,8 @@ return [
         'btn-enable' => Actions\Enable::class,
         'btn-enabled' => Actions\Enabled::class,
         'btn-logout' => Actions\Logout::class,
+        'btn-modal-confirm-yes' => Actions\Modal\ConfirmYes::class,
+        'btn-modal-confirm-no' => Actions\Modal\ConfirmNo::class,
         'btn-move-down' => Actions\MoveDown::class,
         'btn-move-up' => Actions\MoveUp::class,
         'btn-preview' => Actions\Preview::class,
@@ -68,7 +71,8 @@ return [
 
         // Modals
         'modal' => Modals\Modal::class,
-        'modal-confirm' => Modals\Confirm::class,
+        'confirm-modal' => Modals\Confirm::class,
+        'form-modal' => Modals\Form::class,
     ],
 
     /*

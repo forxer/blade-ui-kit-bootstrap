@@ -1,35 +1,11 @@
-@push('blade-ui-kit-bs-html')
-    <div {{ $attributes->class(['modal']) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                    @isset ($header)
-                        <div {{ $header->attributes->class(['modal-header']) }}>
-                            {{ $header }}
-                    @else
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="{{ $titleLabel }}">{{ $title }}</h5>
-                    @endif
-                        @if ($dismissable)
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{!! trans('blade-ui-kit-bootstrap::modal.close') !!}"></button>
-                        @endif
-                    </div>
-                <div class="modal-body">
-                    {!! $slot !!}
-                </div>
-                @if ($footer)
-                    <div {{ $footer->attributes->class(['modal-footer']) }}>
-                        {{ $footer }}
-                    </div>
-                @else
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-buk-confirm-trigger="yes">{!! trans('blade-ui-kit-bootstrap::modal.yes') !!}</button>
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">{!! trans('blade-ui-kit-bootstrap::modal.no') !!}</button>
-                    </div>
-                @endif
-            </div>
+<x-modal :id="e($id)" :title="e($title)" :dismissable="false" class="fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <x-slot:footer>
+        <div class="btn-group">
+            <x-btn-modal-confirm-yes data-buk-confirm-trigger="yes" />
+            <x-btn-modal-confirm-no data-bs-dismiss="modal" />
         </div>
-    </div>
-@endpush
+    </x-slot>
+</x-modal>
 @push('blade-ui-kit-bs-scripts')
     @once
         <script>

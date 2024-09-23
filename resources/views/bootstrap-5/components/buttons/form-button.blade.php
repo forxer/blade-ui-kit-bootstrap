@@ -45,5 +45,5 @@
 @endpush
 
 @if ($confirm !== null)
-    <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="trans('blade-ui-kit-bootstrap::modal.confirm')" />
+    <x-confirm-modal :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" />
 @endif
