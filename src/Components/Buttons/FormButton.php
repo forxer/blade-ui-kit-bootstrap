@@ -35,6 +35,7 @@ class FormButton extends BladeComponent
         public ?string $formId = null,
         public ?string $confirm = null,
         public ?string $confirmId = null,
+        public ?string $confirmTitle = null,
         public ?string $method = null,
         public ?string $type = 'submit',
         public bool $novalidate = true,

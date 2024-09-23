@@ -46,12 +46,12 @@ All attributes set on the component are piped through on the button element. Als
 - [Confirm](./buttons.md#confirm)
 - [Disabled](./buttons.md#disabled)
 
-### Action
+### URL
 
 This button attribute corresponds to the "action" attribute of the form that the button must submit. It is required.
 
 ```blade
-    <x-form-button :action="route('do-something')">
+    <x-form-button :url="route('do-something')">
         Do something
     </x-form-button>
 ```
@@ -64,7 +64,7 @@ But this is not ideal, it is preferable that you identify yourself the form on w
 
 ```blade
     <x-form-button
-        :action="route('do-something', $model)"
+        :url="route('do-something', $model)"
         :form-id="'do-something-'.$model->id"
     >
         Do something
@@ -80,10 +80,28 @@ This will output the following HTML:
 
 <!--... -->
 
-<form id="form-button-do-something-1" method="POST" action="https://localhost/do-something/1" >
+<form id="form-button-do-something-42" method="POST" action="https://localhost/do-something/42" >
     <input type="hidden" name="_token" value="...">
     <input type="hidden" name="_method" value="POST">
 </form>
+```
+
+### Confirm ID
+
+If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "[confirmation modal](./../modals.md#confirm-modal)" must be specified.
+
+You can specify a confirm ID targeted by the button. If you don't specify a confirm id, the form ID value will be used.
+
+But this is not ideal, it is preferable that you identify yourself the target on which the button acts. It will be easier to navigate and this with better performance.
+
+```blade
+    <x-form-button
+        :url="route('do-something', $model)"
+        confirm="Are you sure you want to do this?"
+        :confirm-id="'confirm-do-something-'.$model->id"
+    >
+        Do something
+    </x-form-button>
 ```
 
 ### HTTP method
@@ -109,7 +127,7 @@ This will output the following HTML:
 
 <!--... -->
 
-<form id="form-button-do-something-42" method="POST" action="https://localhost/do-something/1" >
+<form id="form-button-do-something-42" method="POST" action="https://localhost/do-something/42" >
     <input type="hidden" name="_token" value="...">
     <input type="hidden" name="_method" value="PATCH">
 </form>

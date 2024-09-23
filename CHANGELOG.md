@@ -1,7 +1,18 @@
 CHANGELOG
 =========
 
-0.18.0
+0.19.0 (2024-09-23)
+-------------------
+
+- Added `<x-form-modal />` component
+- Renamed from `<x-modal-confirm />` to `<x-confirm-modal />`
+- Added `<x-btn-modal-confirm-yes />` and `<x-btn-modal-confirm-no />` action buttons for confirm modal component
+- Added `confirmTitle` attribute to button components
+- Added `<x-btn-cancel />` action button component
+- Refactored confirm modal component views
+
+
+0.18.0 (2024-09-18)
 -------------------
 
 - The "confirm modal" attributes have been renamed from `data-bs-*` to `data-buk-*`

@@ -1,6 +1,16 @@
 Upgrade
 =======
 
+From 0.18.x to 0.19.x
+---------------------
+
+### Confirm modal
+
+The component tag has been renamed from `<x-modal-confirm />` to `<x-confirm-modal />`. You need to find and replace it.
+
+With the addition of `confirmTitle` property on the button components, the class constructor signature of these components has changed. If you have extended these classes you must modify them accordingly.
+
+
 From 0.17.x to 0.18.x
 ---------------------
 

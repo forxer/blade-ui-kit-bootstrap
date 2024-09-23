@@ -6,7 +6,7 @@ namespace BladeUIKitBootstrap\Components\Modals;
 
 use BladeUIKitBootstrap\Components\BladeComponent;
 
-class Modal extends BladeComponent
+class Form extends BladeComponent
 {
     public string $titleLabel;
 
@@ -17,6 +17,10 @@ class Modal extends BladeComponent
     public function __construct(
         public string $id,
         public string $title,
+        public string $action,
+        public string $method = 'POST',
+        public bool $hasFiles = false,
+        public ?bool $novalidate = null,
         public bool $dismissable = true,
     ) {
         $this->initAttributes();
@@ -27,6 +31,6 @@ class Modal extends BladeComponent
 
     public function viewName(): string
     {
-        return 'components.modals.modal';
+        return 'components.modals.form';
     }
 }

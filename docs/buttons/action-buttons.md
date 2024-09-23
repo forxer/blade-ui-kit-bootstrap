@@ -18,6 +18,7 @@ Action buttons extends either [Form button](./form-button.md), the [Link button]
     - [Show button](#show-button)
     - [Preview button](#preview-button)
     - [Save button](#save-button)
+    - [Cancel button](#cancel-button)
 - [Status buttons](#status-buttons)
     - [Move up button](#move-up-button)
     - [Move down button](#move-down-button)
@@ -341,7 +342,8 @@ A simple form submit button.
 
 Behind the scenes, the "Save button" component extends the [Simple button](./simple-button.md) component with the following default properties:
 - Text: "Save"
-- Variant: `primary`
+- Type: `submit`
+- Variant: `success`
 
 Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Type](./simple-button.md#type), [Form ID](./simple-button.md#form-id)
 
@@ -354,6 +356,27 @@ This will output the following HTML:
 ```html
 <button type="submit" class="btn btn-primary">
     Save
+</button>
+```
+
+### Cancel button
+
+A simple button. This button does nothing, its only purpose is to bring consistency to the interfaces. It's up to you to use it to give it a behavior.
+
+Behind the scenes, the "Cancel button" component extends the [Simple button](./simple-button.md) component with the following default properties:
+- Text: "Cancel"
+- Type: `button`
+- Variant: `secondary`
+
+```blade
+    <x-btn-cancel />
+```
+
+This will output the following HTML:
+
+```html
+<button type="button" class="btn btn-secondary">
+    Cancel
 </button>
 ```
 

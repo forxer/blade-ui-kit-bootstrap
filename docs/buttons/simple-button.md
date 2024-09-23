@@ -48,7 +48,7 @@ All attributes set on the component are piped through on the button element. Als
 
 ### Confirm ID
 
-If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "[confirmation modal](./../modals.md)" must be specified.
+If you want to use the "[Confirm](./buttons.md#confirm)" attribute an identifier for the "[confirmation modal](./../modals.md#confirm-modal)" must be specified.
 
 You can specify a confirm ID targeted by the button. If you don't specify a confirm id, it will be randomly generated for each request using a random string of characters.
 
@@ -80,7 +80,7 @@ This will output the following HTML:
 It is a property of the component rather than a simple attribute to make it easier to extend the class component, or necessary in certain edge cases.
 
 ```blade
-    <x-form-button :type="$buttonType" />
+    <x-btn :type="$buttonType" />
 ```
 
 ### Form ID
