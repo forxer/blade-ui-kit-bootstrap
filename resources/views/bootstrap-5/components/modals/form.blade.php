@@ -15,7 +15,7 @@
                             @endif
                         </div>
                         <div class="modal-body">
-                            {!! $slot !!} edgrdggd
+                            {!! $slot !!}
                         </div>
                     @if ($footer)
                         <div {{ $footer->attributes->class(['modal-footer']) }}>
