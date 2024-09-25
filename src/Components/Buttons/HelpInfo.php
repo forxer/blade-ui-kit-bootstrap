@@ -30,8 +30,8 @@ class HelpInfo extends BladeComponent
         public ?string $icon = null,
         public ?string $startIcon = null,
     ) {
-        $this->initAttributes();
         $this->onConstructing();
+        $this->initAttributes();
 
         $this->text ??= Str::ucfirst(trans('status.info'));
 
