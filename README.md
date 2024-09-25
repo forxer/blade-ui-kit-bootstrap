@@ -81,6 +81,7 @@ Index
     - [Hidden](./docs/inputs/hidden.md)
 - [Modals](./docs/modals.md)
     - [Classic modal](./docs/modals.md#classic-modal)
+    - [Form modal](./docs/modals.md#form-modal)
     - [Confirm modal](./docs/modals.md#confirm-modal)
 
 Why and thanks

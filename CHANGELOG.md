@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.19.2 (2024-09-25)
+-------------------
+
+- Inversion of method invocation: `onConstructing()` before `initAttributes()`
+
+
 0.19.1 (2024-09-23)
 -------------------
 

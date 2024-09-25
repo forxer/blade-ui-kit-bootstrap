@@ -40,8 +40,8 @@ class SimpleButton extends BladeComponent
         public ?string $startIcon = null,
         public ?string $endIcon = null,
     ) {
-        $this->initAttributes();
         $this->onConstructing();
+        $this->initAttributes();
 
         if ($this->confirm !== null) {
             $this->confirmId = 'simple-button-'.($this->confirmId ?? Str::random(32));

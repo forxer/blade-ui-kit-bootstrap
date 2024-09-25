@@ -45,8 +45,8 @@ class FormButton extends BladeComponent
         public ?string $startIcon = null,
         public ?string $endIcon = null,
     ) {
-        $this->initAttributes();
         $this->onConstructing();
+        $this->initAttributes();
 
         $this->formId ??= 'form-button-'.Str::random(32);
 

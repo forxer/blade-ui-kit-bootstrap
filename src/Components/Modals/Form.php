@@ -23,8 +23,8 @@ class Form extends BladeComponent
         public ?bool $novalidate = null,
         public bool $dismissable = true,
     ) {
-        $this->initAttributes();
         $this->onConstructing();
+        $this->initAttributes();
 
         $this->titleLabel = str($id)->kebab()->append('-label')->toString();
     }

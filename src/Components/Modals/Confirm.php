@@ -14,8 +14,8 @@ class Confirm extends BladeComponent
         public string $id,
         public ?string $title = null,
     ) {
-        $this->initAttributes();
         $this->onConstructing();
+        $this->initAttributes();
 
         $this->titleLabel = str($id)->kebab()->append('-label')->toString();
 
