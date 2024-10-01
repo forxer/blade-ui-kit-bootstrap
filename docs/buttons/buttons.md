@@ -24,6 +24,7 @@ Common button attributes
 - [Sizes](#sizes)
 - [Title](#title)
 - [Confirm](#confirm)
+- [Confirm Variant](#confirm-variant)
 - [Disabled](#disabled)
 
 ### Text
@@ -227,7 +228,6 @@ Finally, like all other attributes, you can use them programmatically by passing
 <x-btn text="Do something" :icon="$iconName" />
 ```
 
-
 ### Variant
 
 Buttons have a default Bootstrap variant (`primary`), but you can change it with the `variant` attribute.
@@ -409,6 +409,17 @@ Or alternatively for a plain text string:
 ```blade
 <x-btn :confirm="e($data)" />
 ```
+
+### Confirm Variant
+
+It's like the button variation but for confirmation modals.
+
+```blade
+<x-btn :confirm="trans('confirmation_message')" confirm-variant="danger" />
+```
+
+Please see the [modal variants documentation](./../modals.md#modal-variants) for more details.
+
 
 ## Disabled
 

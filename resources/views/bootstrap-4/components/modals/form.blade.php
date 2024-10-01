@@ -1,5 +1,5 @@
 @push('blade-ui-kit-bs-html')
-    <div {{ $attributes->class(['modal']) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
+    <div {{ $attributes->class(['modal', 'modal-'.$variant => $variant]) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <x-form action="{{ $action }}" :method="$method" :hasFiles="$hasFiles" :novalidate="$novalidate">

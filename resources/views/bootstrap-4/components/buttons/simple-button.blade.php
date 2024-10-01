@@ -34,5 +34,5 @@
 </button>
 
 @if ($confirm !== null)
-    <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" />
+    <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" :confirmVariant="$confirmVariant" />
 @endif

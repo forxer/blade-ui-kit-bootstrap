@@ -15,6 +15,8 @@ class Restore extends FormButton
 
         $this->variant ??= 'warning';
 
+        $this->confirmVariant ??= 'warning';
+
         $this->text ??= Str::ucfirst(trans('action.restore'));
 
         $this->formId = 'restore-'.($this->formId ?? Str::random(32));

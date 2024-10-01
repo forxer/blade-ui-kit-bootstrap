@@ -58,14 +58,14 @@ trait BtnVariant
                 $allButtonsOutline = $this->config('all_buttons_outline');
             }
 
-            if ($this->noOutline === false && ($allButtonsOutline === true || $this->outline)) {
+            if ($this->noOutline === false && ($allButtonsOutline || $this->outline)) {
                 $this->variant = 'outline-'.$this->variant;
             }
         }
 
         if (! \in_array($this->variant, $allowedVariants)) {
             throw new InvalidArgumentException(\sprintf(
-                'The variant "%s" is not allowed. Allowed variant are: %s.',
+                'The button variant "%s" is not allowed. Allowed button variant are: %s.',
                 e($this->variant),
                 implode(', ', $allowedVariants)
             ));

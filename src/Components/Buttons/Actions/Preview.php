@@ -13,6 +13,8 @@ class Preview extends LinkButton
     {
         $this->variant ??= 'info';
 
+        $this->confirmVariant ??= 'info';
+
         $this->text ??= Str::ucfirst(trans('action.preview'));
 
         if ($this->confirm !== null) {

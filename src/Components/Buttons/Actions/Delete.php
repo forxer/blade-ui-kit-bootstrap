@@ -15,6 +15,8 @@ class Delete extends FormButton
 
         $this->variant ??= 'danger';
 
+        $this->confirmVariant ??= 'warning';
+
         $this->text ??= Str::ucfirst(trans('action.delete'));
 
         $this->formId = 'delete-'.($this->formId ?? Str::random(32));

@@ -15,6 +15,8 @@ class Save extends SimpleButton
 
         $this->variant ??= 'success';
 
+        $this->confirmVariant ??= 'success';
+
         $this->text ??= Str::ucfirst(trans('action.save'));
 
         if ($this->confirm !== null) {

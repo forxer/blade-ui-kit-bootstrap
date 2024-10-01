@@ -15,6 +15,8 @@ class Destroy extends FormButton
 
         $this->variant ??= 'danger';
 
+        $this->confirmVariant ??= 'danger';
+
         $this->text ??= Str::ucfirst(trans('action.delete'));
 
         $this->formId = 'destroy-'.($this->formId ?? Str::random(32));

@@ -13,6 +13,8 @@ class Show extends LinkButton
     {
         $this->variant ??= 'info';
 
+        $this->confirmVariant ??= 'info';
+
         $this->text ??= Str::ucfirst(trans('action.show'));
 
         if ($this->confirm !== null) {
