@@ -1,6 +1,11 @@
 Modals
 ======
 
+- [Classic modal](#classic-modal)
+- [Form modal](#form-modal)
+- [Confirm modal](#confirm-modal)
+- [Modal variants](#modal-variants)
+
 Classic modal
 -------------
 
@@ -87,15 +92,12 @@ As for the basic modal the `id` and `title` attributes are required. But also th
 
 There is behind the "form component", so you can use all the attributes provided by it (`action`, `method`, `has-files` and `novalidate`). Please refer to the [form component](./forms.md#form) documentation for more details.
 
-
-
 Confirm modal
 -------------
 
 This modal allows you to request confirmation of an action.
 
 It is simply necessary to add the `data-buk-confirm` attribute to an actionable element with the message you want to display in the confirmation modal. You must also associate this button with the confirmation modal by specifying its ID via the `data-buk-confirm-modal` attribute.
-
 
 ```blade
 <a href="{{ route('do-something', $model) }}"
@@ -124,3 +126,89 @@ For example for a link button like in the example above:
 
 Also, the [action buttons](./buttons/action-buttons.md) are even simpler if one of them suits your need.
 
+
+Modal variants
+--------------
+
+Bootstrap doesn't provide "variants" for modals by default. But in many applications this can be useful. The button variant mechanism has been ported to modals so you can style them more easily.
+
+**Note that it is up to you** to define the appropriate styles. No styles are provided by this package, just classes are added.
+
+### Variant
+
+Modals have a default single style. But you can change it with the `variant` attribute.
+
+```blade
+<x-modal variant="success" />
+```
+
+This will output the following HTML:
+
+```html
+<div class="modal modal-success" ...
+```
+
+Possible variant values ​​are:
+
+- 'primary'
+- 'secondary'
+- 'success'
+- 'danger'
+- 'warning'
+- 'info'
+- 'outline-primary'
+- 'outline-secondary'
+- 'outline-success'
+- 'outline-danger'
+- 'outline-warning'
+- 'outline-info'
+
+### Outline and no-outline
+
+With this package is possible to use "Outline Modals". Simply by adding attributes and use CSS to style them.
+
+To do this, several options are available to you: use `variant` attribute, `outline` attribute and global configuration.
+
+You can use the "outline-`variant`" variant:
+
+```blade
+<x-modal variant="outline-primary" />
+```
+
+This will output the following HTML:
+
+```html
+<div class="modal modal-outline-primary" ...
+```
+
+But the simplest is to use the `outline` attribute:
+
+```blade
+<x-modal variant="success" outline />
+```
+
+This will output the following HTML:
+
+```html
+<div class="modal modal-outline-success" ...
+```
+
+Especially since this allows it to be defined programmatically:
+
+```blade
+<x-modal variant="success" :outline="$booleanCondition" />
+```
+
+In the configuration file, you can change the value of `all_modal_outline` to `true`. Then all modal will have the outline property by default if you set a variant.
+
+No need to specify the "outline" attribute. Conversely in this case, if you want a modal not to have this property you can use the `no-outline`  attribute so that the modal has its normal display.
+
+```blade
+<x-modal variant="success" no-outline />
+```
+
+This will output the following HTML:
+
+```html
+<div class="modal modal-success" ...
+```

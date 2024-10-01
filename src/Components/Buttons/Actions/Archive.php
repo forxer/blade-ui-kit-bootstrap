@@ -15,6 +15,8 @@ class Archive extends FormButton
 
         $this->variant ??= 'danger';
 
+        $this->confirmVariant ??= 'warning';
+
         $this->text ??= Str::ucfirst(trans('action.archive'));
 
         $this->formId = 'archive-'.($this->formId ?? Str::random(32));

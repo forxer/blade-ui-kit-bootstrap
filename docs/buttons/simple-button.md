@@ -44,6 +44,7 @@ All attributes set on the component are piped through on the button element. Als
 - [Sizes](./buttons.md#sizes)
 - [Title](./buttons.md#title)
 - [Confirm](./buttons.md#confirm)
+- [Confirm Variant](./buttons.md#confirm-variant)
 - [Disabled](./buttons.md#disabled)
 
 ### Confirm ID

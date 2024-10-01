@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+0.20.0 (2024-10-01)
+-------------------
+
+- Added `variant` property to "modal components"
+- Added `outline` property to "modal components", with possibility of global configuration and associated `no-outline` property
+- Added `confirmVariant` property to "button components"
+
+
 0.19.2 (2024-09-25)
 -------------------
 

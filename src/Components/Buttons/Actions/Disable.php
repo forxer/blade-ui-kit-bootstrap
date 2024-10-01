@@ -15,6 +15,8 @@ class Disable extends FormButton
 
         $this->variant ??= 'warning';
 
+        $this->confirmVariant ??= 'warning';
+
         $this->text ??= Str::ucfirst(trans('action.disable'));
 
         $this->formId = 'disable-'.($this->formId ?? Str::random(32));

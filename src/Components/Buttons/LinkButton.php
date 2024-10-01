@@ -31,6 +31,7 @@ class LinkButton extends BladeComponent
         public ?string $confirm = null,
         public ?string $confirmId = null,
         public ?string $confirmTitle = null,
+        public ?string $confirmVariant = null,
         public ?string $startContent = null,
         public ?string $endContent = null,
         public ?string $icon = null,

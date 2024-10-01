@@ -15,6 +15,8 @@ class Enable extends FormButton
 
         $this->variant ??= 'success';
 
+        $this->confirmVariant ??= 'warning';
+
         $this->text ??= Str::ucfirst(trans('action.enable'));
 
         $this->formId = 'enable-'.($this->formId ?? Str::random(32));

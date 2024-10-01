@@ -47,6 +47,7 @@ Like all buttons, every action buttons accepts all [common button attributes](./
 - [Sizes](./buttons.md#sizes)
 - [Title](./buttons.md#title)
 - [Confirm](./buttons.md#confirm)
+- [Confirm Variant](./buttons.md#confirm-variant)
 - [Disabled](./buttons.md#disabled)
 
 Some action buttons extends [Form button](./form-button.md) component so they also accept its specific attributes:
