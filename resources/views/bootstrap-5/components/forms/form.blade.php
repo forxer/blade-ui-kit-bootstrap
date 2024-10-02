@@ -3,7 +3,11 @@
     @if ($novalidate === true) novalidate @endif
     {{ $attributes }}
 >
-    @csrf
-    @method($method)
+    @if ($method !== 'GET')
+        @csrf
+        @if ($method !== 'POST')
+            @method($method)
+        @endif
+    @endif
     {!! $slot !!}
 </form>
