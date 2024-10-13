@@ -13,7 +13,7 @@ class Create extends LinkButton
     {
         $this->variant ??= 'primary';
 
-        $this->confirmVariant ??= 'variant';
+        $this->confirmVariant ??= 'primary';
 
         $this->text ??= Str::ucfirst(trans('action.add'));
 
