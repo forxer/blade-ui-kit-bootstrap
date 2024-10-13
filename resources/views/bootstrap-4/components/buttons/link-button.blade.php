@@ -1,6 +1,8 @@
 <a
     @if ($disabled === false)
-        href="{{ $url }}"
+        @if ($url !== null)
+            href="{{ $url }}"
+        @endif
         {{ $attributes->merge(['role' => 'button', 'class' => 'btn btn-'.$variant.($size !== null ? ' btn-'.$size : '')]) }}
     @else
         {{ $attributes->merge(['role' => 'button', 'class' => 'disabled btn btn-'.$variant.($size !== null ? ' btn-'.$size : ''), 'aria-disabled' => 'true', 'tabindex' => '-1']) }}

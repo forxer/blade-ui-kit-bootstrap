@@ -17,7 +17,7 @@ class LinkButton extends BladeComponent
     use BtnVariant;
 
     public function __construct(
-        public string $url,
+        public ?string $url = null,
         public ?string $text = null,
         public bool $hideText = false,
         public ?string $title = null,
