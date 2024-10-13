@@ -7,8 +7,6 @@ This component aims to unify the behaviors of `<a>` element which are used as bu
     <x-link-button :url="route('do-something')" text="Do something" />
 ```
 
-The `url` attribute is mandatory.
-
 This will output the following HTML:
 
 ```html
@@ -35,7 +33,7 @@ All attributes set on the component are piped through on the button element. Als
 
 ### URL
 
-This button attribute corresponds to the "href" attribute of the link that the button must follow. It is required.
+This button attribute corresponds to the "href" attribute of the link that the button must follow.
 
 ```blade
     <x-link-button :url="route('do-something')">
