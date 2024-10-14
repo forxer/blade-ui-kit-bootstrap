@@ -40,6 +40,7 @@ return [
         'btn-disable' => Actions\Disable::class,
         'btn-disabled' => Actions\Disabled::class,
         'btn-edit' => Actions\Edit::class,
+        'btn-email' => Actions\Email::class,
         'btn-enable' => Actions\Enable::class,
         'btn-enabled' => Actions\Enabled::class,
         'btn-logout' => Actions\Logout::class,
@@ -47,11 +48,13 @@ return [
         'btn-modal-confirm-no' => Actions\Modal\ConfirmNo::class,
         'btn-move-down' => Actions\MoveDown::class,
         'btn-move-up' => Actions\MoveUp::class,
+        'btn-phone' => Actions\Phone::class,
         'btn-preview' => Actions\Preview::class,
         'btn-recycle-bin' => Actions\RecycleBin::class,
         'btn-restore' => Actions\Restore::class,
         'btn-save' => Actions\Save::class,
         'btn-show' => Actions\Show::class,
+        'btn-website' => Actions\Website::class,
 
         // Forms
         'form' => Forms\Form::class,

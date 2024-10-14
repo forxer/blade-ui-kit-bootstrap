@@ -7,10 +7,11 @@ namespace BladeUIKitBootstrap\Components\Buttons\Actions;
 use BladeUIKitBootstrap\Components\Buttons\LinkButton;
 use Illuminate\Support\Str;
 
-class Email extends LinkButton
+class Phone extends LinkButton
 {
     public function __construct(
-        public ?string $address = null,
+        public ?string $phoneNumber = null,
+        public ?string $phoneNumberDisplayed = null,
         public ?string $url = null,
         public ?string $text = null,
         public bool $hideText = false,
@@ -60,26 +61,26 @@ class Email extends LinkButton
     {
         $this->variant ??= 'info';
 
-        $this->text ??= Str::ucfirst(trans('action.send_email'));
+        $this->text ??= Str::ucfirst(trans('action.call_phone'));
 
-        if ($this->address !== null) {
-            $this->address = e($this->address);
+        if ($this->phoneNumber !== null) {
+            $this->phoneNumber = e($this->phoneNumber);
 
-            $this->title ??= Str::ucfirst(trans('action.send_email_to_address', [
-                'address' => $this->address,
+            $this->title ??= Str::ucfirst(trans('action.call_phone_number', [
+                'phone-number' => $this->phoneNumberDisplayed !== null ? e($this->phoneNumberDisplayed) : $this->phoneNumber,
             ]));
 
-            $this->url ??= 'mailto:'.$this->address;
+            $this->url ??= 'tel:'.$this->phoneNumber;
         }
 
         if ($this->confirm !== null) {
             $this->confirmVariant ??= 'info';
-            $this->confirmId = 'email-'.($this->confirmId ?? Str::random(32));
+            $this->confirmId = 'phone-'.($this->confirmId ?? Str::random(32));
         }
     }
 
     public function viewName(): string
     {
-        return 'components.buttons.actions.email';
+        return 'components.buttons.actions.phone';
     }
 }

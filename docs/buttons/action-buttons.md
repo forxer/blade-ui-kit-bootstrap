@@ -35,6 +35,8 @@ Action buttons extends either [Form button](./form-button.md), the [Link button]
     - [Archives button](#archives-button)
     - [Recycle Bin button](#recycle-bin-button)
     - [Email button](#email-button)
+    - [Phone button](#phone-button)
+    - [Website button](#website-button)
 
 Attributes
 ----------
@@ -723,14 +725,11 @@ This will output the following HTML:
 
 ### Email button
 
-This button requires an `address` attribute which is an email address. If this attribute is not provided the button will be automatically disabled by default.
-
-Note that for this, and unlike most attributes, this `address` attribute will be automatically escaped by the component.
+This button has a special attribute: `address` which is an email address. Note that for this, and unlike most attributes, this `address` attribute will be automatically escaped by the component.
 
 Behind the scenes, the "Email button" component extends the [Link button](./link-button.md) component with the following default properties:
 - URL: "mailto:`$address`"
 - Text: "Send an email"
-- Hide text: `true`
 - Title: "Send an email to `$address`"
 - Variant: `info`
 - Confirm Variant: `info`
@@ -745,6 +744,69 @@ This will output the following HTML:
 
 ```html
 <a href="mailto:john-doe@example.com" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="Send an email to john-doe@example.com">
-    <span class="visually-hidden">Send an email</span>
+    Send an email
+</a>
+```
+
+### Phone button
+
+This button has two additional attributes: `phone-number` and `phone-number-displayed`. Note that for this, and unlike most attributes, these attributes will be automatically escaped by the component.
+
+Behind the scenes, the "Email button" component extends the [Link button](./link-button.md) component with the following default properties:
+- URL: "tel:`$phoneNumber`"
+- Text: "Call on phone"
+- Title: "Call on phone the `$phoneNumberDisplayed ?? $phoneNumber`"
+- Variant: `info`
+- Confirm Variant: `info`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id)
+
+```blade
+<x-btn-phone phone-number="+33102030405" phone-number="01 02 03 04 05" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="tel:+33102030405" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="Call on phone the 01 02 03 04 05">
+    Call on phone
+</a>
+```
+
+If the `phone-number-displayed` attribute is not specified, `phone-number` is used instead.
+
+```blade
+<x-btn-phone phone-number="+33102030405" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="tel:+33102030405" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="Call on phone the +33102030405">
+    Call on phone
+</a>
+```
+
+### Website button
+
+Note that for the `url` attribute, unlike most attributes, will be automatically escaped by the component.
+
+Behind the scenes, the "Website button" component extends the [Link button](./link-button.md) component with the following default properties:
+- Text: "See website"
+- Title: "See website `$url`"
+- Variant: `info`
+- Confirm Variant: `info`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
+
+```blade
+<x-website url="http://example.com" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="http://example.com" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="See website example.com">
+    See website
 </a>
 ```
