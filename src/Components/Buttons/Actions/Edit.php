@@ -13,11 +13,10 @@ class Edit extends LinkButton
     {
         $this->variant ??= 'primary';
 
-        $this->confirmVariant ??= 'primary';
-
         $this->text ??= Str::ucfirst(trans('action.edit'));
 
         if ($this->confirm !== null) {
+            $this->confirmVariant ??= 'primary';
             $this->confirmId = 'edit-'.($this->confirmId ?? Str::random(32));
         }
     }

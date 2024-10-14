@@ -27,8 +27,6 @@ class Confirm extends BladeComponent
         $this->titleLabel = str($id)->kebab()->append('-label')->toString();
 
         $this->title ??= trans('blade-ui-kit-bootstrap::modal.confirm');
-
-        $this->validModalVariant();
     }
 
     public function viewName(): string

@@ -34,6 +34,9 @@ Action buttons extends either [Form button](./form-button.md), the [Link button]
     - [Logout button](#logout-button)
     - [Archives button](#archives-button)
     - [Recycle Bin button](#recycle-bin-button)
+    - [Email button](#email-button)
+    - [Phone button](#phone-button)
+    - [Website button](#website-button)
 
 Attributes
 ----------
@@ -133,11 +136,12 @@ Resource buttons
 
 ### Create button
 
-Behind the scenes, the "Create button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Create button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Add"
 - Variant: `primary`
+- Confirm Variant: `primary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
 
 ```blade
 <x-btn-create :url="route('posts.create')" />
@@ -153,11 +157,12 @@ This will output the following HTML:
 
 ### Edit button
 
-Behind the scenes, the "Edit Button" component extends the [Link Button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Edit Button" component extends the [Link Button](./link-button.md) component with the following default properties:
 - Text: "Edit"
 - Variant: `primary`
+- Confirm Variant: `primary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
 
 ```blade
 <x-btn-edit :url="route('posts.edit', $post)" />
@@ -179,8 +184,9 @@ Behind the scenes, the "Delete button" component extends the [Form button](./for
 - Text: "Delete"
 - HTTP Method: `PATCH`
 - Variant: `danger`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-delete :url="route('posts.delete', $post)" />
@@ -211,8 +217,9 @@ Behind the scenes, the "Archive button" component extends the [Form button](./fo
 - Text: "Archive"
 - HTTP Method: `PATCH`
 - Variant: `danger`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-archive :url="route('posts.archive', $post)" />
@@ -241,8 +248,9 @@ Behind the scenes, the "Restore button" component extends the [Form button](./fo
 - Text: "Delete"
 - HTTP Method: `PATCH`
 - Variant: `warning`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-restore :url="route('posts.restore', $post)" />
@@ -271,8 +279,9 @@ Behind the scenes, the "Destroy button" component extends the [Form button](./fo
 - Text: "Delete"
 - HTTP Method: `DELETE`
 - Variant: `danger`
+- Confirm Variant: `danger`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-destroy :url="route('posts.delete', $post)" />
@@ -297,11 +306,12 @@ This will output the following HTML:
 
 Useful for example to see an entity on the public side from the administration area.
 
-Behind the scenes, the "Show button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Show button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Show"
 - Variant: `info`
+- Confirm Variant: `info`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
 
 ```blade
 <x-btn-show :url="route('posts.show', $post)" />
@@ -319,11 +329,12 @@ This will output the following HTML:
 
 Very similar to the "Show button" but more for private/signed URLs.
 
-Behind the scenes, the "Preview button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Preview button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Preview"
 - Variant: `info`
+- Confirm Variant: `info`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
 
 ```blade
 <x-btn-preview :url="route('posts.preview', $post)" />
@@ -345,8 +356,9 @@ Behind the scenes, the "Save button" component extends the [Simple button](./sim
 - Text: "Save"
 - Type: `submit`
 - Variant: `success`
+- Confirm Variant: `success`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Type](./simple-button.md#type), [Form ID](./simple-button.md#form-id)
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Type](./simple-button.md#type), [Form ID](./simple-button.md#form-id)
 
 ```blade
     <x-btn-save />
@@ -393,7 +405,7 @@ Behind the scenes, the "Move up button" component extends the [Form button](./fo
 - HTTP Method: `PATCH`
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-move-up :url="route('posts.move-up', $post)" />
@@ -423,7 +435,7 @@ Behind the scenes, the "Move down button" component extends the [Form button](./
 - HTTP Method: `PATCH`
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-move-down :url="route('posts.move-down', $post)" />
@@ -451,9 +463,10 @@ Its purpose is to enable an entity if it has, for example, an "active" column.
 Behind the scenes, the "Enable button" component extends the [Form button](./form-button.md) component with the following default properties:
 - Text: "Enable"
 - HTTP Method: `PATCH`
-- Variant: `warning`
+- Variant: `success`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-enable :url="route('posts.enable', $post)" />
@@ -481,9 +494,10 @@ Its purpose is to disable an entity if it has, for example, an "active" column.
 Behind the scenes, the "Disable button" component extends the [Form button](./form-button.md) component with the following default properties:
 - Text: "Disable"
 - HTTP Method: `PATCH`
-- Variant: `success`
+- Variant: `warning`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-disable :url="route('posts.disable', $post)" />
@@ -512,8 +526,9 @@ Behind the scenes, the "Enabled button" component extends the [Form button](./fo
 - Text: "Enabled"
 - HTTP Method: `PATCH`
 - Variant: `success`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-enabled :url="route('posts.disable', $post)" />
@@ -542,8 +557,9 @@ Behind the scenes, the "Disabled button" component extends the [Form button](./f
 - Text: "Disabled"
 - HTTP Method: `PATCH`
 - Variant: `warning`
+- Confirm Variant: `warning`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
 <x-btn-disabled :url="route('posts.enable', $post)" />
@@ -569,11 +585,11 @@ Back buttons
 
 ### Back button
 
-Behind the scenes, the "Back button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Back button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Back"
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Form ID](./simple-button.md#form-id)
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
 
 ```blade
 <x-btn-back :url="route('posts')" />
@@ -591,11 +607,11 @@ This will output the following HTML:
 
 It has exactly the same role as the "Back button" component above but simply the default text is "Back to the list".
 
-Behind the scenes, the "Back list button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Back list button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Back to the list"
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Form ID](./simple-button.md#form-id)
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
 
 ```blade
 <x-btn-back-list :url="route('posts')" />
@@ -613,11 +629,11 @@ This will output the following HTML:
 
 It has exactly the same role as the "Back button" component above but simply the default text is "Back to home".
 
-Behind the scenes, the "Back home button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Back home button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Back to home"
 - Variant: `primary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Form ID](./simple-button.md#form-id)
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
 
 ```blade
 <x-btn-back-home :url="route('home')" />
@@ -642,7 +658,7 @@ Behind the scenes, the "Logout button" component extends the [Form button](./for
 - HTTP Method: `POST`
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Form ID](./form-button.md#form-id), [HTTP method](./form-button.md#http-method), [Type](./form-button.md#type).
 
 ```blade
     <x-btn-logout />
@@ -667,11 +683,11 @@ This will output the following HTML:
 
 Use to access the list of "soft-deleted" entities.
 
-Behind the scenes, the "Archives button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Archives button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Archives"
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Form ID](./simple-button.md#form-id)
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
 
 ```blade
 <x-btn-archives :url="route('posts.archives')" />
@@ -689,11 +705,11 @@ This will output the following HTML:
 
 It has exactly the same role as the "Archives button" component above but simply the default text is "Recycle Bin".
 
-Behind the scenes, the "Recycle Bin button" component extends the [Link button](./../link-button.md) component with the following default properties:
+Behind the scenes, the "Recycle Bin button" component extends the [Link button](./link-button.md) component with the following default properties:
 - Text: "Recycle Bin"
 - Variant: `secondary`
 
-Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Form ID](./simple-button.md#form-id)
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
 
 ```blade
 <x-btn-recycle-bin :url="route('posts.recycle-bin')" />
@@ -704,5 +720,93 @@ This will output the following HTML:
 ```html
 <a href="https://localhost/posts/recycle-bin" role="button" class="btn btn-secondary">
     Recycle Bin
+</a>
+```
+
+### Email button
+
+This button has a special attribute: `address` which is an email address. Note that for this, and unlike most attributes, this `address` attribute will be automatically escaped by the component.
+
+Behind the scenes, the "Email button" component extends the [Link button](./link-button.md) component with the following default properties:
+- URL: "mailto:`$address`"
+- Text: "Send an email"
+- Title: "Send an email to `$address`"
+- Variant: `info`
+- Confirm Variant: `info`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id)
+
+```blade
+<x-btn-email address="john-doe@example.com" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="mailto:john-doe@example.com" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="Send an email to john-doe@example.com">
+    Send an email
+</a>
+```
+
+### Phone button
+
+This button has two additional attributes: `phone-number` and `phone-number-displayed`. Note that for this, and unlike most attributes, these attributes will be automatically escaped by the component.
+
+Behind the scenes, the "Email button" component extends the [Link button](./link-button.md) component with the following default properties:
+- URL: "tel:`$phoneNumber`"
+- Text: "Call on phone"
+- Title: "Call on phone the `$phoneNumberDisplayed ?? $phoneNumber`"
+- Variant: `info`
+- Confirm Variant: `info`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id)
+
+```blade
+<x-btn-phone phone-number="+33102030405" phone-number="01 02 03 04 05" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="tel:+33102030405" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="Call on phone the 01 02 03 04 05">
+    Call on phone
+</a>
+```
+
+If the `phone-number-displayed` attribute is not specified, `phone-number` is used instead.
+
+```blade
+<x-btn-phone phone-number="+33102030405" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="tel:+33102030405" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="Call on phone the +33102030405">
+    Call on phone
+</a>
+```
+
+### Website button
+
+Note that for the `url` attribute, unlike most attributes, will be automatically escaped by the component.
+
+Behind the scenes, the "Website button" component extends the [Link button](./link-button.md) component with the following default properties:
+- Text: "See website"
+- Title: "See website `$url`"
+- Variant: `info`
+- Confirm Variant: `info`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
+
+```blade
+<x-website url="http://example.com" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="http://example.com" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="See website example.com">
+    See website
 </a>
 ```
