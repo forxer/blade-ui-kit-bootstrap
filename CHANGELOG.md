@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-0.21.0 (2024-10-xx)
+0.21.0 (2024-10-14)
 -------------------
 
 - The `href` attribute of link buttons is not mandatory
