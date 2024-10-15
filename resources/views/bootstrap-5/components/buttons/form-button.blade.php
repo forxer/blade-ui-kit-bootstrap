@@ -2,39 +2,10 @@
     {{ $attributes->merge(['class' => 'btn btn-'.$variant.($size !== null ? ' btn-'.$size : '')]) }}
     type="{{ $type }}"
     form="{!! $formId !!}"
-    @if ($title !== null)
-        data-bs-toggle="tooltip"
-        title="{!! $title !!}"
-    @endif
-    @if ($confirm !== null)
-        data-buk-confirm="{!! $confirm !!}"
-        data-buk-confirm-modal="confirm-modal-{!! $confirmId !!}"
-    @endif
+    @include('blade-ui-kit-bootstrap::bootstrap-5.components.buttons.partials.attributes')
     @disabled($disabled)
 >
-    @if ($startIcon !== null)
-        {!! $startIcon !!}
-    @endif
-    @if ($startContent !== null)
-        {!! $startContent !!}
-    @endif
-    @if ($slot->isEmpty())
-        @if ($hideText)
-            <span class="visually-hidden">
-                {!! $text !!}
-            </span>
-        @else
-            {!! $text !!}
-        @endif
-    @else
-        {!! $slot !!}
-    @endif
-    @if ($endContent !== null)
-        {!! $endContent !!}
-    @endif
-    @if ($endIcon !== null)
-        {!! $endIcon !!}
-    @endif
+@include('blade-ui-kit-bootstrap::bootstrap-5.components.buttons.partials.content')
 </button>
 
 @push('blade-ui-kit-bs-html')
@@ -43,7 +14,3 @@
         @method($method)
     </form>
 @endpush
-
-@if ($confirm !== null)
-    <x-confirm-modal :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" :confirmVariant="$confirmVariant" />
-@endif
