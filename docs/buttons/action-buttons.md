@@ -37,6 +37,7 @@ Action buttons extends either [Form button](./form-button.md), the [Link button]
     - [Email button](#email-button)
     - [Phone button](#phone-button)
     - [Website button](#website-button)
+    - [Copy button](#copy-button)
 
 Attributes
 ----------
@@ -800,7 +801,7 @@ Behind the scenes, the "Website button" component extends the [Link button](./li
 Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id).
 
 ```blade
-<x-website url="http://example.com" />
+<x-btn-website url="http://example.com" />
 ```
 
 This will output the following HTML:
@@ -809,4 +810,54 @@ This will output the following HTML:
 <a href="http://example.com" role="button" class="btn btn-info" data-bs-toggle="tooltip" title="See website example.com">
     See website
 </a>
+```
+
+### Copy button
+
+A simple button to copy a string or the content of another element to the clipboard.
+
+**Warning!** This button requires access to the [clipboard.js](https://clipboardjs.com/) package; this must be installed in your application and instantiated like this:
+
+```js
+import ClipboardJS from 'clipboard'
+window.ClipboardJS = new ClipboardJS('.btn-clipboard')
+```
+
+**Warning!** We are phasing out support for Bootstrap 4, this button may not work properly with this version.
+
+This button has two additional attributes: `target` and `string`. Note that for this, and unlike most attributes, these attributes will be automatically escaped by the component.
+
+Behind the scenes, the "Copy button" component extends the [Simple button](./simple-button.md) component with the following default properties:
+- Text: "Copy"
+- Variant: `secondary`
+- Confirm Variant: `secondary`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./simple-button.md#confirm-id), [Type](./simple-button.md#type), [Form ID](./simple-button.md#form-id)
+
+```blade
+<x-btn-copy string="string to copy" />
+```
+
+This will output the following HTML:
+
+```html
+<button class="btn btn-secondary btn-clipboard" type="button" data-clipboard-text="string to copy" data-bs-toggle="tooltip" title="Copy string to copy">
+    Copy
+</button>
+```
+
+You can target the content of a given element:
+
+```blade
+<input type="text" value="string to copy" id="element">
+<x-btn-copy target="#element" />
+```
+
+This will output the following HTML:
+
+```html
+<input type="text" value="string to copy" id="element">
+<button class="btn btn-secondary btn-clipboard" type="button" data-clipboard-target="#element" data-bs-toggle="tooltip" title="Copy">
+    Copy
+</button>
 ```

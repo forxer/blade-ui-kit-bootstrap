@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.22.0 (2024-10-15)
+-------------------
+
+- Added `<x-btn-copy />` action button component
+- The shared button code has been put into Blade partials
+
+
 0.21.0 (2024-10-14)
 -------------------
 

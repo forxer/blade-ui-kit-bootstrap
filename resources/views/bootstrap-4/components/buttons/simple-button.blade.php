@@ -4,35 +4,8 @@
     @if ($formId !== null)
         form="{!! $formId !!}"
     @endif
-    @if ($title !== null)
-        data-toggle="tooltip"
-        title="{!! $title !!}"
-    @endif
-    @if ($confirm !== null)
-        data-buk-confirm="{!! $confirm !!}"
-        data-buk-confirm-modal="confirm-modal-{!! $confirmId !!}"
-    @endif
+    @include('blade-ui-kit-bootstrap::bootstrap-4.components.buttons.partials.attributes')
     @disabled($disabled)
 >
-    @if ($startContent !== null)
-        {!! $startContent !!}
-    @endif
-    @if ($slot->isEmpty())
-        @if ($hideText)
-            <span class="sr-only">
-                {!! $text !!}
-            </span>
-        @else
-            {!! $text !!}
-        @endif
-    @else
-        {!! $slot !!}
-    @endif
-    @if ($endContent !== null)
-        {!! $endContent !!}
-    @endif
+@include('blade-ui-kit-bootstrap::bootstrap-4.components.buttons.partials.content')
 </button>
-
-@if ($confirm !== null)
-    <x-modal-confirm :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" :confirmVariant="$confirmVariant" />
-@endif

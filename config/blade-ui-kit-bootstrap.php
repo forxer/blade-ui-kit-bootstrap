@@ -34,6 +34,7 @@ return [
         'btn-archive' => Actions\Archive::class,
         'btn-archives' => Actions\Archives::class,
         'btn-cancel' => Actions\Cancel::class,
+        'btn-copy' => Actions\Copy::class,
         'btn-create' => Actions\Create::class,
         'btn-delete' => Actions\Delete::class,
         'btn-destroy' => Actions\Destroy::class,
