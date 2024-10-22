@@ -20,6 +20,8 @@
             {!! $text !!}
         </span>
     @else
-        {!! $text !!}
+        <span class="btn-text">
+            {!! $text !!}
+        </span>
     @endif
 </button>
