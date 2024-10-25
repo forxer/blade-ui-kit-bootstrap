@@ -1,10 +1,17 @@
 CHANGELOG
 =========
 
+0.23.1 (2024-10-25)
+-------------------
+
+- Replace all "modal-confirm" by "confirm-modal"
+
+
 0.23.0 (2024-10-22)
 -------------------
 
 - Added `<span class="btn-text">` on button text
+
 
 0.22.0 (2024-10-15)
 -------------------
