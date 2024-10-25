@@ -48,8 +48,8 @@ CHANGELOG
 
 - Inverting modal buttons
 
-
-0.19.0 (2024-09-23)
+confirm-modal
+0.19.0 (2024-09-confirm-modalconfirm-modal
 -------------------
 
 - Added `<x-form-modal />` component
