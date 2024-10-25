@@ -1,8 +1,8 @@
 <x-modal :id="e($id)" :title="e($title)" :dismissable="false" :variant="$confirmVariant" class="fade" data-backdrop="static" data-keyboard="false">
     <x-slot:footer>
         <div class="btn-group" role="group">
-            <x-btn-modal-confirm-yes data-buk-confirm-trigger="yes" />
-            <x-btn-modal-confirm-no data-dismiss="modal" />
+            <x-btn-confirm-modal-yes data-buk-confirm-trigger="yes" />
+            <x-btn-confirm-modal-no data-dismiss="modal" />
         </div>
     </x-slot>
 </x-modal>
