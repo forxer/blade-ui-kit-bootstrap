@@ -1,11 +1,7 @@
 <?php
 
-use BladeUIKitBootstrap\Components\Buttons;
-use BladeUIKitBootstrap\Components\Buttons\Actions;
-use BladeUIKitBootstrap\Components\Forms;
-use BladeUIKitBootstrap\Components\Forms\Inputs;
-use BladeUIKitBootstrap\Components\Modals;
 use BladeUIKitBootstrap\Enums\BootstrapVersion;
+use BladeUIKitBootstrap\ServiceProvider;
 
 return [
 
@@ -16,68 +12,11 @@ return [
     |
     | Below you reference all components that should be loaded for your app.
     | By default all components from Blade UI Kit Bootstrap are loaded in.
-    | You can disable or overwrite any component class or alias that you want.
+    | You can add, disable or overwrite any component class or alias that you want.
     |
     */
 
-    'components' => [
-        // Buttons
-        'btn' => Buttons\SimpleButton::class,
-        'form-button' => Buttons\FormButton::class,
-        'link-button' => Buttons\LinkButton::class,
-        'help-info' => Buttons\HelpInfo::class,
-
-        // Actions buttons
-        'btn-back' => Actions\Back\Back::class,
-        'btn-back-list' => Actions\Back\BackList::class,
-        'btn-back-home' => Actions\Back\BackHome::class,
-        'btn-archive' => Actions\Archive::class,
-        'btn-archives' => Actions\Archives::class,
-        'btn-cancel' => Actions\Cancel::class,
-        'btn-copy' => Actions\Copy::class,
-        'btn-create' => Actions\Create::class,
-        'btn-delete' => Actions\Delete::class,
-        'btn-destroy' => Actions\Destroy::class,
-        'btn-disable' => Actions\Disable::class,
-        'btn-disabled' => Actions\Disabled::class,
-        'btn-edit' => Actions\Edit::class,
-        'btn-email' => Actions\Email::class,
-        'btn-enable' => Actions\Enable::class,
-        'btn-enabled' => Actions\Enabled::class,
-        'btn-logout' => Actions\Logout::class,
-        'btn-confirm-modal-yes' => Actions\Modal\ConfirmYes::class,
-        'btn-confirm-modal-no' => Actions\Modal\ConfirmNo::class,
-        'btn-move-down' => Actions\MoveDown::class,
-        'btn-move-up' => Actions\MoveUp::class,
-        'btn-phone' => Actions\Phone::class,
-        'btn-preview' => Actions\Preview::class,
-        'btn-recycle-bin' => Actions\RecycleBin::class,
-        'btn-restore' => Actions\Restore::class,
-        'btn-save' => Actions\Save::class,
-        'btn-show' => Actions\Show::class,
-        'btn-website' => Actions\Website::class,
-
-        // Forms
-        'form' => Forms\Form::class,
-        'label' => Forms\Label::class,
-        'error' => Forms\Error::class,
-
-        // Inputs
-        'input' => Inputs\Input::class,
-        'text' => Inputs\Text::class,
-        'textarea' => Inputs\Textarea::class,
-        'select' => Inputs\Select::class,
-        'password' => Inputs\Password::class,
-        'email' => Inputs\Email::class,
-        'date' => Inputs\Date::class,
-        'time' => Inputs\Time::class,
-        'hidden' => Inputs\Hidden::class,
-
-        // Modals
-        'modal' => Modals\Modal::class,
-        'confirm-modal' => Modals\Confirm::class,
-        'form-modal' => Modals\Form::class,
-    ],
+    'components' => ServiceProvider::defaultComponents()->components(),
 
     /*
     |--------------------------------------------------------------------------

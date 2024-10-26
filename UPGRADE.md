@@ -1,6 +1,12 @@
 Upgrade
 =======
 
+From 0.19.x to 0.24.x
+---------------------
+
+With the addition of the `DefaultComponents` class, if you have published the configuration file and want to use it, you need to adjust this file.
+
+
 From 0.18.x to 0.19.x
 ---------------------
 
@@ -32,6 +38,7 @@ With the addition of the `Help info button` component, if you have published the
     'components' => [
         // Buttons ...
         'help-info' => Buttons\HelpInfo::class,
+    ]
 ```
 
 

@@ -25,6 +25,11 @@ class ServiceProvider extends BaseServiceProvider
         }
     }
 
+    public static function defaultComponents(): DefaultComponents
+    {
+        return new DefaultComponents();
+    }
+
     private function bootResources(): void
     {
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'blade-ui-kit-bootstrap');
@@ -47,7 +52,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         // config
         $this->publishes([
-            __DIR__.'/../config/blade-ui-kit-bootstrap.php' => $this->app->configPath('blade-ui-kit-bootstrap.php'),
+            __DIR__.'/../config/blade-ui-kit-bootstrap.stub' => $this->app->configPath('blade-ui-kit-bootstrap.php'),
         ], 'blade-ui-kit-bootstrap-config');
 
         // views
@@ -57,7 +62,7 @@ class ServiceProvider extends BaseServiceProvider
 
         // translations
         $this->publishes([
-            __DIR__.'/../lang/' => $this->app->langPath().'/vendor/blade-ui-kit-bootstrap',
+            __DIR__.'/../lang/' => $this->app->langPath('/vendor/blade-ui-kit-bootstrap'),
         ], 'blade-ui-kit-bootstrap-translations');
     }
 }

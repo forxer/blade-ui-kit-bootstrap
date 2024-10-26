@@ -58,6 +58,7 @@ Index
 -----
 
 - [Installation](./docs/installation.md)
+- [Configuration](./docs/configuration.md)
 - [Bootstrap version](./docs/bootstrap-version.md)
 - [Buttons](./docs/buttons/buttons.md)
     - [Simple button](./docs/buttons/simple-button.md)

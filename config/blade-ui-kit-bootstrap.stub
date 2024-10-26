@@ -1,0 +1,20 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+|   /!\ IMPORTANT
+|--------------------------------------------------------------------------
+|
+| Only modified values should appear in this file.
+|
+| This will simplify future updates.
+|
+| To know all the possible configuration values, please refer to the file:
+|
+| /vendor/forxer/blade-ui-kit-bootstrap/config/blade-ui-kit-bootstrap.php
+|
+*/
+
+return [
+
+];
