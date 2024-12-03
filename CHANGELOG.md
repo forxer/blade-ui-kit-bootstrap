@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.24.1 (2024-12-03)
+-------------------
+
+- Removed "partials" which cause bugs in a Livewire context
+
+
 0.24.0 (2024-10-26)
 -------------------
 
