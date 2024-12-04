@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.24.2 (2024-12-04)
+-------------------
+
+- Fixed like in 0.24.1 for `<x-btn-copy />` action button component
+
+
 0.24.1 (2024-12-03)
 -------------------
 
@@ -10,13 +16,13 @@ CHANGELOG
 0.24.0 (2024-10-26)
 -------------------
 
-- Add `DefaultComponents` class
+- Added `DefaultComponents` class
 
 
 0.23.1 (2024-10-25)
 -------------------
 
-- Replace all "modal-confirm" by "confirm-modal"
+- Replaced all "modal-confirm" by "confirm-modal"
 
 
 0.23.0 (2024-10-22)

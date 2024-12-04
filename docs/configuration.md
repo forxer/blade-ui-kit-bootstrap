@@ -51,7 +51,7 @@ return [
     //...
     'components' => ServiceProvider::defaultComponents()
         ->replace([
-            'btn-help-info' => \App\View\Components\Buttons\HelpInfo::class,
+            'help-info' => \App\View\Components\Buttons\HelpInfo::class,
             'btn-logout' => \App\View\Components\Buttons\Actions\Logout::class,
         ])
         ->components(),
@@ -147,7 +147,7 @@ return [
 Now all components can be referenced as usual, but with the prefix before their name:
 
 ```blade
-<x-bs-input name="inpu_name" />
+<x-bs-input name="input_name" />
 ```
 For obvious reasons, the docs don't use any prefix in their code examples. So keep this in mind when setting a prefix and copy/pasting code snippets.
 
