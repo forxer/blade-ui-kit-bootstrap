@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.24.3 (2024-12-04)
+-------------------
+
+- Extracted `<x-confirm-modal />` component from elements attributes
+
+
 0.24.2 (2024-12-04)
 -------------------
 

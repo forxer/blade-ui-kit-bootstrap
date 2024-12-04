@@ -11,9 +11,11 @@
     @if ($confirm !== null)
         data-buk-confirm="{!! $confirm !!}"
         data-buk-confirm-modal="confirm-modal-{!! $confirmId !!}"
-        <x-confirm-modal :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" :confirmVariant="$confirmVariant" />
     @endif
     @disabled($disabled)
 >
 @include('blade-ui-kit-bootstrap::bootstrap-4.components.buttons.partials.content')
 </button>
+@if ($confirm !== null)
+    <x-confirm-modal :id="'confirm-modal-'.$confirmId" :title="$confirmTitle" :confirmVariant="$confirmVariant" />
+@endif
