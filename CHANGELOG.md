@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.24.4 (2024-03-21)
+-------------------
+
+- Fixed #28 `visually-hidden` isn't a boostrap 4 class
+- Use Rector 2
+
+
 0.24.3 (2024-12-04)
 -------------------
 

@@ -1,15 +1,18 @@
 <?php
 
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
-use Rector\CodingStyle\Rector\ArrowFunction\StaticArrowFunctionRector;
-use Rector\CodingStyle\Rector\Closure\StaticClosureRector;
-use Rector\CodingStyle\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
 use Rector\Config\RectorConfig;
 use Rector\Php81\Rector\Array_\FirstClassCallableRector;
+use RectorLaravel\Rector\Class_\UnifyModelDatesWithCastsRector;
 use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
 use RectorLaravel\Rector\MethodCall\EloquentWhereRelationTypeHintingParameterRector;
 use RectorLaravel\Rector\MethodCall\EloquentWhereTypeHintClosureParameterRector;
+use RectorLaravel\Rector\MethodCall\RedirectBackToBackHelperRector;
+use RectorLaravel\Rector\MethodCall\ReplaceServiceContainerCallArgRector;
+use RectorLaravel\Rector\MethodCall\ReverseConditionableMethodCallRector;
+use RectorLaravel\Rector\MethodCall\ValidationRuleArrayStringValueToArrayRector;
 use RectorLaravel\Rector\PropertyFetch\OptionalToNullsafeOperatorRector;
+use RectorLaravel\Rector\StaticCall\RouteActionCallableRector;
 use RectorLaravel\Set\LaravelSetList;
 
 return RectorConfig::configure()
@@ -28,19 +31,12 @@ return RectorConfig::configure()
     ])
 
     // Up from PHP 5.3 to 8.2
-    //->withPhpSets()
+    // ->withPhpSets()
 
     // only PHP 8.2
     ->withPhpSets(php82: true)
 
     ->withSkip([
-        // Je trouve la lecture plus difficile avec cette syntaxe, donc je désactive (PHP 7.4/8.1)
-        // ArraySpreadInsteadOfArrayMergeRector::class,
-
-        // Ne pas changer les closure et Arrow Function en Static
-        // StaticClosureRector::class,
-        // StaticArrowFunctionRector::class,
-
         // Désactivation de cette règle car elle
         // transforme :     array_map('intval',
         // en :             array_map(intval(...),
@@ -51,6 +47,12 @@ return RectorConfig::configure()
         EloquentWhereTypeHintClosureParameterRector::class,
         OptionalToNullsafeOperatorRector::class,
         RemoveDumpDataDeadCodeRector::class,
+        RedirectBackToBackHelperRector::class,
+        ReplaceServiceContainerCallArgRector::class,
+        ReverseConditionableMethodCallRector::class,
+        RouteActionCallableRector::class,
+        UnifyModelDatesWithCastsRector::class,
+        ValidationRuleArrayStringValueToArrayRector::class,
     ])
     ->withSets([
         LaravelSetList::LARAVEL_FACADE_ALIASES_TO_FULL_NAMES,

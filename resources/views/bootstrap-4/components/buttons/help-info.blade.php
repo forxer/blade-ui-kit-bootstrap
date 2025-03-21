@@ -16,7 +16,7 @@
         {!! $startIcon !!}
     @endif
     @if ($hideText)
-        <span class="visually-hidden">
+        <span class="sr-only">
             {!! $text !!}
         </span>
     @else
