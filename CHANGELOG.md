@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.25.0 (2024-03-22)
+-------------------
+
+- Added support for Laravel 12
+
+
 0.24.4 (2024-03-21)
 -------------------
 
@@ -86,8 +92,8 @@ CHANGELOG
 
 - Inverting modal buttons
 
-confirm-modal
-0.19.0 (2024-09-confirm-modalconfirm-modal
+
+0.19.0 (2024-09-23)
 -------------------
 
 - Added `<x-form-modal />` component
