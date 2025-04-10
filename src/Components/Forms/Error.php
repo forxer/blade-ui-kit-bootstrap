@@ -18,7 +18,7 @@ class Error extends BladeComponent
         $this->bootCanHaveErrors($field, $bag);
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.error';
     }

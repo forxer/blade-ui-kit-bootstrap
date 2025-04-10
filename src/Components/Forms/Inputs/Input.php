@@ -28,7 +28,7 @@ class Input extends BladeComponent
         $this->bootCanHaveErrors($name, $errorBag);
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.inputs.input';
     }

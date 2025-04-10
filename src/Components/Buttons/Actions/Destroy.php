@@ -22,8 +22,12 @@ class Destroy extends FormButton
         $this->formId = 'destroy-'.($this->formId ?? Str::random(32));
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
+        if (! $this->show || $this->hide) {
+            return null;
+        }
+
         return 'components.buttons.actions.destroy';
     }
 }

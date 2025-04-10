@@ -17,6 +17,7 @@ Common button attributes
 
 - [Text](#text)
 - [Hide text](#hide-text)
+- [Show or hide](#show-or-hide)
 - [Start and end content](#start-and-end-content)
 - [Icons](#icons)
 - [Variant](#variant)
@@ -83,6 +84,20 @@ In some cases you may need to do this programmatically by passing a boolean valu
 
 ```blade
 <x-btn text="Do something" :hide-text="$booleanCondition" />
+```
+
+### Show or hide
+
+Sometimes you need to show or hide a button, for example depending on a permission.
+
+Rather than inserting the component into a test, these attributes allow you to display or hide it using a PHP expression.
+
+```blade
+<x-btn text="Do something" :show="$booleanCondition" />
+```
+
+```blade
+<x-btn text="Do something" :hide="$booleanCondition" />
 ```
 
 ### Start and end content

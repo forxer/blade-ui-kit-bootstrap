@@ -20,6 +20,8 @@ class LinkButton extends BladeComponent
         public ?string $url = null,
         public ?string $text = null,
         public bool $hideText = false,
+        public bool $show = true,
+        public bool $hide = false,
         public ?string $title = null,
         public ?string $variant = null,
         public bool $outline = false,
@@ -41,6 +43,10 @@ class LinkButton extends BladeComponent
         $this->onConstructing();
         $this->initAttributes();
 
+        if (! $this->show || $this->hide) {
+            return;
+        }
+
         if ($this->confirm !== null) {
             $this->confirmId = 'link-button-'.($this->confirmId ?? Str::random(32));
         }
@@ -51,8 +57,12 @@ class LinkButton extends BladeComponent
         $this->validBtnEndIcon();
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
+        if (! $this->show || $this->hide) {
+            return null;
+        }
+
         return 'components.buttons.link-button';
     }
 }

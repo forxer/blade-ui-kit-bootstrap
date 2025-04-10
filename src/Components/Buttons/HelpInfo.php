@@ -20,6 +20,8 @@ class HelpInfo extends BladeComponent
         public string $content,
         public ?string $text = null,
         public bool $hideText = false,
+        public bool $show = true,
+        public bool $hide = false,
         public ?string $title = null,
         public ?string $variant = 'link',
         public bool $outline = false,
@@ -33,6 +35,10 @@ class HelpInfo extends BladeComponent
         $this->onConstructing();
         $this->initAttributes();
 
+        if (! $this->show || $this->hide) {
+            return;
+        }
+
         $this->text ??= Str::ucfirst(trans('status.info'));
 
         $this->validBtnVariant();
@@ -40,8 +46,12 @@ class HelpInfo extends BladeComponent
         $this->validBtnStartIcon();
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
+        if (! $this->show || $this->hide) {
+            return null;
+        }
+
         return 'components.buttons.help-info';
     }
 }

@@ -49,7 +49,7 @@ class Select extends BladeComponent
         return $value === $selected;
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.inputs.select';
     }

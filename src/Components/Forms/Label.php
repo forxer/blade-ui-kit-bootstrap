@@ -17,7 +17,7 @@ class Label extends BladeComponent
         return str($this->for)->replace('_', ' ')->ucfirst->toString();
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.label';
     }

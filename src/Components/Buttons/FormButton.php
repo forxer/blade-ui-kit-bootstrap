@@ -24,6 +24,8 @@ class FormButton extends BladeComponent
         public string $url,
         public ?string $text = null,
         public bool $hideText = false,
+        public bool $show = true,
+        public bool $hide = false,
         public ?string $title = null,
         public ?string $variant = null,
         public bool $outline = false,
@@ -49,6 +51,10 @@ class FormButton extends BladeComponent
         $this->onConstructing();
         $this->initAttributes();
 
+        if (! $this->show || $this->hide) {
+            return;
+        }
+
         $this->formId ??= 'form-button-'.Str::random(32);
 
         if ($this->confirm !== null) {
@@ -63,8 +69,12 @@ class FormButton extends BladeComponent
         $this->validBtnEndIcon();
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
+        if (! $this->show || $this->hide) {
+            return null;
+        }
+
         return 'components.buttons.form-button';
     }
 }

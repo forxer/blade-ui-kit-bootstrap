@@ -29,7 +29,7 @@ class Confirm extends BladeComponent
         $this->title ??= trans('blade-ui-kit-bootstrap::modal.confirm');
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.modals.confirm';
     }

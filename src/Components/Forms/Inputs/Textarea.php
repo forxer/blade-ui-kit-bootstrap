@@ -23,7 +23,7 @@ class Textarea extends BladeComponent
         $this->bootCanHaveErrors($name, $errorBag);
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.inputs.textarea';
     }

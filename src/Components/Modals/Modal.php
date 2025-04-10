@@ -33,7 +33,7 @@ class Modal extends BladeComponent
         $this->validModalVariant();
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.modals.modal';
     }

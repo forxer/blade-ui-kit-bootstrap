@@ -26,6 +26,7 @@ Help info button specific attributes
 All attributes set on the component are piped through on the button element. Also, this component accepts this [common button attributes](./buttons.md#common-button-attributes):
 - [Text](./buttons.md#text)
 - [Hide text](./buttons.md#hide-text)
+- [Show or hide](./buttons.md#show-or-hide)
 - [Icons](./buttons.md#icons) (only "icon/start-icon" not "end-icon")
 - [Variant](./buttons.md#variant)
 - [Outline and no-outline](./buttons.md#outline-and-no-outline)

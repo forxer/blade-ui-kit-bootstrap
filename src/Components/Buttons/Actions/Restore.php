@@ -22,8 +22,12 @@ class Restore extends FormButton
         $this->formId = 'restore-'.($this->formId ?? Str::random(32));
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
+        if (! $this->show || $this->hide) {
+            return null;
+        }
+
         return 'components.buttons.actions.restore';
     }
 }

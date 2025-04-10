@@ -9,12 +9,20 @@ use Illuminate\View\Component as IlluminateComponent;
 
 abstract class BladeComponent extends IlluminateComponent
 {
-    abstract public function viewName(): string;
+    abstract public function viewName(): ?string;
 
-    public function render(): View
+    public function render(): View|string
     {
-        return view($this->viewPath($this->viewName()));
+        if (($viewName = $this->viewName()) === null) {
+            return '';
+        }
+
+        return view($this->viewPath($viewName));
     }
+
+    protected function initAttributes(): void {}
+
+    protected function onConstructing(): void {}
 
     protected function viewPath(string $view): string
     {
@@ -40,15 +48,5 @@ abstract class BladeComponent extends IlluminateComponent
         }
 
         return $config[$key];
-    }
-
-    protected function initAttributes(): void
-    {
-        //
-    }
-
-    protected function onConstructing(): void
-    {
-        //
     }
 }

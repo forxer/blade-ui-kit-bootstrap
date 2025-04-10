@@ -20,8 +20,12 @@ class RecycleBin extends LinkButton
         }
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
+        if (! $this->show || $this->hide) {
+            return null;
+        }
+
         return 'components.buttons.actions.recycle-bin';
     }
 }

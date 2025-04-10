@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.26.0 (2024-04-10)
+-------------------
+
+- Added `show` and `hide` properties to button components
+
+
 0.25.0 (2024-03-22)
 -------------------
 

@@ -24,7 +24,7 @@ class Form extends BladeComponent
         }
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.form';
     }

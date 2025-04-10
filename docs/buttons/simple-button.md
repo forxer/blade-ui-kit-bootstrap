@@ -37,6 +37,7 @@ Simple button specific attributes
 All attributes set on the component are piped through on the button element. Also, like all buttons, this component accepts all [common button attributes](./buttons.md#common-button-attributes):
 - [Text](./buttons.md#text)
 - [Hide text](./buttons.md#hide-text)
+- [Show or hide](./buttons.md#show-or-hide)
 - [Start and end content](./buttons.md#start-and-end-content)
 - [Icons](./buttons.md#icons)
 - [Variant](./buttons.md#variant)

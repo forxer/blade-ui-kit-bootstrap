@@ -21,7 +21,7 @@ class Date extends Input
         );
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.inputs.date';
     }

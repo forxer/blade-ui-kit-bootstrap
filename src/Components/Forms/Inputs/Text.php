@@ -21,7 +21,7 @@ class Text extends Input
         );
     }
 
-    public function viewName(): string
+    public function viewName(): ?string
     {
         return 'components.forms.inputs.email';
     }
