@@ -93,10 +93,20 @@ Sometimes you need to show or hide a button, for example depending on a permissi
 Rather than inserting the component into a test, these attributes allow you to display or hide it using a PHP expression.
 
 ```blade
-<x-btn text="Do something" :show="$booleanCondition" />
+@if ($booleanCondition)
+    <x-btn text="Do something" />
+@endif
+
+@unless ($booleanCondition)
+    <x-btn text="Do something" />
+@endif
 ```
 
+You can use either of these attributes:
+
 ```blade
+<x-btn text="Do something" :show="$booleanCondition" />
+
 <x-btn text="Do something" :hide="$booleanCondition" />
 ```
 
