@@ -39,6 +39,8 @@ class Copy extends SimpleButton
         parent::__construct(
             $text,
             $hideText,
+            $show,
+            $hide,
             $title,
             $variant,
             $outline,

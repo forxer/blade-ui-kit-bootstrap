@@ -38,6 +38,8 @@ class Email extends LinkButton
             $url,
             $text,
             $hideText,
+            $show,
+            $hide,
             $title,
             $variant,
             $outline,

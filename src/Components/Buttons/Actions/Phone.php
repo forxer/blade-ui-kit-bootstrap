@@ -39,6 +39,8 @@ class Phone extends LinkButton
             $url,
             $text,
             $hideText,
+            $show,
+            $hide,
             $title,
             $variant,
             $outline,
