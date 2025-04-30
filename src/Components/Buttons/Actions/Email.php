@@ -14,6 +14,8 @@ class Email extends LinkButton
         public ?string $url = null,
         public ?string $text = null,
         public bool $hideText = false,
+        public bool $show = true,
+        public bool $hide = false,
         public ?string $title = null,
         public ?string $variant = null,
         public bool $outline = false,
