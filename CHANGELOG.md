@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+0.27.0 (2025-10-11)
+-------------------
+
+- **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
+- Fixed documentation typo: `middelware` → `middleware`
+- Fixed typo in CHANGELOG: `boostrap` → `bootstrap`
+- Removed unused import from ServiceProvider
+
+
 0.26.2 (2024-04-30)
 -------------------
 
@@ -28,7 +37,7 @@ CHANGELOG
 0.24.4 (2024-03-21)
 -------------------
 
-- Fixed #28 `visually-hidden` isn't a boostrap 4 class
+- Fixed #28 `visually-hidden` isn't a bootstrap 4 class
 - Use Rector 2
 
 

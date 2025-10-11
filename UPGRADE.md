@@ -1,6 +1,32 @@
 Upgrade
 =======
 
+From 0.26.x to 0.27.x
+---------------------
+
+### Configuration key renamed
+
+The configuration key `boostrap_version` has been corrected to `bootstrap_version`
+
+**If you have NOT published the configuration file:** No action required. The package will automatically use the corrected key.
+
+**If you HAVE published the configuration file** (`config/blade-ui-kit-bootstrap.php`):
+
+You need to rename the configuration key in your published file:
+
+```php
+// OLD (incorrect)
+'boostrap_version' => BootstrapVersion::V5,
+
+// NEW (correct)
+'bootstrap_version' => BootstrapVersion::V5,
+```
+
+**If you are accessing this configuration programmatically in your code:**
+
+Update any references from `config('blade-ui-kit-bootstrap.boostrap_version')` to `config('blade-ui-kit-bootstrap.bootstrap_version')`.
+
+
 From 0.19.x to 0.24.x
 ---------------------
 

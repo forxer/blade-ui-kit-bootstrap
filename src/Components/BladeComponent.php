@@ -29,7 +29,7 @@ abstract class BladeComponent extends IlluminateComponent
         static $bootstrapVersion = null;
 
         if ($bootstrapVersion === null) {
-            $bootstrapVersion = 'blade-ui-kit-bootstrap::'.$this->config('boostrap_version')->value.'.';
+            $bootstrapVersion = 'blade-ui-kit-bootstrap::'.$this->config('bootstrap_version')->value.'.';
         }
 
         return $bootstrapVersion.$view;

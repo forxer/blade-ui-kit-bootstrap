@@ -31,7 +31,7 @@ return [
     |
     */
 
-    'boostrap_version' => BootstrapVersion::V5,
+    'bootstrap_version' => BootstrapVersion::V5,
 
     /*
     |--------------------------------------------------------------------------

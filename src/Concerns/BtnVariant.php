@@ -51,7 +51,7 @@ trait BtnVariant
 
         $allowedVariants = self::ALLOWED_BS4_VARIANTS;
 
-        if ($this->config('boostrap_version') === BootstrapVersion::V5) {
+        if ($this->config('bootstrap_version') === BootstrapVersion::V5) {
             $allowedVariants = self::ALLOWED_BS5_VARIANTS;
 
             if ($allButtonsOutline === null) {

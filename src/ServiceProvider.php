@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap;
 
-use BladeUIKit\Components\BladeComponent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -41,7 +40,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade): void {
             $prefix = config('blade-ui-kit-bootstrap.prefix', '');
 
-            /** @var BladeComponent $component */
             foreach (config('blade-ui-kit-bootstrap.components', []) as $alias => $component) {
                 $blade->component($component, $alias, $prefix);
             }
