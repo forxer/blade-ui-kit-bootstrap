@@ -55,9 +55,10 @@ use BladeUIKitBootstrap\Components\Modals\Modal;
 class DefaultComponents
 {
     /**
-     * The current components.
+     * The current components array.
+     * Public read access, private write access for immutability.
      */
-    protected array $components;
+    public private(set) array $components;
 
     /**
      * Create a new default component collection.

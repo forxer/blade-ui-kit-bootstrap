@@ -9,6 +9,13 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
+use function Laravel\Prompts\confirm;
+use function Laravel\Prompts\error;
+use function Laravel\Prompts\info;
+use function Laravel\Prompts\note;
+use function Laravel\Prompts\table;
+use function Laravel\Prompts\warning;
+
 class MakeComponent extends Command
 {
     protected $signature = 'make:blade-ui-kit-bs-component
@@ -32,8 +39,7 @@ class MakeComponent extends Command
 
         // Validate that extends option is provided
         if (! $extends) {
-            $this->error('You must specify a component to extend using --extends option.');
-            $this->line('');
+            error('You must specify a component to extend using --extends option.');
             $this->showAvailableComponents();
 
             return self::FAILURE;
@@ -43,8 +49,7 @@ class MakeComponent extends Command
         $parentClass = $this->resolveParentClass($extends);
 
         if (\in_array($parentClass, [null, '', '0'], true)) {
-            $this->error(\sprintf("Component '%s' not found.", $extends));
-            $this->line('');
+            error(\sprintf("Component '%s' not found.", $extends));
             $this->showAvailableComponents();
 
             return self::FAILURE;
@@ -56,7 +61,7 @@ class MakeComponent extends Command
         $fullClassName = $namespace.'\\'.$name;
 
         if ($this->files->exists($path) && ! $this->option('force')) {
-            $this->error(\sprintf('Component [%s] already exists!', $name));
+            error(\sprintf('Component [%s] already exists!', $name));
 
             return self::FAILURE;
         }
@@ -65,32 +70,32 @@ class MakeComponent extends Command
 
         $this->files->put($path, $this->buildClass($name, $parentClass));
 
-        $this->components->info(\sprintf('Component [%s] created successfully.', $fullClassName));
+        info(\sprintf('Component [%s] created successfully.', $fullClassName));
 
         // Optionally create a view file
-        if ($this->confirm('Do you want to create a corresponding view file?', false)) {
+        if (confirm('Do you want to create a corresponding view file?', false)) {
             $this->createView($name, $parentClass);
         }
 
-        $this->line('');
-        $this->line('You can now register your component in config/blade-ui-kit-bootstrap.php:');
-        $this->line('');
-        $this->line('Option 1 - Add as a new component:');
-        $this->line('');
-        $this->line("    'components' => ServiceProvider::defaultComponents()");
-        $this->line('        ->merge([');
-        $this->line(\sprintf("            '%s' => \\%s::class,", $this->getComponentAlias($name, $parentClass), $fullClassName));
-        $this->line('        ])');
-        $this->line('        ->components(),');
-        $this->line('');
-        $this->line('Option 2 - Replace an existing component:');
-        $this->line('');
-        $this->line("    'components' => ServiceProvider::defaultComponents()");
-        $this->line('        ->replace([');
-        $this->line(\sprintf("            '%s' => \\%s::class,", $this->getOriginalAlias($extends), $fullClassName));
-        $this->line('        ])');
-        $this->line('        ->components(),');
-        $this->line('');
+        note(
+            'You can now register your component in config/blade-ui-kit-bootstrap.php:'.PHP_EOL.
+            PHP_EOL.
+            'Option 1 - Add as a new component:'.PHP_EOL.
+            PHP_EOL.
+            "    'components' => ServiceProvider::defaultComponents()".PHP_EOL.
+            '        ->merge(['.PHP_EOL.
+            \sprintf("            '%s' => \\%s::class,", $this->getComponentAlias($name, $parentClass), $fullClassName).PHP_EOL.
+            '        ])'.PHP_EOL.
+            '        ->components(),'.PHP_EOL.
+            PHP_EOL.
+            'Option 2 - Replace an existing component:'.PHP_EOL.
+            PHP_EOL.
+            "    'components' => ServiceProvider::defaultComponents()".PHP_EOL.
+            '        ->replace(['.PHP_EOL.
+            \sprintf("            '%s' => \\%s::class,", $this->getOriginalAlias($extends), $fullClassName).PHP_EOL.
+            '        ])'.PHP_EOL.
+            '        ->components(),'
+        );
 
         return self::SUCCESS;
     }
@@ -218,7 +223,7 @@ class MakeComponent extends Command
         }
 
         if ($this->files->exists($viewPath) && ! $this->option('force')) {
-            $this->warn(\sprintf('View [%s] already exists!', $displayPath));
+            warning(\sprintf('View [%s] already exists!', $displayPath));
 
             return;
         }
@@ -229,7 +234,7 @@ class MakeComponent extends Command
 
         $this->files->put($viewPath, $viewStub);
 
-        $this->components->info(\sprintf('View [%s] created successfully.', $displayPath));
+        info(\sprintf('View [%s] created successfully.', $displayPath));
     }
 
     protected function getComponentAlias(string $name, string $parentClass): string
@@ -252,17 +257,15 @@ class MakeComponent extends Command
             return $extends;
         }
 
-        // Otherwise, try to find the alias for this class
-        $alias = array_search($extends, $this->availableComponents, true);
-
-        return $alias !== false ? $alias : Str::kebab(class_basename($extends));
+        // Otherwise, try to find the alias for this class using PHP 8.4 array_find_key
+        return array_find_key(
+            $this->availableComponents,
+            fn ($class) => $class === $extends
+        ) ?? Str::kebab(class_basename($extends));
     }
 
     protected function showAvailableComponents(): void
     {
-        $this->line('Available components to extend:');
-        $this->line('');
-
         $groups = [
             'Buttons' => ['btn', 'form-button', 'link-button', 'help-info'],
             'Action Buttons' => [
@@ -278,17 +281,18 @@ class MakeComponent extends Command
             'Modals' => ['modal', 'confirm-modal', 'form-modal'],
         ];
 
-        foreach ($groups as $group => $components) {
-            $this->line(\sprintf('<fg=yellow>%s:</>', $group));
+        $rows = [];
 
+        foreach ($groups as $group => $components) {
             foreach ($components as $alias) {
                 if (isset($this->availableComponents[$alias])) {
                     $class = $this->availableComponents[$alias];
-                    $this->line(\sprintf('  <fg=green>%s</> → %s', $alias, $class));
+                    $rows[] = [$group, $alias, $class];
+                    $group = ''; // Show group name only once
                 }
             }
-
-            $this->line('');
         }
+
+        table(['Category', 'Alias', 'Class'], $rows);
     }
 }

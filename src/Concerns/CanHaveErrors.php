@@ -9,13 +9,25 @@ use Illuminate\Support\ViewErrorBag;
 
 trait CanHaveErrors
 {
-    public string $errorField;
+    public private(set) string $errorField;
 
-    public string $errorBag = 'default';
+    public private(set) string $errorBag = 'default';
 
-    public bool $hasErrors;
+    public private(set) bool $hasErrors;
 
     private ViewErrorBag $errors;
+
+    /**
+     * ViewFactory instance for accessing shared error bags.
+     * Uses property hook with static cache for singleton-like behavior.
+     */
+    private ViewFactory $viewFactory {
+        get {
+            static $instance = null;
+
+            return $instance ??= resolve(ViewFactory::class);
+        }
+    }
 
     public function messages(): array
     {
@@ -26,13 +38,7 @@ trait CanHaveErrors
 
     protected function bootCanHaveErrors(string $errorField, ?string $errorBag = null): void
     {
-        static $view = null;
-
-        if ($view === null) {
-            $view = resolve(ViewFactory::class);
-        }
-
-        $this->errors = $view->shared('errors', new ViewErrorBag());
+        $this->errors = $this->viewFactory->shared('errors', new ViewErrorBag());
 
         $this->errorField($errorField);
         $this->errorBag($errorBag);

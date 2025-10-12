@@ -8,6 +8,14 @@ use InvalidArgumentException;
 
 trait ModalVariant
 {
+    /**
+     * Configuration value for all modals outline setting.
+     * Uses property hook to cache the configuration value.
+     */
+    private bool $allModalsOutline {
+        get => $this->config('all_modal_outline');
+    }
+
     private const ALLOWED_VARIANTS = [
         'primary',
         'secondary',
@@ -25,17 +33,11 @@ trait ModalVariant
 
     private function validModalVariant(): void
     {
-        static $allModalsOutline = null;
-
         if ($this->variant === null) {
             return;
         }
 
-        if ($allModalsOutline === null) {
-            $allModalsOutline = $this->config('all_modal_outline');
-        }
-
-        if ($this->noOutline === false && ($allModalsOutline || $this->outline)) {
+        if ($this->noOutline === false && ($this->allModalsOutline || $this->outline)) {
             $this->variant = 'outline-'.$this->variant;
         }
 

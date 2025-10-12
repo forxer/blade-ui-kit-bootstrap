@@ -119,9 +119,10 @@ Located in `src/Concerns/`:
 The package provides Artisan commands registered in `src/Commands/`:
 
 - **MakeComponent** (`make:blade-ui-kit-bs-component`): Generates custom component classes that extend default components
+  - Uses Laravel Prompts for modern, interactive CLI experience
   - Uses stubs from `stubs/component.stub` and `stubs/component.view.stub`
   - Registered in `ServiceProvider::configureCommands()`
-  - Provides interactive component selection with full list of available components
+  - Displays available components in a formatted table when no parent is specified
   - Generates both PHP class and optional Blade view file
   - **Automatically preserves parent component directory structure**: extracts the path after `BladeUIKitBootstrap\Components\` from parent class and recreates it in `App\View\Components\`
   - Example: extending `BladeUIKitBootstrap\Components\Buttons\Actions\Save` creates `App\View\Components\Buttons\Actions\CustomSaveButton.php`

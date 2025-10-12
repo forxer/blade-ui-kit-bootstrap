@@ -9,6 +9,14 @@ use InvalidArgumentException;
 
 trait BtnVariant
 {
+    /**
+     * Configuration value for all buttons outline setting.
+     * Uses property hook to cache the configuration value.
+     */
+    private bool $allButtonsOutline {
+        get => $this->config('all_buttons_outline');
+    }
+
     private const DEFAULT_VARIANT = 'primary';
 
     private const ALLOWED_BS4_VARIANTS = [
@@ -45,8 +53,6 @@ trait BtnVariant
 
     private function validBtnVariant(): void
     {
-        static $allButtonsOutline = null;
-
         $this->variant ??= self::DEFAULT_VARIANT;
 
         $allowedVariants = self::ALLOWED_BS4_VARIANTS;
@@ -54,11 +60,7 @@ trait BtnVariant
         if ($this->config('bootstrap_version') === BootstrapVersion::V5) {
             $allowedVariants = self::ALLOWED_BS5_VARIANTS;
 
-            if ($allButtonsOutline === null) {
-                $allButtonsOutline = $this->config('all_buttons_outline');
-            }
-
-            if ($this->noOutline === false && ($allButtonsOutline || $this->outline)) {
+            if ($this->noOutline === false && ($this->allButtonsOutline || $this->outline)) {
                 $this->variant = 'outline-'.$this->variant;
             }
         }

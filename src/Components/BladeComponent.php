@@ -64,29 +64,37 @@ abstract class BladeComponent extends IlluminateComponent
      */
     protected function onConstructing(): void {}
 
+    /**
+     * Cached configuration array for the package.
+     * Uses property hook to lazily load and cache configuration.
+     */
+    private array $configCache {
+        get {
+            static $cache = null;
+
+            return $cache ??= app('config')->get('blade-ui-kit-bootstrap');
+        }
+    }
+
+    /**
+     * Cached Bootstrap version prefix for view paths.
+     * Uses property hook to compute and cache the prefix.
+     */
+    private string $bootstrapVersionPrefix {
+        get {
+            static $prefix = null;
+
+            return $prefix ??= 'blade-ui-kit-bootstrap::'.$this->config('bootstrap_version')->value.'.';
+        }
+    }
+
     protected function viewPath(string $view): string
     {
-        static $bootstrapVersion = null;
-
-        if ($bootstrapVersion === null) {
-            $bootstrapVersion = 'blade-ui-kit-bootstrap::'.$this->config('bootstrap_version')->value.'.';
-        }
-
-        return $bootstrapVersion.$view;
+        return $this->bootstrapVersionPrefix.$view;
     }
 
     protected function config(string $key): mixed
     {
-        static $config = null;
-
-        if ($config === null) {
-            $config = app('config')->get('blade-ui-kit-bootstrap');
-        }
-
-        if ($key === null) {
-            return $config;
-        }
-
-        return $config[$key];
+        return $this->configCache[$key];
     }
 }

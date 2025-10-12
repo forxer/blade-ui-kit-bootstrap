@@ -4,16 +4,37 @@ CHANGELOG
 1.0.0 UNRELEASED
 -------------------
 
+### Breaking Changes
+
 - **BREAKING:** Minimum PHP version is now 8.4
 - **BREAKING:** Only Laravel 12 is supported (dropped Laravel 10 and 11)
 - **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
+
+### PHP 8.4 Modernizations
+
+- Implemented property hooks in `BladeComponent` for config and viewPath caching
+- Implemented property hooks in `BtnVariant` and `ModalVariant` traits for configuration caching
+- Implemented property hooks in `CanHaveErrors` trait for ViewFactory dependency resolution
+- Added asymmetric visibility (`public private(set)`) to:
+  - `DefaultComponents::$components` for immutable public read access
+  - `CanHaveErrors` properties (`$errorField`, `$errorBag`, `$hasErrors`)
+  - Input component properties (`$id`, `$value`)
+- Replaced `array_search()` with PHP 8.4 `array_find_key()` in `MakeComponent` command
+
+### Features
+
+- Added `make:blade-ui-kit-bs-component` command to generate custom components extending defaults
+  - Uses Laravel Prompts for modern CLI interaction
+  - Generated components preserve parent directory structure and namespace
+  - Displays available components in a formatted table
+  - Component registration now uses package configuration with `merge()` and `replace()` methods
+- Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
+- Added comprehensive documentation for extending components (`docs/extending-components.md`)
+
+### Bug Fixes
+
 - Fixed documentation typo: `middelware` → `middleware`
 - Fixed typo in CHANGELOG: `boostrap` → `bootstrap`
-- Added `make:blade-ui-kit-bs-component` command to generate custom components extending defaults
-  - Generated components preserve parent directory structure and namespace
-  - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
-  - Added documentation for extending components (`docs/extending-components.md`)
-  - Component registration now uses package configuration with `merge()` and `replace()` methods
 
 
 0.26.2 (2024-04-30)

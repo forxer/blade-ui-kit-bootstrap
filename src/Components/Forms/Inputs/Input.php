@@ -11,9 +11,9 @@ class Input extends BladeComponent
 {
     use CanHaveErrors;
 
-    public string $id;
+    public private(set) string $id;
 
-    public ?string $value;
+    public private(set) ?string $value;
 
     public function __construct(
         public string $name,
