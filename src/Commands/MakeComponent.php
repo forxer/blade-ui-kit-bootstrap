@@ -13,15 +13,17 @@ use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\error;
 use function Laravel\Prompts\info;
 use function Laravel\Prompts\note;
+use function Laravel\Prompts\select;
 use function Laravel\Prompts\table;
+use function Laravel\Prompts\text;
 use function Laravel\Prompts\warning;
 
 class MakeComponent extends Command
 {
     protected $signature = 'make:blade-ui-kit-bs-component
-                            {name : The name of the component class}
-                            {--extends= : The default component to extend (alias or full class name)}
-                            {--force : Overwrite the component if it already exists}';
+                            {name? : The name of the component class}
+                            {--extends= : The default component to extend}
+                            {--force : Overwrite existing files without confirmation}';
 
     protected $description = 'Create a new Blade UI Kit Bootstrap component class';
 
@@ -37,15 +39,12 @@ class MakeComponent extends Command
         $name = $this->argument('name');
         $extends = $this->option('extends');
 
-        // Validate that extends option is provided
+        // Step 1: Get parent component to extend
         if (! $extends) {
-            error('You must specify a component to extend using --extends option.');
-            $this->showAvailableComponents();
-
-            return self::FAILURE;
+            $extends = $this->promptForComponent();
         }
 
-        // Resolve the parent class
+        // Step 2: Validate parent component immediately
         $parentClass = $this->resolveParentClass($extends);
 
         if (\in_array($parentClass, [null, '', '0'], true)) {
@@ -55,15 +54,25 @@ class MakeComponent extends Command
             return self::FAILURE;
         }
 
+        // Step 3: Get component name
+        if (! $name) {
+            $name = $this->promptForName($extends);
+        }
+
         // Generate the component
         $path = $this->getPath($name, $parentClass);
         $namespace = $this->getNamespace($parentClass);
         $fullClassName = $namespace.'\\'.$name;
 
-        if ($this->files->exists($path) && ! $this->option('force')) {
-            error(\sprintf('Component [%s] already exists!', $name));
+        // Check if component already exists
+        if ($this->files->exists($path)) {
+            if ($this->option('force')) {
+                warning(\sprintf('Component [%s] already exists. Overwriting...', $name));
+            } elseif (! confirm(\sprintf('Component [%s] already exists. Do you want to overwrite it?', $name), false)) {
+                error('Operation cancelled.');
 
-            return self::FAILURE;
+                return self::FAILURE;
+            }
         }
 
         $this->makeDirectory($path);
@@ -214,7 +223,11 @@ class MakeComponent extends Command
         $subPath = $this->getSubPath($parentClass);
 
         if ($subPath !== '' && $subPath !== '0') {
-            $viewSubPath = str_replace('\\', '/', Str::kebab(str_replace('/', '-', $subPath)));
+            // Split path by slashes, convert each part to kebab-case, then join with slashes
+            $parts = explode('/', $subPath);
+            $kebabParts = array_map([Str::class, 'kebab'], $parts);
+            $viewSubPath = implode('/', $kebabParts);
+
             $viewPath = resource_path(\sprintf('views/components/%s/%s.blade.php', $viewSubPath, $viewName));
             $displayPath = \sprintf('resources/views/components/%s/%s.blade.php', $viewSubPath, $viewName);
         } else {
@@ -222,10 +235,15 @@ class MakeComponent extends Command
             $displayPath = \sprintf('resources/views/components/%s.blade.php', $viewName);
         }
 
-        if ($this->files->exists($viewPath) && ! $this->option('force')) {
-            warning(\sprintf('View [%s] already exists!', $displayPath));
+        // Check if view already exists
+        if ($this->files->exists($viewPath)) {
+            if ($this->option('force')) {
+                warning(\sprintf('View [%s] already exists. Overwriting...', $displayPath));
+            } elseif (! confirm(\sprintf('View [%s] already exists. Do you want to overwrite it?', $displayPath), false)) {
+                warning('View creation skipped.');
 
-            return;
+                return;
+            }
         }
 
         $this->makeDirectory($viewPath);
@@ -242,7 +260,10 @@ class MakeComponent extends Command
         $subPath = $this->getSubPath($parentClass);
 
         if ($subPath !== '' && $subPath !== '0') {
-            $aliasSubPath = str_replace('/', '.', Str::kebab(str_replace('\\', '/', $subPath)));
+            // Split path by slashes, convert each part to kebab-case, then join with dots
+            $parts = explode('/', $subPath);
+            $kebabParts = array_map([Str::class, 'kebab'], $parts);
+            $aliasSubPath = implode('.', $kebabParts);
 
             return $aliasSubPath.'.'.Str::kebab($name);
         }
@@ -260,26 +281,51 @@ class MakeComponent extends Command
         // Otherwise, try to find the alias for this class using PHP 8.4 array_find_key
         return array_find_key(
             $this->availableComponents,
-            fn ($class) => $class === $extends
+            fn ($class): bool => $class === $extends
         ) ?? Str::kebab(class_basename($extends));
+    }
+
+    protected function promptForComponent(): string
+    {
+        $groups = $this->getComponentGroups();
+
+        // Build a list with category prefix for better organization
+        $options = [];
+
+        foreach ($groups as $category => $aliases) {
+            foreach ($aliases as $alias) {
+                if (isset($this->availableComponents[$alias])) {
+                    $options[$alias] = \sprintf('%s: %s', $category, $alias);
+                }
+            }
+        }
+
+        return select(
+            label: 'Which component do you want to extend?',
+            options: $options,
+            scroll: 10
+        );
+    }
+
+    protected function promptForName(string $extends): string
+    {
+        // Get parent class name as suggestion
+        $parentClass = $this->availableComponents[$extends] ?? $extends;
+        $parentClassName = class_basename($parentClass);
+        $suggestion = 'Custom'.$parentClassName;
+
+        return text(
+            label: 'What is the name of your component class?',
+            placeholder: $suggestion,
+            default: '',
+            required: true,
+            hint: 'Use PascalCase (e.g. CustomSaveButton, DangerModal)',
+        );
     }
 
     protected function showAvailableComponents(): void
     {
-        $groups = [
-            'Buttons' => ['btn', 'form-button', 'link-button', 'help-info'],
-            'Action Buttons' => [
-                'btn-back', 'btn-back-list', 'btn-back-home', 'btn-archive', 'btn-archives',
-                'btn-cancel', 'btn-copy', 'btn-create', 'btn-delete', 'btn-destroy',
-                'btn-disable', 'btn-disabled', 'btn-edit', 'btn-email', 'btn-enable',
-                'btn-enabled', 'btn-logout', 'btn-confirm-modal-yes', 'btn-confirm-modal-no',
-                'btn-move-down', 'btn-move-up', 'btn-phone', 'btn-preview',
-                'btn-recycle-bin', 'btn-restore', 'btn-save', 'btn-show', 'btn-website',
-            ],
-            'Forms' => ['form', 'label', 'error'],
-            'Inputs' => ['input', 'text', 'textarea', 'select', 'password', 'email', 'date', 'time', 'hidden'],
-            'Modals' => ['modal', 'confirm-modal', 'form-modal'],
-        ];
+        $groups = $this->getComponentGroups();
 
         $rows = [];
 
@@ -294,5 +340,23 @@ class MakeComponent extends Command
         }
 
         table(['Category', 'Alias', 'Class'], $rows);
+    }
+
+    protected function getComponentGroups(): array
+    {
+        return [
+            'Buttons' => ['btn', 'form-button', 'link-button', 'help-info'],
+            'Action Buttons' => [
+                'btn-back', 'btn-back-list', 'btn-back-home', 'btn-archive', 'btn-archives',
+                'btn-cancel', 'btn-copy', 'btn-create', 'btn-delete', 'btn-destroy',
+                'btn-disable', 'btn-disabled', 'btn-edit', 'btn-email', 'btn-enable',
+                'btn-enabled', 'btn-logout', 'btn-confirm-modal-yes', 'btn-confirm-modal-no',
+                'btn-move-down', 'btn-move-up', 'btn-phone', 'btn-preview',
+                'btn-recycle-bin', 'btn-restore', 'btn-save', 'btn-show', 'btn-website',
+            ],
+            'Forms' => ['form', 'label', 'error'],
+            'Inputs' => ['input', 'text', 'textarea', 'select', 'password', 'email', 'date', 'time', 'hidden'],
+            'Modals' => ['modal', 'confirm-modal', 'form-modal'],
+        ];
     }
 }
