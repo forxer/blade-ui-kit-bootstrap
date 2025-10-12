@@ -355,6 +355,7 @@ class MakeComponent extends Command
                 'btn-recycle-bin', 'btn-restore', 'btn-save', 'btn-show', 'btn-website',
             ],
             'Alerts' => ['alert'],
+            'Badges' => ['badge'],
             'Forms' => ['form', 'label', 'error'],
             'Inputs' => ['input', 'text', 'textarea', 'select', 'password', 'email', 'date', 'time', 'hidden'],
             'Modals' => ['modal', 'confirm-modal', 'form-modal'],

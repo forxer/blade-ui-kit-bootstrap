@@ -28,6 +28,8 @@ CHANGELOG
   - Generated components preserve parent directory structure and namespace
   - Displays available components in a formatted table
   - Component registration now uses package configuration with `merge()` and `replace()` methods
+- Added Alert component with dismissible, outline, title, and icon support
+- Added Badge component with pill style support
 - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
 - Added comprehensive documentation for extending components (`docs/extending-components.md`)
 

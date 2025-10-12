@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BladeUIKitBootstrap;
 
 use BladeUIKitBootstrap\Components\Alerts\Alert;
+use BladeUIKitBootstrap\Components\Badges\Badge;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Archive;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Archives;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Back\Back;
@@ -105,6 +106,9 @@ class DefaultComponents
 
             // Alerts
             'alert' => Alert::class,
+
+            // Badges
+            'badge' => Badge::class,
 
             // Forms
             'form' => Form::class,
