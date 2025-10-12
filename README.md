@@ -59,6 +59,7 @@ Index
 
 - [Installation](./docs/installation.md)
 - [Configuration](./docs/configuration.md)
+- [Extending Components](./docs/extending-components.md)
 - [Bootstrap version](./docs/bootstrap-version.md)
 - [Buttons](./docs/buttons/buttons.md)
     - [Simple button](./docs/buttons/simple-button.md)

@@ -1,13 +1,17 @@
 CHANGELOG
 =========
 
-0.27.0 (2025-10-11)
+1.0.0 UNRELEASED
 -------------------
 
 - **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
 - Fixed documentation typo: `middelware` → `middleware`
 - Fixed typo in CHANGELOG: `boostrap` → `bootstrap`
-- Removed unused import from ServiceProvider
+- Added `make:blade-ui-kit-bs-component` command to generate custom components extending defaults
+  - Generated components preserve parent directory structure and namespace
+  - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
+  - Added documentation for extending components (`docs/extending-components.md`)
+  - Component registration now uses package configuration with `merge()` and `replace()` methods
 
 
 0.26.2 (2024-04-30)

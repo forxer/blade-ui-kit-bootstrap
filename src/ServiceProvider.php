@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap;
 
+use BladeUIKitBootstrap\Commands\MakeComponent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -21,6 +22,7 @@ class ServiceProvider extends BaseServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->configurePublishing();
+            $this->configureCommands();
         }
     }
 
@@ -62,5 +64,12 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__.'/../lang/' => $this->app->langPath('/vendor/blade-ui-kit-bootstrap'),
         ], 'blade-ui-kit-bootstrap-translations');
+    }
+
+    private function configureCommands(): void
+    {
+        $this->commands([
+            MakeComponent::class,
+        ]);
     }
 }

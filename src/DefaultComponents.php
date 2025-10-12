@@ -4,11 +4,53 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap;
 
-use BladeUIKitBootstrap\Components\Buttons;
-use BladeUIKitBootstrap\Components\Buttons\Actions;
-use BladeUIKitBootstrap\Components\Forms;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Archive;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Archives;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Back\Back;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Back\BackHome;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Back\BackList;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Cancel;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Copy;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Create;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Delete;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Destroy;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Disable;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Disabled;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Edit;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Email;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Enable;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Enabled;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Logout;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Modal\ConfirmNo;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Modal\ConfirmYes;
+use BladeUIKitBootstrap\Components\Buttons\Actions\MoveDown;
+use BladeUIKitBootstrap\Components\Buttons\Actions\MoveUp;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Phone;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Preview;
+use BladeUIKitBootstrap\Components\Buttons\Actions\RecycleBin;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Restore;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Save;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Show;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Website;
+use BladeUIKitBootstrap\Components\Buttons\FormButton;
+use BladeUIKitBootstrap\Components\Buttons\HelpInfo;
+use BladeUIKitBootstrap\Components\Buttons\LinkButton;
+use BladeUIKitBootstrap\Components\Buttons\SimpleButton;
+use BladeUIKitBootstrap\Components\Forms\Error;
+use BladeUIKitBootstrap\Components\Forms\Form;
 use BladeUIKitBootstrap\Components\Forms\Inputs;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Hidden;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Input;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Password;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Select;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Text;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Textarea;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Time;
+use BladeUIKitBootstrap\Components\Forms\Label;
 use BladeUIKitBootstrap\Components\Modals;
+use BladeUIKitBootstrap\Components\Modals\Confirm;
+use BladeUIKitBootstrap\Components\Modals\Modal;
 
 class DefaultComponents
 {
@@ -24,60 +66,60 @@ class DefaultComponents
     {
         $this->components = $components ?? [
             // Buttons
-            'btn' => Buttons\SimpleButton::class,
-            'form-button' => Buttons\FormButton::class,
-            'link-button' => Buttons\LinkButton::class,
-            'help-info' => Buttons\HelpInfo::class,
+            'btn' => SimpleButton::class,
+            'form-button' => FormButton::class,
+            'link-button' => LinkButton::class,
+            'help-info' => HelpInfo::class,
 
             // Actions buttons
-            'btn-back' => Actions\Back\Back::class,
-            'btn-back-list' => Actions\Back\BackList::class,
-            'btn-back-home' => Actions\Back\BackHome::class,
-            'btn-archive' => Actions\Archive::class,
-            'btn-archives' => Actions\Archives::class,
-            'btn-cancel' => Actions\Cancel::class,
-            'btn-copy' => Actions\Copy::class,
-            'btn-create' => Actions\Create::class,
-            'btn-delete' => Actions\Delete::class,
-            'btn-destroy' => Actions\Destroy::class,
-            'btn-disable' => Actions\Disable::class,
-            'btn-disabled' => Actions\Disabled::class,
-            'btn-edit' => Actions\Edit::class,
-            'btn-email' => Actions\Email::class,
-            'btn-enable' => Actions\Enable::class,
-            'btn-enabled' => Actions\Enabled::class,
-            'btn-logout' => Actions\Logout::class,
-            'btn-confirm-modal-yes' => Actions\Modal\ConfirmYes::class,
-            'btn-confirm-modal-no' => Actions\Modal\ConfirmNo::class,
-            'btn-move-down' => Actions\MoveDown::class,
-            'btn-move-up' => Actions\MoveUp::class,
-            'btn-phone' => Actions\Phone::class,
-            'btn-preview' => Actions\Preview::class,
-            'btn-recycle-bin' => Actions\RecycleBin::class,
-            'btn-restore' => Actions\Restore::class,
-            'btn-save' => Actions\Save::class,
-            'btn-show' => Actions\Show::class,
-            'btn-website' => Actions\Website::class,
+            'btn-back' => Back::class,
+            'btn-back-list' => BackList::class,
+            'btn-back-home' => BackHome::class,
+            'btn-archive' => Archive::class,
+            'btn-archives' => Archives::class,
+            'btn-cancel' => Cancel::class,
+            'btn-copy' => Copy::class,
+            'btn-create' => Create::class,
+            'btn-delete' => Delete::class,
+            'btn-destroy' => Destroy::class,
+            'btn-disable' => Disable::class,
+            'btn-disabled' => Disabled::class,
+            'btn-edit' => Edit::class,
+            'btn-email' => Email::class,
+            'btn-enable' => Enable::class,
+            'btn-enabled' => Enabled::class,
+            'btn-logout' => Logout::class,
+            'btn-confirm-modal-yes' => ConfirmYes::class,
+            'btn-confirm-modal-no' => ConfirmNo::class,
+            'btn-move-down' => MoveDown::class,
+            'btn-move-up' => MoveUp::class,
+            'btn-phone' => Phone::class,
+            'btn-preview' => Preview::class,
+            'btn-recycle-bin' => RecycleBin::class,
+            'btn-restore' => Restore::class,
+            'btn-save' => Save::class,
+            'btn-show' => Show::class,
+            'btn-website' => Website::class,
 
             // Forms
-            'form' => Forms\Form::class,
-            'label' => Forms\Label::class,
-            'error' => Forms\Error::class,
+            'form' => Form::class,
+            'label' => Label::class,
+            'error' => Error::class,
 
             // Inputs
-            'input' => Inputs\Input::class,
-            'text' => Inputs\Text::class,
-            'textarea' => Inputs\Textarea::class,
-            'select' => Inputs\Select::class,
-            'password' => Inputs\Password::class,
+            'input' => Input::class,
+            'text' => Text::class,
+            'textarea' => Textarea::class,
+            'select' => Select::class,
+            'password' => Password::class,
             'email' => Inputs\Email::class,
-            'date' => Inputs\Date::class,
-            'time' => Inputs\Time::class,
-            'hidden' => Inputs\Hidden::class,
+            'date' => Date::class,
+            'time' => Time::class,
+            'hidden' => Hidden::class,
 
             // Modals
-            'modal' => Modals\Modal::class,
-            'confirm-modal' => Modals\Confirm::class,
+            'modal' => Modal::class,
+            'confirm-modal' => Confirm::class,
             'form-modal' => Modals\Form::class,
         ];
     }

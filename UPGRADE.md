@@ -1,8 +1,8 @@
 Upgrade
 =======
 
-From 0.26.x to 0.27.x
----------------------
+From 0.26.x to 1.0.0
+--------------------
 
 ### Configuration key renamed
 

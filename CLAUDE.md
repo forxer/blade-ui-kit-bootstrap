@@ -23,6 +23,37 @@ vendor/bin/pint
 vendor/bin/rector process
 ```
 
+### Component Generation
+
+```bash
+# Generate a custom component that extends a default component
+php artisan make:blade-ui-kit-bs-component ComponentName --extends=component-alias
+
+# Examples:
+php artisan make:blade-ui-kit-bs-component CustomSaveButton --extends=btn-save
+php artisan make:blade-ui-kit-bs-component DangerModal --extends=modal
+php artisan make:blade-ui-kit-bs-component PhoneInput --extends=text
+
+# Force overwrite existing component
+php artisan make:blade-ui-kit-bs-component ComponentName --extends=component-alias --force
+
+# The command will:
+# 1. Create app/View/Components/[ParentStructure]/ComponentName.php
+#    (respects parent component directory structure)
+# 2. Optionally create resources/views/components/[parent-structure]/component-name.blade.php (asks user, defaults to no)
+# 3. Show instructions for registering the component in config/blade-ui-kit-bootstrap.php
+#    with both merge() and replace() options
+
+# Directory Structure Examples:
+# - Extending btn-save creates: app/View/Components/Buttons/Actions/ComponentName.php
+# - Extending modal creates: app/View/Components/Modals/ComponentName.php
+# - Extending text creates: app/View/Components/Forms/Inputs/ComponentName.php
+
+# Registration is done in config/blade-ui-kit-bootstrap.php using:
+# - merge() to add as a new component alongside the default
+# - replace() to override the default component completely
+```
+
 ### Publishing Assets (for testing)
 
 ```bash
@@ -58,6 +89,19 @@ Components are registered through the `DefaultComponents` class (src/DefaultComp
 
 The `ServiceProvider` loads components from the configuration array during boot.
 
+**Custom component registration**: Instead of registering components in a ServiceProvider using `Blade::component()`, use the package configuration file (`config/blade-ui-kit-bootstrap.php`) with the fluent API:
+
+```php
+'components' => ServiceProvider::defaultComponents()
+    ->merge([
+        'custom-alias' => \App\View\Components\CustomComponent::class,
+    ])
+    ->replace([
+        'btn-save' => \App\View\Components\Buttons\Actions\CustomSave::class,
+    ])
+    ->components(),
+```
+
 ### Key Traits
 
 Located in `src/Concerns/`:
@@ -69,6 +113,18 @@ Located in `src/Concerns/`:
 - **CanHaveErrors:** Integrates with Laravel's validation error bags
 - **FormMethod:** Handles HTTP method spoofing for forms (PUT, PATCH, DELETE)
 - **ModalVariant:** Manages modal color variants
+
+### Artisan Commands
+
+The package provides Artisan commands registered in `src/Commands/`:
+
+- **MakeComponent** (`make:blade-ui-kit-bs-component`): Generates custom component classes that extend default components
+  - Uses stubs from `stubs/component.stub` and `stubs/component.view.stub`
+  - Registered in `ServiceProvider::configureCommands()`
+  - Provides interactive component selection with full list of available components
+  - Generates both PHP class and optional Blade view file
+  - **Automatically preserves parent component directory structure**: extracts the path after `BladeUIKitBootstrap\Components\` from parent class and recreates it in `App\View\Components\`
+  - Example: extending `BladeUIKitBootstrap\Components\Buttons\Actions\Save` creates `App\View\Components\Buttons\Actions\CustomSaveButton.php`
 
 ### Component Categories
 

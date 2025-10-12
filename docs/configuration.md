@@ -124,6 +124,55 @@ return [
 ];
 ```
 
+Extending components
+--------------------
+
+The package provides a convenient Artisan command to quickly generate custom component classes that extend the default components:
+
+```bash
+php artisan make:blade-ui-kit-bs-component CustomButton --extends=btn-save
+```
+
+This command creates a new component class that extends the specified default component, preserving the parent's directory structure. The command will display instructions for registering your component.
+
+### Registering custom components
+
+After creating a custom component, you need to register it in the configuration file. You have two options:
+
+**Option 1: Add as a new component** (using `merge()`):
+
+```php
+use BladeUIKitBootstrap\ServiceProvider;
+
+return [
+    'components' => ServiceProvider::defaultComponents()
+        ->merge([
+            'buttons.actions.custom-save' => \App\View\Components\Buttons\Actions\CustomSave::class,
+        ])
+        ->components(),
+];
+```
+
+This keeps the original `btn-save` component and adds your custom component with a new alias.
+
+**Option 2: Replace the default component** (using `replace()`):
+
+```php
+use BladeUIKitBootstrap\ServiceProvider;
+
+return [
+    'components' => ServiceProvider::defaultComponents()
+        ->replace([
+            'btn-save' => \App\View\Components\Buttons\Actions\CustomSave::class,
+        ])
+        ->components(),
+];
+```
+
+This replaces the default `btn-save` component with your custom version throughout your application.
+
+For complete documentation on extending components, including examples and available hooks, see the [Extending Components](./extending-components.md) guide.
+
 Bootstrap version
 -----------------
 

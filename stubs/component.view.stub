@@ -1,0 +1,4 @@
+{{-- Custom component view --}}
+<div {{ $attributes }}>
+    {{ $slot }}
+</div>

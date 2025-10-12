@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use {{ parentClassImport }};
+
+class {{ class }} extends {{ parentClass }}
+{
+    /**
+     * Hook executed at the very beginning of the component constructor.
+     *
+     * Use this method to perform setup operations before attribute initialization.
+     * This is called automatically by the parent constructor.
+     */
+    protected function onConstructing(): void
+    {
+        // Add custom pre-initialization logic here
+        // This runs before initAttributes()
+    }
+
+    /**
+     * Initialize component attributes with default values.
+     *
+     * Use this method to set default values for component properties.
+     * This is called automatically by the parent constructor.
+     */
+    protected function initAttributes(): void
+    {
+        // Set default attribute values here
+        // Example: $this->variant ??= 'primary';
+        // Example: $this->text ??= 'Custom Default Text';
+
+        // You can also call parent to preserve default behavior from the parent component
+        // parent::initAttributes();
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * Return null to hide the component, or a view name to render it.
+     */
+    public function viewName(): ?string
+    {
+        // Option 1: Use parent's view (default behavior)
+        return parent::viewName();
+
+        // Option 2: Use a custom view
+        // return 'components.your-custom-view';
+    }
+}
