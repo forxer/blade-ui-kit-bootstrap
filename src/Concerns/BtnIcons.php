@@ -9,6 +9,22 @@ use LogicException;
 trait BtnIcons
 {
     /**
+     * Configuration value for button start icon format.
+     * Uses property hook to cache the configuration value.
+     */
+    private ?string $btnStartIconFormat {
+        get => $this->config('btn_start_icon_format');
+    }
+
+    /**
+     * Configuration value for button end icon format.
+     * Uses property hook to cache the configuration value.
+     */
+    private ?string $btnEndIconFormat {
+        get => $this->config('btn_end_icon_format');
+    }
+
+    /**
      * @throws LogicException
      */
     private function validBtnStartIcon(): void
@@ -21,13 +37,11 @@ trait BtnIcons
             return;
         }
 
-        $btnStartIconFormat = $this->config('btn_start_icon_format');
-
-        if ($btnStartIconFormat === null) {
+        if ($this->btnStartIconFormat === null) {
             throw new LogicException('In order to use the "icon" and/or "start-icon" attributes you must have previously defined a "btn_start_icon_format" format in the configuration file.');
         }
 
-        $this->startIcon = \sprintf($btnStartIconFormat, $this->startIcon);
+        $this->startIcon = \sprintf($this->btnStartIconFormat, $this->startIcon);
     }
 
     /**
@@ -39,12 +53,10 @@ trait BtnIcons
             return;
         }
 
-        $btnEndIconFormat = $this->config('btn_end_icon_format');
-
-        if ($btnEndIconFormat === null) {
+        if ($this->btnEndIconFormat === null) {
             throw new LogicException('In order to use the "end-icon" attribute you must have previously defined a "btn_end_icon_format" format in the configuration file.');
         }
 
-        $this->endIcon = \sprintf($btnEndIconFormat, $this->endIcon);
+        $this->endIcon = \sprintf($this->btnEndIconFormat, $this->endIcon);
     }
 }
