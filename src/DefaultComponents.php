@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap;
 
+use BladeUIKitBootstrap\Components\Alerts\Alert;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Archive;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Archives;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Back\Back;
@@ -101,6 +102,9 @@ class DefaultComponents
             'btn-save' => Save::class,
             'btn-show' => Show::class,
             'btn-website' => Website::class,
+
+            // Alerts
+            'alert' => Alert::class,
 
             // Forms
             'form' => Form::class,

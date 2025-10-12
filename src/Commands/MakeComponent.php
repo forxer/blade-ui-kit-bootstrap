@@ -354,6 +354,7 @@ class MakeComponent extends Command
                 'btn-move-down', 'btn-move-up', 'btn-phone', 'btn-preview',
                 'btn-recycle-bin', 'btn-restore', 'btn-save', 'btn-show', 'btn-website',
             ],
+            'Alerts' => ['alert'],
             'Forms' => ['form', 'label', 'error'],
             'Inputs' => ['input', 'text', 'textarea', 'select', 'password', 'email', 'date', 'time', 'hidden'],
             'Modals' => ['modal', 'confirm-modal', 'form-modal'],

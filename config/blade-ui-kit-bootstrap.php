@@ -90,6 +90,38 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | All alerts outline
+    |--------------------------------------------------------------------------
+    |
+    | If this option is "true" all alerts will automatically
+    | have the "outline" attribute.
+    |
+    */
+
+    'all_alerts_outline' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Alert Icon Format
+    |--------------------------------------------------------------------------
+    |
+    | This configuration option allows you to define a format
+    | for PHP's native sprintf() function to display icons in alerts.
+    |
+    | Example with Bootstrap Icons (https://icons.getbootstrap.com/):
+    |
+    |   'alert_icon_format' => '<i class="bi bi-%s me-2"></i>',
+    |
+    | Example with FontAwesome (https://fontawesome.com/):
+    |
+    |   'alert_icon_format' => '<i class="fa-solid fa-%s me-2"></i>',
+    |
+    */
+
+    'alert_icon_format' => null,
+
+    /*
+    |--------------------------------------------------------------------------
     | Button Icon Formats
     |--------------------------------------------------------------------------
     |
