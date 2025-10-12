@@ -4,6 +4,8 @@ CHANGELOG
 1.0.0 UNRELEASED
 -------------------
 
+- **BREAKING:** Minimum PHP version is now 8.4
+- **BREAKING:** Only Laravel 12 is supported (dropped Laravel 10 and 11)
 - **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
 - Fixed documentation typo: `middelware` → `middleware`
 - Fixed typo in CHANGELOG: `boostrap` → `bootstrap`

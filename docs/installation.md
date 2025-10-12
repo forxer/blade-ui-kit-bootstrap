@@ -1,7 +1,12 @@
 Installation
 ============
 
-First of all, obviously your project must have [Bootstrap](https://getbootstrap.com/) installed to use the components of this package.
+Requirements
+------------
+
+- PHP 8.4 or higher
+- Laravel 12
+- [Bootstrap](https://getbootstrap.com/) 4 or 5
 
 Install the package by using Composer:
 

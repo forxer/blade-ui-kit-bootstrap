@@ -4,6 +4,16 @@ Upgrade
 From 0.26.x to 1.0.0
 --------------------
 
+### Requirements updated
+
+**PHP 8.4 is now required**
+
+The minimum PHP version has been upgraded from 8.2 to 8.4. You must upgrade your PHP installation before updating to version 1.0.0.
+
+**Laravel 12 is now required**
+
+Only Laravel 12 is now supported. Laravel 10 and 11 are no longer supported. You must upgrade to Laravel 12 before updating to version 1.0.0.
+
 ### Configuration key renamed
 
 The configuration key `boostrap_version` has been corrected to `bootstrap_version`
@@ -25,6 +35,16 @@ You need to rename the configuration key in your published file:
 **If you are accessing this configuration programmatically in your code:**
 
 Update any references from `config('blade-ui-kit-bootstrap.boostrap_version')` to `config('blade-ui-kit-bootstrap.bootstrap_version')`.
+
+### New features
+
+**Component generation command**
+
+A new Artisan command `make:blade-ui-kit-bs-component` is available to generate custom components that extend default components. See the [Extending Components](./docs/extending-components.md) documentation for details.
+
+**Component registration via configuration**
+
+Custom components should now be registered in the configuration file (`config/blade-ui-kit-bootstrap.php`) using the `merge()` or `replace()` methods instead of registering them in a ServiceProvider. See the [Configuration](./docs/configuration.md#extending-components) documentation for details.
 
 
 From 0.19.x to 0.24.x

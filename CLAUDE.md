@@ -7,8 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Laravel package that provides Blade components styled with Bootstrap (4 and/or 5). It offers pre-built UI components like forms, inputs, buttons, and modals with Bootstrap styling. The package was originally inspired by Blade UI Kit but has been decoupled to simplify the codebase.
 
 **Package name:** `forxer/blade-ui-kit-bootstrap`
-**PHP version:** ^8.2
-**Laravel versions:** ^10.0, ^11.0, ^12.0
+**PHP version:** ^8.4
+**Laravel version:** ^12.0
 **Main namespace:** `BladeUIKitBootstrap`
 
 ## Development Commands
