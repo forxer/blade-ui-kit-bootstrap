@@ -17,6 +17,6 @@
     {!! $slot !!}
 
     @if ($dismissible)
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{!! trans('blade-ui-kit-bootstrap::alert.close') !!}"></button>
     @endif
 </div>
