@@ -35,7 +35,7 @@ return RectorConfig::configure()
     ->withPhpSets()
 
     // only PHP 8.4
-    //->withPhpSets(php84: true)
+    // ->withPhpSets(php84: true)
 
     ->withSkip([
         // Je trouve la lecture plus difficile avec cette syntaxe, donc je désactive (PHP 7.4/8.1)

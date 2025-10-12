@@ -25,7 +25,7 @@ class MakeComponent extends Command
     public function handle(Filesystem $files): int
     {
         $this->files = $files;
-        $this->availableComponents = (new DefaultComponents())->components();
+        $this->availableComponents = new DefaultComponents()->components();
 
         $name = $this->argument('name');
         $extends = $this->option('extends');
@@ -78,18 +78,18 @@ class MakeComponent extends Command
         $this->line('Option 1 - Add as a new component:');
         $this->line('');
         $this->line("    'components' => ServiceProvider::defaultComponents()");
-        $this->line("        ->merge([");
+        $this->line('        ->merge([');
         $this->line(\sprintf("            '%s' => \\%s::class,", $this->getComponentAlias($name, $parentClass), $fullClassName));
-        $this->line("        ])");
-        $this->line("        ->components(),");
+        $this->line('        ])');
+        $this->line('        ->components(),');
         $this->line('');
         $this->line('Option 2 - Replace an existing component:');
         $this->line('');
         $this->line("    'components' => ServiceProvider::defaultComponents()");
-        $this->line("        ->replace([");
+        $this->line('        ->replace([');
         $this->line(\sprintf("            '%s' => \\%s::class,", $this->getOriginalAlias($extends), $fullClassName));
-        $this->line("        ])");
-        $this->line("        ->components(),");
+        $this->line('        ])');
+        $this->line('        ->components(),');
         $this->line('');
 
         return self::SUCCESS;
@@ -115,7 +115,7 @@ class MakeComponent extends Command
         $name = Str::studly($name);
         $subPath = $this->getSubPath($parentClass);
 
-        if ($subPath) {
+        if ($subPath !== '' && $subPath !== '0') {
             return app_path(\sprintf('View/Components/%s/%s.php', $subPath, $name));
         }
 
@@ -131,7 +131,7 @@ class MakeComponent extends Command
             return '';
         }
 
-        $relativePath = substr($parentClass, strlen($baseNamespace));
+        $relativePath = substr($parentClass, \strlen($baseNamespace));
 
         // Remove the class name to get only the directory structure
         $parts = explode('\\', $relativePath);
@@ -144,7 +144,7 @@ class MakeComponent extends Command
     {
         $subPath = $this->getSubPath($parentClass);
 
-        if ($subPath) {
+        if ($subPath !== '' && $subPath !== '0') {
             $namespaceSubPath = str_replace('/', '\\', $subPath);
 
             return 'App\\View\\Components\\'.$namespaceSubPath;
@@ -208,7 +208,7 @@ class MakeComponent extends Command
         $viewName = Str::kebab($name);
         $subPath = $this->getSubPath($parentClass);
 
-        if ($subPath) {
+        if ($subPath !== '' && $subPath !== '0') {
             $viewSubPath = str_replace('\\', '/', Str::kebab(str_replace('/', '-', $subPath)));
             $viewPath = resource_path(\sprintf('views/components/%s/%s.blade.php', $viewSubPath, $viewName));
             $displayPath = \sprintf('resources/views/components/%s/%s.blade.php', $viewSubPath, $viewName);
@@ -236,7 +236,7 @@ class MakeComponent extends Command
     {
         $subPath = $this->getSubPath($parentClass);
 
-        if ($subPath) {
+        if ($subPath !== '' && $subPath !== '0') {
             $aliasSubPath = str_replace('/', '.', Str::kebab(str_replace('\\', '/', $subPath)));
 
             return $aliasSubPath.'.'.Str::kebab($name);
