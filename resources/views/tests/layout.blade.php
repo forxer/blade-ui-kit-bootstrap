@@ -71,9 +71,9 @@
             color: #0d6efd;
         }
         #toc-sidebar .nav-link.active {
-            color: #0d6efd;
+            color: #fff;
+            background-color: #0d6efd;
             font-weight: 600;
-            border-left: 2px solid #0d6efd;
         }
     </style>
 
