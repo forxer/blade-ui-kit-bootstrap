@@ -4,9 +4,9 @@
         type="checkbox"
         id="{{ $id }}"
         value="{{ $value }}"
-        @if($isChecked)checked@endif
-        @if($hasErrors)aria-describedby="validation-{{ $name }}-feedback"@endif
-        class="custom-control-input @if($hasErrors) is-invalid @endif"
+        {{ $isChecked ? 'checked' : '' }}
+        {{ $hasErrors ? 'aria-describedby="validation-' . $name . '-feedback"' : '' }}
+        class="custom-control-input{{ $hasErrors ? ' is-invalid' : '' }}"
     />
     <label class="custom-control-label" for="{{ $id }}">
         {!! $label !!}

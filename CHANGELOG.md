@@ -33,11 +33,18 @@ CHANGELOG
 - Added comprehensive documentation for extending components (`docs/extending-components.md`)
 - Added two component stubs: one for components with custom views, one for components inheriting parent views
 - Improved `help-info` component to accept content via slot in addition to `content` attribute
+- Improved `select` component to accept options via slot (HTML `<option>` tags) in addition to `options` attribute
+  - The `options` parameter is now optional, allowing full HTML control with `<option>` and `<optgroup>` tags
 
 ### Bug Fixes
 
 - Fixed typo: `middelware` → `middleware`
 - Fixed typo: `boostrap` → `bootstrap`
+- Fixed incorrect Blade directive structure in modal components (Bootstrap 4 and 5)
+  - Fixed unclosed `@isset/@else/@endif` blocks in `modal.blade.php` and `form.blade.php`
+  - Each conditional branch now properly closes its HTML tags
+- Fixed Blade parsing issues in checkbox component by replacing inline `@if/@endif` with ternary expressions
+- Fixed undefined `$errors` variable in test views by sharing ViewErrorBag in TestController
 
 
 0.26.2 (2024-04-30)

@@ -17,7 +17,7 @@ class Select extends BladeComponent
 
     public function __construct(
         public string $name,
-        public array|Collection $options,
+        public array|Collection|null $options = null,
         public string|array|null $selected = null,
         public ?string $placeholder = null,
         string $labelAttribute = 'name',
@@ -27,7 +27,9 @@ class Select extends BladeComponent
     ) {
         $this->id = $id ?? $name;
 
-        if (\is_array($options)) {
+        if ($options === null) {
+            $this->options = [];
+        } elseif (\is_array($options)) {
             $this->options = $options;
         } elseif ($options instanceof Collection) {
             $this->options = $options->pluck($labelAttribute, $valueAttribute);
