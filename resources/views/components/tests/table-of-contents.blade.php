@@ -1,7 +1,7 @@
 @props(['sections'])
 
 {{--
-    Composant pour afficher une table des matières collapsible (Bootstrap 5 only)
+    Composant pour afficher une table des matières sticky avec scrollspy (Bootstrap 5 only)
 
     Usage:
     <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
@@ -10,24 +10,17 @@
     ]" />
 --}}
 
-<div class="card mb-4">
-    <div class="card-header">
-        <button class="btn btn-link text-decoration-none p-0" type="button"
-                data-bs-toggle="collapse" data-bs-target="#toc" aria-expanded="true">
+<nav id="toc-sidebar" class="navbar flex-column align-items-stretch">
+    <div class="mb-2">
+        <h6 class="text-muted">
             <i class="bi bi-list"></i> Table des matières
-        </button>
+        </h6>
     </div>
-    <div class="collapse show" id="toc">
-        <div class="card-body">
-            <ul class="list-unstyled mb-0">
-                @foreach($sections as $section)
-                    <li class="mb-1">
-                        <a href="#{{ $section['id'] }}" class="text-decoration-none">
-                            {{ $section['title'] }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-</div>
+    <nav class="nav nav-pills flex-column">
+        @foreach($sections as $section)
+            <a class="nav-link" href="#{{ $section['id'] }}">
+                {{ $section['title'] }}
+            </a>
+        @endforeach
+    </nav>
+</nav>

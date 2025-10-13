@@ -3,13 +3,6 @@
 @section('title', 'Form Components')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-label', 'title' => 'Label Component'],
-        ['id' => 'section-error', 'title' => 'Error Component'],
-        ['id' => 'section-complete', 'title' => 'Complete Form Example'],
-    ]" />
-
     {{-- Label Component --}}
     <div class="example-section" id="section-label">
         <h2 class="example-title">Label Component</h2>
@@ -215,4 +208,12 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-label', 'title' => 'Label Component'],
+        ['id' => 'section-error', 'title' => 'Error Component'],
+        ['id' => 'section-complete', 'title' => 'Complete Form Example'],
+    ]" />
 @endsection

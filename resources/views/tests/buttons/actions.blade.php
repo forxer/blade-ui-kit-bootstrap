@@ -3,19 +3,6 @@
 @section('title', 'Action Buttons')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-navigation', 'title' => 'Navigation Buttons'],
-        ['id' => 'section-crud', 'title' => 'CRUD Buttons'],
-        ['id' => 'section-archive', 'title' => 'Archive Buttons'],
-        ['id' => 'section-status', 'title' => 'Status Buttons'],
-        ['id' => 'section-order', 'title' => 'Order Buttons'],
-        ['id' => 'section-contact', 'title' => 'Contact Buttons'],
-        ['id' => 'section-other', 'title' => 'Other Buttons'],
-        ['id' => 'section-modal', 'title' => 'Modal Buttons'],
-        ['id' => 'section-customization', 'title' => 'Customization'],
-    ]" />
-
     {{-- Navigation Action Buttons --}}
     <div class="example-section" id="section-navigation">
         <h2 class="example-title">Navigation Action Buttons</h2>
@@ -222,4 +209,18 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-navigation', 'title' => 'Navigation Buttons'],
+        ['id' => 'section-crud', 'title' => 'CRUD Buttons'],
+        ['id' => 'section-archive', 'title' => 'Archive Buttons'],
+        ['id' => 'section-status', 'title' => 'Status Buttons'],
+        ['id' => 'section-order', 'title' => 'Order Buttons'],
+        ['id' => 'section-contact', 'title' => 'Contact Buttons'],
+        ['id' => 'section-other', 'title' => 'Other Buttons'],
+        ['id' => 'section-modal', 'title' => 'Modal Buttons'],
+        ['id' => 'section-customization', 'title' => 'Customization'],
+    ]" />
 @endsection

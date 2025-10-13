@@ -55,11 +55,31 @@
             border-bottom-right-radius: inherit;
             overflow: hidden;
         }
+        /* Sticky sidebar TOC */
+        #toc-sidebar {
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        #toc-sidebar .nav-link {
+            color: #6c757d;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+        #toc-sidebar .nav-link:hover {
+            color: #0d6efd;
+        }
+        #toc-sidebar .nav-link.active {
+            color: #0d6efd;
+            font-weight: 600;
+            border-left: 2px solid #0d6efd;
+        }
     </style>
 
     @stack('blade-ui-kit-bs-styles')
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#toc-sidebar" data-bs-offset="100" data-bs-smooth-scroll="true">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ route('blade-ui-kit-bs.tests.index') }}">Blade UI Kit Bootstrap</a>
@@ -126,8 +146,15 @@
     </nav>
 
     <div class="container">
-        <h1 class="mb-4">@yield('title')</h1>
-        @yield('content')
+        <div class="row">
+            <div class="col-lg-9">
+                <h1 class="mb-4">@yield('title')</h1>
+                @yield('content')
+            </div>
+            <div class="col-lg-3">
+                @yield('sidebar')
+            </div>
+        </div>
     </div>
 
     {{-- Back to top button --}}

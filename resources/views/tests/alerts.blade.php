@@ -3,19 +3,6 @@
 @section('title', 'Alerts')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-variants', 'title' => 'Alert Variants'],
-        ['id' => 'section-dismissible', 'title' => 'Dismissible Alerts'],
-        ['id' => 'section-title', 'title' => 'Alerts with Title'],
-        ['id' => 'section-title-dismissible', 'title' => 'Alerts with Title and Dismissible'],
-        ['id' => 'section-icons', 'title' => 'Alerts with Icons'],
-        ['id' => 'section-icon-title', 'title' => 'Alerts with Icon and Title'],
-        ['id' => 'section-full-featured', 'title' => 'Alerts with Icon, Title, and Dismissible'],
-        ['id' => 'section-show-hide', 'title' => 'Show/Hide Control'],
-        ['id' => 'section-custom-classes', 'title' => 'With Custom Classes'],
-    ]" />
-
     {{-- Alert Variants --}}
     <div class="example-section" id="section-variants">
         <h2 class="example-title">Alert Variants</h2>
@@ -262,4 +249,18 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-variants', 'title' => 'Alert Variants'],
+        ['id' => 'section-dismissible', 'title' => 'Dismissible Alerts'],
+        ['id' => 'section-title', 'title' => 'Alerts with Title'],
+        ['id' => 'section-title-dismissible', 'title' => 'Alerts with Title and Dismissible'],
+        ['id' => 'section-icons', 'title' => 'Alerts with Icons'],
+        ['id' => 'section-icon-title', 'title' => 'Alerts with Icon and Title'],
+        ['id' => 'section-full-featured', 'title' => 'Alerts with Icon, Title, and Dismissible'],
+        ['id' => 'section-show-hide', 'title' => 'Show/Hide Control'],
+        ['id' => 'section-custom-classes', 'title' => 'With Custom Classes'],
+    ]" />
 @endsection

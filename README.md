@@ -61,6 +61,7 @@ Index
 - [Configuration](./docs/configuration.md)
 - [Extending Components](./docs/extending-components.md)
 - [Bootstrap version](./docs/bootstrap-version.md)
+- [Testing Pages](./docs/testing-pages.md) - Interactive component demonstrations
 - [Buttons](./docs/buttons/buttons.md)
     - [Simple button](./docs/buttons/simple-button.md)
     - [Form button](./docs/buttons/form-button.md)

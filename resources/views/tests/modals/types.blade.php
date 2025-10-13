@@ -3,16 +3,6 @@
 @section('title', 'Modal Types')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-basic', 'title' => 'Basic Modal'],
-        ['id' => 'section-non-dismissible', 'title' => 'Non-Dismissible Modal'],
-        ['id' => 'section-custom-footer', 'title' => 'Modal with Custom Footer'],
-        ['id' => 'section-form-content', 'title' => 'Modal with Form Content'],
-        ['id' => 'section-form-modal', 'title' => 'Form Modal Component'],
-        ['id' => 'section-confirm', 'title' => 'Confirm Modal Component'],
-    ]" />
-
     {{-- Basic Modal --}}
     <div class="example-section" id="section-basic">
         <h2 class="example-title">Basic Modal</h2>
@@ -352,4 +342,15 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-basic', 'title' => 'Basic Modal'],
+        ['id' => 'section-non-dismissible', 'title' => 'Non-Dismissible Modal'],
+        ['id' => 'section-custom-footer', 'title' => 'Modal with Custom Footer'],
+        ['id' => 'section-form-content', 'title' => 'Modal with Form Content'],
+        ['id' => 'section-form-modal', 'title' => 'Form Modal Component'],
+        ['id' => 'section-confirm', 'title' => 'Confirm Modal Component'],
+    ]" />
 @endsection

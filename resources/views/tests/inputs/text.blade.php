@@ -3,15 +3,6 @@
 @section('title', 'Text Inputs')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-generic', 'title' => 'Generic Input'],
-        ['id' => 'section-text', 'title' => 'Text Input'],
-        ['id' => 'section-email', 'title' => 'Email Input'],
-        ['id' => 'section-password', 'title' => 'Password Input'],
-        ['id' => 'section-hidden', 'title' => 'Hidden Input'],
-    ]" />
-
     {{-- Generic Input --}}
     <div class="example-section" id="section-generic">
         <h2 class="example-title">Generic Input</h2>
@@ -174,4 +165,14 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-generic', 'title' => 'Generic Input'],
+        ['id' => 'section-text', 'title' => 'Text Input'],
+        ['id' => 'section-email', 'title' => 'Email Input'],
+        ['id' => 'section-password', 'title' => 'Password Input'],
+        ['id' => 'section-hidden', 'title' => 'Hidden Input'],
+    ]" />
 @endsection

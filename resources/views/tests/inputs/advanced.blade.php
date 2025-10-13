@@ -3,17 +3,6 @@
 @section('title', 'Advanced Inputs')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-date', 'title' => 'Date Input'],
-        ['id' => 'section-time', 'title' => 'Time Input'],
-        ['id' => 'section-textarea', 'title' => 'Textarea'],
-        ['id' => 'section-select', 'title' => 'Select'],
-        ['id' => 'section-checkbox', 'title' => 'Checkbox'],
-        ['id' => 'section-validation', 'title' => 'Validation States'],
-        ['id' => 'section-complete', 'title' => 'Complete Form Example'],
-    ]" />
-
     {{-- Date Input --}}
     <div class="example-section" id="section-date">
         <h2 class="example-title">Date Input</h2>
@@ -445,4 +434,16 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-date', 'title' => 'Date Input'],
+        ['id' => 'section-time', 'title' => 'Time Input'],
+        ['id' => 'section-textarea', 'title' => 'Textarea'],
+        ['id' => 'section-select', 'title' => 'Select'],
+        ['id' => 'section-checkbox', 'title' => 'Checkbox'],
+        ['id' => 'section-validation', 'title' => 'Validation States'],
+        ['id' => 'section-complete', 'title' => 'Complete Form Example'],
+    ]" />
 @endsection

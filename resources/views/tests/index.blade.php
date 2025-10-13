@@ -10,8 +10,15 @@
             and Bootstrap {{ config('blade-ui-kit-bootstrap.bootstrap_version')->value }} styling.
         </p>
         <hr>
-        <p class="mb-0">
+        <p class="mb-2">
             Select a category from the navigation above to explore the components.
+        </p>
+        <p class="mb-0">
+            <i class="bi bi-book"></i>
+            For detailed documentation, installation guides, and usage examples, visit the
+            <a href="https://github.com/forxer/blade-ui-kit-bootstrap/blob/main/docs/testing-pages.md" target="_blank" class="alert-link">
+                Testing Pages Documentation <i class="bi bi-box-arrow-up-right"></i>
+            </a>
         </p>
     </div>
 

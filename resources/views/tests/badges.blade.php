@@ -3,16 +3,6 @@
 @section('title', 'Badges')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-variants', 'title' => 'Badge Variants'],
-        ['id' => 'section-pill', 'title' => 'Pill Badges'],
-        ['id' => 'section-context', 'title' => 'Badges in Context'],
-        ['id' => 'section-sizes', 'title' => 'Different Sizes'],
-        ['id' => 'section-custom', 'title' => 'With Custom Classes'],
-        ['id' => 'section-usecases', 'title' => 'Common Use Cases'],
-    ]" />
-
     {{-- Badge Variants --}}
     <div class="example-section" id="section-variants">
         <h2 class="example-title">Badge Variants</h2>
@@ -250,4 +240,15 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-variants', 'title' => 'Badge Variants'],
+        ['id' => 'section-pill', 'title' => 'Pill Badges'],
+        ['id' => 'section-context', 'title' => 'Badges in Context'],
+        ['id' => 'section-sizes', 'title' => 'Different Sizes'],
+        ['id' => 'section-custom', 'title' => 'With Custom Classes'],
+        ['id' => 'section-usecases', 'title' => 'Common Use Cases'],
+    ]" />
 @endsection

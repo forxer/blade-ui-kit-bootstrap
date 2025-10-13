@@ -3,14 +3,6 @@
 @section('title', 'Button Components')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-simple-button', 'title' => 'Simple Button'],
-        ['id' => 'section-form-button', 'title' => 'Form Button'],
-        ['id' => 'section-link-button', 'title' => 'Link Button'],
-        ['id' => 'section-help-info', 'title' => 'Help Info'],
-    ]" />
-
     {{-- Simple Buttons --}}
     <div class="example-section" id="section-simple-button">
         <h2 class="example-title">Simple Button (btn)</h2>
@@ -99,7 +91,7 @@
 &lt;x-btn variant="warning" type="reset"&gt;Reset Button&lt;/x-btn&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
-    
+    </div>
 
     {{-- Form Button --}}
     <div class="example-section" id="section-form-button">
@@ -117,7 +109,7 @@
 &lt;x-form-button url="#" method="PUT" variant="warning"&gt;PUT Form&lt;/x-form-button&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
-    
+    </div>
 
     {{-- Link Button --}}
     <div class="example-section" id="section-link-button">
@@ -135,7 +127,7 @@
 &lt;x-link-button variant="info" disabled&gt;Disabled Link&lt;/x-link-button&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
-    
+    </div>
 
     {{-- Help Info --}}
     <div class="example-section" id="section-help-info">
@@ -196,5 +188,14 @@
 &lt;x-help-info title="Important Info" variant="warning"&gt;Please read this carefully&lt;/x-help-info&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
-    
+    </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-simple-button', 'title' => 'Simple Button'],
+        ['id' => 'section-form-button', 'title' => 'Form Button'],
+        ['id' => 'section-link-button', 'title' => 'Link Button'],
+        ['id' => 'section-help-info', 'title' => 'Help Info'],
+    ]" />
 @endsection

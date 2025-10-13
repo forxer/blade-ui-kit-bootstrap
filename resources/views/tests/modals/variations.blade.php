@@ -3,14 +3,6 @@
 @section('title', 'Modal Variations')
 
 @section('content')
-    {{-- Table of Contents --}}
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
-        ['id' => 'section-sizes', 'title' => 'Modal Sizes'],
-        ['id' => 'section-scrollable', 'title' => 'Scrollable Modal'],
-        ['id' => 'section-centered', 'title' => 'Vertically Centered Modal'],
-        ['id' => 'section-list', 'title' => 'Modal with List Content'],
-    ]" />
-
     {{-- Modal Sizes --}}
     <div class="example-section" id="section-sizes">
         <h2 class="example-title">Modal Sizes</h2>
@@ -173,4 +165,13 @@
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
+@endsection
+
+@section('sidebar')
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-sizes', 'title' => 'Modal Sizes'],
+        ['id' => 'section-scrollable', 'title' => 'Scrollable Modal'],
+        ['id' => 'section-centered', 'title' => 'Vertically Centered Modal'],
+        ['id' => 'section-list', 'title' => 'Modal with List Content'],
+    ]" />
 @endsection
