@@ -18,6 +18,9 @@ class Modal extends BladeComponent
         public string $id,
         public string $title,
         public bool $dismissable = true,
+        public ?string $size = null,
+        public bool $centered = false,
+        public bool $scrollable = false,
     ) {
         $this->onConstructing();
         $this->initAttributes();

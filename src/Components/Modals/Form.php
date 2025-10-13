@@ -22,6 +22,9 @@ class Form extends BladeComponent
         public string $method = 'POST',
         public bool $hasFiles = false,
         public ?bool $novalidate = null,
+        public ?string $size = null,
+        public bool $centered = false,
+        public bool $scrollable = false,
     ) {
         $this->onConstructing();
         $this->initAttributes();

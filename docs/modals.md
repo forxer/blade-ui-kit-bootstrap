@@ -76,6 +76,61 @@ Obviously you can use the attributes as you wish.
 </x-modal>
 ```
 
+### Modal sizes
+
+You can control the size of the modal using the `size` attribute:
+
+```blade
+<x-modal id="smallModal" title="Small Modal" size="sm">
+    <p>Small modal content</p>
+</x-modal>
+
+<x-modal id="largeModal" title="Large Modal" size="lg">
+    <p>Large modal content</p>
+</x-modal>
+
+<x-modal id="extraLargeModal" title="Extra Large Modal" size="xl">
+    <p>Extra large modal content</p>
+</x-modal>
+```
+
+Available sizes:
+- `sm` - Small modal
+- (no size attribute) - Default size
+- `lg` - Large modal
+- `xl` - Extra large modal
+
+### Vertically centered modal
+
+You can vertically center the modal on the page using the `:centered="true"` attribute:
+
+```blade
+<x-modal id="centeredModal" title="Centered Modal" :centered="true">
+    <p>This modal is vertically centered on the page.</p>
+</x-modal>
+```
+
+### Scrollable modal
+
+For modals with long content, you can enable scrolling within the modal body using the `:scrollable="true"` attribute:
+
+```blade
+<x-modal id="scrollableModal" title="Scrollable Modal" :scrollable="true">
+    <p>Long content that will scroll...</p>
+    <!-- More content -->
+</x-modal>
+```
+
+### Combining options
+
+You can combine multiple options together:
+
+```blade
+<x-modal id="myModal" title="My Modal" size="lg" :centered="true" :scrollable="true">
+    <p>Large, centered, scrollable modal content</p>
+</x-modal>
+```
+
 Form modal
 ----------
 
@@ -90,6 +145,14 @@ This modal allows you to integrate a form into its content.
 As for the basic modal the `id` and `title` attributes are required. But also the `action` attribute.
 
 There is behind the "form component", so you can use all the attributes provided by it (`action`, `method`, `has-files` and `novalidate`). Please refer to the [form component](./forms.md#form) documentation for more details.
+
+> **Note:** The form modal component also supports the same modal options as the classic modal: `size`, `centered`, and `scrollable` attributes.
+>
+> ```blade
+> <x-form-modal id="largeFormModal" title="Large Form" action="/submit" size="lg" :centered="true">
+>     <!-- Form content -->
+> </x-form-modal>
+> ```
 
 Confirm modal
 -------------

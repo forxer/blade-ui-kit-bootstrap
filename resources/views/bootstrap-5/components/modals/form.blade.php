@@ -1,6 +1,13 @@
 @push('blade-ui-kit-bs-html')
     <div {{ $attributes->class(['modal']) }} id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $titleLabel }}" aria-hidden="true">
-        <div class="modal-dialog">
+        <div @class([
+            'modal-dialog',
+            'modal-sm' => $size === 'sm',
+            'modal-lg' => $size === 'lg',
+            'modal-xl' => $size === 'xl',
+            'modal-dialog-centered' => $centered,
+            'modal-dialog-scrollable' => $scrollable,
+        ])>
             <div class="modal-content">
                 <x-form action="{{ $action }}" :method="$method" :hasFiles="$hasFiles" :novalidate="$novalidate">
                     @isset ($header)

@@ -35,6 +35,11 @@ CHANGELOG
 - Improved `help-info` component to accept content via slot in addition to `content` attribute
 - Improved `select` component to accept options via slot (HTML `<option>` tags) in addition to `options` attribute
   - The `options` parameter is now optional, allowing full HTML control with `<option>` and `<optgroup>` tags
+- Improved `modal` and `form-modal` components with explicit attributes for modal dialog styling
+  - Added `size` attribute for modal sizes: `sm`, `lg`, `xl`
+  - Added `centered` boolean attribute for vertically centered modals
+  - Added `scrollable` boolean attribute for scrollable modal content
+  - These classes are now correctly applied to `.modal-dialog` instead of `.modal`
 
 ### Bug Fixes
 

@@ -230,7 +230,7 @@
             </button>
 
             {{-- Small --}}
-            <x-modal id="smallModal" title="Small Modal" class="modal-sm">
+            <x-modal id="smallModal" title="Small Modal" size="sm">
                 <p>This is a small modal.</p>
             </x-modal>
 
@@ -240,12 +240,12 @@
             </x-modal>
 
             {{-- Large --}}
-            <x-modal id="largeModal" title="Large Modal" class="modal-lg">
+            <x-modal id="largeModal" title="Large Modal" size="lg">
                 <p>This is a large modal with more space for content.</p>
             </x-modal>
 
             {{-- Extra Large --}}
-            <x-modal id="extraLargeModal" title="Extra Large Modal" class="modal-xl">
+            <x-modal id="extraLargeModal" title="Extra Large Modal" size="xl">
                 <p>This is an extra large modal with even more space.</p>
             </x-modal>
         </div>
@@ -260,7 +260,7 @@
                 Launch Scrollable Modal
             </button>
 
-            <x-modal id="scrollableModal" title="Scrollable Modal" class="modal-dialog-scrollable">
+            <x-modal id="scrollableModal" title="Scrollable Modal" :scrollable="true">
                 <p>This modal has a lot of content that will scroll within the modal body.</p>
                 @for($i = 1; $i <= 20; $i++)
                     <p>Paragraph {{ $i }}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -282,7 +282,7 @@
                 Launch Centered Modal
             </button>
 
-            <x-modal id="centeredModal" title="Centered Modal" class="modal-dialog-centered">
+            <x-modal id="centeredModal" title="Centered Modal" :centered="true">
                 <p>This modal is vertically centered on the page.</p>
             </x-modal>
         </div>
@@ -393,19 +393,19 @@
 
         <div class="code-example">
             <h6>Modal Sizes</h6>
-            <pre><code>&lt;x-modal id="smallModal" title="Small" class="modal-sm"&gt;...&lt;/x-modal&gt;
+            <pre><code>&lt;x-modal id="smallModal" title="Small" size="sm"&gt;...&lt;/x-modal&gt;
 &lt;x-modal id="defaultModal" title="Default"&gt;...&lt;/x-modal&gt;
-&lt;x-modal id="largeModal" title="Large" class="modal-lg"&gt;...&lt;/x-modal&gt;
-&lt;x-modal id="xlModal" title="Extra Large" class="modal-xl"&gt;...&lt;/x-modal&gt;</code></pre>
+&lt;x-modal id="largeModal" title="Large" size="lg"&gt;...&lt;/x-modal&gt;
+&lt;x-modal id="xlModal" title="Extra Large" size="xl"&gt;...&lt;/x-modal&gt;</code></pre>
         </div>
 
         <div class="code-example">
             <h6>Scrollable and Centered</h6>
-            <pre><code>&lt;x-modal id="scrollable" title="Scrollable" class="modal-dialog-scrollable"&gt;
+            <pre><code>&lt;x-modal id="scrollable" title="Scrollable" :scrollable="true"&gt;
     Long content...
 &lt;/x-modal&gt;
 
-&lt;x-modal id="centered" title="Centered" class="modal-dialog-centered"&gt;
+&lt;x-modal id="centered" title="Centered" :centered="true"&gt;
     Content...
 &lt;/x-modal&gt;</code></pre>
         </div>
