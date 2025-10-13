@@ -26,12 +26,12 @@
             <button class="btn btn-sm btn-outline-secondary copy-btn d-none" type="button"
                     data-clipboard-text="{{ html_entity_decode($code, ENT_QUOTES, 'UTF-8') }}"
                     data-code-id="{{ $id }}">
-                <i class="bi bi-clipboard"></i> <span class="copy-text">Copier</span>
+                <i class="bi bi-clipboard"></i> <span class="copy-text">Copy</span>
             </button>
             <button class="btn btn-sm btn-outline-secondary toggle-code-btn" type="button"
                     data-bs-toggle="collapse" data-bs-target="#{{ $id }}" aria-expanded="false"
                     data-code-id="{{ $id }}">
-                <i class="bi bi-code-slash"></i> <span class="toggle-text">Voir le code</span>
+                <i class="bi bi-code-slash"></i> <span class="toggle-text">View code</span>
             </button>
         </div>
     </div>

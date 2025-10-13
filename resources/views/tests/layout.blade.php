@@ -158,7 +158,7 @@
     </div>
 
     {{-- Back to top button --}}
-    <button type="button" class="btn btn-primary back-to-top" id="backToTop" title="Retour en haut">
+    <button type="button" class="btn btn-primary back-to-top" id="backToTop" title="Back to top">
         <i class="bi bi-chevron-up"></i>
     </button>
 
@@ -222,17 +222,18 @@
                 const button = e.trigger;
                 const icon = button.querySelector('i');
                 const text = button.querySelector('.copy-text');
+                const originalText = text.textContent;
 
                 // Change icon and text to show success
                 icon.classList.remove('bi-clipboard');
                 icon.classList.add('bi-clipboard-check');
-                text.textContent = 'Copié !';
+                text.textContent = 'Copied!';
 
                 // Reset after 2 seconds
                 setTimeout(() => {
                     icon.classList.remove('bi-clipboard-check');
                     icon.classList.add('bi-clipboard');
-                    text.textContent = 'Copier';
+                    text.textContent = originalText;
                 }, 2000);
 
                 e.clearSelection();
@@ -256,7 +257,7 @@
                         const text = toggleBtn.querySelector('.toggle-text');
                         icon.classList.remove('bi-code-slash');
                         icon.classList.add('bi-eye-slash');
-                        text.textContent = 'Masquer le code';
+                        text.textContent = 'Hide code';
                     }
                     if (copyBtn) {
                         copyBtn.classList.remove('d-none');
@@ -270,7 +271,7 @@
                         const text = toggleBtn.querySelector('.toggle-text');
                         icon.classList.remove('bi-eye-slash');
                         icon.classList.add('bi-code-slash');
-                        text.textContent = 'Voir le code';
+                        text.textContent = 'View code';
                     }
                     if (copyBtn) {
                         copyBtn.classList.add('d-none');
