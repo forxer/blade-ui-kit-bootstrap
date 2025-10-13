@@ -384,7 +384,7 @@ class MakeComponent extends Command
             'Alerts' => ['alert'],
             'Badges' => ['badge'],
             'Forms' => ['form', 'label', 'error'],
-            'Inputs' => ['input', 'text', 'textarea', 'select', 'password', 'email', 'date', 'time', 'hidden'],
+            'Inputs' => ['input', 'text', 'textarea', 'select', 'checkbox', 'password', 'email', 'date', 'time', 'hidden'],
             'Modals' => ['modal', 'confirm-modal', 'form-modal'],
         ];
     }

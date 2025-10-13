@@ -9,16 +9,25 @@ CHANGELOG
 - **BREAKING:** Minimum PHP version is now 8.4
 - **BREAKING:** Only Laravel 12 is supported (dropped Laravel 10 and 11)
 - **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
+- **BREAKING:** Removed modal variants (Bootstrap does not support modal variants)
+  - Removed `variant`, `outline`, and `noOutline` properties from Modal, Form, and Confirm components
+  - Removed `all_modal_outline` configuration option
+  - Removed `ModalVariant` trait
+- **BREAKING:** Removed alert outline variants (Bootstrap does not support alert outline styles)
+  - Removed `outline` and `noOutline` properties from Alert component
+  - Removed `all_alerts_outline` configuration option
 
 ### Features
 
 - Added `make:blade-ui-kit-bs-component` command to generate custom components extending defaults
 - Added Alert component with dismissible, title, and icon support
 - Added Badge component with pill style support
+- Added Checkbox component with validation error handling and old value persistence
 - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
   - `initAttributes()` is intended for package components
   - `onConstructing()` is the recommended hook for application extensions
 - Added comprehensive documentation for extending components (`docs/extending-components.md`)
+- Added two component stubs: one for components with custom views, one for components inheriting parent views
 
 ### Bug Fixes
 

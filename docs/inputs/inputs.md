@@ -7,6 +7,7 @@ A set of components to make it easier to write form elements.
 * [Text](./text.md)
 * [Textarea](./textarea.md)
 * [Select](./select.md)
+* [Checkbox](./checkbox.md)
 * [Password](./password.md)
 * [Email](./email.md)
 * [Date](./date.md)

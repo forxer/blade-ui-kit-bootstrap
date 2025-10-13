@@ -41,6 +41,7 @@ use BladeUIKitBootstrap\Components\Buttons\SimpleButton;
 use BladeUIKitBootstrap\Components\Forms\Error;
 use BladeUIKitBootstrap\Components\Forms\Form;
 use BladeUIKitBootstrap\Components\Forms\Inputs;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Checkbox;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Hidden;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Input;
@@ -120,6 +121,7 @@ class DefaultComponents
             'text' => Text::class,
             'textarea' => Textarea::class,
             'select' => Select::class,
+            'checkbox' => Checkbox::class,
             'password' => Password::class,
             'email' => Inputs\Email::class,
             'date' => Date::class,
