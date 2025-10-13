@@ -21,16 +21,24 @@
     </div>
 
     @if($code)
-    <div class="card-footer bg-white border-top text-end">
-        <button class="btn btn-sm btn-outline-secondary" type="button"
-                data-bs-toggle="collapse" data-bs-target="#{{ $id }}" aria-expanded="false">
-            <i class="bi bi-code-slash"></i> Voir le code
-        </button>
+    <div class="card-footer bg-white border-top">
+        <div class="d-flex justify-content-end align-items-center gap-2">
+            <button class="btn btn-sm btn-outline-secondary copy-btn d-none" type="button"
+                    data-clipboard-text="{{ html_entity_decode($code, ENT_QUOTES, 'UTF-8') }}"
+                    data-code-id="{{ $id }}">
+                <i class="bi bi-clipboard"></i> <span class="copy-text">Copier</span>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary toggle-code-btn" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#{{ $id }}" aria-expanded="false"
+                    data-code-id="{{ $id }}">
+                <i class="bi bi-code-slash"></i> <span class="toggle-text">Voir le code</span>
+            </button>
+        </div>
     </div>
 
     <div class="collapse" id="{{ $id }}">
         <div class="card-body border-top bg-light">
-            <pre class="mb-0"><code>{!! $code !!}</code></pre>
+            <pre class="mb-0"><code class="language-markup">{!! $code !!}</code></pre>
         </div>
     </div>
     @endif

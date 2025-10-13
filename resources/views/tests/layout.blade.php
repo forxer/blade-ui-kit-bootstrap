@@ -37,9 +37,13 @@
             border-radius: 50%;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
-        pre code {
-            color: #e83e8c;
+        /* Shiki code blocks styling */
+        .shiki {
+            margin: 0;
+            padding: 1rem;
+            border-radius: 0;
             font-size: 0.875rem;
+            overflow-x: auto;
         }
         /* Fix card border radius when collapse is used */
         .card > .card-footer {
@@ -137,6 +141,34 @@
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- Shiki for syntax highlighting --}}
+    <script type="module">
+        import { codeToHtml } from 'https://esm.sh/shiki@1.22.2'
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Find all code blocks that need highlighting
+            const codeBlocks = document.querySelectorAll('code.language-markup');
+
+            for (const codeBlock of codeBlocks) {
+                const code = codeBlock.textContent;
+                const parent = codeBlock.parentElement;
+
+                try {
+                    // Highlight with Shiki using blade language
+                    const html = await codeToHtml(code, {
+                        lang: 'blade',
+                        theme: 'github-dark'
+                    });
+
+                    // Replace pre+code with Shiki output
+                    parent.outerHTML = html;
+                } catch (error) {
+                    console.error('Shiki highlighting error:', error);
+                }
+            }
+        });
+    </script>
     <script>
         // Initialize Bootstrap popovers for help-info buttons
         document.addEventListener('DOMContentLoaded', function () {
@@ -154,6 +186,69 @@
             });
             backToTopBtn?.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Initialize ClipboardJS for copy buttons
+            const clipboard = new ClipboardJS('.copy-btn');
+
+            clipboard.on('success', function(e) {
+                const button = e.trigger;
+                const icon = button.querySelector('i');
+                const text = button.querySelector('.copy-text');
+
+                // Change icon and text to show success
+                icon.classList.remove('bi-clipboard');
+                icon.classList.add('bi-clipboard-check');
+                text.textContent = 'Copié !';
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    icon.classList.remove('bi-clipboard-check');
+                    icon.classList.add('bi-clipboard');
+                    text.textContent = 'Copier';
+                }, 2000);
+
+                e.clearSelection();
+            });
+
+            clipboard.on('error', function(e) {
+                console.error('Copy failed:', e);
+            });
+
+            // Handle code collapse toggle for all code blocks
+            const collapseElements = document.querySelectorAll('.collapse');
+            collapseElements.forEach(collapse => {
+                const codeId = collapse.id;
+                const toggleBtn = document.querySelector(`[data-code-id="${codeId}"].toggle-code-btn`);
+                const copyBtn = document.querySelector(`[data-code-id="${codeId}"].copy-btn`);
+
+                // Listen for collapse show event
+                collapse.addEventListener('show.bs.collapse', function () {
+                    if (toggleBtn) {
+                        const icon = toggleBtn.querySelector('i');
+                        const text = toggleBtn.querySelector('.toggle-text');
+                        icon.classList.remove('bi-code-slash');
+                        icon.classList.add('bi-eye-slash');
+                        text.textContent = 'Masquer le code';
+                    }
+                    if (copyBtn) {
+                        copyBtn.classList.remove('d-none');
+                    }
+                });
+
+                // Listen for collapse hide event
+                collapse.addEventListener('hide.bs.collapse', function () {
+                    if (toggleBtn) {
+                        const icon = toggleBtn.querySelector('i');
+                        const text = toggleBtn.querySelector('.toggle-text');
+                        icon.classList.remove('bi-eye-slash');
+                        icon.classList.add('bi-code-slash');
+                        text.textContent = 'Voir le code';
+                    }
+                    if (copyBtn) {
+                        copyBtn.classList.add('d-none');
+                    }
+                });
             });
         });
     </script>
