@@ -120,7 +120,7 @@ use BladeUIKitBootstrap\Components\Buttons\Actions\Save;
 
 class CustomSaveButton extends Save
 {
-    protected function initAttributes(): void
+    protected function onConstructing(): void
     {
         // Override default variant
         $this->variant ??= 'success';
@@ -192,13 +192,10 @@ use BladeUIKitBootstrap\Components\Modals\Modal;
 
 class DangerModal extends Modal
 {
-    protected function initAttributes(): void
+    protected function onConstructing(): void
     {
-        // Always use danger variant
-        $this->variant ??= 'danger';
-
         // Make non-dismissable by default
-        $this->dismissable ??= false;
+        $this->dismissable = false;
     }
 }
 ```
@@ -244,10 +241,7 @@ class PhoneInput extends Text
     {
         // Add phone-specific attributes
         $this->type = 'tel';
-    }
 
-    protected function initAttributes(): void
-    {
         // Set default placeholder for phone inputs
         $this->placeholder ??= '+1 (555) 123-4567';
     }
@@ -274,31 +268,36 @@ Usage:
 
 When extending components, you have access to three key methods:
 
-### `onConstructing()`
+### `onConstructing()` **(Recommended for extensions)**
 
-Called at the very beginning of the component constructor, before any attribute initialization. Use this for early setup operations.
+**This is the primary hook you should use when extending components in your application.**
+
+Called at the very beginning of the component constructor, before any attribute initialization. Use this to customize component behavior when creating custom components.
 
 ```php
 protected function onConstructing(): void
 {
-    // Runs before initAttributes()
-    // Good for setting up state that other methods depend on
+    // Runs before the package's initAttributes()
+    // Perfect for overriding defaults from parent components
+    $this->variant ??= 'danger';
+    $this->text ??= 'Custom Text';
+    $this->icon = 'custom-icon';
 }
 ```
 
-### `initAttributes()`
+### `initAttributes()` **(For package components only)**
 
-Called after `onConstructing()`, used to set default values for component properties.
+**Important:** This method is intended for use by the package's default components (like action buttons). When extending components in your application, you should use `onConstructing()` instead.
+
+This method is called after `onConstructing()` and is used by the package's components to set their default values.
 
 ```php
+// DON'T use this in your application extensions
+// Only used internally by package components
 protected function initAttributes(): void
 {
-    // Set default attributes
     $this->variant ??= 'primary';
-    $this->text ??= 'Default Text';
-
-    // Optionally call parent to preserve parent defaults
-    // parent::initAttributes();
+    $this->text ??= Str::ucfirst(trans('action.save'));
 }
 ```
 
@@ -334,9 +333,9 @@ public function viewName(): ?string
 
 1. **Directory structure is preserved**: The command automatically creates your component in the same directory structure as the parent component. This keeps your customizations organized and easy to find.
 
-2. **Use `??=` operator**: Always use the null coalescing assignment operator (`??=`) in `initAttributes()` so that values passed to the component take precedence over defaults.
+2. **Use `??=` operator**: Always use the null coalescing assignment operator (`??=`) in `onConstructing()` so that values passed to the component take precedence over defaults.
 
-3. **Call parent methods selectively**: Only call `parent::initAttributes()` if you want to preserve the parent component's default behavior. Sometimes you want to completely override it.
+3. **Don't override `initAttributes()`**: When extending components in your application, use `onConstructing()` instead of `initAttributes()`. The latter is reserved for the package's internal components.
 
 4. **Component registration**: Register your custom components in `config/blade-ui-kit-bootstrap.php` using either:
    - `merge()` - to add a new component with a new alias

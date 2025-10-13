@@ -21,22 +21,6 @@ class {{ class }} extends {{ parentClass }}
     }
 
     /**
-     * Initialize component attributes with default values.
-     *
-     * Use this method to set default values for component properties.
-     * This is called automatically by the parent constructor.
-     */
-    protected function initAttributes(): void
-    {
-        // Set default attribute values here
-        // Example: $this->variant ??= 'primary';
-        // Example: $this->text ??= 'Custom Default Text';
-
-        // You can also call parent to preserve default behavior from the parent component
-        // parent::initAttributes();
-    }
-
-    /**
      * Get the view / contents that represent the component.
      *
      * Return null to hide the component, or a view name to render it.

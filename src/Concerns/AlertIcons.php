@@ -9,8 +9,8 @@ use LogicException;
 trait AlertIcons
 {
     /**
-     * Configuration value for alert icon format.
-     * Uses property hook to cache the configuration value.
+     * Virtual property providing typed access to the 'alert_icon_format' configuration.
+     * The actual configuration is cached in BladeComponent::$configCache.
      */
     private ?string $alertIconFormat {
         get => $this->config('alert_icon_format');

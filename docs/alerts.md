@@ -12,9 +12,8 @@ The main alert component for displaying informational messages with various styl
 **Features:**
 - All Bootstrap variants (primary, secondary, success, danger, warning, info, light, dark)
 - Dismissible alerts with close button
-- Outline style support
+- Optional title and icon support
 - Conditional rendering (show/hide)
-- Global configuration for outline style
 
 **Basic usage:**
 
@@ -67,17 +66,6 @@ The main alert component for displaying informational messages with various styl
 <x-alert variant="info">
     <strong>Heads up!</strong> This alert provides additional context for your users.
 </x-alert>
-```
-
-## Configuration
-
-You can configure the default behavior of alerts in `config/blade-ui-kit-bootstrap.php`:
-
-```php
-return [
-    // Make all alerts use outline style by default
-    'all_alerts_outline' => false,
-];
 ```
 
 See the [Alert component documentation](./alerts/alert.md) for detailed usage and examples.

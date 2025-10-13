@@ -9,16 +9,16 @@ use LogicException;
 trait BtnIcons
 {
     /**
-     * Configuration value for button start icon format.
-     * Uses property hook to cache the configuration value.
+     * Virtual property providing typed access to the 'btn_start_icon_format' configuration.
+     * The actual configuration is cached in BladeComponent::$configCache.
      */
     private ?string $btnStartIconFormat {
         get => $this->config('btn_start_icon_format');
     }
 
     /**
-     * Configuration value for button end icon format.
-     * Uses property hook to cache the configuration value.
+     * Virtual property providing typed access to the 'btn_end_icon_format' configuration.
+     * The actual configuration is cached in BladeComponent::$configCache.
      */
     private ?string $btnEndIconFormat {
         get => $this->config('btn_end_icon_format');

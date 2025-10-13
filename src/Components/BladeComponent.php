@@ -27,10 +27,11 @@ abstract class BladeComponent extends IlluminateComponent
      * allowing child components to set default values for their properties before
      * any validation or processing logic executes.
      *
-     * This is particularly useful for action button components that need to set
-     * default variant colors, default text labels, or generate default IDs.
+     * **IMPORTANT:** This method is intended for use by the package's default components
+     * (such as action buttons). If you are extending a component in your application,
+     * you should use `onConstructing()` instead.
      *
-     * Example usage in a child component:
+     * Example usage in a package component:
      * ```php
      * protected function initAttributes(): void
      * {
@@ -46,19 +47,24 @@ abstract class BladeComponent extends IlluminateComponent
      * Hook executed at the very beginning of the component constructor.
      *
      * This method is called before `initAttributes()` and before any other
-     * constructor logic, providing an early hook for child components to perform
+     * constructor logic, providing an early hook for component extensions to perform
      * setup operations or pre-initialization tasks.
+     *
+     * **IMPORTANT:** This method is intended for developers extending components
+     * in their applications. Use this hook to customize component behavior when
+     * creating custom components via `make:blade-ui-kit-bs-component` or manually.
      *
      * Use this method when you need to execute logic before default attributes
      * are initialized, such as modifying constructor parameters or setting up
      * component state that other initialization methods depend on.
      *
-     * Example usage in a child component:
+     * Example usage when extending a component in your application:
      * ```php
      * protected function onConstructing(): void
      * {
-     *     // Perform early setup before attribute initialization
-     *     $this->prepareComponentState();
+     *     // Customize behavior before package's initAttributes() runs
+     *     $this->variant ??= 'danger';
+     *     $this->icon = 'trash';
      * }
      * ```
      */

@@ -10,33 +10,20 @@ CHANGELOG
 - **BREAKING:** Only Laravel 12 is supported (dropped Laravel 10 and 11)
 - **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
 
-### PHP 8.4 Modernizations
-
-- Implemented property hooks in `BladeComponent` for config and viewPath caching
-- Implemented property hooks in `BtnVariant` and `ModalVariant` traits for configuration caching
-- Implemented property hooks in `CanHaveErrors` trait for ViewFactory dependency resolution
-- Added asymmetric visibility (`public private(set)`) to:
-  - `DefaultComponents::$components` for immutable public read access
-  - `CanHaveErrors` properties (`$errorField`, `$errorBag`, `$hasErrors`)
-  - Input component properties (`$id`, `$value`)
-- Replaced `array_search()` with PHP 8.4 `array_find_key()` in `MakeComponent` command
-
 ### Features
 
 - Added `make:blade-ui-kit-bs-component` command to generate custom components extending defaults
-  - Uses Laravel Prompts for modern CLI interaction
-  - Generated components preserve parent directory structure and namespace
-  - Displays available components in a formatted table
-  - Component registration now uses package configuration with `merge()` and `replace()` methods
-- Added Alert component with dismissible, outline, title, and icon support
+- Added Alert component with dismissible, title, and icon support
 - Added Badge component with pill style support
 - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
+  - `initAttributes()` is intended for package components
+  - `onConstructing()` is the recommended hook for application extensions
 - Added comprehensive documentation for extending components (`docs/extending-components.md`)
 
 ### Bug Fixes
 
-- Fixed documentation typo: `middelware` → `middleware`
-- Fixed typo in CHANGELOG: `boostrap` → `bootstrap`
+- Fixed typo: `middelware` → `middleware`
+- Fixed typo: `boostrap` → `bootstrap`
 
 
 0.26.2 (2024-04-30)

@@ -15,8 +15,6 @@ class Alert extends BladeComponent
 
     public function __construct(
         public ?string $variant = null,
-        public bool $outline = false,
-        public bool $noOutline = false,
         public bool $dismissible = false,
         public ?string $title = null,
         public ?string $icon = null,

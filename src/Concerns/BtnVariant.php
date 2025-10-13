@@ -10,8 +10,8 @@ use InvalidArgumentException;
 trait BtnVariant
 {
     /**
-     * Configuration value for all buttons outline setting.
-     * Uses property hook to cache the configuration value.
+     * Virtual property providing typed access to the 'all_buttons_outline' configuration.
+     * The actual configuration is cached in BladeComponent::$configCache.
      */
     private bool $allButtonsOutline {
         get => $this->config('all_buttons_outline');

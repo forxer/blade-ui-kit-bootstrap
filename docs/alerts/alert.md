@@ -114,34 +114,6 @@ This will output:
 
 > **Note:** If you try to use the `icon` attribute without configuring `alert_icon_format`, a `LogicException` will be thrown.
 
-### Outline
-
-Use the `outline` attribute to apply an outline style to the alert (lighter background with colored border).
-
-```blade
-<x-alert variant="primary" outline>
-    This is an outline primary alert.
-</x-alert>
-```
-
-This will output:
-
-```html
-<div class="alert alert-outline-primary" role="alert">
-    This is an outline primary alert.
-</div>
-```
-
-### No outline
-
-If you have enabled `all_alerts_outline` in the configuration, you can disable it for a specific alert using `no-outline`.
-
-```blade
-<x-alert variant="info" no-outline>
-    This alert will NOT be outlined even if globally configured.
-</x-alert>
-```
-
 ### Show or hide
 
 Control alert visibility with `show` or `hide` attributes.
@@ -185,18 +157,6 @@ Examples
 ```blade
 <x-alert variant="info">
     New features are available! <a href="/changelog" class="alert-link">Read the changelog</a>.
-</x-alert>
-```
-
-### Outline alerts
-
-```blade
-<x-alert variant="success" outline>
-    This is a success outline alert.
-</x-alert>
-
-<x-alert variant="warning" outline dismissible>
-    This is a dismissible warning outline alert.
 </x-alert>
 ```
 
@@ -269,19 +229,6 @@ Examples
 
 Global configuration
 --------------------
-
-### Outline style
-
-You can configure all alerts to use the outline style by default in your configuration file:
-
-```php
-// config/blade-ui-kit-bootstrap.php
-return [
-    'all_alerts_outline' => true,
-];
-```
-
-When this is enabled, all alerts will automatically have the outline style unless you explicitly use `no-outline`.
 
 ### Icon format
 
