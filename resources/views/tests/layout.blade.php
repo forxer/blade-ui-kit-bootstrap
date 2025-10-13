@@ -5,34 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Blade UI Kit Bootstrap Tests</title>
 
-    @if(config('blade-ui-kit-bootstrap.bootstrap_version') === \BladeUIKitBootstrap\Enums\BootstrapVersion::V5)
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    @else
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    @endif
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
-        .code-example {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 0.25rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-        .code-example pre {
-            margin-bottom: 0;
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            padding: 0.75rem;
-            border-radius: 0.25rem;
-        }
-        .code-example code {
-            color: #e83e8c;
-        }
         .example-section {
             margin-bottom: 3rem;
+            scroll-margin-top: 80px;
         }
         .example-title {
             font-size: 1.25rem;
@@ -41,16 +20,43 @@
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #dee2e6;
         }
-        .demo-block {
-            padding: 1.5rem;
+        .example-section h5 {
+            margin-top: 2rem;
             margin-bottom: 1rem;
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            border-radius: 0.25rem;
+            color: #495057;
+            font-weight: 600;
         }
-        .demo-block > * {
+        .card-body > * {
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
+        }
+        .card-body > *:last-child {
+            margin-bottom: 0;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 3rem;
+            right: 2rem;
+            display: none;
+            z-index: 1000;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        pre code {
+            color: #e83e8c;
+            font-size: 0.875rem;
+        }
+        /* Fix card border radius when collapse is used */
+        .card > .card-footer {
+            border-bottom-left-radius: calc(0.375rem - 1px) !important;
+            border-bottom-right-radius: calc(0.375rem - 1px) !important;
+        }
+        .card > .collapse.show:last-child {
+            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: inherit;
+            overflow: hidden;
         }
     </style>
 
@@ -90,7 +96,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <span class="navbar-text">
-                            Bootstrap {{ config('blade-ui-kit-bootstrap.bootstrap_version')->value }}
+                            Bootstrap 5
                         </span>
                     </li>
                 </ul>
@@ -103,30 +109,37 @@
         @yield('content')
     </div>
 
+    {{-- Back to top button --}}
+    <button type="button" class="btn btn-primary back-to-top" id="backToTop" title="Retour en haut">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
     @stack('blade-ui-kit-bs-html')
 
     {{-- ClipboardJS for copy buttons --}}
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 
-    @if(config('blade-ui-kit-bootstrap.bootstrap_version') === \BladeUIKitBootstrap\Enums\BootstrapVersion::V5)
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            // Initialize Bootstrap popovers for help-info buttons
-            document.addEventListener('DOMContentLoaded', function () {
-                const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-                [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize Bootstrap popovers for help-info buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+            [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
             });
-        </script>
-    @else
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            // Initialize Bootstrap popovers for help-info buttons
-            $(document).ready(function() {
-                $('[data-toggle="popover"]').popover();
+            backToTopBtn?.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-        </script>
-    @endif
+        });
+    </script>
 
     @stack('blade-ui-kit-bs-scripts')
 </body>
