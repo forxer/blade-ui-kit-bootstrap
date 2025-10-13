@@ -31,6 +31,10 @@ class MakeComponent extends Command
 
     protected array $availableComponents;
 
+    protected bool $withView = false;
+
+    protected ?string $viewName = null;
+
     public function handle(Filesystem $files): int
     {
         $this->files = $files;
@@ -59,6 +63,9 @@ class MakeComponent extends Command
             $name = $this->promptForName($extends);
         }
 
+        // Step 4: Ask about view creation BEFORE generating the component
+        $this->withView = confirm('Do you want to create a corresponding view file?', false);
+
         // Generate the component
         $path = $this->getPath($name, $parentClass);
         $namespace = $this->getNamespace($parentClass);
@@ -81,8 +88,8 @@ class MakeComponent extends Command
 
         info(\sprintf('Component [%s] created successfully.', $fullClassName));
 
-        // Optionally create a view file
-        if (confirm('Do you want to create a corresponding view file?', false)) {
+        // Create view file if requested
+        if ($this->withView) {
             $this->createView($name, $parentClass);
         }
 
@@ -180,13 +187,23 @@ class MakeComponent extends Command
     {
         $stub = $this->files->get($this->getStub());
 
-        return $this->replaceNamespace($stub, $parentClass)
+        $stub = $this->replaceNamespace($stub, $parentClass)
             ->replaceClass($stub, $name)
             ->replaceParentClass($stub, $parentClass);
+
+        if ($this->withView) {
+            $stub = $this->replaceViewName($stub, $name, $parentClass);
+        }
+
+        return $stub;
     }
 
     protected function getStub(): string
     {
+        if ($this->withView) {
+            return __DIR__.'/../../stubs/component-with-view.stub';
+        }
+
         return __DIR__.'/../../stubs/component.stub';
     }
 
@@ -213,6 +230,16 @@ class MakeComponent extends Command
 
         $stub = str_replace('{{ parentClassImport }}', $parentClass, $stub);
         $stub = str_replace('{{ parentClass }}', $shortName, $stub);
+
+        return $stub;
+    }
+
+    protected function replaceViewName(string $stub, string $name, string $parentClass): string
+    {
+        $alias = $this->getComponentAlias($name, $parentClass);
+        $viewName = 'components.'.$alias;
+
+        $stub = str_replace('{{ viewName }}', $viewName, $stub);
 
         return $stub;
     }

@@ -24,4 +24,12 @@ class {{ class }} extends {{ parentClass }}
     {
         // Add your customizations here
     }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function viewName(): ?string
+    {
+        return '{{ viewName }}';
+    }
 }
