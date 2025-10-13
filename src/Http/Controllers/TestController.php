@@ -27,9 +27,14 @@ class TestController extends Controller
         return view('blade-ui-kit-bootstrap::tests.index');
     }
 
-    public function buttons(): View
+    public function buttonsComponents(): View
     {
-        return view('blade-ui-kit-bootstrap::tests.buttons');
+        return view('blade-ui-kit-bootstrap::tests.buttons.components');
+    }
+
+    public function buttonsActions(): View
+    {
+        return view('blade-ui-kit-bootstrap::tests.buttons.actions');
     }
 
     public function alerts(): View
@@ -42,18 +47,33 @@ class TestController extends Controller
         return view('blade-ui-kit-bootstrap::tests.badges');
     }
 
-    public function forms(): View
+    public function formsBasics(): View
     {
-        return view('blade-ui-kit-bootstrap::tests.forms');
+        return view('blade-ui-kit-bootstrap::tests.forms.basics');
     }
 
-    public function inputs(): View
+    public function formsComponents(): View
     {
-        return view('blade-ui-kit-bootstrap::tests.inputs');
+        return view('blade-ui-kit-bootstrap::tests.forms.components');
     }
 
-    public function modals(): View
+    public function inputsText(): View
     {
-        return view('blade-ui-kit-bootstrap::tests.modals');
+        return view('blade-ui-kit-bootstrap::tests.inputs.text');
+    }
+
+    public function inputsAdvanced(): View
+    {
+        return view('blade-ui-kit-bootstrap::tests.inputs.advanced');
+    }
+
+    public function modalsTypes(): View
+    {
+        return view('blade-ui-kit-bootstrap::tests.modals.types');
+    }
+
+    public function modalsVariations(): View
+    {
+        return view('blade-ui-kit-bootstrap::tests.modals.variations');
     }
 }

@@ -26,13 +26,6 @@
             color: #495057;
             font-weight: 600;
         }
-        .card-body > * {
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .card-body > *:last-child {
-            margin-bottom: 0;
-        }
         .back-to-top {
             position: fixed;
             bottom: 3rem;
@@ -74,8 +67,14 @@
                     <li class="nav-item">
                         <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.index')) active @endif" href="{{ route('blade-ui-kit-bs.tests.index') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.buttons')) active @endif" href="{{ route('blade-ui-kit-bs.tests.buttons') }}">Buttons</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @if(request()->routeIs('blade-ui-kit-bs.tests.buttons-*')) active @endif" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Buttons
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.buttons-components')) active @endif" href="{{ route('blade-ui-kit-bs.tests.buttons-components') }}">Components</a></li>
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.buttons-actions')) active @endif" href="{{ route('blade-ui-kit-bs.tests.buttons-actions') }}">Actions</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.alerts')) active @endif" href="{{ route('blade-ui-kit-bs.tests.alerts') }}">Alerts</a>
@@ -83,14 +82,32 @@
                     <li class="nav-item">
                         <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.badges')) active @endif" href="{{ route('blade-ui-kit-bs.tests.badges') }}">Badges</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.forms')) active @endif" href="{{ route('blade-ui-kit-bs.tests.forms') }}">Forms</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @if(request()->routeIs('blade-ui-kit-bs.tests.forms-*')) active @endif" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Forms
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.forms-basics')) active @endif" href="{{ route('blade-ui-kit-bs.tests.forms-basics') }}">Basics</a></li>
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.forms-components')) active @endif" href="{{ route('blade-ui-kit-bs.tests.forms-components') }}">Components</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.inputs')) active @endif" href="{{ route('blade-ui-kit-bs.tests.inputs') }}">Inputs</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @if(request()->routeIs('blade-ui-kit-bs.tests.inputs-*')) active @endif" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Inputs
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.inputs-text')) active @endif" href="{{ route('blade-ui-kit-bs.tests.inputs-text') }}">Text</a></li>
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.inputs-advanced')) active @endif" href="{{ route('blade-ui-kit-bs.tests.inputs-advanced') }}">Advanced</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if(request()->routeIs('blade-ui-kit-bs.tests.modals')) active @endif" href="{{ route('blade-ui-kit-bs.tests.modals') }}">Modals</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @if(request()->routeIs('blade-ui-kit-bs.tests.modals-*')) active @endif" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Modals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.modals-types')) active @endif" href="{{ route('blade-ui-kit-bs.tests.modals-types') }}">Types</a></li>
+                            <li><a class="dropdown-item @if(request()->routeIs('blade-ui-kit-bs.tests.modals-variations')) active @endif" href="{{ route('blade-ui-kit-bs.tests.modals-variations') }}">Variations</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

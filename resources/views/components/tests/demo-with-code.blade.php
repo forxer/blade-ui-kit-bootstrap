@@ -15,7 +15,9 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        {{ $slot }}
+        <div class="demo-preview">
+            {{ $slot }}
+        </div>
     </div>
 
     @if($code)
@@ -28,7 +30,7 @@
 
     <div class="collapse" id="{{ $id }}">
         <div class="card-body border-top bg-light">
-            <pre class="mb-0"><code>{{ $code }}</code></pre>
+            <pre class="mb-0"><code>{!! $code !!}</code></pre>
         </div>
     </div>
     @endif

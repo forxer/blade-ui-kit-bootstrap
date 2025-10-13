@@ -15,15 +15,27 @@
         </p>
     </div>
 
-    <div class="list-group">
-        <a href="{{ route('blade-ui-kit-bs.tests.buttons') }}" class="list-group-item list-group-item-action">
+    <h3 class="mt-4 mb-3">Buttons</h3>
+    <div class="list-group mb-4">
+        <a href="{{ route('blade-ui-kit-bs.tests.buttons-components') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
-                <h5 class="mb-1">Buttons</h5>
-                <span class="badge bg-primary rounded-pill">27 components</span>
+                <h5 class="mb-1">Button Components</h5>
+                <span class="badge bg-primary rounded-pill">4 components</span>
             </div>
-            <p class="mb-1">Simple buttons, form buttons, link buttons, help info, and 23 action buttons</p>
+            <p class="mb-1">Simple buttons, form buttons, link buttons, and help info</p>
         </a>
 
+        <a href="{{ route('blade-ui-kit-bs.tests.buttons-actions') }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <h5 class="mb-1">Action Buttons</h5>
+                <span class="badge bg-primary rounded-pill">23 components</span>
+            </div>
+            <p class="mb-1">Pre-configured action buttons: CRUD, navigation, archive, status, and more</p>
+        </a>
+    </div>
+
+    <h3 class="mb-3">Other Components</h3>
+    <div class="list-group mb-4">
         <a href="{{ route('blade-ui-kit-bs.tests.alerts') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
                 <h5 class="mb-1">Alerts</h5>
@@ -39,29 +51,62 @@
             </div>
             <p class="mb-1">Badge component with pill style support</p>
         </a>
+    </div>
 
-        <a href="{{ route('blade-ui-kit-bs.tests.forms') }}" class="list-group-item list-group-item-action">
+    <h3 class="mb-3">Forms</h3>
+    <div class="list-group mb-4">
+        <a href="{{ route('blade-ui-kit-bs.tests.forms-basics') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
-                <h5 class="mb-1">Forms</h5>
-                <span class="badge bg-primary rounded-pill">3 components</span>
+                <h5 class="mb-1">Form Basics</h5>
+                <span class="badge bg-primary rounded-pill">1 component</span>
             </div>
-            <p class="mb-1">Form wrapper, label, and error display components</p>
+            <p class="mb-1">Form wrapper with CSRF, method spoofing, and file upload support</p>
         </a>
 
-        <a href="{{ route('blade-ui-kit-bs.tests.inputs') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('blade-ui-kit-bs.tests.forms-components') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
-                <h5 class="mb-1">Inputs</h5>
-                <span class="badge bg-primary rounded-pill">10 components</span>
+                <h5 class="mb-1">Form Components</h5>
+                <span class="badge bg-primary rounded-pill">2 components</span>
             </div>
-            <p class="mb-1">Text, textarea, select, checkbox, password, email, date, time, hidden, and generic input components</p>
+            <p class="mb-1">Label and error display components</p>
+        </a>
+    </div>
+
+    <h3 class="mb-3">Inputs</h3>
+    <div class="list-group mb-4">
+        <a href="{{ route('blade-ui-kit-bs.tests.inputs-text') }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <h5 class="mb-1">Text Inputs</h5>
+                <span class="badge bg-primary rounded-pill">5 components</span>
+            </div>
+            <p class="mb-1">Generic, text, email, password, and hidden inputs</p>
         </a>
 
-        <a href="{{ route('blade-ui-kit-bs.tests.modals') }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('blade-ui-kit-bs.tests.inputs-advanced') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
-                <h5 class="mb-1">Modals</h5>
+                <h5 class="mb-1">Advanced Inputs</h5>
+                <span class="badge bg-primary rounded-pill">5 components</span>
+            </div>
+            <p class="mb-1">Date, time, textarea, select, and checkbox inputs</p>
+        </a>
+    </div>
+
+    <h3 class="mb-3">Modals</h3>
+    <div class="list-group mb-4">
+        <a href="{{ route('blade-ui-kit-bs.tests.modals-types') }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <h5 class="mb-1">Modal Types</h5>
                 <span class="badge bg-primary rounded-pill">3 components</span>
             </div>
-            <p class="mb-1">Modal, confirm modal, and form modal components</p>
+            <p class="mb-1">Basic modal, form modal, and confirm modal components</p>
+        </a>
+
+        <a href="{{ route('blade-ui-kit-bs.tests.modals-variations') }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <h5 class="mb-1">Modal Variations</h5>
+                <span class="badge bg-primary rounded-pill">Various options</span>
+            </div>
+            <p class="mb-1">Modal sizes, scrollable, centered, and content variations</p>
         </a>
     </div>
 
