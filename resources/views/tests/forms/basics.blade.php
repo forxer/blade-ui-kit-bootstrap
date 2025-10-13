@@ -3,6 +3,14 @@
 @section('title', 'Form Basics')
 
 @section('content')
+    {{-- Table of Contents --}}
+    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+        ['id' => 'section-basic', 'title' => 'Basic Form'],
+        ['id' => 'section-methods', 'title' => 'Form Methods'],
+        ['id' => 'section-files', 'title' => 'Form with File Upload'],
+        ['id' => 'section-validation', 'title' => 'Form with Browser Validation'],
+    ]" />
+
     {{-- Basic Form --}}
     <div class="example-section" id="section-basic">
         <h2 class="example-title">Basic Form</h2>
