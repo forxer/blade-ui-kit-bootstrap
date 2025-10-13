@@ -17,7 +17,7 @@ class HelpInfo extends BladeComponent
     use BtnVariant;
 
     public function __construct(
-        public string $content,
+        public ?string $content = null,
         public ?string $text = null,
         public bool $hideText = false,
         public bool $show = true,

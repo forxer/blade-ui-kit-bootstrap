@@ -23,11 +23,16 @@ CHANGELOG
 - Added Alert component with dismissible, title, and icon support
 - Added Badge component with pill style support
 - Added Checkbox component with validation error handling and old value persistence
+- Added test routes and views for component demonstration (enabled via `enable_test_routes` config, default: `APP_DEBUG`)
+  - Test pages available at `/blade-ui-kit-bs/tests` with examples for all 44 components
+  - Automatic Bootstrap 4/5 detection and CDN loading
+  - Interactive examples with code snippets for all components
 - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
   - `initAttributes()` is intended for package components
   - `onConstructing()` is the recommended hook for application extensions
 - Added comprehensive documentation for extending components (`docs/extending-components.md`)
 - Added two component stubs: one for components with custom views, one for components inheriting parent views
+- Improved `help-info` component to accept content via slot in addition to `content` attribute
 
 ### Bug Fixes
 

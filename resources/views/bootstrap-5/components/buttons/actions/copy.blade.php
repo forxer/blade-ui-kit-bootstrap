@@ -30,37 +30,48 @@
 @push('blade-ui-kit-bs-scripts')
     @once
         <script>
-            window.ClipboardJS.on('success', function(e) {
-                let triggerButton = e.trigger;
+            document.addEventListener('DOMContentLoaded', function() {
+                const clipboard = new ClipboardJS('.btn-clipboard');
 
-                let dataBsOriginalTitle = triggerButton.getAttribute("data-bs-original-title");
+                clipboard.on('success', function(e) {
+                    let triggerButton = e.trigger;
 
-                triggerButton.setAttribute("data-bs-original-title", "{{ trans('blade-ui-kit-bootstrap::clipboard.success') }}");
+                    let dataBsOriginalTitle = triggerButton.getAttribute("data-bs-original-title");
 
-                let bsTooltip = bootstrap.Tooltip.getInstance(triggerButton);
-                bsTooltip.show();
+                    triggerButton.setAttribute("data-bs-original-title", "{{ trans('blade-ui-kit-bootstrap::clipboard.success') }}");
 
-                if (dataBsOriginalTitle !== null) {
-                    triggerButton.setAttribute("data-bs-original-title", dataBsOriginalTitle);
-                }
+                    let bsTooltip = bootstrap.Tooltip.getInstance(triggerButton);
+                    if (!bsTooltip) {
+                        bsTooltip = new bootstrap.Tooltip(triggerButton);
+                    }
+                    bsTooltip.show();
 
-                e.clearSelection();
-            });
-            window.ClipboardJS.on('error', function(e) {
-                let triggerButton = e.trigger;
+                    if (dataBsOriginalTitle !== null) {
+                        triggerButton.setAttribute("data-bs-original-title", dataBsOriginalTitle);
+                    }
 
-                let dataBsOriginalTitle = triggerButton.getAttribute("data-bs-original-title");
+                    e.clearSelection();
+                });
 
-                triggerButton.setAttribute("data-bs-original-title", "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
+                clipboard.on('error', function(e) {
+                    let triggerButton = e.trigger;
 
-                let bsTooltip = bootstrap.Tooltip.getInstance(triggerButton);
-                bsTooltip.show();
+                    let dataBsOriginalTitle = triggerButton.getAttribute("data-bs-original-title");
 
-                if (dataBsOriginalTitle !== null) {
-                    triggerButton.setAttribute("data-bs-original-title", dataBsOriginalTitle);
-                }
+                    triggerButton.setAttribute("data-bs-original-title", "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
 
-                e.clearSelection();
+                    let bsTooltip = bootstrap.Tooltip.getInstance(triggerButton);
+                    if (!bsTooltip) {
+                        bsTooltip = new bootstrap.Tooltip(triggerButton);
+                    }
+                    bsTooltip.show();
+
+                    if (dataBsOriginalTitle !== null) {
+                        triggerButton.setAttribute("data-bs-original-title", dataBsOriginalTitle);
+                    }
+
+                    e.clearSelection();
+                });
             });
         </script>
     @endonce

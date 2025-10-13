@@ -6,11 +6,21 @@ This button is designed to display help information in a Bootstrap popover. It's
 Basic usage
 -----------
 
+You can provide the content either via the `content` attribute or using a slot:
+
+**Using the content attribute:**
+
 ```blade
-<x-help-info content="This is helpful information for the user."/>
+<x-help-info content="This is helpful information for the user." />
 ```
 
-This will output the following HTML:
+**Using a slot:**
+
+```blade
+<x-help-info>This is helpful information for the user.</x-help-info>
+```
+
+Both approaches will output the following HTML:
 
 ```html
 <button class="btn btn-link" type="button"
@@ -32,12 +42,22 @@ Help info button attributes
 
 All attributes set on the component are piped through on the button element.
 
-### Content (required)
+### Content
 
-The `content` attribute defines the text displayed in the popover body. HTML is supported.
+The content displayed in the popover body can be provided via the `content` attribute or using a slot. HTML is supported in both cases.
+
+**Using the content attribute:**
 
 ```blade
-<x-help-info content="<strong>Important:</strong> This field is required."/>
+<x-help-info content="<strong>Important:</strong> This field is required." />
+```
+
+**Using a slot:**
+
+```blade
+<x-help-info>
+    <strong>Important:</strong> This field is required.
+</x-help-info>
 ```
 
 ### Title (optional)
@@ -110,10 +130,24 @@ Examples
 
 ### With title and HTML content
 
+**Using the content attribute:**
+
 ```blade
 <x-help-info
     title="Password Requirements"
-    content="<ul><li>At least 8 characters</li><li>Include uppercase and lowercase</li><li>Include numbers</li></ul>"/>
+    content="<ul><li>At least 8 characters</li><li>Include uppercase and lowercase</li><li>Include numbers</li></ul>" />
+```
+
+**Using a slot:**
+
+```blade
+<x-help-info title="Password Requirements">
+    <ul>
+        <li>At least 8 characters</li>
+        <li>Include uppercase and lowercase</li>
+        <li>Include numbers</li>
+    </ul>
+</x-help-info>
 ```
 
 Bootstrap popover configuration

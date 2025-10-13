@@ -52,6 +52,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable Test Routes
+    |--------------------------------------------------------------------------
+    |
+    | Enable or disable the test routes for component demos.
+    | When enabled, routes will be available at /blade-ui-kit-bs/tests
+    | By default, this is enabled only in debug mode.
+    |
+    | Warning: Disable this in production environments!
+    |
+    */
+
+    'enable_test_routes' => env('APP_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Always use novalidate
     |--------------------------------------------------------------------------
     |
