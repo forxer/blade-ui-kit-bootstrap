@@ -4,7 +4,7 @@
     Composant pour afficher une démo avec son code dans un collapse (Bootstrap 5 only)
 
     Usage:
-    <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-example-1">
+    <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-btn-variants">
         <x-btn variant="primary">Demo Button</x-btn>
 
         <x-slot:code>
