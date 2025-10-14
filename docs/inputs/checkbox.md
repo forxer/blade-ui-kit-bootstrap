@@ -120,7 +120,40 @@ public function store(Request $request)
 
 ## Additional Attributes
 
-Any additional attributes passed to the component will be applied to the wrapper `<div>` element:
+Additional attributes are intelligently distributed between the `<input>` element and the wrapper `<div>` element:
+
+**Applied to the `<input>` element:**
+- `required`
+- `disabled`
+- `readonly`
+- `aria-label`
+- `aria-describedby`
+- `data-*` attributes
+
+**Applied to the wrapper `<div>` element:**
+- All other attributes (e.g., `class`, `style`, `id`, etc.)
+
+### Example with Required Checkbox
+
+```blade
+<x-checkbox
+    name="terms"
+    label="I agree to the terms and conditions <em>(required)</em>"
+    required
+/>
+```
+
+Renders:
+```html
+<div class="form-check">
+    <input required class="form-check-input" type="checkbox" id="terms" name="terms" />
+    <label class="form-check-label" for="terms">
+        I agree to the terms and conditions <em>(required)</em>
+    </label>
+</div>
+```
+
+### Example with Mixed Attributes
 
 ```blade
 <x-checkbox
@@ -128,7 +161,16 @@ Any additional attributes passed to the component will be applied to the wrapper
     label="Featured"
     class="mb-4"
     data-category="settings"
+    disabled
 />
+```
+
+Renders:
+```html
+<div class="form-check mb-4">
+    <input disabled data-category="settings" class="form-check-input" type="checkbox" id="featured" name="featured" />
+    <label class="form-check-label" for="featured">Featured</label>
+</div>
 ```
 
 ## Checked State Logic
@@ -185,3 +227,7 @@ The component integrates with Laravel's validation system:
 <x-checkbox name="agree" label="I agree to the terms" />
 <x-error name="agree" />
 ```
+
+*For more information about HTML checkbox input attributes and behavior, see the reference below.*
+
+[Reference on MDN, especially for attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)

@@ -1,5 +1,11 @@
-<div {{ $attributes->class(['form-check']) }}>
+@php
+    $inputAttributes = $attributes->only(['required', 'disabled', 'readonly', 'aria-label', 'aria-describedby', 'data-*']);
+    $containerAttributes = $attributes->except(['required', 'disabled', 'readonly', 'aria-label', 'aria-describedby', 'data-*']);
+@endphp
+
+<div {{ $containerAttributes->class(['form-check']) }}>
     <input
+        {{ $inputAttributes }}
         name="{{ $name }}"
         type="checkbox"
         id="{{ $id }}"

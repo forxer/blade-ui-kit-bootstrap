@@ -12,7 +12,15 @@
             <option value="" hidden>{{ $placeholder }}</option>
         @endif
         @foreach ($options as $value => $label)
-            <option value="{{ $value }}" {!! $isSelected($value) ? 'selected' : '' !!}>{{ $label }}</option>
+            @if (is_array($label))
+                <optgroup label="{{ $value }}">
+                    @foreach ($label as $optionValue => $optionLabel)
+                        <option value="{{ $optionValue }}" {!! $isSelected($optionValue) ? 'selected' : '' !!}>{{ $optionLabel }}</option>
+                    @endforeach
+                </optgroup>
+            @else
+                <option value="{{ $value }}" {!! $isSelected($value) ? 'selected' : '' !!}>{{ $label }}</option>
+            @endif
         @endforeach
     @else
         {{ $slot }}

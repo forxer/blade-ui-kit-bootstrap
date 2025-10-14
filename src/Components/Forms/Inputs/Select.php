@@ -13,11 +13,13 @@ class Select extends BladeComponent
 {
     use CanHaveErrors;
 
-    public string $id;
+    public private(set) string $id;
+
+    public private(set) array $options;
 
     public function __construct(
         public string $name,
-        public array|Collection|null $options = null,
+        array|Collection|null $options = null,
         public string|array|null $selected = null,
         public ?string $placeholder = null,
         string $labelAttribute = 'name',
@@ -26,18 +28,65 @@ class Select extends BladeComponent
         ?string $errorBag = null
     ) {
         $this->id = $id ?? $name;
+        $this->options = $this->normalizeOptions($options, $labelAttribute, $valueAttribute);
+        $this->bootCanHaveErrors($name, $errorBag);
+    }
 
+    /**
+     * Normalize options to array format, handling Collections and optgroups.
+     */
+    private function normalizeOptions(array|Collection|null $options, string $labelAttribute, string $valueAttribute): array
+    {
         if ($options === null) {
-            $this->options = [];
-        } elseif (\is_array($options)) {
-            $this->options = $options;
-        } elseif ($options instanceof Collection) {
-            $this->options = $options->pluck($labelAttribute, $valueAttribute);
-        } else {
-            throw new InvalidArgumentException('Invalid options');
+            return [];
         }
 
-        $this->bootCanHaveErrors($name, $errorBag);
+        if (\is_array($options)) {
+            return $this->normalizeArrayOptions($options, $labelAttribute, $valueAttribute);
+        }
+
+        if ($options instanceof Collection) {
+            return $this->normalizeCollectionOptions($options, $labelAttribute, $valueAttribute);
+        }
+
+        throw new InvalidArgumentException('Invalid options');
+    }
+
+    /**
+     * Normalize array options (may contain nested arrays for optgroups).
+     */
+    private function normalizeArrayOptions(array $options, string $labelAttribute, string $valueAttribute): array
+    {
+        $normalized = [];
+
+        foreach ($options as $key => $value) {
+            if ($value instanceof Collection) {
+                // Handle Collection inside array (for optgroups)
+                $normalized[$key] = $value->pluck($labelAttribute, $valueAttribute)->toArray();
+            } else {
+                $normalized[$key] = $value;
+            }
+        }
+
+        return $normalized;
+    }
+
+    /**
+     * Normalize Collection options (may be nested for optgroups).
+     */
+    private function normalizeCollectionOptions(Collection $options, string $labelAttribute, string $valueAttribute): array
+    {
+        // Check if this is a Collection of Collections (optgroups)
+        $firstValue = $options->first();
+
+        if ($firstValue instanceof Collection) {
+            // Nested Collections: optgroups
+            return $options->map(fn ($group) => $group->pluck($labelAttribute, $valueAttribute)->toArray()
+            )->toArray();
+        }
+
+        // Flat Collection: simple options
+        return $options->pluck($labelAttribute, $valueAttribute)->toArray();
     }
 
     public function isSelected(string|array|null $value): bool

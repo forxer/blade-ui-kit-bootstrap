@@ -16,9 +16,83 @@ Pass a name and a list of options:
 
 The `options` attribute can be an array or a Collection.
 
-If it is an array, the keys of this one will be the values of the options and the values of the array will be the labels.
+**For simple options:**
+- If it is an array, the keys will be the option values and the array values will be the labels.
+- If it is a Collection, each item must have `name` and `id` properties for the labels and values respectively. You can customize these with the `labelAttribute` and `valueAttribute` parameters.
 
-If it is a collection, this collection must have `name` and `id` elements for the labels and the values of the options respectively. Otherwise you can specify them with the `labelAttribute` and `valueAttribute` attributes.
+**For optgroups:**
+- Use nested arrays: `['Group Name' => ['value' => 'Label', ...]]`
+- Use nested Collections: `['Group Name' => Collection, ...]`
+- Use a Collection of Collections (see examples below)
+
+### Using optgroups with the options attribute
+
+You can create option groups by passing a nested array structure:
+
+```blade
+<x-select name="vehicle" :options="[
+    'Cars' => [
+        'sedan' => 'Sedan',
+        'suv' => 'SUV',
+    ],
+    'Motorcycles' => [
+        'sport' => 'Sport',
+        'touring' => 'Touring',
+    ],
+]" />
+```
+
+This will generate:
+
+```html
+<select name="vehicle" id="vehicle" class="form-select">
+    <optgroup label="Cars">
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+    </optgroup>
+    <optgroup label="Motorcycles">
+        <option value="sport">Sport</option>
+        <option value="touring">Touring</option>
+    </optgroup>
+</select>
+```
+
+### Using Collections for optgroups
+
+The component supports nested Collections for creating optgroups dynamically:
+
+```php
+// In your controller
+$vehicles = collect([
+    'Cars' => collect([
+        (object)['id' => 1, 'name' => 'Sedan'],
+        (object)['id' => 2, 'name' => 'SUV'],
+    ]),
+    'Motorcycles' => collect([
+        (object)['id' => 3, 'name' => 'Sport'],
+        (object)['id' => 4, 'name' => 'Touring'],
+    ]),
+]);
+```
+
+```blade
+<x-select name="vehicle" :options="$vehicles" />
+```
+
+You can also mix arrays and Collections:
+
+```php
+$options = [
+    'Cars' => collect($carModels), // Collection
+    'Motorcycles' => collect($motorcycleModels), // Collection
+];
+```
+
+```blade
+<x-select name="vehicle" :options="$options" />
+```
+
+**Note:** When using Collections for optgroups, the component uses the `labelAttribute` and `valueAttribute` parameters (default: `name` and `id`) to extract the option values and labels from each item in the nested Collections.
 
 ### Using a slot
 
