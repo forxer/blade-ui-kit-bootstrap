@@ -13,7 +13,7 @@
 <nav id="toc-sidebar" class="navbar flex-column align-items-stretch">
     <div class="mb-2">
         <h6 class="text-muted">
-            <i class="bi bi-list"></i> Table of contents
+            <i class="bi bi-list"></i> On this page
         </h6>
     </div>
     <nav class="nav nav-pills flex-column">

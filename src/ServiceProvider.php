@@ -72,13 +72,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__.'/../lang/' => $this->app->langPath('/vendor/blade-ui-kit-bootstrap'),
         ], 'blade-ui-kit-bootstrap-translations');
-
-        // tests
-        $this->publishes([
-            __DIR__.'/Http/Controllers/TestController.php' => app_path('Http/Controllers/BladeUIKitBootstrap/TestController.php'),
-            __DIR__.'/../routes/web.php' => base_path('routes/blade-ui-kit-bootstrap-tests.php'),
-            __DIR__.'/../resources/views/tests' => resource_path('views/blade-ui-kit-bootstrap-tests'),
-        ], 'blade-ui-kit-bootstrap-tests');
     }
 
     private function configureCommands(): void
