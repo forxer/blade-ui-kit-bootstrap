@@ -46,7 +46,7 @@
                 <p>You must use the action buttons to close it.</p>
 
                 <x-slot:footer>
-                    <x-btn-cancel data-bs-dismiss="modal" />
+                    <x-btn variant="secondary" data-bs-dismiss="modal">Close</x-btn>
                     <x-btn variant="primary">Accept</x-btn>
                 </x-slot:footer>
             </x-modal>
@@ -57,7 +57,7 @@
     &lt;p&gt;You must use the action buttons to close it.&lt;/p&gt;
 
     &lt;x-slot:footer&gt;
-        &lt;x-btn-cancel data-bs-dismiss="modal" /&gt;
+        &lt;x-btn variant="secondary" data-bs-dismiss="modal"&gt;Close&lt;/x-btn&gt;
         &lt;x-btn variant="primary"&gt;Accept&lt;/x-btn&gt;
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
@@ -78,7 +78,7 @@
                 <p>This modal has a custom footer with multiple action buttons.</p>
 
                 <x-slot:footer>
-                    <x-btn-cancel data-bs-dismiss="modal" />
+                    <x-btn variant="secondary" data-bs-dismiss="modal">Cancel</x-btn>
                     <x-btn variant="danger">Delete</x-btn>
                     <x-btn variant="success">Save</x-btn>
                 </x-slot:footer>
@@ -89,7 +89,7 @@
     &lt;p&gt;This modal has a custom footer with multiple action buttons.&lt;/p&gt;
 
     &lt;x-slot:footer&gt;
-        &lt;x-btn-cancel data-bs-dismiss="modal" /&gt;
+        &lt;x-btn variant="secondary" data-bs-dismiss="modal"&gt;Cancel&lt;/x-btn&gt;
         &lt;x-btn variant="danger"&gt;Delete&lt;/x-btn&gt;
         &lt;x-btn variant="success"&gt;Save&lt;/x-btn&gt;
     &lt;/x-slot:footer&gt;
@@ -124,7 +124,7 @@
                 </div>
 
                 <x-slot:footer>
-                    <x-btn-cancel data-bs-dismiss="modal" />
+                    <x-btn variant="secondary" data-bs-dismiss="modal">Cancel</x-btn>
                     <x-btn variant="primary">Save Changes</x-btn>
                 </x-slot:footer>
             </x-modal>
@@ -147,7 +147,7 @@
     &lt;/div&gt;
 
     &lt;x-slot:footer&gt;
-        &lt;x-btn-cancel data-bs-dismiss="modal" /&gt;
+        &lt;x-btn variant="secondary" data-bs-dismiss="modal"&gt;Cancel&lt;/x-btn&gt;
         &lt;x-btn variant="primary"&gt;Save Changes&lt;/x-btn&gt;
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
@@ -231,7 +231,6 @@
 
                 <x-slot:footer>
                     <x-btn variant="secondary" data-bs-dismiss="modal">Cancel</x-btn>
-                    <x-btn-cancel data-bs-dismiss="modal" />
                     <x-btn type="submit" variant="warning">Update</x-btn>
                 </x-slot:footer>
             </x-form-modal>
