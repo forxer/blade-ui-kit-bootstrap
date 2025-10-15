@@ -5,6 +5,18 @@ This package provides several Blade components prepared for use with Bootstrap (
 
 Well yes: not everyone uses Tailwind CSS 😊 ; and old projects continue to live and evolve with Bootstrap.
 
+Features
+--------
+
+- **Many pre-built components** ready to use with Bootstrap 4 and 5
+- **Automatic validation error handling** with Bootstrap's `is-invalid` class
+- **Old value persistence** for form inputs after validation
+- **Dual Bootstrap support** - Switch between Bootstrap 4 and 5 with a single configuration
+- **Extensible** - Easy to create custom components extending the defaults
+- **Interactive test pages** - Browse all components with live examples and code snippets
+- **Translation support** - Works seamlessly with Laravel's localization
+- **Action buttons** - Pre-configured buttons for common CRUD operations
+
 Example
 -------
 
@@ -62,6 +74,8 @@ Index
 - [Extending Components](./docs/extending-components.md)
 - [Bootstrap version](./docs/bootstrap-version.md)
 - [Testing Pages](./docs/testing-pages.md) - Interactive component demonstrations
+- [Alerts](./docs/alerts.md)
+- [Badges](./docs/badges.md)
 - [Buttons](./docs/buttons/buttons.md)
     - [Simple button](./docs/buttons/simple-button.md)
     - [Form button](./docs/buttons/form-button.md)
@@ -77,6 +91,8 @@ Index
     - [Text](./docs/inputs/text.md)
     - [Textarea](./docs/inputs/textarea.md)
     - [Select](./docs/inputs/select.md)
+    - [Checkbox](./docs/inputs/checkbox.md)
+    - [Radio](./docs/inputs/radio.md)
     - [Password](./docs/inputs/password.md)
     - [Email](./docs/inputs/email.md)
     - [Date](./docs/inputs/date.md)

@@ -35,7 +35,7 @@
         <a href="{{ route('blade-ui-kit-bs.tests.buttons-actions') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
                 <h5 class="mb-1">Action Buttons</h5>
-                <span class="badge bg-primary rounded-pill">23 components</span>
+                <span class="badge bg-primary rounded-pill">28 components</span>
             </div>
             <p class="mb-1">Pre-configured action buttons: CRUD, navigation, archive, status, and more</p>
         </a>
@@ -92,9 +92,9 @@
         <a href="{{ route('blade-ui-kit-bs.tests.inputs-advanced') }}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between align-items-center">
                 <h5 class="mb-1">Advanced Inputs</h5>
-                <span class="badge bg-primary rounded-pill">5 components</span>
+                <span class="badge bg-primary rounded-pill">6 components</span>
             </div>
-            <p class="mb-1">Date, time, textarea, select, and checkbox inputs</p>
+            <p class="mb-1">Date, time, textarea, select, checkbox, and radio inputs</p>
         </a>
     </div>
 
@@ -125,7 +125,7 @@
         </p>
         <ul>
             <li><strong>Current Bootstrap Version:</strong> {{ config('blade-ui-kit-bootstrap.bootstrap_version')->value }}</li>
-            <li><strong>Total Components:</strong> 44</li>
+            <li><strong>Total Components:</strong> 51</li>
             <li><strong>PHP Version:</strong> >= 8.4</li>
             <li><strong>Laravel Version:</strong> >= 12.0</li>
         </ul>

@@ -9,13 +9,6 @@ CHANGELOG
 - **BREAKING:** Minimum PHP version is now 8.4
 - **BREAKING:** Only Laravel 12 is supported (dropped Laravel 10 and 11)
 - **BREAKING:** Fixed configuration key typo: `boostrap_version` is now correctly named `bootstrap_version`
-- **BREAKING:** Removed modal variants (Bootstrap does not support modal variants)
-  - Removed `variant`, `outline`, and `noOutline` properties from Modal, Form, and Confirm components
-  - Removed `all_modal_outline` configuration option
-  - Removed `ModalVariant` trait
-- **BREAKING:** Removed alert outline variants (Bootstrap does not support alert outline styles)
-  - Removed `outline` and `noOutline` properties from Alert component
-  - Removed `all_alerts_outline` configuration option
 
 ### Features
 
@@ -25,14 +18,10 @@ CHANGELOG
 - Added Checkbox component with validation error handling and old value persistence
 - Added Radio component with validation error handling and old value persistence
 - Added test routes and views for component demonstration (enabled via `enable_test_routes` config, default: `APP_DEBUG`)
-  - Test pages available at `/blade-ui-kit-bs/tests` with examples for all 44 components
-  - Automatic Bootstrap 4/5 detection and CDN loading
+  - Test pages available at `/blade-ui-kit-bs/tests` with examples for all components
   - Interactive examples with code snippets for all components
 - Added documentation for `initAttributes()` and `onConstructing()` lifecycle hooks
-  - `initAttributes()` is intended for package components
-  - `onConstructing()` is the recommended hook for application extensions
 - Added comprehensive documentation for extending components (`docs/extending-components.md`)
-- Added two component stubs: one for components with custom views, one for components inheriting parent views
 - Improved `help-info` component to accept content via slot in addition to `content` attribute
 - Improved `select` component to accept options via slot (HTML `<option>` tags) in addition to `options` attribute
   - The `options` parameter is now optional, allowing full HTML control with `<option>` and `<optgroup>` tags
@@ -40,7 +29,6 @@ CHANGELOG
   - Added `size` attribute for modal sizes: `sm`, `lg`, `xl`
   - Added `centered` boolean attribute for vertically centered modals
   - Added `scrollable` boolean attribute for scrollable modal content
-  - These classes are now correctly applied to `.modal-dialog` instead of `.modal`
 
 ### Bug Fixes
 
