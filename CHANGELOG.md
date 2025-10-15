@@ -23,6 +23,7 @@ CHANGELOG
 - Added Alert component with dismissible, title, and icon support
 - Added Badge component with pill style support
 - Added Checkbox component with validation error handling and old value persistence
+- Added Radio component with validation error handling and old value persistence
 - Added test routes and views for component demonstration (enabled via `enable_test_routes` config, default: `APP_DEBUG`)
   - Test pages available at `/blade-ui-kit-bs/tests` with examples for all 44 components
   - Automatic Bootstrap 4/5 detection and CDN loading

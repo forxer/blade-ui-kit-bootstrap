@@ -46,6 +46,7 @@ use BladeUIKitBootstrap\Components\Forms\Inputs\Date;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Hidden;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Input;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Password;
+use BladeUIKitBootstrap\Components\Forms\Inputs\Radio;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Select;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Text;
 use BladeUIKitBootstrap\Components\Forms\Inputs\Textarea;
@@ -122,6 +123,7 @@ class DefaultComponents
             'textarea' => Textarea::class,
             'select' => Select::class,
             'checkbox' => Checkbox::class,
+            'radio' => Radio::class,
             'password' => Password::class,
             'email' => Inputs\Email::class,
             'date' => Date::class,

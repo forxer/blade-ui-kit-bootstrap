@@ -151,6 +151,20 @@
                     <x-error field="bio" />
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <div class="form-check">
+                        <x-radio name="gender" value="male" label="Male" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="gender" value="female" label="Female" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="gender" value="other" label="Other" />
+                    </div>
+                    <x-error field="gender" />
+                </div>
+
                 <div class="form-check mb-3">
                     <x-checkbox name="terms" label="I agree to the terms and conditions" />
                     <x-error field="terms" />
@@ -193,6 +207,20 @@
         &lt;x-label for="bio"&gt;Bio&lt;/x-label&gt;
         &lt;x-textarea name="bio" id="bio" rows="3" /&gt;
         &lt;x-error field="bio" /&gt;
+    &lt;/div&gt;
+
+    &lt;div class="mb-3"&gt;
+        &lt;label class="form-label"&gt;Gender&lt;/label&gt;
+        &lt;div class="form-check"&gt;
+            &lt;x-radio name="gender" value="male" label="Male" /&gt;
+        &lt;/div&gt;
+        &lt;div class="form-check"&gt;
+            &lt;x-radio name="gender" value="female" label="Female" /&gt;
+        &lt;/div&gt;
+        &lt;div class="form-check"&gt;
+            &lt;x-radio name="gender" value="other" label="Other" /&gt;
+        &lt;/div&gt;
+        &lt;x-error field="gender" /&gt;
     &lt;/div&gt;
 
     &lt;div class="form-check mb-3"&gt;

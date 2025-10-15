@@ -300,6 +300,188 @@
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
 
+    {{-- Radio --}}
+    <div class="example-section" id="section-radio">
+        <h2 class="example-title">Radio</h2>
+
+        <h5 class="mt-3">Basic Radio Group</h5>
+        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-basic">
+            <div>
+                <p class="fw-bold mb-2">Choose your size:</p>
+                <div class="form-check">
+                    <x-radio name="size" value="small" label="Small" />
+                </div>
+                <div class="form-check">
+                    <x-radio name="size" value="medium" label="Medium" />
+                </div>
+                <div class="form-check">
+                    <x-radio name="size" value="large" label="Large" />
+                </div>
+            </div>
+
+            <x-slot:code>
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="size" value="small" label="Small" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="size" value="medium" label="Medium" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="size" value="large" label="Large" /&gt;
+&lt;/div&gt;
+            </x-slot:code>
+        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+
+        <h5 class="mt-3">Pre-selected Option</h5>
+        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-checked">
+            <div>
+                <p class="fw-bold mb-2">Choose your gender:</p>
+                <div class="form-check">
+                    <x-radio name="gender" value="male" label="Male" />
+                </div>
+                <div class="form-check">
+                    <x-radio name="gender" value="female" label="Female" checked="female" />
+                </div>
+                <div class="form-check">
+                    <x-radio name="gender" value="other" label="Other" />
+                </div>
+            </div>
+
+            <x-slot:code>
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="gender" value="male" label="Male" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="gender" value="female" label="Female" checked="female" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="gender" value="other" label="Other" /&gt;
+&lt;/div&gt;
+            </x-slot:code>
+        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+
+        <h5 class="mt-3">Multiple Radio Groups</h5>
+        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-multiple">
+            <div>
+                <div class="mb-3">
+                    <p class="fw-bold mb-2">Notification preference:</p>
+                    <div class="form-check">
+                        <x-radio name="notifications" value="email" label="Email only" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="notifications" value="sms" label="SMS only" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="notifications" value="both" label="Both Email and SMS" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <p class="fw-bold mb-2">Subscription plan:</p>
+                    <div class="form-check">
+                        <x-radio name="plan" value="free" label="Free" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="plan" value="basic" label="Basic - $9.99/month" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="plan" value="premium" label="Premium - $19.99/month" />
+                    </div>
+                </div>
+            </div>
+
+            <x-slot:code>
+&lt;!-- First radio group --&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="notifications" value="email" label="Email only" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="notifications" value="sms" label="SMS only" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="notifications" value="both" label="Both Email and SMS" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Second radio group --&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="plan" value="free" label="Free" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="plan" value="basic" label="Basic - $9.99/month" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="plan" value="premium" label="Premium - $19.99/month" /&gt;
+&lt;/div&gt;
+            </x-slot:code>
+        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+
+        <h5 class="mt-3">Inline Radio Buttons</h5>
+        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-inline">
+            <div>
+                <p class="fw-bold mb-2">Rate this product:</p>
+                <div class="d-flex gap-3">
+                    <div class="form-check">
+                        <x-radio name="rating" value="1" label="1 star" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="rating" value="2" label="2 stars" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="rating" value="3" label="3 stars" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="rating" value="4" label="4 stars" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="rating" value="5" label="5 stars" />
+                    </div>
+                </div>
+            </div>
+
+            <x-slot:code>
+&lt;div class="d-flex gap-3"&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="rating" value="1" label="1 star" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="rating" value="2" label="2 stars" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="rating" value="3" label="3 stars" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="rating" value="4" label="4 stars" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="rating" value="5" label="5 stars" /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </x-slot:code>
+        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+
+        <h5 class="mt-3">Radio with HTML Label</h5>
+        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-html">
+            <div>
+                <p class="fw-bold mb-2">Terms and conditions:</p>
+                <div class="form-check">
+                    <x-radio name="terms" value="accept" label="I accept the <a href='#'>terms and conditions</a>" />
+                </div>
+                <div class="form-check">
+                    <x-radio name="terms" value="decline" label="I <strong>decline</strong> the terms" />
+                </div>
+            </div>
+
+            <x-slot:code>
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="terms" value="accept" label="I accept the &lt;a href='#'&gt;terms and conditions&lt;/a&gt;" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-radio name="terms" value="decline" label="I &lt;strong&gt;decline&lt;/strong&gt; the terms" /&gt;
+&lt;/div&gt;
+            </x-slot:code>
+        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+    </div>
+
     {{-- Validation States --}}
     <div class="example-section" id="section-validation">
         <h2 class="example-title">Validation States</h2>
@@ -417,6 +599,19 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <div class="form-check">
+                        <x-radio name="gender_complete" value="male" label="Male" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="gender_complete" value="female" label="Female" />
+                    </div>
+                    <div class="form-check">
+                        <x-radio name="gender_complete" value="other" label="Other" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
                     <div class="form-check">
                         <x-checkbox name="newsletter_complete" label="Subscribe to newsletter" />
                     </div>
@@ -460,6 +655,17 @@
     &lt;x-label for="bio"&gt;Bio&lt;/x-label&gt;
     &lt;x-textarea name="bio" id="bio" rows="4" /&gt;
 
+    &lt;label class="form-label"&gt;Gender&lt;/label&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="gender" value="male" label="Male" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="gender" value="female" label="Female" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-radio name="gender" value="other" label="Other" /&gt;
+    &lt;/div&gt;
+
     &lt;div class="form-check"&gt;
         &lt;x-checkbox name="newsletter" label="Subscribe to newsletter" /&gt;
     &lt;/div&gt;
@@ -483,6 +689,7 @@
         ['id' => 'section-textarea', 'title' => 'Textarea'],
         ['id' => 'section-select', 'title' => 'Select'],
         ['id' => 'section-checkbox', 'title' => 'Checkbox'],
+        ['id' => 'section-radio', 'title' => 'Radio'],
         ['id' => 'section-validation', 'title' => 'Validation States'],
         ['id' => 'section-complete', 'title' => 'Complete Form Example'],
     ]" />
