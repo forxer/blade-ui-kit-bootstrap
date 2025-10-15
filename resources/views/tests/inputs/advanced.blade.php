@@ -215,28 +215,40 @@
 
         <h5 class="mt-3">Basic Checkbox</h5>
         <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-basic">
-            <x-checkbox name="terms" label="I agree to the terms and conditions" />
+            <div class="form-check">
+                <x-checkbox name="terms" label="I agree to the terms and conditions" />
+            </div>
 
             <x-slot:code>
-&lt;x-checkbox name="terms" label="I agree to the terms and conditions" /&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="terms" label="I agree to the terms and conditions" /&gt;
+&lt;/div&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
 
         <h5 class="mt-3">Checked by Default</h5>
         <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-checked">
-            <x-checkbox name="newsletter" label="Subscribe to newsletter" :checked="true" />
+            <div class="form-check">
+                <x-checkbox name="newsletter" label="Subscribe to newsletter" :checked="true" />
+            </div>
 
             <x-slot:code>
-&lt;x-checkbox name="newsletter" label="Subscribe to newsletter" :checked="true" /&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="newsletter" label="Subscribe to newsletter" :checked="true" /&gt;
+&lt;/div&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
 
         <h5 class="mt-3">Custom Value</h5>
         <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-value">
-            <x-checkbox name="status" label="Active" value="active" />
+            <div class="form-check">
+                <x-checkbox name="status" label="Active" value="active" />
+            </div>
 
             <x-slot:code>
-&lt;x-checkbox name="status" label="Active" value="active" /&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="status" label="Active" value="active" /&gt;
+&lt;/div&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
 
@@ -244,26 +256,46 @@
         <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-multiple">
             <div>
                 <p class="fw-bold mb-2">Select your interests:</p>
-                <x-checkbox name="interests[]" value="coding" label="Coding" />
-                <x-checkbox name="interests[]" value="design" label="Design" />
-                <x-checkbox name="interests[]" value="marketing" label="Marketing" />
-                <x-checkbox name="interests[]" value="writing" label="Writing" />
+                <div class="form-check">
+                    <x-checkbox name="interests[]" value="coding" label="Coding" />
+                </div>
+                <div class="form-check">
+                    <x-checkbox name="interests[]" value="design" label="Design" />
+                </div>
+                <div class="form-check">
+                    <x-checkbox name="interests[]" value="marketing" label="Marketing" />
+                </div>
+                <div class="form-check">
+                    <x-checkbox name="interests[]" value="writing" label="Writing" />
+                </div>
             </div>
 
             <x-slot:code>
-&lt;x-checkbox name="interests[]" value="coding" label="Coding" /&gt;
-&lt;x-checkbox name="interests[]" value="design" label="Design" /&gt;
-&lt;x-checkbox name="interests[]" value="marketing" label="Marketing" /&gt;
-&lt;x-checkbox name="interests[]" value="writing" label="Writing" /&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="interests[]" value="coding" label="Coding" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="interests[]" value="design" label="Design" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="interests[]" value="marketing" label="Marketing" /&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="interests[]" value="writing" label="Writing" /&gt;
+&lt;/div&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
 
         <h5 class="mt-3">Checkbox with HTML Label</h5>
         <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-html">
-            <x-checkbox name="privacy" label="I accept the <a href='#'>privacy policy</a>" />
+            <div class="form-check">
+                <x-checkbox name="privacy" label="I accept the <a href='#'>privacy policy</a>" />
+            </div>
 
             <x-slot:code>
-&lt;x-checkbox name="privacy" label="I accept the &lt;a href='#'&gt;privacy policy&lt;/a&gt;" /&gt;
+&lt;div class="form-check"&gt;
+    &lt;x-checkbox name="privacy" label="I accept the &lt;a href='#'&gt;privacy policy&lt;/a&gt;" /&gt;
+&lt;/div&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap::tests.demo-with-code>
     </div>
@@ -385,8 +417,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <x-checkbox name="newsletter_complete" label="Subscribe to newsletter" />
-                    <x-checkbox name="terms_complete" label="I agree to terms and conditions" />
+                    <div class="form-check">
+                        <x-checkbox name="newsletter_complete" label="Subscribe to newsletter" />
+                    </div>
+                    <div class="form-check">
+                        <x-checkbox name="terms_complete" label="I agree to terms and conditions" />
+                    </div>
                 </div>
 
                 <x-hidden name="form_id" value="registration" />
@@ -424,8 +460,12 @@
     &lt;x-label for="bio"&gt;Bio&lt;/x-label&gt;
     &lt;x-textarea name="bio" id="bio" rows="4" /&gt;
 
-    &lt;x-checkbox name="newsletter" label="Subscribe to newsletter" /&gt;
-    &lt;x-checkbox name="terms" label="I agree to terms" /&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-checkbox name="newsletter" label="Subscribe to newsletter" /&gt;
+    &lt;/div&gt;
+    &lt;div class="form-check"&gt;
+        &lt;x-checkbox name="terms" label="I agree to terms" /&gt;
+    &lt;/div&gt;
 
     &lt;x-hidden name="form_id" value="registration" /&gt;
 

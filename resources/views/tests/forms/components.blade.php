@@ -151,7 +151,7 @@
                     <x-error field="bio" />
                 </div>
 
-                <div class="mb-3">
+                <div class="form-check mb-3">
                     <x-checkbox name="terms" label="I agree to the terms and conditions" />
                     <x-error field="terms" />
                 </div>
@@ -195,7 +195,7 @@
         &lt;x-error field="bio" /&gt;
     &lt;/div&gt;
 
-    &lt;div class="mb-3"&gt;
+    &lt;div class="form-check mb-3"&gt;
         &lt;x-checkbox name="terms" label="I agree to the terms and conditions" /&gt;
         &lt;x-error field="terms" /&gt;
     &lt;/div&gt;

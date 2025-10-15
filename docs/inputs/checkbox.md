@@ -2,10 +2,22 @@
 
 The Checkbox component provides a styled checkbox input with automatic label association, validation error handling, and old value persistence.
 
+**Important:** The component renders only the `<input>` and `<label>` elements. You must wrap it in the appropriate Bootstrap structure (`form-check` for Bootstrap 5, or `custom-control custom-checkbox` for Bootstrap 4) for proper styling.
+
 ## Basic Usage
 
+**Bootstrap 5:**
 ```blade
-<x-checkbox name="agree" label="I agree to the terms" />
+<div class="form-check">
+    <x-checkbox name="agree" label="I agree to the terms" />
+</div>
+```
+
+**Bootstrap 4:**
+```blade
+<div class="custom-control custom-checkbox">
+    <x-checkbox name="agree" label="I agree to the terms" />
+</div>
 ```
 
 ## Attributes
@@ -27,54 +39,75 @@ The Checkbox component provides a styled checkbox input with automatic label ass
 ### Basic Checkbox
 
 ```blade
-<x-checkbox name="newsletter" label="Subscribe to newsletter" />
+<div class="form-check">
+    <x-checkbox name="newsletter" label="Subscribe to newsletter" />
+</div>
 ```
 
 ### Checked by Default
 
 ```blade
-<x-checkbox name="terms" label="I agree to the terms and conditions" :checked="true" />
+<div class="form-check">
+    <x-checkbox name="terms" label="I agree to the terms and conditions" :checked="true" />
+</div>
 ```
 
 ### Custom Value
 
 ```blade
-<x-checkbox name="status" label="Active" value="active" />
+<div class="form-check">
+    <x-checkbox name="status" label="Active" value="active" />
+</div>
 ```
 
 ### With Custom ID
 
 ```blade
-<x-checkbox name="remember" label="Remember me" id="remember-checkbox" />
+<div class="form-check">
+    <x-checkbox name="remember" label="Remember me" id="remember-checkbox" />
+</div>
 ```
 
 ### With HTML Label
 
 ```blade
-<x-checkbox
-    name="privacy"
-    label="I accept the <a href='/privacy'>privacy policy</a>"
-/>
+<div class="form-check">
+    <x-checkbox
+        name="privacy"
+        label="I accept the <a href='/privacy'>privacy policy</a>"
+    />
+</div>
 ```
 
 ### With Validation Errors
 
-When validation errors exist for the checkbox, it will automatically display with Bootstrap's invalid state:
+When validation errors exist for the checkbox, it will automatically display with Bootstrap's invalid state. **Important:** The error component must be placed inside the same wrapper div for proper styling:
 
 ```blade
-<x-checkbox name="agree" label="I agree to the terms" />
-<x-error name="agree" />
+<div class="form-check">
+    <x-checkbox name="agree" label="I agree to the terms" />
+    <x-error field="agree" />
+</div>
 ```
 
 ### In a Form
 
 ```blade
 <x-form action="/register" method="POST">
-    <x-text name="email" label="Email" />
+    <div class="mb-3">
+        <x-label for="email">Email</x-label>
+        <x-email name="email" id="email" />
+        <x-error field="email" />
+    </div>
 
-    <x-checkbox name="newsletter" label="Subscribe to newsletter" />
+    <div class="form-check mb-3">
+        <x-checkbox name="newsletter" label="Subscribe to newsletter" />
+    </div>
 
-    <x-checkbox name="terms" label="I agree to the terms" />
+    <div class="form-check mb-3">
+        <x-checkbox name="terms" label="I agree to the terms" />
+        <x-error field="terms" />
+    </div>
 
     <x-btn type="submit">Register</x-btn>
 </x-form>
@@ -85,9 +118,18 @@ When validation errors exist for the checkbox, it will automatically display wit
 ```blade
 <div class="mb-3">
     <label class="form-label">Select your interests:</label>
-    <x-checkbox name="interests[]" value="coding" label="Coding" />
-    <x-checkbox name="interests[]" value="design" label="Design" />
-    <x-checkbox name="interests[]" value="marketing" label="Marketing" />
+
+    <div class="form-check">
+        <x-checkbox name="interests[]" value="coding" label="Coding" />
+    </div>
+
+    <div class="form-check">
+        <x-checkbox name="interests[]" value="design" label="Design" />
+    </div>
+
+    <div class="form-check">
+        <x-checkbox name="interests[]" value="marketing" label="Marketing" />
+    </div>
 </div>
 ```
 
@@ -108,68 +150,94 @@ public function store(Request $request)
 ```
 
 ```blade
-<x-checkbox name="terms" label="I agree" />
-{{-- Will be checked if old('terms') === '1' --}}
+<div class="form-check">
+    <x-checkbox name="terms" label="I agree" />
+    {{-- Will be checked if old('terms') === '1' --}}
+</div>
 ```
 
 ### Custom Error Bag
 
 ```blade
-<x-checkbox name="consent" label="I consent" errorBag="customBag" />
+<div class="form-check">
+    <x-checkbox name="consent" label="I consent" errorBag="customBag" />
+</div>
 ```
 
 ## Additional Attributes
 
-Additional attributes are intelligently distributed between the `<input>` element and the wrapper `<div>` element:
-
-**Applied to the `<input>` element:**
-- `required`
-- `disabled`
-- `readonly`
-- `aria-label`
-- `aria-describedby`
-- `data-*` attributes
-
-**Applied to the wrapper `<div>` element:**
-- All other attributes (e.g., `class`, `style`, `id`, etc.)
+All additional attributes are applied to the `<input>` element. You can add classes, data attributes, and any other HTML attributes:
 
 ### Example with Required Checkbox
 
 ```blade
-<x-checkbox
-    name="terms"
-    label="I agree to the terms and conditions <em>(required)</em>"
-    required
-/>
+<div class="form-check">
+    <x-checkbox
+        name="terms"
+        label="I agree to the terms and conditions <em>(required)</em>"
+        required
+    />
+</div>
 ```
 
 Renders:
 ```html
 <div class="form-check">
-    <input required class="form-check-input" type="checkbox" id="terms" name="terms" />
+    <input
+        name="terms"
+        type="checkbox"
+        id="terms"
+        value="1"
+        required
+        class="form-check-input"
+    />
     <label class="form-check-label" for="terms">
         I agree to the terms and conditions <em>(required)</em>
     </label>
 </div>
 ```
 
-### Example with Mixed Attributes
+### Example with Data Attributes
 
 ```blade
-<x-checkbox
-    name="featured"
-    label="Featured"
-    class="mb-4"
-    data-category="settings"
-    disabled
-/>
+<div class="form-check">
+    <x-checkbox
+        name="featured"
+        label="Featured"
+        data-category="settings"
+        data-toggle="tooltip"
+        disabled
+    />
+</div>
 ```
 
 Renders:
 ```html
-<div class="form-check mb-4">
-    <input disabled data-category="settings" class="form-check-input" type="checkbox" id="featured" name="featured" />
+<div class="form-check">
+    <input
+        name="featured"
+        type="checkbox"
+        id="featured"
+        value="1"
+        disabled
+        data-category="settings"
+        data-toggle="tooltip"
+        class="form-check-input"
+    />
     <label class="form-check-label" for="featured">Featured</label>
+</div>
+```
+
+### Adding Custom Classes to the Wrapper
+
+Since the component doesn't generate the wrapper, you have full control over the wrapper styling:
+
+```blade
+<div class="form-check mb-4 custom-class">
+    <x-checkbox
+        name="option"
+        label="My Option"
+    />
 </div>
 ```
 
@@ -185,29 +253,43 @@ This ensures proper behavior with Laravel's validation and form repopulation.
 
 ## Bootstrap Differences
 
+The component automatically applies the correct CSS classes to the `<input>` and `<label>` elements based on your configured Bootstrap version. However, **you must provide the wrapper structure yourself**.
+
 ### Bootstrap 5
 
-Uses the `form-check` structure:
+You need to wrap the component in a `form-check` div:
 
+```blade
+<div class="form-check">
+    <x-checkbox name="example" label="Example" />
+</div>
+```
+
+Renders:
 ```html
 <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="..." name="..." />
-    <label class="form-check-label" for="...">...</label>
+    <input class="form-check-input" type="checkbox" id="example" name="example" value="1" />
+    <label class="form-check-label" for="example">Example</label>
 </div>
 ```
 
 ### Bootstrap 4
 
-Uses the `custom-control custom-checkbox` structure:
+You need to wrap the component in a `custom-control custom-checkbox` div:
 
-```html
+```blade
 <div class="custom-control custom-checkbox">
-    <input class="custom-control-input" type="checkbox" id="..." name="..." />
-    <label class="custom-control-label" for="...">...</label>
+    <x-checkbox name="example" label="Example" />
 </div>
 ```
 
-The component automatically uses the correct structure based on your configured Bootstrap version.
+Renders:
+```html
+<div class="custom-control custom-checkbox">
+    <input class="custom-control-input" type="checkbox" id="example" name="example" value="1" />
+    <label class="custom-control-label" for="example">Example</label>
+</div>
+```
 
 ## Accessibility
 
@@ -223,9 +305,13 @@ The component integrates with Laravel's validation system:
 - Preserves checked state via `old()` after validation failure
 - Works with the `<x-error>` component to display validation messages
 
+**Important:** Place the `<x-error>` component inside the same wrapper div for proper Bootstrap styling:
+
 ```blade
-<x-checkbox name="agree" label="I agree to the terms" />
-<x-error name="agree" />
+<div class="form-check">
+    <x-checkbox name="agree" label="I agree to the terms" />
+    <x-error field="agree" />
+</div>
 ```
 
 *For more information about HTML checkbox input attributes and behavior, see the reference below.*
