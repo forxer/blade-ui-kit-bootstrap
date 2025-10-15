@@ -7,7 +7,6 @@ namespace BladeUIKitBootstrap\Components\Forms\Inputs;
 use BladeUIKitBootstrap\Components\BladeComponent;
 use BladeUIKitBootstrap\Concerns\CanHaveErrors;
 use Illuminate\Support\Collection;
-use InvalidArgumentException;
 
 class Select extends BladeComponent
 {
@@ -45,11 +44,7 @@ class Select extends BladeComponent
             return $this->normalizeArrayOptions($options, $labelAttribute, $valueAttribute);
         }
 
-        if ($options instanceof Collection) {
-            return $this->normalizeCollectionOptions($options, $labelAttribute, $valueAttribute);
-        }
-
-        throw new InvalidArgumentException('Invalid options');
+        return $this->normalizeCollectionOptions($options, $labelAttribute, $valueAttribute);
     }
 
     /**

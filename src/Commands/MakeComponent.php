@@ -192,7 +192,7 @@ class MakeComponent extends Command
             ->replaceParentClass($stub, $parentClass);
 
         if ($this->withView) {
-            $stub = $this->replaceViewName($stub, $name, $parentClass);
+            return $this->replaceViewName($stub, $name, $parentClass);
         }
 
         return $stub;
@@ -239,9 +239,7 @@ class MakeComponent extends Command
         $alias = $this->getComponentAlias($name, $parentClass);
         $viewName = 'components.'.$alias;
 
-        $stub = str_replace('{{ viewName }}', $viewName, $stub);
-
-        return $stub;
+        return str_replace('{{ viewName }}', $viewName, $stub);
     }
 
     protected function createView(string $name, string $parentClass): void

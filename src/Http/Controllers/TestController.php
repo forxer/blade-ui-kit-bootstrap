@@ -6,6 +6,7 @@ namespace BladeUIKitBootstrap\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\ViewErrorBag;
 
 class TestController extends Controller
 {
@@ -19,7 +20,7 @@ class TestController extends Controller
         ]);
 
         // Share an empty ViewErrorBag with all test views to prevent undefined $errors variable
-        view()->share('errors', session()->get('errors', new \Illuminate\Support\ViewErrorBag()));
+        view()->share('errors', session()->get('errors', new ViewErrorBag()));
     }
 
     public function index(): View

@@ -26,7 +26,7 @@
     },
     "require-dev": {
         "laravel/pint": "^1.25.1",
-        "driftingly/rector-laravel": "^2.0.7",
+        "driftingly/rector-laravel": "^2.1.0",
         "rector/rector": "^2.2.3"
     },
     "autoload": {

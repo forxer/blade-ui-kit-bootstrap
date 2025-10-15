@@ -29,11 +29,7 @@ class Radio extends BladeComponent
         // Determine checked state: old() takes precedence, then explicit checked param
         $oldValue = old($name);
 
-        if ($oldValue !== null) {
-            $this->isChecked = (string) $oldValue === $this->value;
-        } else {
-            $this->isChecked = $this->isValueChecked($checked);
-        }
+        $this->isChecked = $oldValue !== null ? (string) $oldValue === $this->value : $this->isValueChecked($checked);
 
         $this->bootCanHaveErrors($name, $errorBag);
     }

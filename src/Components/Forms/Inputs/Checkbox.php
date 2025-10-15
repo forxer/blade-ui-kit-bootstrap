@@ -28,11 +28,7 @@ class Checkbox extends BladeComponent
         // Determine checked state: old() takes precedence, then explicit checked param
         $oldValue = old($name);
 
-        if ($oldValue !== null) {
-            $this->isChecked = $oldValue === $this->value;
-        } else {
-            $this->isChecked = $checked ?? false;
-        }
+        $this->isChecked = $oldValue !== null ? $oldValue === $this->value : $checked ?? false;
 
         $this->bootCanHaveErrors($name, $errorBag);
     }
