@@ -1,4 +1,4 @@
-@extends('blade-ui-kit-bootstrap::tests.layout')
+@extends('blade-ui-kit-bootstrap-tests::layout')
 
 @section('title', 'Modal Variations')
 
@@ -7,7 +7,7 @@
     <div class="example-section" id="section-sizes">
         <h2 class="example-title">Modal Sizes</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-sizes">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-sizes">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModal">
                 Small Modal
             </button>
@@ -65,14 +65,14 @@
     &lt;p&gt;This is an extra large modal.&lt;/p&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Scrollable Modal --}}
     <div class="example-section" id="section-scrollable">
         <h2 class="example-title">Scrollable Modal</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-scrollable">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-scrollable">
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#scrollableModal">
                 Launch Scrollable Modal
             </button>
@@ -98,14 +98,14 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Centered Modal --}}
     <div class="example-section" id="section-centered">
         <h2 class="example-title">Vertically Centered Modal</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-centered">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-centered">
             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#centeredModal">
                 Launch Centered Modal
             </button>
@@ -119,14 +119,14 @@
     &lt;p&gt;This modal is vertically centered on the page.&lt;/p&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Modal with List Content --}}
     <div class="example-section" id="section-list">
         <h2 class="example-title">Modal with List Content</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-list">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-list">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#listModal">
                 Launch List Modal
             </button>
@@ -163,12 +163,12 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 @endsection
 
 @section('sidebar')
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+    <x-blade-ui-kit-bootstrap-tests::table-of-contents :sections="[
         ['id' => 'section-sizes', 'title' => 'Modal Sizes'],
         ['id' => 'section-scrollable', 'title' => 'Scrollable Modal'],
         ['id' => 'section-centered', 'title' => 'Vertically Centered Modal'],

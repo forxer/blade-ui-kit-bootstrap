@@ -1,4 +1,4 @@
-@extends('blade-ui-kit-bootstrap::tests.layout')
+@extends('blade-ui-kit-bootstrap-tests::layout')
 
 @section('title', 'Advanced Inputs')
 
@@ -6,7 +6,7 @@
     {{-- Date Input --}}
     <div class="example-section" id="section-date">
         <h2 class="example-title">Date Input</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-date">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-date">
             <div style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="date_input">Date</x-label>
@@ -23,13 +23,13 @@
 &lt;x-date name="date_input" id="date_input" /&gt;
 &lt;x-date name="date_with_value" id="date_with_value" value="2025-01-15" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Time Input --}}
     <div class="example-section" id="section-time">
         <h2 class="example-title">Time Input</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-time">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-time">
             <div style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="time_input">Time</x-label>
@@ -46,7 +46,7 @@
 &lt;x-time name="time_input" id="time_input" /&gt;
 &lt;x-time name="time_with_value" id="time_with_value" value="14:30" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Textarea --}}
@@ -54,7 +54,7 @@
         <h2 class="example-title">Textarea</h2>
 
         <h5 class="mt-3">Basic Textarea</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-textarea-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-textarea-basic">
             <div style="max-width: 500px;">
                 <x-label for="textarea_basic">Description</x-label>
                 <x-textarea name="textarea_basic" id="textarea_basic" />
@@ -63,10 +63,10 @@
             <x-slot:code>
 &lt;x-textarea name="textarea_basic" id="textarea_basic" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Textarea with Rows</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-textarea-rows">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-textarea-rows">
             <div style="max-width: 500px;">
                 <x-label for="textarea_rows">Comments (5 rows)</x-label>
                 <x-textarea name="textarea_rows" id="textarea_rows" rows="5" />
@@ -75,10 +75,10 @@
             <x-slot:code>
 &lt;x-textarea name="textarea_rows" id="textarea_rows" rows="5" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Textarea with Value</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-textarea-value">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-textarea-value">
             <div style="max-width: 500px;">
                 <x-label for="textarea_value">Bio</x-label>
                 <x-textarea name="textarea_value" id="textarea_value" rows="4">This is a pre-filled textarea with some content.</x-textarea>
@@ -89,10 +89,10 @@
     This is a pre-filled textarea with some content.
 &lt;/x-textarea&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Textarea with Placeholder</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-textarea-placeholder">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-textarea-placeholder">
             <div style="max-width: 500px;">
                 <x-label for="textarea_placeholder">Notes</x-label>
                 <x-textarea name="textarea_placeholder" id="textarea_placeholder" placeholder="Enter your notes here..." rows="3" />
@@ -101,7 +101,7 @@
             <x-slot:code>
 &lt;x-textarea name="textarea_placeholder" id="textarea_placeholder" placeholder="Enter your notes here..." rows="3" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Select --}}
@@ -109,7 +109,7 @@
         <h2 class="example-title">Select</h2>
 
         <h5 class="mt-3">Basic Select</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-select-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-select-basic">
             <div style="max-width: 500px;">
                 <x-label for="select_basic">Country</x-label>
                 <x-select name="select_basic" id="select_basic">
@@ -130,10 +130,10 @@
     &lt;option value="ca"&gt;Canada&lt;/option&gt;
 &lt;/x-select&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Select with Selected Value</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-select-selected">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-select-selected">
             <div style="max-width: 500px;">
                 <x-label for="select_selected">Status</x-label>
                 <x-select name="select_selected" id="select_selected">
@@ -150,10 +150,10 @@
     &lt;option value="archived"&gt;Archived&lt;/option&gt;
 &lt;/x-select&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Select with Grouped Options</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-select-grouped">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-select-grouped">
             <div style="max-width: 500px;">
                 <x-label for="select_grouped">Vehicle Type</x-label>
                 <x-select name="select_grouped" id="select_grouped">
@@ -184,10 +184,10 @@
     &lt;/optgroup&gt;
 &lt;/x-select&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Multiple Select</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-select-multiple">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-select-multiple">
             <div style="max-width: 500px;">
                 <x-label for="select_multiple">Select Multiple Options</x-label>
                 <x-select name="select_multiple[]" id="select_multiple" multiple>
@@ -206,7 +206,7 @@
     &lt;option value="python"&gt;Python&lt;/option&gt;
 &lt;/x-select&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Checkbox --}}
@@ -214,7 +214,7 @@
         <h2 class="example-title">Checkbox</h2>
 
         <h5 class="mt-3">Basic Checkbox</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-checkbox-basic">
             <div class="form-check">
                 <x-checkbox name="terms" label="I agree to the terms and conditions" />
             </div>
@@ -224,10 +224,10 @@
     &lt;x-checkbox name="terms" label="I agree to the terms and conditions" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Checked by Default</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-checked">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-checkbox-checked">
             <div class="form-check">
                 <x-checkbox name="newsletter" label="Subscribe to newsletter" :checked="true" />
             </div>
@@ -237,10 +237,10 @@
     &lt;x-checkbox name="newsletter" label="Subscribe to newsletter" :checked="true" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Custom Value</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-value">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-checkbox-value">
             <div class="form-check">
                 <x-checkbox name="status" label="Active" value="active" />
             </div>
@@ -250,10 +250,10 @@
     &lt;x-checkbox name="status" label="Active" value="active" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Multiple Checkboxes</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-multiple">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-checkbox-multiple">
             <div>
                 <p class="fw-bold mb-2">Select your interests:</p>
                 <div class="form-check">
@@ -284,10 +284,10 @@
     &lt;x-checkbox name="interests[]" value="writing" label="Writing" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Checkbox with HTML Label</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-checkbox-html">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-checkbox-html">
             <div class="form-check">
                 <x-checkbox name="privacy" label="I accept the <a href='#'>privacy policy</a>" />
             </div>
@@ -297,7 +297,7 @@
     &lt;x-checkbox name="privacy" label="I accept the &lt;a href='#'&gt;privacy policy&lt;/a&gt;" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Radio --}}
@@ -305,7 +305,7 @@
         <h2 class="example-title">Radio</h2>
 
         <h5 class="mt-3">Basic Radio Group</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-radio-basic">
             <div>
                 <p class="fw-bold mb-2">Choose your size:</p>
                 <div class="form-check">
@@ -330,10 +330,10 @@
     &lt;x-radio name="size" value="large" label="Large" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Pre-selected Option</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-checked">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-radio-checked">
             <div>
                 <p class="fw-bold mb-2">Choose your gender:</p>
                 <div class="form-check">
@@ -358,10 +358,10 @@
     &lt;x-radio name="gender" value="other" label="Other" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Multiple Radio Groups</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-multiple">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-radio-multiple">
             <div>
                 <div class="mb-3">
                     <p class="fw-bold mb-2">Notification preference:</p>
@@ -413,10 +413,10 @@
     &lt;x-radio name="plan" value="premium" label="Premium - $19.99/month" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Inline Radio Buttons</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-inline">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-radio-inline">
             <div>
                 <p class="fw-bold mb-2">Rate this product:</p>
                 <div class="d-flex gap-3">
@@ -457,10 +457,10 @@
     &lt;/div&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Radio with HTML Label</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-radio-html">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-radio-html">
             <div>
                 <p class="fw-bold mb-2">Terms and conditions:</p>
                 <div class="form-check">
@@ -479,7 +479,7 @@
     &lt;x-radio name="terms" value="decline" label="I &lt;strong&gt;decline&lt;/strong&gt; the terms" /&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Validation States --}}
@@ -491,7 +491,7 @@
             This demo simulates the appearance with the <code>is-invalid</code> class.
         </div>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-validation">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-validation">
             <div style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="valid_input">Valid Input</x-label>
@@ -542,13 +542,13 @@
 &lt;x-email name="email" id="email" /&gt;
 &lt;x-error field="email" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Complete Form Example --}}
     <div class="example-section" id="section-complete">
         <h2 class="example-title">Complete Form with All Input Types</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-complete">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-complete">
             <x-form action="#" style="max-width: 700px;">
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -678,12 +678,12 @@
     &lt;x-btn type="submit" variant="primary"&gt;Submit&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 @endsection
 
 @section('sidebar')
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+    <x-blade-ui-kit-bootstrap-tests::table-of-contents :sections="[
         ['id' => 'section-date', 'title' => 'Date Input'],
         ['id' => 'section-time', 'title' => 'Time Input'],
         ['id' => 'section-textarea', 'title' => 'Textarea'],

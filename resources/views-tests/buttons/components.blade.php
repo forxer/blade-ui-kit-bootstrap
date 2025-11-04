@@ -1,4 +1,4 @@
-@extends('blade-ui-kit-bootstrap::tests.layout')
+@extends('blade-ui-kit-bootstrap-tests::layout')
 
 @section('title', 'Button Components')
 
@@ -8,7 +8,7 @@
         <h2 class="example-title">Simple Button (btn)</h2>
 
         <h5 class="mt-3">Variants</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-btn-variants">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-btn-variants">
             <x-btn variant="primary">Primary</x-btn>
             <x-btn variant="secondary">Secondary</x-btn>
             <x-btn variant="success">Success</x-btn>
@@ -28,10 +28,10 @@
 &lt;x-btn variant="light"&gt;Light&lt;/x-btn&gt;
 &lt;x-btn variant="dark"&gt;Dark&lt;/x-btn&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Outline Variants</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-btn-outline">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-btn-outline">
             
                 <x-btn variant="primary" outline>Primary</x-btn>
                 <x-btn variant="secondary" outline>Secondary</x-btn>
@@ -45,10 +45,10 @@
 &lt;x-btn variant="success" outline&gt;Success&lt;/x-btn&gt;
 &lt;x-btn variant="danger" outline&gt;Danger&lt;/x-btn&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Sizes</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-btn-sizes">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-btn-sizes">
             
                 <x-btn variant="primary" sm>Small</x-btn>
                 <x-btn variant="primary">Normal</x-btn>
@@ -60,10 +60,10 @@
 &lt;x-btn variant="primary"&gt;Normal&lt;/x-btn&gt;
 &lt;x-btn variant="primary" lg&gt;Large&lt;/x-btn&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">With Icons</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-btn-icons">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-btn-icons">
             
                 <x-btn variant="primary" start-icon="star">With Start Icon</x-btn>
                 <x-btn variant="success" end-icon="check">With End Icon</x-btn>
@@ -75,10 +75,10 @@
 &lt;x-btn variant="success" end-icon="check"&gt;With End Icon&lt;/x-btn&gt;
 &lt;x-btn variant="info" icon="info-circle"&gt;Icon Only&lt;/x-btn&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">States</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-btn-states">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-btn-states">
             
                 <x-btn variant="primary" disabled>Disabled</x-btn>
                 <x-btn variant="secondary" type="submit">Submit Button</x-btn>
@@ -90,13 +90,13 @@
 &lt;x-btn variant="secondary" type="submit"&gt;Submit Button&lt;/x-btn&gt;
 &lt;x-btn variant="warning" type="reset"&gt;Reset Button&lt;/x-btn&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Form Button --}}
     <div class="example-section" id="section-form-button">
         <h2 class="example-title">Form Button (form-button)</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-button">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-button">
             
                 <x-form-button url="#" variant="primary">POST Form</x-form-button>
                 <x-form-button url="#" method="DELETE" variant="danger">DELETE Form</x-form-button>
@@ -108,13 +108,13 @@
 &lt;x-form-button url="#" method="DELETE" variant="danger"&gt;DELETE Form&lt;/x-form-button&gt;
 &lt;x-form-button url="#" method="PUT" variant="warning"&gt;PUT Form&lt;/x-form-button&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Link Button --}}
     <div class="example-section" id="section-link-button">
         <h2 class="example-title">Link Button (link-button)</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-link-button">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-link-button">
             
                 <x-link-button href="#" variant="primary">Link as Button</x-link-button>
                 <x-link-button href="#" variant="success" start-icon="link">With Icon</x-link-button>
@@ -126,7 +126,7 @@
 &lt;x-link-button href="#" variant="success" start-icon="link"&gt;With Icon&lt;/x-link-button&gt;
 &lt;x-link-button variant="info" disabled&gt;Disabled Link&lt;/x-link-button&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Help Info --}}
@@ -134,7 +134,7 @@
         <h2 class="example-title">Help Info (help-info)</h2>
 
         <h5 class="mt-3">Using Slot</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-help-slot">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-help-slot">
             
                 <x-help-info>Default Help Info</x-help-info>
                 <x-help-info variant="info">Info Variant</x-help-info>
@@ -146,10 +146,10 @@
 &lt;x-help-info variant="info"&gt;Info Variant&lt;/x-help-info&gt;
 &lt;x-help-info variant="warning"&gt;Warning Variant&lt;/x-help-info&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Using Content Attribute</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-help-attr">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-help-attr">
             
                 <x-help-info content="Default Help Info" />
                 <x-help-info content="Info Variant" variant="info" />
@@ -161,10 +161,10 @@
 &lt;x-help-info content="Info Variant" variant="info" /&gt;
 &lt;x-help-info content="Warning Variant" variant="warning" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">With Custom Text</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-help-text">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-help-text">
             
                 <x-help-info text="More Info">This is detailed help information</x-help-info>
                 <x-help-info text="Help" variant="info">Additional context here</x-help-info>
@@ -174,10 +174,10 @@
 &lt;x-help-info text="More Info"&gt;This is detailed help information&lt;/x-help-info&gt;
 &lt;x-help-info text="Help" variant="info"&gt;Additional context here&lt;/x-help-info&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">With Title</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-help-title">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-help-title">
             
                 <x-help-info title="Help Title">This popover has a custom title</x-help-info>
                 <x-help-info title="Important Info" variant="warning">Please read this carefully</x-help-info>
@@ -187,12 +187,12 @@
 &lt;x-help-info title="Help Title"&gt;This popover has a custom title&lt;/x-help-info&gt;
 &lt;x-help-info title="Important Info" variant="warning"&gt;Please read this carefully&lt;/x-help-info&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 @endsection
 
 @section('sidebar')
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+    <x-blade-ui-kit-bootstrap-tests::table-of-contents :sections="[
         ['id' => 'section-simple-button', 'title' => 'Simple Button'],
         ['id' => 'section-form-button', 'title' => 'Form Button'],
         ['id' => 'section-link-button', 'title' => 'Link Button'],

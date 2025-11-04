@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+1.0.1 (2025-11-04)
+------------------
+
+### Bug Fixes
+
+- Fixed test views being scanned by Laravel's view optimization (`php artisan optimize`)
+  - Moved test views from `resources/views/tests/` to `resources/views-tests/`
+  - Test views now use a separate namespace (`blade-ui-kit-bootstrap-tests`)
+  - Removed `loadViewsFrom()` for test views in ServiceProvider to prevent them from being scanned during optimization
+  - Test views namespace is now registered dynamically via `view()->addNamespace()` in `TestController` constructor
+  - Updated all test view references to use `blade-ui-kit-bootstrap-tests::` namespace
+  - Updated documentation to reflect the new test views architecture
+
+
 1.0.0 (2025-10-15)
 ------------------
 

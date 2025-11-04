@@ -87,10 +87,10 @@ A **"Back to Top"** button appears when scrolling down, allowing quick return to
 
 ## Organization
 
-Test pages are organized by component category:
+Test pages are organized by component category in a separate namespace to avoid being scanned by Laravel's view optimization:
 
 ```
-resources/views/tests/
+resources/views-tests/
 ├── layout.blade.php          # Shared layout with navigation
 ├── index.blade.php            # Main landing page
 ├── alerts.blade.php           # Alert components
@@ -108,6 +108,8 @@ resources/views/tests/
     ├── types.blade.php        # Modal component types
     └── variations.blade.php   # Modal variations and options
 ```
+
+**Note:** Test views use the `blade-ui-kit-bootstrap-tests` namespace (not `blade-ui-kit-bootstrap`). The namespace is registered dynamically by the `TestController` using `view()->addNamespace()` instead of `loadViewsFrom()` in the ServiceProvider. This prevents test views from being scanned during `php artisan optimize`, which would cause errors since components aren't registered yet during optimization.
 
 ## Bootstrap Version
 
@@ -143,7 +145,7 @@ Test page routes are defined in `routes/web.php` with the prefix `blade-ui-kit-b
 You can customize the test pages by:
 
 1. Publishing the views: `php artisan vendor:publish --tag="blade-ui-kit-bootstrap-views"`
-2. Modifying the published files in your `resources/views/vendor/blade-ui-kit-bootstrap/tests/` directory
+2. Modifying the published files in your `resources/views/vendor/blade-ui-kit-bootstrap/` directory
 3. Adjusting the layout, styling, or examples to match your needs
 
-**Note**: Test pages are intended for development/demonstration purposes and are typically not deployed to production environments.
+**Note**: Test pages are intended for development/demonstration purposes and are typically not deployed to production environments. They are stored in a separate `views-tests` directory to avoid being included in Laravel's view optimization cache.

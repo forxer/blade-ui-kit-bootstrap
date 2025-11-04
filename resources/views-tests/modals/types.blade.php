@@ -1,4 +1,4 @@
-@extends('blade-ui-kit-bootstrap::tests.layout')
+@extends('blade-ui-kit-bootstrap-tests::layout')
 
 @section('title', 'Modal Types')
 
@@ -7,7 +7,7 @@
     <div class="example-section" id="section-basic">
         <h2 class="example-title">Basic Modal</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-basic-modal">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-basic-modal">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
                 Launch Basic Modal
             </button>
@@ -29,14 +29,14 @@
     &lt;p&gt;It includes a title, content area, and a close button.&lt;/p&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Non-Dismissible Modal --}}
     <div class="example-section" id="section-non-dismissible">
         <h2 class="example-title">Non-Dismissible Modal</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-non-dismissible">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-non-dismissible">
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#nonDismissibleModal">
                 Launch Non-Dismissible Modal
             </button>
@@ -62,14 +62,14 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Modal with Custom Footer --}}
     <div class="example-section" id="section-custom-footer">
         <h2 class="example-title">Modal with Custom Footer</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-custom-footer">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-custom-footer">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#customFooterModal">
                 Launch Modal with Custom Footer
             </button>
@@ -95,14 +95,14 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Modal with Form --}}
     <div class="example-section" id="section-form-content">
         <h2 class="example-title">Modal with Form Content</h2>
 
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-content">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-content">
             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#formContentModal">
                 Launch Form Modal
             </button>
@@ -152,7 +152,7 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Form Modal --}}
@@ -160,7 +160,7 @@
         <h2 class="example-title">Form Modal Component</h2>
 
         <h5 class="mt-3">Create Form Modal</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-modal-create">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-modal-create">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
                 Launch Form Modal
             </button>
@@ -210,10 +210,10 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-form-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Update Form Modal (PUT Method)</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-modal-update">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-modal-update">
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateFormModal">
                 Launch Update Form Modal
             </button>
@@ -248,7 +248,7 @@
     &lt;/x-slot:footer&gt;
 &lt;/x-form-modal&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Confirm Modal --}}
@@ -256,7 +256,7 @@
         <h2 class="example-title">Confirm Modal Component</h2>
 
         <h5 class="mt-3">Basic Confirm Modal</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-confirm-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-confirm-basic">
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">
                 Launch Confirm Modal
             </button>
@@ -280,10 +280,10 @@
     url="/action"
 /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Confirm Delete</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-confirm-delete">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-confirm-delete">
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">
                 Delete Item
             </button>
@@ -309,10 +309,10 @@
     method="DELETE"
 /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Custom Confirm Modal</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-confirm-custom">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-confirm-custom">
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#customConfirm">
                 Archive Item
             </button>
@@ -340,12 +340,12 @@
     yes-variant="warning"
 /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 @endsection
 
 @section('sidebar')
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+    <x-blade-ui-kit-bootstrap-tests::table-of-contents :sections="[
         ['id' => 'section-basic', 'title' => 'Basic Modal'],
         ['id' => 'section-non-dismissible', 'title' => 'Non-Dismissible Modal'],
         ['id' => 'section-custom-footer', 'title' => 'Modal with Custom Footer'],

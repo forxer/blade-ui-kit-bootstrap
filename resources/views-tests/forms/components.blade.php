@@ -1,4 +1,4 @@
-@extends('blade-ui-kit-bootstrap::tests.layout')
+@extends('blade-ui-kit-bootstrap-tests::layout')
 
 @section('title', 'Form Components')
 
@@ -8,7 +8,7 @@
         <h2 class="example-title">Label Component</h2>
 
         <h5 class="mt-3">Basic Label</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-label-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-label-basic">
             <x-label for="first_name" />
             <x-input name="first_name" id="first_name" />
 
@@ -18,13 +18,13 @@
 
 &lt;!-- The label text is auto-generated: "first_name" becomes "First name" --&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
         <p class="text-muted">
             <small>The label text is automatically generated from the 'for' attribute: "first_name" becomes "First name".</small>
         </p>
 
         <h5 class="mt-3">Label with Custom Content</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-label-custom">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-label-custom">
             <x-label for="custom">
                 Custom Label <span class="text-danger">*</span>
             </x-label>
@@ -36,7 +36,7 @@
 &lt;/x-label&gt;
 &lt;x-input name="custom" id="custom" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Error Component --}}
@@ -49,7 +49,7 @@
         </div>
 
         <h5 class="mt-3">Simulated Error Display</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-error-simulated">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-error-simulated">
             <div class="mb-3">
                 <x-label for="email_error">Email</x-label>
                 <input type="email" class="form-control is-invalid" id="email_error" name="email" value="invalid-email">
@@ -75,10 +75,10 @@
     &lt;/div&gt;
 &lt;/div&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">Error Component Usage</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-error-component">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-error-component">
             <div style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="username_demo">Username</x-label>
@@ -109,7 +109,7 @@
 &lt;!-- With custom error bag --&gt;
 &lt;x-error field="email" bag="customBag" /&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
         <p class="text-muted">
             <small>The <code>&lt;x-error&gt;</code> component automatically displays validation errors when they exist.</small>
         </p>
@@ -118,7 +118,7 @@
     {{-- Complete Form Example --}}
     <div class="example-section" id="section-complete">
         <h2 class="example-title">Complete Form Example</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-complete">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-complete">
             <x-form action="#" style="max-width: 600px;">
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -234,12 +234,12 @@
     &lt;/div&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 @endsection
 
 @section('sidebar')
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+    <x-blade-ui-kit-bootstrap-tests::table-of-contents :sections="[
         ['id' => 'section-label', 'title' => 'Label Component'],
         ['id' => 'section-error', 'title' => 'Error Component'],
         ['id' => 'section-complete', 'title' => 'Complete Form Example'],

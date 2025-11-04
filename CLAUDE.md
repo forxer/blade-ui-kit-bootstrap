@@ -74,10 +74,13 @@ php artisan vendor:publish --tag="blade-ui-kit-bootstrap-translations"
 The package uses a dual-view approach to support both Bootstrap 4 and 5:
 
 - **View directories:** `resources/views/bootstrap-4/` and `resources/views/bootstrap-5/`
+- **Test views directory:** `resources/views-tests/` (separate namespace to avoid view optimization caching)
 - **Version selection:** Configured via `config/blade-ui-kit-bootstrap.php` using `BootstrapVersion` enum
 - **Base component:** All components extend `BladeUIKitBootstrap\Components\BladeComponent`
 
 The `BladeComponent` base class automatically resolves the correct view path based on the configured Bootstrap version. The `viewPath()` method prepends the Bootstrap version directory to all component views.
+
+Test views are loaded with the `blade-ui-kit-bootstrap-tests` namespace and stored in `resources/views-tests/` to prevent them from being scanned by `php artisan view:cache`.
 
 ### Component Registration
 
@@ -251,6 +254,25 @@ Not:
 $this->config('boostrap_version')   // INCORRECT (typo)
 ```
 
+### Test Views Architecture
+
+**Important:** Test views are stored in a separate `resources/views-tests/` directory with a dedicated namespace `blade-ui-kit-bootstrap-tests`.
+
+**Why:** This prevents test views from being scanned by Laravel's view optimization (`php artisan optimize` / `php artisan view:cache`), which would cause errors because components aren't registered yet during optimization.
+
+**Implementation:**
+- Test views are **NOT** loaded via `loadViewsFrom()` in the ServiceProvider (to avoid being scanned during optimization)
+- The `TestController` dynamically registers the namespace using `view()->addNamespace()` in its constructor
+- The namespace is only registered when test routes are actually accessed
+- Test views use the `blade-ui-kit-bootstrap-tests::` namespace prefix for all view calls
+- Test views are completely separate from the main `blade-ui-kit-bootstrap::` namespace
+
+**When adding new test pages:**
+1. Create views in `resources/views-tests/`
+2. Use `blade-ui-kit-bootstrap-tests::` namespace for all view references (includes, extends, components)
+3. Never reference test views from main package views
+4. Test views are only loaded when the TestController is instantiated
+
 ### Common Pitfalls to Avoid
 
 1. **Typos in "Bootstrap":** The word "Bootstrap" has two 'o's and two 't's. Watch for common typos like "boostrap" or "botstrap".
@@ -260,3 +282,5 @@ $this->config('boostrap_version')   // INCORRECT (typo)
 3. **Documentation Typos:** Common words like "middleware" should be spelled correctly in documentation files.
 
 4. **Bootstrap Version Configuration:** When adding features that differ between Bootstrap 4 and 5, always check the version using `$this->config('bootstrap_version')` and ensure both versions are supported.
+
+5. **Test Views Location:** Never place test views in `resources/views/`. They must be in `resources/views-tests/` with the separate namespace.

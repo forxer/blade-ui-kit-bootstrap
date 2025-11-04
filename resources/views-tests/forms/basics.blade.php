@@ -1,4 +1,4 @@
-@extends('blade-ui-kit-bootstrap::tests.layout')
+@extends('blade-ui-kit-bootstrap-tests::layout')
 
 @section('title', 'Form Basics')
 
@@ -6,7 +6,7 @@
     {{-- Basic Form --}}
     <div class="example-section" id="section-basic">
         <h2 class="example-title">Basic Form</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-basic">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-basic">
             <x-form action="#" style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="name">Name</x-label>
@@ -36,7 +36,7 @@
     &lt;x-btn type="submit" variant="primary"&gt;Submit&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Form with Different Methods --}}
@@ -44,7 +44,7 @@
         <h2 class="example-title">Form Methods</h2>
 
         <h5 class="mt-3">POST Form (Default)</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-post">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-post">
             <x-form action="#" style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="username">Username</x-label>
@@ -62,10 +62,10 @@
     &lt;x-btn type="submit" variant="primary"&gt;Create&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">PUT Form</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-put">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-put">
             <x-form action="#" method="PUT" style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="username_put">Username</x-label>
@@ -83,10 +83,10 @@
     &lt;x-btn type="submit" variant="warning"&gt;Update&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">PATCH Form</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-patch">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-patch">
             <x-form action="#" method="PATCH" style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="username_patch">Username</x-label>
@@ -104,10 +104,10 @@
     &lt;x-btn type="submit" variant="info"&gt;Patch&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">DELETE Form</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-delete">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-delete">
             <x-form action="#" method="DELETE" style="max-width: 500px;">
                 <p>Are you sure you want to delete this item?</p>
                 <x-btn type="submit" variant="danger">Delete</x-btn>
@@ -119,10 +119,10 @@
     &lt;x-btn type="submit" variant="danger"&gt;Delete&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
 
         <h5 class="mt-3">GET Form</h5>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-get">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-get">
             <x-form action="#" method="GET" style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="search">Search</x-label>
@@ -140,13 +140,13 @@
     &lt;x-btn type="submit" variant="primary"&gt;Search&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Form with File Upload --}}
     <div class="example-section" id="section-files">
         <h2 class="example-title">Form with File Upload</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-files">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-files">
             <x-form action="#" has-files style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="title">Title</x-label>
@@ -176,13 +176,13 @@
     &lt;x-btn type="submit" variant="primary"&gt;Upload&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Form without novalidate --}}
     <div class="example-section" id="section-validation">
         <h2 class="example-title">Form with Browser Validation</h2>
-        <x-blade-ui-kit-bootstrap::tests.demo-with-code id="code-form-validation">
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-form-validation">
             <x-form action="#" :novalidate="false" style="max-width: 500px;">
                 <div class="mb-3">
                     <x-label for="email_required">Email (Required)</x-label>
@@ -212,7 +212,7 @@
     &lt;x-btn type="submit" variant="primary"&gt;Submit&lt;/x-btn&gt;
 &lt;/x-form&gt;
             </x-slot:code>
-        </x-blade-ui-kit-bootstrap::tests.demo-with-code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
         <p class="text-muted">
             <small>This form uses browser validation (novalidate=false).</small>
         </p>
@@ -220,7 +220,7 @@
 @endsection
 
 @section('sidebar')
-    <x-blade-ui-kit-bootstrap::tests.table-of-contents :sections="[
+    <x-blade-ui-kit-bootstrap-tests::table-of-contents :sections="[
         ['id' => 'section-basic', 'title' => 'Basic Form'],
         ['id' => 'section-methods', 'title' => 'Form Methods'],
         ['id' => 'section-files', 'title' => 'Form with File Upload'],
