@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+1.0.2 (2025-12-25)
+------------------
+
+### Bug Fixes
+
+- Fixed missing anonymous components for test pages (`table-of-contents`, `demo-with-code`)
+- Test pages now use default components to work independently of app configuration
+- Added warning note on test pages about potential rendering differences with app
+
+
 1.0.1 (2025-11-04)
 ------------------
 

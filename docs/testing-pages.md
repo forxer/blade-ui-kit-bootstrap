@@ -111,9 +111,23 @@ resources/views-tests/
 
 **Note:** Test views use the `blade-ui-kit-bootstrap-tests` namespace (not `blade-ui-kit-bootstrap`). The namespace is registered dynamically by the `TestController` using `view()->addNamespace()` instead of `loadViewsFrom()` in the ServiceProvider. This prevents test views from being scanned during `php artisan optimize`, which would cause errors since components aren't registered yet during optimization.
 
-## Bootstrap Version
+## Important Notes
 
-Test pages are configured to use **Bootstrap 5** exclusively. The package itself supports both Bootstrap 4 and 5 for production use (configured via `config/blade-ui-kit-bootstrap.php`).
+### Default Components
+
+Test pages always use the **package's default components**, regardless of your application's configuration. This means:
+
+- Components that you have **disabled** with `except()` will still be displayed
+- Components that you have **extended or replaced** with `replace()` will show the default implementation, not your customized version
+- Components that you have **added** with `merge()` will not appear in the test pages
+
+This behavior ensures that test pages always work correctly, but be aware that the rendering may differ from your actual application.
+
+### Bootstrap Version
+
+Test pages are configured to use **Bootstrap 5** styling exclusively. If your application uses Bootstrap 4, the components will render differently in your application than in the test pages.
+
+The package itself supports both Bootstrap 4 and 5 for production use (configured via `config/blade-ui-kit-bootstrap.php`).
 
 ## Navigation
 
@@ -131,7 +145,7 @@ These test pages are useful for:
 
 ## Development
 
-The test pages use reusable Blade components located in `resources/views/components/tests/`:
+The test pages use reusable anonymous Blade components located in `resources/views-tests/components/`:
 
 - **`demo-with-code.blade.php`**: Displays a demo with collapsible, highlighted code
 - **`table-of-contents.blade.php`**: Generates navigation for page sections

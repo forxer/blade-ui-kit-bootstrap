@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Http\Controllers;
 
+use BladeUIKitBootstrap\DefaultComponents;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ViewErrorBag;
 
 class TestController extends Controller
@@ -14,6 +16,10 @@ class TestController extends Controller
     {
         // Register test views namespace dynamically to avoid being scanned by php artisan optimize
         view()->addNamespace('blade-ui-kit-bootstrap-tests', __DIR__.'/../../../resources/views-tests');
+
+        // Register all default components for test pages
+        // This ensures test pages always work with the package's default components
+        $this->registerDefaultComponents();
 
         // Configure icon formats for test pages using Bootstrap Icons
         config([
@@ -24,6 +30,18 @@ class TestController extends Controller
 
         // Share an empty ViewErrorBag with all test views to prevent undefined $errors variable
         view()->share('errors', session()->get('errors', new ViewErrorBag()));
+    }
+
+    /**
+     * Register all default components for test pages.
+     */
+    private function registerDefaultComponents(): void
+    {
+        $defaultComponents = (new DefaultComponents())->components;
+
+        foreach ($defaultComponents as $alias => $component) {
+            Blade::component($component, $alias);
+        }
     }
 
     public function index(): View

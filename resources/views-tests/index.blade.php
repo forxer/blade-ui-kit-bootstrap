@@ -22,6 +22,12 @@
         </p>
     </div>
 
+    <div class="alert alert-warning" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <strong>Note:</strong> These test pages use the package's default components with Bootstrap 5 styling.
+        If your application has extended or replaced components, or uses Bootstrap 4, the rendering here may differ from your application.
+    </div>
+
     <h3 class="mt-4 mb-3">Buttons</h3>
     <div class="list-group mb-4">
         <a href="{{ route('blade-ui-kit-bs.tests.buttons-components') }}" class="list-group-item list-group-item-action">
