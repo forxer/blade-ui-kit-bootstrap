@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+1.1.1 (2026-02-02)
+------------------
+
+### Documentation
+
+- Reorganized documentation order for logical hierarchy (setup → components → advanced)
+
+
 1.1.0 (2026-02-02)
 ------------------
 

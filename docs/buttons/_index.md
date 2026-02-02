@@ -1,6 +1,6 @@
 ---
 title: Buttons
-order: 10
+order: 6
 ---
 
 Buttons

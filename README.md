@@ -71,17 +71,7 @@ Index
 
 - [Installation](./docs/installation.md)
 - [Configuration](./docs/configuration.md)
-- [Extending Components](./docs/extending-components.md)
 - [Bootstrap version](./docs/bootstrap-version.md)
-- [Testing Pages](./docs/testing-pages.md) - Interactive component demonstrations
-- [Alerts](./docs/alerts.md)
-- [Badges](./docs/badges.md)
-- [Buttons](./docs/buttons/_index.md)
-    - [Simple button](./docs/buttons/simple-button.md)
-    - [Form button](./docs/buttons/form-button.md)
-    - [Link button](./docs/buttons/link-button.md)
-    - [Action Buttons](./docs/buttons/action-buttons.md)
-    - [Help info button](./docs/buttons/help-info-button.md)
 - [Forms](./docs/forms.md)
     - [Form](./docs/forms.md#form)
     - [Label](./docs/forms.md#label)
@@ -98,10 +88,20 @@ Index
     - [Date](./docs/inputs/date.md)
     - [Time](./docs/inputs/time.md)
     - [Hidden](./docs/inputs/hidden.md)
+- [Buttons](./docs/buttons/_index.md)
+    - [Simple button](./docs/buttons/simple-button.md)
+    - [Form button](./docs/buttons/form-button.md)
+    - [Link button](./docs/buttons/link-button.md)
+    - [Action Buttons](./docs/buttons/action-buttons.md)
+    - [Help info button](./docs/buttons/help-info-button.md)
+- [Alerts](./docs/alerts.md)
+- [Badges](./docs/badges.md)
 - [Modals](./docs/modals.md)
     - [Classic modal](./docs/modals.md#classic-modal)
     - [Form modal](./docs/modals.md#form-modal)
     - [Confirm modal](./docs/modals.md#confirm-modal)
+- [Extending Components](./docs/extending-components.md)
+- [Testing Pages](./docs/testing-pages.md)
 
 Why and thanks
 --------------

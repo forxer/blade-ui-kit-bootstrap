@@ -1,6 +1,6 @@
 ---
 title: Extending Components
-order: 4
+order: 10
 ---
 
 Extending Components

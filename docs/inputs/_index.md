@@ -1,6 +1,6 @@
 ---
 title: Inputs
-order: 11
+order: 5
 ---
 
 Inputs
