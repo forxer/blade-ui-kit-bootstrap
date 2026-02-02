@@ -282,3 +282,18 @@ $this->config('boostrap_version')   // INCORRECT (typo)
 4. **Bootstrap Version Configuration:** When adding features that differ between Bootstrap 4 and 5, always check the version using `$this->config('bootstrap_version')` and ensure both versions are supported.
 
 5. **Test Views Location:** Never place test views in `resources/views/`. They must be in `resources/views-tests/` with the separate namespace.
+
+## Future Improvements
+
+### Documentation Enhancement (TODO)
+
+The current documentation is functional but doesn't fully showcase the package's value proposition. A future revision should better highlight:
+
+- **Automatic validation integration**: `is-invalid` class, `aria-describedby` for accessibility
+- **Old value persistence**: Automatic `old()` value handling for form repopulation
+- **Dual Bootstrap support**: Seamless switching between Bootstrap 4 and 5 via configuration
+- **Pre-configured action buttons**: Ready-to-use Save, Delete, Edit, Create, Cancel buttons
+- **Component extension system**: Artisan command for creating custom components
+- **Interactive test pages**: Live component demonstrations with copy-to-clipboard
+
+The documentation should convey that this is a productivity tool for Laravel forms, not just a Bootstrap wrapper.
