@@ -216,12 +216,6 @@ If this option is "true" all buttons will automatically have the "outline" attri
 
 For more details please see the documentation dedicated to [Buttons Outline and no-outline](./buttons/buttons.md#outline-and-no-outline)
 
-### All modal outline
-
-If this option is "true" all modal will automatically have the "outline" attribute.
-
-For more details please see the documentation dedicated to [Modal variants](./modals#modal-variants)
-
 ### Button Icon Formats
 
 These two configuration options allow you to define formats for PHP's native sprintf() function. This is to easily and consistently add icons to buttons.

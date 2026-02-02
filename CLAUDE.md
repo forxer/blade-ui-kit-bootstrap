@@ -115,7 +115,6 @@ Located in `src/Concerns/`:
 - **BtnIcons:** Manages icon formatting for buttons (start/end icons)
 - **CanHaveErrors:** Integrates with Laravel's validation error bags
 - **FormMethod:** Handles HTTP method spoofing for forms (PUT, PATCH, DELETE)
-- **ModalVariant:** Manages modal color variants
 
 ### Artisan Commands
 
@@ -161,7 +160,6 @@ The config file (`config/blade-ui-kit-bootstrap.php`) supports:
 - Component prefix (to avoid naming conflicts)
 - Global form behavior (`all_forms_with_novalidate`)
 - Global button styling (`all_buttons_outline`)
-- Global modal styling (`all_modal_outline`)
 - Button icon formats (for Bootstrap Icons, FontAwesome, etc.)
 
 ### Bootstrap Version Switching
@@ -182,7 +180,7 @@ Components use Laravel's Blade stacks for additional assets:
 ### Rector Configuration
 
 The project uses Rector (rector.php) with:
-- PHP 8.2 target
+- PHP 8.4 target
 - Laravel-specific refactoring rules
 - Strict type declarations enabled
 - Code quality and early return patterns

@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+1.0.3 (unreleased)
+------------------
+
+### Documentation
+
+- Fixed documentation mentioning non-existent `ModalVariant` trait
+- Removed documentation for non-existent `all_modal_outline` configuration option
+- Fixed Rector PHP version target in documentation (8.2 → 8.4)
+
+
 1.0.2 (2025-12-25)
 ------------------
 
