@@ -1,10 +1,17 @@
-# Checkbox
+---
+title: Checkbox
+order: 4
+---
+
+Checkbox
+========
 
 The Checkbox component provides a styled checkbox input with automatic label association, validation error handling, and old value persistence.
 
 **Important:** The component renders only the `<input>` and `<label>` elements. You must wrap it in the appropriate Bootstrap structure (`form-check` for Bootstrap 5, or `custom-control custom-checkbox` for Bootstrap 4) for proper styling.
 
-## Basic Usage
+Basic Usage
+-----------
 
 **Bootstrap 5:**
 ```blade
@@ -20,7 +27,8 @@ The Checkbox component provides a styled checkbox input with automatic label ass
 </div>
 ```
 
-## Attributes
+Attributes
+----------
 
 ### Required Attributes
 
@@ -34,7 +42,8 @@ The Checkbox component provides a styled checkbox input with automatic label ass
 - **id** (string|null): The input ID attribute (default: uses `name`)
 - **errorBag** (string|null): The error bag to use for validation errors (default: `null`)
 
-## Examples
+Examples
+--------
 
 ### Basic Checkbox
 
@@ -164,7 +173,8 @@ public function store(Request $request)
 </div>
 ```
 
-## Additional Attributes
+Additional Attributes
+---------------------
 
 All additional attributes are applied to the `<input>` element. You can add classes, data attributes, and any other HTML attributes:
 
@@ -241,7 +251,8 @@ Since the component doesn't generate the wrapper, you have full control over the
 </div>
 ```
 
-## Checked State Logic
+Checked State Logic
+-------------------
 
 The component determines the checked state in this order:
 
@@ -251,7 +262,8 @@ The component determines the checked state in this order:
 
 This ensures proper behavior with Laravel's validation and form repopulation.
 
-## Bootstrap Differences
+Bootstrap Differences
+---------------------
 
 The component automatically applies the correct CSS classes to the `<input>` and `<label>` elements based on your configured Bootstrap version. However, **you must provide the wrapper structure yourself**.
 
@@ -291,13 +303,15 @@ Renders:
 </div>
 ```
 
-## Accessibility
+Accessibility
+-------------
 
 - The checkbox is automatically associated with its label via the `for` and `id` attributes
 - When validation errors exist, `aria-describedby` is added to link to the error message
 - The label parameter is required to ensure all checkboxes have descriptive labels
 
-## Validation
+Validation
+----------
 
 The component integrates with Laravel's validation system:
 

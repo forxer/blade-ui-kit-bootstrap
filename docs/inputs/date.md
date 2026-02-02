@@ -1,3 +1,8 @@
+---
+title: Date
+order: 8
+---
+
 Date
 ====
 

@@ -1,3 +1,8 @@
+---
+title: Email
+order: 7
+---
+
 Email
 =====
 

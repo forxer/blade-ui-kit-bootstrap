@@ -1,3 +1,8 @@
+---
+title: Modals
+order: 9
+---
+
 Modals
 ======
 

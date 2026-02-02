@@ -1,3 +1,7 @@
+---
+title: Simple button
+order: 1
+---
 
 Simple button
 =============

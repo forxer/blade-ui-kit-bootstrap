@@ -9,6 +9,14 @@ CHANGELOG
 - Fixed documentation mentioning non-existent `ModalVariant` trait
 - Removed documentation for non-existent `all_modal_outline` configuration option
 - Fixed Rector PHP version target in documentation (8.2 → 8.4)
+- Migrated documentation structure for Savane compatibility:
+  - Added YAML front-matter (title, order) to all documentation files
+  - Created `docs/_index.md` as documentation home page
+  - Created `buttons/_index.md` and `inputs/_index.md` for section indexes
+  - Merged `alerts/alert.md` into `alerts.md` (single file, no subfolder needed)
+  - Merged `badges/badge.md` into `badges.md` (single file, no subfolder needed)
+  - Converted `## Heading` syntax to underline syntax for H1/H2
+  - Updated internal links in README.md
 
 
 1.0.2 (2025-12-25)

@@ -1,3 +1,7 @@
+---
+title: Buttons
+order: 10
+---
 
 Buttons
 =======
@@ -140,7 +144,7 @@ This will output the following HTML:
 <x-btn text="Do something" :startContent="e($customStart)" :endContent="e($customEnd)" />
 ```
 
-For more advanced customizations you can use the dedicated “x-slots”:
+For more advanced customizations you can use the dedicated "x-slots":
 
 ```blade
 <x-btn text="Do something">
@@ -445,8 +449,8 @@ It's like the button variation but for confirmation modals.
 
 Please see the [modal variants documentation](./../modals.md#modal-variants) for more details.
 
-
-## Disabled
+Disabled
+--------
 
 Obviously you can use the native HTML "disabled" attribute:
 

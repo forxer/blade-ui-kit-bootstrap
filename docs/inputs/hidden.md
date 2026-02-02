@@ -1,3 +1,8 @@
+---
+title: Hidden
+order: 10
+---
+
 Hidden
 ======
 

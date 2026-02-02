@@ -1,8 +1,15 @@
-# Extending Components
+---
+title: Extending Components
+order: 4
+---
+
+Extending Components
+====================
 
 Blade UI Kit Bootstrap provides a convenient Artisan command to quickly generate custom component classes that extend the default components. This allows you to customize component behavior while maintaining all the base functionality.
 
-## The Make Component Command
+The Make Component Command
+--------------------------
 
 ### Basic Usage
 
@@ -71,7 +78,8 @@ The command will show you a list of all available components if you forget to sp
 - `confirm-modal` - Confirmation modal
 - `form-modal` - Form modal
 
-## Directory Structure Preservation
+Directory Structure Preservation
+--------------------------------
 
 **Important:** The command automatically preserves the directory structure of the parent component you're extending.
 
@@ -95,7 +103,8 @@ If you create a view file, it will also follow the same structure:
 - Modal views: `resources/views/components/modals/your-component.blade.php`
 - Input views: `resources/views/components/forms/inputs/your-component.blade.php`
 
-## Examples
+Examples
+--------
 
 ### Example 1: Custom Save Button
 
@@ -264,7 +273,8 @@ Usage:
 <x-forms.inputs.phone-input name="phone" />
 ```
 
-## Customization Hooks
+Customization Hooks
+-------------------
 
 When extending components, you have access to three key methods:
 
@@ -316,7 +326,8 @@ public function viewName(): ?string
 }
 ```
 
-## Custom Views
+Custom Views
+------------
 
 The command will ask if you want to create a corresponding view file (defaults to "no"). If you choose yes, it creates a basic view template at `resources/views/components/your-component-name.blade.php`.
 
@@ -329,7 +340,8 @@ public function viewName(): ?string
 }
 ```
 
-## Tips
+Tips
+----
 
 1. **Directory structure is preserved**: The command automatically creates your component in the same directory structure as the parent component. This keeps your customizations organized and easy to find.
 

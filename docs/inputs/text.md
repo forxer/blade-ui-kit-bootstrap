@@ -1,5 +1,10 @@
+---
+title: Text
+order: 1
+---
+
 Text
-=====
+====
 
 The most basic usage of the component is to simply reference it:
 

@@ -1,3 +1,8 @@
+---
+title: Bootstrap version
+order: 3
+---
+
 Bootstrap version
 =================
 

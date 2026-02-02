@@ -1,3 +1,8 @@
+---
+title: Link button
+order: 3
+---
+
 Link button
 ===========
 

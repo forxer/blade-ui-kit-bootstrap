@@ -1,13 +1,18 @@
+---
+title: Inputs
+order: 11
+---
+
 Inputs
 ======
 
 A set of components to make it easier to write form elements.
 
-* [The `<input>` element](#input)
 * [Text](./text.md)
 * [Textarea](./textarea.md)
 * [Select](./select.md)
 * [Checkbox](./checkbox.md)
+* [Radio](./radio.md)
 * [Password](./password.md)
 * [Email](./email.md)
 * [Date](./date.md)

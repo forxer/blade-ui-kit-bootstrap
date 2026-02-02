@@ -1,9 +1,15 @@
+---
+title: Testing Pages
+order: 5
+---
+
 Testing Pages
-==============
+=============
 
 This package includes interactive testing pages that showcase all available components with live demonstrations and copy-to-clipboard functionality.
 
-## Accessing Test Pages
+Accessing Test Pages
+--------------------
 
 The test pages are accessible via the following URL pattern:
 
@@ -13,7 +19,8 @@ http://your-app.test/blade-ui-kit-bs/tests
 
 Replace `your-app.test` with your actual application domain.
 
-## Available Pages
+Available Pages
+---------------
 
 ### Main Index
 - **URL**: `/blade-ui-kit-bs/tests`
@@ -61,7 +68,8 @@ Replace `your-app.test` with your actual application domain.
 - **URL**: `/blade-ui-kit-bs/tests/modals-variations`
 - **Description**: Modal sizes, scrollable modals, centered modals, list content examples
 
-## Features
+Features
+--------
 
 ### Interactive Demonstrations
 Each component is displayed with a live visual demonstration showing how it renders with Bootstrap 5 styling.
@@ -85,7 +93,8 @@ Pages with multiple sections include a collapsible table of contents for easy na
 ### Back to Top
 A **"Back to Top"** button appears when scrolling down, allowing quick return to the page header.
 
-## Organization
+Organization
+------------
 
 Test pages are organized by component category in a separate namespace to avoid being scanned by Laravel's view optimization:
 
@@ -111,7 +120,8 @@ resources/views-tests/
 
 **Note:** Test views use the `blade-ui-kit-bootstrap-tests` namespace (not `blade-ui-kit-bootstrap`). The namespace is registered dynamically by the `TestController` using `view()->addNamespace()` instead of `loadViewsFrom()` in the ServiceProvider. This prevents test views from being scanned during `php artisan optimize`, which would cause errors since components aren't registered yet during optimization.
 
-## Important Notes
+Important Notes
+---------------
 
 ### Default Components
 
@@ -129,11 +139,13 @@ Test pages are configured to use **Bootstrap 5** styling exclusively. If your ap
 
 The package itself supports both Bootstrap 4 and 5 for production use (configured via `config/blade-ui-kit-bootstrap.php`).
 
-## Navigation
+Navigation
+----------
 
 The test pages include a responsive navigation bar with dropdown menus for easy access to all component categories. The active page is highlighted in the navigation.
 
-## Use Cases
+Use Cases
+---------
 
 These test pages are useful for:
 
@@ -143,18 +155,21 @@ These test pages are useful for:
 4. **Learning**: Understand component usage through practical examples
 5. **Testing**: Verify component behavior during package development
 
-## Development
+Development
+-----------
 
 The test pages use reusable anonymous Blade components located in `resources/views-tests/components/`:
 
 - **`demo-with-code.blade.php`**: Displays a demo with collapsible, highlighted code
 - **`table-of-contents.blade.php`**: Generates navigation for page sections
 
-## Routes
+Routes
+------
 
 Test page routes are defined in `routes/web.php` with the prefix `blade-ui-kit-bs/tests` and use the `TestController` located in `src/Http/Controllers/TestController.php`.
 
-## Customization
+Customization
+-------------
 
 You can customize the test pages by:
 
