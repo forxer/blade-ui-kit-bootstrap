@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+1.2.0 (2026-03-03)
+------------------
+
+### Features
+
+- Added Laravel Boost assets (`resources/boost/`):
+  - Guidelines (`guidelines/core.blade.php`): package overview, component families, and extension instructions
+  - Skill (`skills/blade-ui-kit-bootstrap/SKILL.md`): detailed usage patterns, Blade examples, extension hooks, config keys, and layout stacks
+
+
 1.1.1 (2026-02-02)
 ------------------
 
