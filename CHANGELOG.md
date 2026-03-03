@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+1.2.1 (2026-03-03)
+------------------
+
+### Bug Fixes
+
+- Fixed code snippet format in Boost guidelines to use `@verbatim` / `<code-snippet>` syntax
+
+
 1.2.0 (2026-03-03)
 ------------------
 

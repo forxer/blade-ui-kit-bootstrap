@@ -13,9 +13,11 @@ Blade components styled with Bootstrap 4/5. Auto-handles CSRF, method spoofing, 
 
 ### Extending
 
-```bash
+@verbatim
+<code-snippet name="Generate custom component" lang="bash">
 php artisan make:blade-ui-kit-bs-component MyButton --extends=btn-save
-```
+</code-snippet>
+@endverbatim
 
 Register via `config/blade-ui-kit-bootstrap.php` using `merge()`, `replace()`, or `except()`.
 
