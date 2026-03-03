@@ -109,6 +109,9 @@ The `ServiceProvider` loads components from the configuration array during boot.
 
 Located in `src/Concerns/`:
 
+- **AlertIcons:** Manages icon formatting for alerts
+- **AlertVariant:** Handles Bootstrap alert color variants
+- **BadgeVariant:** Handles Bootstrap badge color variants
 - **BtnType:** Validates button types (button, submit, reset)
 - **BtnVariant:** Handles Bootstrap button color variants (primary, secondary, success, etc.)
 - **BtnSize:** Manages button sizes (sm, lg)
@@ -122,7 +125,7 @@ The package provides Artisan commands registered in `src/Commands/`:
 
 - **MakeComponent** (`make:blade-ui-kit-bs-component`): Generates custom component classes that extend default components
   - Uses Laravel Prompts for modern, interactive CLI experience
-  - Uses stubs from `stubs/component.stub` and `stubs/component.view.stub`
+  - Uses stubs from `stubs/component.stub`, `stubs/component-with-view.stub`, and `stubs/component.view.stub`
   - Registered in `ServiceProvider::configureCommands()`
   - Displays available components in a formatted table when no parent is specified
   - Generates both PHP class and optional Blade view file
@@ -131,22 +134,28 @@ The package provides Artisan commands registered in `src/Commands/`:
 
 ### Component Categories
 
-1. **Buttons** (`src/Components/Buttons/`)
+1. **Alerts** (`src/Components/Alerts/`)
+   - Alert with dismissible, title, and icon support
+
+2. **Badges** (`src/Components/Badges/`)
+   - Badge with pill style support
+
+3. **Buttons** (`src/Components/Buttons/`)
    - Simple, form, and link buttons
    - Pre-configured action buttons (Save, Delete, Edit, Create, Cancel, etc.)
    - Help/info buttons
 
-2. **Forms** (`src/Components/Forms/`)
+4. **Forms** (`src/Components/Forms/`)
    - Form wrapper with CSRF protection and method spoofing
    - Label with automatic translation support
    - Error display with validation integration
 
-3. **Inputs** (`src/Components/Forms/Inputs/`)
-   - Text, email, password, date, time, textarea, select, hidden
+5. **Inputs** (`src/Components/Forms/Inputs/`)
+   - Text, email, password, date, time, textarea, select, hidden, checkbox, radio
    - Automatic validation state (`is-invalid` class)
    - Old value persistence
 
-4. **Modals** (`src/Components/Modals/`)
+6. **Modals** (`src/Components/Modals/`)
    - Classic modal
    - Form modal (with CSRF and method spoofing)
    - Confirm modal (yes/no actions)
@@ -161,6 +170,8 @@ The config file (`config/blade-ui-kit-bootstrap.php`) supports:
 - Global form behavior (`all_forms_with_novalidate`)
 - Global button styling (`all_buttons_outline`)
 - Button icon formats (for Bootstrap Icons, FontAwesome, etc.)
+- Alert icon format (`alert_icon_format`)
+- Test routes toggle (`enable_test_routes`, defaults to `APP_DEBUG`)
 
 ### Bootstrap Version Switching
 
@@ -175,6 +186,14 @@ Components use Laravel's Blade stacks for additional assets:
 - `blade-ui-kit-bs-html` - Additional HTML (e.g., modal markup)
 - `blade-ui-kit-bs-scripts` - JavaScript
 
+### Laravel Boost Assets
+
+The package provides Laravel Boost integration assets in `resources/boost/`:
+- **Guidelines** (`guidelines/core.blade.php`): Package overview for AI assistants
+- **Skill** (`skills/blade-ui-kit-bootstrap/SKILL.md`): Detailed usage patterns, extension hooks, config keys, and layout stacks
+
+**Important:** These files must be kept up to date when components, configuration keys, or usage patterns change. When adding, renaming, or removing components or config options, update the corresponding Boost assets accordingly.
+
 ## Code Style
 
 ### Rector Configuration
@@ -184,7 +203,6 @@ The project uses Rector (rector.php) with:
 - Laravel-specific refactoring rules
 - Strict type declarations enabled
 - Code quality and early return patterns
-- FirstClassCallableRector is disabled (preserves `array_map('intval', ...)` syntax)
 
 ### Pint Configuration
 
@@ -196,9 +214,8 @@ Uses Laravel preset (pint.json) with custom rules:
 ## Localization
 
 - Translation files in `lang/en/` and `lang/fr/`
-- Currently only modal translations provided
+- Translations provided for: `alert`, `clipboard`, `modal`
 - Integrates with `forxer/generic-term-translations-for-laravel` for generic terms
-- Uses Laravel Lang Publisher for managing translations
 
 ## Important Patterns
 
