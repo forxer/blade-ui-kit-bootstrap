@@ -5,18 +5,7 @@ CHANGELOG
 ------------------
 
 - Added support for Laravel 13
-
-
-1.2.2 (2026-03-23)
-------------------
-
-### Fixes
-
-- Aligned Boost guidelines with official format (H1 title, concise bullet points)
-- Fixed Boost skill frontmatter: added `license`, `metadata.author`, removed non-standard `allowed-tools`
-- Added missing config keys in skill: `alert_icon_format`, `enable_test_routes`
-- Fixed default values for icon formats (`null` instead of `''`)
-- Added `replaceAlias()` in guidelines and skill documentation
+- Aligned Boost guidelines
 
 
 1.2.1 (2026-03-03)
