@@ -1,7 +1,9 @@
 ---
 name: blade-ui-kit-bootstrap
-description: Usage patterns for blade-ui-kit-bootstrap components. Activate when using or extending form, input, button, modal, or alert components from this package.
-allowed-tools: Read, Glob
+description: "Usage patterns for blade-ui-kit-bootstrap components. Activate when working with form, input, button, modal, alert, or badge components from this package, or when extending/customizing components via config or artisan command."
+license: MIT
+metadata:
+  author: forxer
 ---
 
 # blade-ui-kit-bootstrap — Patterns détaillés
@@ -67,6 +69,7 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 'components' => ServiceProvider::defaultComponents()
     ->merge(['mon-bouton' => MonBouton::class])   // ajouter à côté du défaut
     ->replace(['btn-save' => MonBouton::class])   // remplacer le défaut
+    ->replaceAlias(['btn-save' => 'save'])          // renommer un alias
     ->except(['date', 'time'])                    // désactiver
     ->components(),
 ```
@@ -89,8 +92,10 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 | `prefix` | `''` | Préfixe composants (ex: `'bs'` → `<x-bs-input>`) |
 | `all_forms_with_novalidate` | `true` | Attribut `novalidate` sur tous les formulaires |
 | `all_buttons_outline` | `false` | Tous les boutons en style outline |
-| `btn_start_icon_format` | `''` | Format `sprintf` pour icône avant le texte |
-| `btn_end_icon_format` | `''` | Format `sprintf` pour icône après le texte |
+| `alert_icon_format` | `null` | Format `sprintf` pour icône dans les alertes |
+| `btn_start_icon_format` | `null` | Format `sprintf` pour icône avant le texte |
+| `btn_end_icon_format` | `null` | Format `sprintf` pour icône après le texte |
+| `enable_test_routes` | `APP_DEBUG` | Active les routes de test/démo des composants |
 
 ## Liste complète des action buttons
 
