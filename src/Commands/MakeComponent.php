@@ -250,7 +250,7 @@ class MakeComponent extends Command
         if ($subPath !== '' && $subPath !== '0') {
             // Split path by slashes, convert each part to kebab-case, then join with slashes
             $parts = explode('/', $subPath);
-            $kebabParts = array_map([Str::class, 'kebab'], $parts);
+            $kebabParts = array_map(Str::kebab(...), $parts);
             $viewSubPath = implode('/', $kebabParts);
 
             $viewPath = resource_path(\sprintf('views/components/%s/%s.blade.php', $viewSubPath, $viewName));
@@ -287,7 +287,7 @@ class MakeComponent extends Command
         if ($subPath !== '' && $subPath !== '0') {
             // Split path by slashes, convert each part to kebab-case, then join with dots
             $parts = explode('/', $subPath);
-            $kebabParts = array_map([Str::class, 'kebab'], $parts);
+            $kebabParts = array_map(Str::kebab(...), $parts);
             $aliasSubPath = implode('.', $kebabParts);
 
             return $aliasSubPath.'.'.Str::kebab($name);

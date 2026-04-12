@@ -52,7 +52,7 @@ metadata:
 php artisan make:blade-ui-kit-bs-component MonBouton --extends=btn-save
 ```
 
-- Hook à utiliser : `onConstructing()` — jamais `initAttributes()` (réservé au package)
+- Hook `onConstructing()` : personnaliser les valeurs par défaut (jamais `initAttributes()`, réservé au package)
 - Toujours `??=` pour que les props passées en template priment sur les defaults
 
 ```php
@@ -62,6 +62,36 @@ protected function onConstructing(): void
     $this->text ??= 'Mon libellé';
 }
 ```
+
+### Propriétés custom (extra properties)
+
+Pour ajouter une propriété typée sans redéclarer le constructeur parent (22+ params) :
+
+```php
+class Archives extends Base
+{
+    public ?int $itemsInArchives = null;
+
+    protected function onAttributesSet(): void
+    {
+        if ($this->itemsInArchives !== null) {
+            $badge = '<span class="badge text-bg-light">'.$this->itemsInArchives.'</span>';
+            $this->endContent = $this->endContent !== null
+                ? $this->endContent.' '.$badge
+                : $badge;
+        }
+    }
+}
+```
+
+```blade
+<x-btn-archives :url="route('archives')" :items-in-archives="$count" />
+```
+
+- Hook `onAttributesSet()` : logique post-hydratation, peut modifier n'importe quelle propriété du composant
+- Coercion de type automatique (`int`, `float`, `bool`, `string`)
+- Conversion kebab-case → camelCase transparente
+- Voir `docs/extra-properties.md` pour le détail complet
 
 Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 

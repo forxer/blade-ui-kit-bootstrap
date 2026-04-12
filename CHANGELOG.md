@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+Unreleased
+----------
+
+### Features
+
+- Added automatic hydration of extra public properties from the attribute bag in `BladeComponent`
+- Added `onAttributesSet()` hook for extended components, called after extra properties are hydrated from attributes
+- Added `refreshComponentData()` to fix Blade lifecycle timing issue where property modifications in `onAttributesSet()` were invisible to the view
+
+
 1.3.0 (2026-03-23)
 ------------------
 

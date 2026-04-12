@@ -98,4 +98,9 @@ class TestController extends Controller
     {
         return view('blade-ui-kit-bootstrap-tests::modals.variations');
     }
+
+    public function extraProperties(): View
+    {
+        return view('blade-ui-kit-bootstrap-tests::extra-properties');
+    }
 }

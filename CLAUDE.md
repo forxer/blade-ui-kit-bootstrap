@@ -119,6 +119,15 @@ Located in `src/Concerns/`:
 - **CanHaveErrors:** Integrates with Laravel's validation error bags
 - **FormMethod:** Handles HTTP method spoofing for forms (PUT, PATCH, DELETE)
 
+### Extra Properties Hydration
+
+Extended components can declare custom typed properties without redeclaring the parent constructor. Public properties declared on application-level child classes are automatically hydrated from the Blade attribute bag with type coercion.
+
+- **Mechanism:** `BladeComponent::withAttributes()` override scans for extra public properties, hydrates them from attributes, calls `onAttributesSet()`, then `refreshComponentData()` to fix Blade's lifecycle timing (where `data()` snapshots properties before `withAttributes()` runs)
+- **Hook:** `onAttributesSet()` — runs after hydration, can modify any component property (e.g., `endContent`) and the view will see the updated value
+- **Performance:** Reflection results cached per class via `resolveExtraProperties()` and `$extraPropertiesCache`; no overhead for components without extra properties (early return)
+- **Documentation:** See `docs/extra-properties.md` for the full pattern
+
 ### Artisan Commands
 
 The package provides Artisan commands registered in `src/Commands/`:

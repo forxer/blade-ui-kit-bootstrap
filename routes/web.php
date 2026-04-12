@@ -17,4 +17,5 @@ Route::prefix('blade-ui-kit-bs/tests')->name('blade-ui-kit-bs.tests.')->group(fu
     Route::get('/inputs-advanced', [TestController::class, 'inputsAdvanced'])->name('inputs-advanced');
     Route::get('/modals-types', [TestController::class, 'modalsTypes'])->name('modals-types');
     Route::get('/modals-variations', [TestController::class, 'modalsVariations'])->name('modals-variations');
+    Route::get('/extra-properties', [TestController::class, 'extraProperties'])->name('extra-properties');
 });
