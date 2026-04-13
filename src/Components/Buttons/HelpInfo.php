@@ -16,25 +16,37 @@ class HelpInfo extends BladeComponent
     use BtnSize;
     use BtnVariant;
 
+    public ?string $content = null;
+
+    public ?string $text = null;
+
+    public bool $hideText = false;
+
+    public ?string $title = null;
+
+    public ?string $variant = 'link';
+
+    public bool $outline = false;
+
+    public bool $noOutline = false;
+
+    public ?string $size = null;
+
+    public bool $lg = false;
+
+    public bool $sm = false;
+
+    public ?string $icon = null;
+
+    public ?string $startIcon = null;
+
     public function __construct(
-        public ?string $content = null,
-        public ?string $text = null,
-        public bool $hideText = false,
         public bool $show = true,
         public bool $hide = false,
-        public ?string $title = null,
-        public ?string $variant = 'link',
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-    ) {
-        $this->onConstructing();
-        $this->initAttributes();
+    ) {}
 
+    protected function initAttributes(): void
+    {
         if (! $this->show || $this->hide) {
             return;
         }

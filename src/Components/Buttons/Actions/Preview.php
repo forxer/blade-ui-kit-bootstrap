@@ -19,6 +19,8 @@ class Preview extends LinkButton
             $this->confirmVariant ??= 'info';
             $this->confirmId = 'preview-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

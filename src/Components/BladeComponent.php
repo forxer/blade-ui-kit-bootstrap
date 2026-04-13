@@ -26,91 +26,46 @@ abstract class BladeComponent extends IlluminateComponent
     }
 
     /**
-     * Initialize component attributes with default values.
-     *
-     * This method is called early in the component constructor, after `onConstructing()`,
-     * allowing child components to set default values for their properties before
-     * any validation or processing logic executes.
-     *
-     * **IMPORTANT:** This method is intended for use by the package's default components
-     * (such as action buttons). If you are extending a component in your application,
-     * you should use `onConstructing()` instead.
-     *
-     * Example usage in a package component:
-     * ```php
-     * protected function initAttributes(): void
-     * {
-     *     $this->variant ??= 'primary';
-     *     $this->text ??= Str::ucfirst(trans('action.save'));
-     *     $this->confirmVariant ??= 'primary';
-     * }
-     * ```
-     */
-    protected function initAttributes(): void {}
-
-    /**
-     * Hook executed at the very beginning of the component constructor.
-     *
-     * This method is called before `initAttributes()` and before any other
-     * constructor logic, providing an early hook for component extensions to perform
-     * setup operations or pre-initialization tasks.
-     *
-     * **IMPORTANT:** This method is intended for developers extending components
-     * in their applications. Use this hook to customize component behavior when
-     * creating custom components via `make:blade-ui-kit-bs-component` or manually.
-     *
-     * Use this method when you need to execute logic before default attributes
-     * are initialized, such as modifying constructor parameters or setting up
-     * component state that other initialization methods depend on.
-     *
-     * Example usage when extending a component in your application:
-     * ```php
-     * protected function onConstructing(): void
-     * {
-     *     // Customize behavior before package's initAttributes() runs
-     *     $this->variant ??= 'danger';
-     *     $this->icon = 'trash';
-     * }
-     * ```
-     */
-    protected function onConstructing(): void {}
-
-    /**
-     * Hook executed after extra properties have been hydrated from the attribute bag.
+     * Hook for application-level extensions, executed after property hydration.
      *
      * This method is called during `withAttributes()`, after all public properties
-     * declared outside the constructor (in child classes) have been automatically
-     * populated from template attributes with proper type coercion.
+     * have been hydrated from the attribute bag, but BEFORE the package's own
+     * `initAttributes()` runs. This ordering means your defaults (set with `??=`)
+     * take precedence over the package's defaults.
      *
-     * **IMPORTANT:** This method is intended for developers extending components
-     * in their applications. Use this hook to add custom typed properties to
-     * a component without redeclaring the parent constructor.
+     * **No `parent::onAttributesSet()` call is needed.**
      *
-     * Example — adding a badge counter to an extended button:
+     * Example — customizing an extended component:
      * ```php
-     * class Archives extends Base
+     * protected function onAttributesSet(): void
      * {
-     *     public ?int $itemsInArchives = null;
-     *
-     *     protected function onAttributesSet(): void
-     *     {
-     *         if ($this->itemsInArchives !== null) {
-     *             $badge = '<span class="badge text-bg-light">'.$this->itemsInArchives.'</span>';
-     *             $this->endContent = $this->endContent !== null
-     *                 ? $this->endContent.' '.$badge
-     *                 : $badge;
-     *         }
-     *     }
+     *     $this->variant ??= 'danger';
+     *     $this->text ??= 'My custom label';
      * }
      * ```
      */
     protected function onAttributesSet(): void {}
 
     /**
+     * Initialize component attributes with default values and validation.
+     *
+     * This method is called during `withAttributes()`, after `onAttributesSet()`,
+     * and is intended for use by the package's own components (action buttons,
+     * base button classes). It handles setting package-level defaults and running
+     * validation logic (variant, size, icons, etc.).
+     *
+     * Action buttons override this method and call `parent::initAttributes()`
+     * so the parent base class can validate after defaults are set.
+     *
+     * **Application developers should use `onAttributesSet()` instead.**
+     */
+    protected function initAttributes(): void {}
+
+    /**
      * Cache for extra property reflection data, keyed by class name.
      *
      * Each entry is an array of ['name' => string, 'kebab' => string, 'type' => ?string]
-     * representing public properties not in the constructor and not declared by the package.
+     * representing public properties not in the constructor.
      *
      * @var array<class-string, list<array{name: string, kebab: string, type: ?string}>>
      */
@@ -126,6 +81,7 @@ abstract class BladeComponent extends IlluminateComponent
 
         $this->hydrateExtraProperties();
         $this->onAttributesSet();
+        $this->initAttributes();
         $this->refreshComponentData();
 
         return $this;
@@ -134,10 +90,10 @@ abstract class BladeComponent extends IlluminateComponent
     /**
      * Hydrate public class properties declared outside the constructor from the attribute bag.
      *
-     * Scans for public properties added by application-level child classes (not declared
-     * in the BladeUIKitBootstrap namespace or Illuminate\View\Component), matches them
-     * against attributes by camelCase or kebab-case name, applies type coercion based
-     * on the property's declared type, and removes hydrated attributes from the bag.
+     * Scans for public properties not in the constructor and not on
+     * Illuminate\View\Component, matches them against attributes by camelCase or
+     * kebab-case name, applies type coercion based on the property's declared type,
+     * and removes hydrated attributes from the bag.
      */
     private function hydrateExtraProperties(): void
     {
@@ -250,7 +206,13 @@ abstract class BladeComponent extends IlluminateComponent
                 continue;
             }
 
-            if (str_starts_with($declaringClass, 'BladeUIKitBootstrap\\')) {
+            // Skip properties with asymmetric visibility (e.g., public private(set))
+            // These cannot be set from outside the declaring class
+            if ($property->isPrivateSet()) {
+                continue;
+            }
+
+            if ($property->isProtectedSet()) {
                 continue;
             }
 

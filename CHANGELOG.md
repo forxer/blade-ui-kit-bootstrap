@@ -1,6 +1,28 @@
 CHANGELOG
 =========
 
+2.0.0 (Unreleased)
+------------------
+
+### Breaking Changes
+
+- **BREAKING:** Slim constructors for all button components — `SimpleButton` (23 → 2 params), `LinkButton` (22 → 2), `FormButton` (26 → 3), `HelpInfo` (14 → 2)
+- **BREAKING:** Slim constructors for `Alert` (6 → 0), `Badge` (4 → 0), `Modal` (6 → 2), `Confirm` (3 → 1), Form Modal (10 → 3)
+- **BREAKING:** Removed `onConstructing()` hook — replaced by `onAttributesSet()`
+- **BREAKING:** `initAttributes()` moved from constructor to `withAttributes()` lifecycle — now runs after `onAttributesSet()`
+- **BREAKING:** Action buttons with custom constructors (`Copy`, `Email`, `Phone`) no longer redeclare the parent constructor — extra parameters are now class properties
+
+### Features
+
+- Two-hook extension model: `onAttributesSet()` for applications (no parent call needed), `initAttributes()` for package internals
+- All optional component properties are now hydrated automatically from the attribute bag with type coercion
+- Blade templates require **no changes** — all attributes work the same way
+
+### Bug Fixes
+
+- Fixed `confirmId` double-prefix issue on action buttons (e.g., `'simple-button-save-xyz'` → `'save-xyz'`)
+
+
 1.4.0 (2026-04-12)
 ------------------
 

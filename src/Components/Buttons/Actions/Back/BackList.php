@@ -18,6 +18,8 @@ class BackList extends LinkButton
         if ($this->confirm !== null) {
             $this->confirmId = 'back-list-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

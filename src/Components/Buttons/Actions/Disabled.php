@@ -20,6 +20,8 @@ class Disabled extends FormButton
         $this->text ??= Str::ucfirst(trans('status.disabled'));
 
         $this->formId = 'enable-'.($this->formId ?? Str::random(32));
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

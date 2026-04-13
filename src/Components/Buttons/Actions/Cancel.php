@@ -20,6 +20,8 @@ class Cancel extends SimpleButton
         if ($this->confirm !== null) {
             $this->confirmId = 'cancel-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

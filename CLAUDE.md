@@ -121,12 +121,13 @@ Located in `src/Concerns/`:
 
 ### Extra Properties Hydration
 
-Extended components can declare custom typed properties without redeclaring the parent constructor. Public properties declared on application-level child classes are automatically hydrated from the Blade attribute bag with type coercion.
+All public class properties not in the constructor are automatically hydrated from the Blade attribute bag with type coercion. This is the core mechanism for slim constructors — most component properties are class properties, not constructor parameters.
 
-- **Mechanism:** `BladeComponent::withAttributes()` override scans for extra public properties, hydrates them from attributes, calls `onAttributesSet()`, then `refreshComponentData()` to fix Blade's lifecycle timing (where `data()` snapshots properties before `withAttributes()` runs)
-- **Hook:** `onAttributesSet()` — runs after hydration, can modify any component property (e.g., `endContent`) and the view will see the updated value
-- **Performance:** Reflection results cached per class via `resolveExtraProperties()` and `$extraPropertiesCache`; no overhead for components without extra properties (early return)
-- **Documentation:** See `docs/extra-properties.md` for the full pattern
+- **Mechanism:** `BladeComponent::withAttributes()` override scans for extra public properties, hydrates them from attributes, calls `onAttributesSet()`, then `initAttributes()`, then `refreshComponentData()` to fix Blade's lifecycle timing
+- **Hook:** `onAttributesSet()` — the application extension hook. Set defaults with `??=`. No `parent::onAttributesSet()` call needed — the package's `initAttributes()` runs automatically after.
+- **Performance:** Reflection results cached per class via `resolveExtraProperties()` and `$extraPropertiesCache`
+- **Filter:** Properties with `private(set)` or `protected(set)` visibility are skipped (not settable from outside)
+- **Documentation:** See the "Adding Custom Properties" section in `docs/extending-components.md`
 
 ### Artisan Commands
 

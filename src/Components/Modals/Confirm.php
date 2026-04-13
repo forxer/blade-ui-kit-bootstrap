@@ -8,18 +8,20 @@ use BladeUIKitBootstrap\Components\BladeComponent;
 
 class Confirm extends BladeComponent
 {
-    public string $titleLabel;
+    public private(set) string $titleLabel;
+
+    public ?string $title = null;
+
+    public ?string $confirmVariant = null;
 
     public function __construct(
         public string $id,
-        public ?string $title = null,
-        public ?string $confirmVariant = null,
     ) {
-        $this->onConstructing();
-        $this->initAttributes();
-
         $this->titleLabel = str($id)->kebab()->append('-label')->toString();
+    }
 
+    protected function initAttributes(): void
+    {
         $this->title ??= trans('blade-ui-kit-bootstrap::modal.confirm');
     }
 

@@ -9,57 +9,9 @@ use Illuminate\Support\Str;
 
 class Copy extends SimpleButton
 {
-    public function __construct(
-        public ?string $target = null,
-        public ?string $string = null,
-        public ?string $text = null,
-        public bool $hideText = false,
-        public bool $show = true,
-        public bool $hide = false,
-        public ?string $title = null,
-        public ?string $variant = null,
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public bool $disabled = false,
-        public ?string $confirm = null,
-        public ?string $confirmId = null,
-        public ?string $confirmTitle = null,
-        public ?string $confirmVariant = null,
-        public ?string $formId = null,
-        public ?string $type = null,
-        public ?string $startContent = null,
-        public ?string $endContent = null,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-        public ?string $endIcon = null,
-    ) {
-        parent::__construct(
-            $text,
-            $hideText,
-            $show,
-            $hide,
-            $title,
-            $variant,
-            $outline,
-            $noOutline,
-            $size,
-            $lg,
-            $sm,
-            $disabled,
-            $confirm,
-            $confirmId,
-            $confirmTitle,
-            $confirmVariant,
-            $startContent,
-            $endContent,
-            $icon,
-            $startIcon,
-            $endIcon,
-        );
-    }
+    public ?string $target = null;
+
+    public ?string $string = null;
 
     protected function initAttributes(): void
     {
@@ -81,6 +33,8 @@ class Copy extends SimpleButton
             $this->confirmVariant ??= 'secondary';
             $this->confirmId = 'copy-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

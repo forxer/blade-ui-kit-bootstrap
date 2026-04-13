@@ -27,6 +27,8 @@ class Website extends LinkButton
             $this->confirmVariant ??= 'info';
             $this->confirmId = 'see-website-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

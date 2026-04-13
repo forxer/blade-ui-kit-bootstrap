@@ -13,17 +13,20 @@ class Alert extends BladeComponent
     use AlertIcons;
     use AlertVariant;
 
-    public function __construct(
-        public ?string $variant = null,
-        public bool $dismissible = false,
-        public ?string $title = null,
-        public ?string $icon = null,
-        public bool $show = true,
-        public bool $hide = false,
-    ) {
-        $this->onConstructing();
-        $this->initAttributes();
+    public ?string $variant = null;
 
+    public bool $dismissible = false;
+
+    public ?string $title = null;
+
+    public ?string $icon = null;
+
+    public bool $show = true;
+
+    public bool $hide = false;
+
+    protected function initAttributes(): void
+    {
         if (! $this->show || $this->hide) {
             return;
         }
@@ -34,10 +37,6 @@ class Alert extends BladeComponent
 
     public function viewName(): ?string
     {
-        if (! $this->show || $this->hide) {
-            return null;
-        }
-
         return 'components.alerts.alert';
     }
 }

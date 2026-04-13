@@ -129,7 +129,7 @@ use BladeUIKitBootstrap\Components\Buttons\Actions\Save;
 
 class CustomSaveButton extends Save
 {
-    protected function onConstructing(): void
+    protected function onAttributesSet(): void
     {
         // Override default variant
         $this->variant ??= 'success';
@@ -201,10 +201,10 @@ use BladeUIKitBootstrap\Components\Modals\Modal;
 
 class DangerModal extends Modal
 {
-    protected function onConstructing(): void
+    protected function onAttributesSet(): void
     {
         // Make non-dismissable by default
-        $this->dismissable = false;
+        $this->dismissable ??= false;
     }
 }
 ```
@@ -246,7 +246,7 @@ use BladeUIKitBootstrap\Components\Forms\Inputs\Text;
 
 class PhoneInput extends Text
 {
-    protected function onConstructing(): void
+    protected function onAttributesSet(): void
     {
         // Add phone-specific attributes
         $this->type = 'tel';
@@ -276,38 +276,19 @@ Usage:
 Customization Hooks
 -------------------
 
-When extending components, you have access to three key methods:
+When extending components, you have access to two key methods:
 
-### `onConstructing()` **(Recommended for extensions)**
+### `onAttributesSet()` **(The application extension hook)**
 
-**This is the primary hook you should use when extending components in your application.**
+**This is the hook to use when extending components in your application.**
 
-Called at the very beginning of the component constructor, before any attribute initialization. Use this to customize component behavior when creating custom components.
+Called after all public class properties have been hydrated from the Blade attribute bag. Use this to set defaults or add post-hydration logic. No `parent::onAttributesSet()` call needed — the package's internal `initAttributes()` runs automatically after your hook.
 
 ```php
-protected function onConstructing(): void
+protected function onAttributesSet(): void
 {
-    // Runs before the package's initAttributes()
-    // Perfect for overriding defaults from parent components
     $this->variant ??= 'danger';
     $this->text ??= 'Custom Text';
-    $this->icon = 'custom-icon';
-}
-```
-
-### `initAttributes()` **(For package components only)**
-
-**Important:** This method is intended for use by the package's default components (like action buttons). When extending components in your application, you should use `onConstructing()` instead.
-
-This method is called after `onConstructing()` and is used by the package's components to set their default values.
-
-```php
-// DON'T use this in your application extensions
-// Only used internally by package components
-protected function initAttributes(): void
-{
-    $this->variant ??= 'primary';
-    $this->text ??= Str::ucfirst(trans('action.save'));
 }
 ```
 
@@ -325,6 +306,73 @@ public function viewName(): ?string
     // return 'components.your-custom-view';
 }
 ```
+
+Adding Custom Properties
+------------------------
+
+You can add typed properties to an extended component without redeclaring the parent constructor. Declare your property as a public class property and use `onAttributesSet()` for post-hydration logic.
+
+### Example
+
+```php
+namespace App\View\Components\Buttons\Actions;
+
+use BladeUIKitBootstrap\Components\Buttons\Actions\Archives as Base;
+
+class Archives extends Base
+{
+    public ?int $itemsInArchives = null;
+
+    protected function onAttributesSet(): void
+    {
+        if ($this->itemsInArchives !== null) {
+            $badge = '<span class="badge text-bg-light">'.$this->itemsInArchives.'</span>';
+            $this->endContent = $this->endContent !== null
+                ? $this->endContent.' '.$badge
+                : $badge;
+        }
+    }
+}
+```
+
+```blade
+<x-btn-archives :url="route('admin.archives')" :items-in-archives="$count" />
+```
+
+The `items-in-archives` attribute is automatically converted to `itemsInArchives` (kebab-case to camelCase), cast to `int`, and assigned to the property. It does **not** appear in the rendered HTML output.
+
+### Supported Types
+
+| Declared Type | Coercion |
+|---------------|----------|
+| `int` | `(int)` cast |
+| `float` | `(float)` cast |
+| `bool` | `filter_var($value, FILTER_VALIDATE_BOOLEAN)` |
+| `string` | `(string)` cast |
+| `array`, objects | No coercion, value passed as-is |
+| No type declared | No coercion, value passed as-is |
+| Nullable (`?int`) | `null` if attribute absent, coerced if present |
+
+### Lifecycle
+
+The complete hook execution order is:
+
+1. Constructor — only truly required parameters (`$url`, `$id`, `$show`, `$hide`)
+2. `data()` — Blade captures a snapshot of public properties *(before attributes are set)*
+3. `withAttributes()` — Blade assigns non-constructor attributes
+4. `hydrateExtraProperties()` — automatic property hydration with type coercion
+5. `onAttributesSet()` — application hook for defaults and post-hydration logic (no parent call needed)
+6. `initAttributes()` — package defaults and validation (runs automatically)
+7. `refreshComponentData()` — updates the stale snapshot so the view sees fresh values
+
+### Important Notes
+
+- Only **public** properties are hydrated. Private or protected properties are ignored.
+- Properties with `private(set)` or `protected(set)` asymmetric visibility are skipped.
+- Properties that are **constructor parameters** are handled by Blade normally and skipped by the hydration mechanism.
+- If an extra property name conflicts with an HTML attribute you need (e.g., `title`), the property will capture the attribute. Choose distinctive property names to avoid this.
+- Bound syntax (`:items-in-archives="$count"`) passes the PHP value directly. Unbound syntax (`items-in-archives="42"`) passes a string that gets coerced.
+- You can modify **any component property** in `onAttributesSet()` (e.g., `$this->endContent`) and the view will see the updated value.
 
 Custom Views
 ------------
@@ -345,9 +393,9 @@ Tips
 
 1. **Directory structure is preserved**: The command automatically creates your component in the same directory structure as the parent component. This keeps your customizations organized and easy to find.
 
-2. **Use `??=` operator**: Always use the null coalescing assignment operator (`??=`) in `onConstructing()` so that values passed to the component take precedence over defaults.
+2. **Use `??=` operator**: Always use the null coalescing assignment operator (`??=`) in `onAttributesSet()` so that values passed to the component take precedence over defaults.
 
-3. **Don't override `initAttributes()`**: When extending components in your application, use `onConstructing()` instead of `initAttributes()`. The latter is reserved for the package's internal components.
+3. **No `parent::onAttributesSet()` needed**: The package's internal `initAttributes()` runs automatically after your `onAttributesSet()` hook — you do not need to call `parent::onAttributesSet()`. Simply set your defaults and return.
 
 4. **Component registration**: Register your custom components in `config/blade-ui-kit-bootstrap.php` using either:
    - `merge()` - to add a new component with a new alias

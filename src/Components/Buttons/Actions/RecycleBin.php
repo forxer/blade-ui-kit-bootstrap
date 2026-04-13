@@ -18,6 +18,8 @@ class RecycleBin extends LinkButton
         if ($this->confirm !== null) {
             $this->confirmId = 'recycle-bin-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

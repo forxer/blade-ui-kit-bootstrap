@@ -18,6 +18,8 @@ class MoveDown extends FormButton
         $this->text ??= Str::ucfirst(trans('action.down'));
 
         $this->formId = 'move-down-'.($this->formId ?? Str::random(32));
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

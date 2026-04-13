@@ -9,18 +9,17 @@ use {{ parentClassImport }};
 class {{ class }} extends {{ parentClass }}
 {
     /**
-     * Hook executed at the very beginning of the component constructor.
+     * Hook executed after properties have been hydrated from the attribute bag.
      *
      * Use this method to customize component behavior when extending
-     * default components. This runs before the package's initAttributes().
-     *
-     * Perfect for overriding default values from the parent component.
+     * default components. Your defaults (with ??=) take precedence over
+     * the package's defaults — no parent call needed.
      *
      * Example:
      *   $this->variant ??= 'danger';
      *   $this->text ??= 'Custom Text';
      */
-    protected function onConstructing(): void
+    protected function onAttributesSet(): void
     {
         // Add your customizations here
     }

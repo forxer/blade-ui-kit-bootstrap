@@ -16,39 +16,59 @@ class LinkButton extends BladeComponent
     use BtnSize;
     use BtnVariant;
 
+    public ?string $url = null;
+
+    public ?string $text = null;
+
+    public bool $hideText = false;
+
+    public ?string $title = null;
+
+    public ?string $variant = null;
+
+    public bool $outline = false;
+
+    public bool $noOutline = false;
+
+    public ?string $size = null;
+
+    public bool $lg = false;
+
+    public bool $sm = false;
+
+    public bool $disabled = false;
+
+    public ?string $confirm = null;
+
+    public ?string $confirmId = null;
+
+    public ?string $confirmTitle = null;
+
+    public ?string $confirmVariant = null;
+
+    public ?string $startContent = null;
+
+    public ?string $endContent = null;
+
+    public ?string $icon = null;
+
+    public ?string $startIcon = null;
+
+    public ?string $endIcon = null;
+
     public function __construct(
-        public ?string $url = null,
-        public ?string $text = null,
-        public bool $hideText = false,
         public bool $show = true,
         public bool $hide = false,
-        public ?string $title = null,
-        public ?string $variant = null,
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public bool $disabled = false,
-        public ?string $confirm = null,
-        public ?string $confirmId = null,
-        public ?string $confirmTitle = null,
-        public ?string $confirmVariant = null,
-        public ?string $startContent = null,
-        public ?string $endContent = null,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-        public ?string $endIcon = null,
-    ) {
-        $this->onConstructing();
-        $this->initAttributes();
+    ) {}
 
+    protected function initAttributes(): void
+    {
         if (! $this->show || $this->hide) {
             return;
         }
 
         if ($this->confirm !== null) {
-            $this->confirmId = 'link-button-'.($this->confirmId ?? Str::random(32));
+            $this->confirmId ??= 'link-button-'.Str::random(32);
         }
 
         $this->validBtnVariant();

@@ -18,6 +18,8 @@ class Logout extends FormButton
         $this->text ??= Str::ucfirst(trans('action.logout'));
 
         $this->formId = 'logout-'.($this->formId ?? Str::random(32));
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

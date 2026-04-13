@@ -19,6 +19,8 @@ class Edit extends LinkButton
             $this->confirmVariant ??= 'primary';
             $this->confirmId = 'edit-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

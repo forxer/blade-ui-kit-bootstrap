@@ -20,6 +20,8 @@ class Archive extends FormButton
         $this->text ??= Str::ucfirst(trans('action.archive'));
 
         $this->formId = 'archive-'.($this->formId ?? Str::random(32));
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

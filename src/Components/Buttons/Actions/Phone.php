@@ -9,57 +9,9 @@ use Illuminate\Support\Str;
 
 class Phone extends LinkButton
 {
-    public function __construct(
-        public ?string $phoneNumber = null,
-        public ?string $phoneNumberDisplayed = null,
-        public ?string $url = null,
-        public ?string $text = null,
-        public bool $hideText = false,
-        public bool $show = true,
-        public bool $hide = false,
-        public ?string $title = null,
-        public ?string $variant = null,
-        public bool $outline = false,
-        public bool $noOutline = false,
-        public ?string $size = null,
-        public bool $lg = false,
-        public bool $sm = false,
-        public bool $disabled = false,
-        public ?string $confirm = null,
-        public ?string $confirmId = null,
-        public ?string $confirmTitle = null,
-        public ?string $confirmVariant = null,
-        public ?string $startContent = null,
-        public ?string $endContent = null,
-        public ?string $icon = null,
-        public ?string $startIcon = null,
-        public ?string $endIcon = null,
-    ) {
-        parent::__construct(
-            $url,
-            $text,
-            $hideText,
-            $show,
-            $hide,
-            $title,
-            $variant,
-            $outline,
-            $noOutline,
-            $size,
-            $lg,
-            $sm,
-            $disabled,
-            $confirm,
-            $confirmId,
-            $confirmTitle,
-            $confirmVariant,
-            $startContent,
-            $endContent,
-            $icon,
-            $startIcon,
-            $endIcon,
-        );
-    }
+    public ?string $phoneNumber = null;
+
+    public ?string $phoneNumberDisplayed = null;
 
     protected function initAttributes(): void
     {
@@ -81,6 +33,8 @@ class Phone extends LinkButton
             $this->confirmVariant ??= 'info';
             $this->confirmId = 'phone-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

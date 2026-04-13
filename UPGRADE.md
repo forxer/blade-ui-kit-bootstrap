@@ -1,6 +1,132 @@
 Upgrade
 =======
 
+From 1.x to 2.0.0
+------------------
+
+### Slim constructors
+
+All button base classes now have slim constructors. Constructor parameters have been drastically reduced:
+
+| Component | v1 params | v2 params |
+|-----------|-----------|-----------|
+| SimpleButton | 23 | 2 (`$show`, `$hide`) |
+| LinkButton | 22 | 2 (`$show`, `$hide`) |
+| FormButton | 26 | 3 (`$url`, `$show`, `$hide`) |
+| HelpInfo | 14 | 2 (`$show`, `$hide`) |
+| Alert | 6 | 0 |
+| Badge | 4 | 0 |
+| Modal | 6 | 2 (`$id`, `$title`) |
+| Confirm | 3 | 1 (`$id`) |
+| Form Modal | 10 | 3 (`$id`, `$title`, `$action`) |
+
+All optional properties are now class properties, automatically hydrated from the Blade attribute bag.
+
+**Blade templates require no changes** — all attributes work the same way as before.
+
+**If you extended a component and called `parent::__construct()` with named parameters**, you must migrate:
+
+```php
+// v1 — BREAKS in v2
+parent::__construct(variant: 'primary', text: 'Save');
+
+// v2 — use onAttributesSet() instead
+protected function onAttributesSet(): void
+{
+    $this->variant ??= 'primary';
+    $this->text ??= 'Save';
+}
+```
+
+### `initAttributes()` removed
+
+Replace with `onAttributesSet()`. No `parent::onAttributesSet()` call needed.
+
+```php
+// v1
+protected function initAttributes(): void
+{
+    $this->variant ??= 'success';
+}
+
+// v2
+protected function onAttributesSet(): void
+{
+    $this->variant ??= 'success';
+}
+```
+
+### `onConstructing()` removed
+
+Replace with `onAttributesSet()`. The timing is different (runs after attribute hydration instead of during construction), but the `??=` pattern ensures user-passed values take precedence.
+
+```php
+// v1
+protected function onConstructing(): void
+{
+    $this->variant ??= 'danger';
+}
+
+// v2
+protected function onAttributesSet(): void
+{
+    $this->variant ??= 'danger';
+}
+```
+
+### Extra constructor parameters no longer needed
+
+Components that redeclared the parent constructor to add custom parameters can now use class properties instead. The `onAttributesSet()` hook handles post-hydration logic.
+
+```php
+// v1 — 25 parameters just to add $target and $string
+public function __construct(
+    public ?string $target = null,
+    public ?string $string = null,
+    public ?string $text = null,
+    // ... 22 more parameters ...
+) {
+    parent::__construct($text, ...);
+}
+
+// v2 — just class properties + hook
+public ?string $target = null;
+public ?string $string = null;
+
+protected function onAttributesSet(): void
+{
+    // Use $this->target, $this->string here
+}
+```
+
+### Modal optional parameters
+
+Modal, Confirm, and Form Modal constructors now only accept required parameters. Optional parameters (`dismissable`, `size`, `centered`, `scrollable`) are class properties hydrated from attributes.
+
+If you extend Modal and call `parent::__construct()`:
+
+```php
+// v1
+parent::__construct($id, $title, $dismissable, $size, $centered, $scrollable);
+
+// v2
+parent::__construct($id, $title);
+// Other properties are set via attributes or in onAttributesSet()
+```
+
+### Alert and Badge constructors removed
+
+Alert and Badge no longer have constructors. All parameters are class properties.
+
+### Quick migration checklist
+
+- Replace `initAttributes()` → `onAttributesSet()` (no parent call needed)
+- Replace `onConstructing()` → `onAttributesSet()` (no parent call needed)
+- Remove custom constructors that only existed to add extra parameters
+- Update `parent::__construct()` calls to only pass required parameters
+- Blade templates: **no changes needed**
+
+
 From 0.26.x to 1.0.0
 --------------------
 

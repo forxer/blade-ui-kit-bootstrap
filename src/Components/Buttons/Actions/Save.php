@@ -21,6 +21,8 @@ class Save extends SimpleButton
             $this->confirmVariant ??= 'success';
             $this->confirmId = 'save-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

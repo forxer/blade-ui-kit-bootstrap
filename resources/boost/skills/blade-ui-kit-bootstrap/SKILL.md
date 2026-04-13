@@ -52,11 +52,12 @@ metadata:
 php artisan make:blade-ui-kit-bs-component MonBouton --extends=btn-save
 ```
 
-- Hook `onConstructing()` : personnaliser les valeurs par défaut (jamais `initAttributes()`, réservé au package)
+- Hook `onAttributesSet()` : personnaliser les valeurs par défaut et ajouter de la logique post-hydratation
 - Toujours `??=` pour que les props passées en template priment sur les defaults
+- Pas de `parent::onAttributesSet()` — le package appelle `initAttributes()` automatiquement après
 
 ```php
-protected function onConstructing(): void
+protected function onAttributesSet(): void
 {
     $this->variant ??= 'danger';
     $this->text ??= 'Mon libellé';
@@ -65,7 +66,7 @@ protected function onConstructing(): void
 
 ### Propriétés custom (extra properties)
 
-Pour ajouter une propriété typée sans redéclarer le constructeur parent (22+ params) :
+Pour ajouter une propriété typée sans redéclarer le constructeur parent :
 
 ```php
 class Archives extends Base
@@ -88,10 +89,9 @@ class Archives extends Base
 <x-btn-archives :url="route('archives')" :items-in-archives="$count" />
 ```
 
-- Hook `onAttributesSet()` : logique post-hydratation, peut modifier n'importe quelle propriété du composant
 - Coercion de type automatique (`int`, `float`, `bool`, `string`)
 - Conversion kebab-case → camelCase transparente
-- Voir `docs/extra-properties.md` pour le détail complet
+- Voir `docs/extending-components.md` section "Adding Custom Properties" pour le détail complet
 
 Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 
@@ -137,10 +137,11 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 
 ## Règles
 
-- ❌ `initAttributes()` dans les extensions app — réservé aux composants du package
+- ❌ `initAttributes()` — supprimé en v2, utiliser `onAttributesSet()`
+- ❌ `onConstructing()` — supprimé en v2, utiliser `onAttributesSet()`
 - ❌ Hardcoder `is-invalid` — géré automatiquement par le package
 - ❌ `Blade::component()` dans un ServiceProvider — utiliser le fichier de config
-- ✅ `onConstructing()` + `??=` pour toute extension
+- ✅ `onAttributesSet()` + `??=` pour toute extension (pas de `parent::` nécessaire)
 - ✅ Enregistrer via `config/blade-ui-kit-bootstrap.php`
 
 ## Références internes

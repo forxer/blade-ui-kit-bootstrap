@@ -18,6 +18,8 @@ class Archives extends LinkButton
         if ($this->confirm !== null) {
             $this->confirmId = 'archives-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

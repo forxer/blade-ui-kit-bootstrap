@@ -19,6 +19,8 @@ class Create extends LinkButton
             $this->confirmVariant ??= 'primary';
             $this->confirmId = 'create-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string

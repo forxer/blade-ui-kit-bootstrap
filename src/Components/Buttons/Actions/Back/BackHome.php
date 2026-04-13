@@ -18,6 +18,8 @@ class BackHome extends LinkButton
         if ($this->confirm !== null) {
             $this->confirmId = 'back-home-'.($this->confirmId ?? Str::random(32));
         }
+
+        parent::initAttributes();
     }
 
     public function viewName(): ?string
