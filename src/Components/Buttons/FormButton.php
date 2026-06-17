@@ -20,11 +20,7 @@ class FormButton extends BladeComponent
     use BtnVariant;
     use FormMethod;
 
-    public ?string $text = null;
-
     public bool $hideText = false;
-
-    public ?string $title = null;
 
     public ?string $variant = null;
 
@@ -42,11 +38,7 @@ class FormButton extends BladeComponent
 
     public ?string $formId = null;
 
-    public ?string $confirm = null;
-
     public ?string $confirmId = null;
-
-    public ?string $confirmTitle = null;
 
     public ?string $confirmVariant = null;
 
@@ -56,20 +48,28 @@ class FormButton extends BladeComponent
 
     public bool $novalidate = true;
 
-    public ?string $startContent = null;
-
-    public ?string $endContent = null;
-
     public ?string $icon = null;
 
     public ?string $startIcon = null;
 
     public ?string $endIcon = null;
 
+    /**
+     * Content properties are declared as constructor parameters — not bare public properties — so
+     * Blade does NOT apply `sanitizeComponentAttribute()` (`e()`) to them. They are rendered raw
+     * (`{!! !!}`) to allow HTML, so the "caller escapes" contract is preserved and pre-escaped or
+     * HTML content is not double escaped.
+     */
     public function __construct(
         public string $url,
         public bool $show = true,
         public bool $hide = false,
+        public ?string $text = null,
+        public ?string $title = null,
+        public ?string $confirm = null,
+        public ?string $confirmTitle = null,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {}
 
     protected function initAttributes(): void

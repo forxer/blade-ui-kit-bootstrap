@@ -143,6 +143,7 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 - ❌ `Blade::component()` dans un ServiceProvider — utiliser le fichier de config
 - ✅ `onAttributesSet()` + `??=` pour toute extension (pas de `parent::` nécessaire)
 - ✅ Enregistrer via `config/blade-ui-kit-bootstrap.php`
+- ✅ Échapper soi-même les données non sûres passées aux attributs de contenu (`title`, `text`, `confirm`, `startContent`, `endContent`, `content`) avec `e()` — rendus en brut (HTML autorisé), le composant ne les auto-échappe pas
 
 ## Références internes
 

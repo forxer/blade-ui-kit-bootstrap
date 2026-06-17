@@ -1,6 +1,36 @@
 Upgrade
 =======
 
+From 2.0.0 to 2.0.1
+-------------------
+
+### Content properties are constructor parameters again
+
+Version 2.0.0 moved every optional property to an auto-hydrated class property. As a side effect, Blade applied `sanitizeComponentAttribute()` (i.e. `e()`) to the content properties that the views render raw (`{!! !!}`). Content that was already escaped — or meant to be HTML — was therefore **double-escaped** (`Tom & Jerry` rendered as `Tom &amp;amp; Jerry`), and HTML could no longer be passed.
+
+These content properties are now declared as constructor parameters again, so Blade leaves their value untouched and the documented "it's up to YOU to escape" contract is restored:
+
+| Component | Content properties moved back to the constructor |
+|-----------|--------------------------------------------------|
+| LinkButton | `url`, `text`, `title`, `confirm`, `confirmTitle`, `startContent`, `endContent` |
+| SimpleButton | `text`, `title`, `confirm`, `confirmTitle`, `formId`, `startContent`, `endContent` |
+| FormButton | `text`, `title`, `confirm`, `confirmTitle`, `startContent`, `endContent` |
+| HelpInfo | `content`, `text`, `title` |
+| Confirm modal | `title` |
+
+Configuration properties (`variant`, `size`, `icon`, booleans, …) remain auto-hydrated class properties.
+
+**No change is required in your Blade templates** — keep escaping untrusted data yourself, exactly as the documentation already shows:
+
+```blade
+<x-btn-edit :url="$url" :title="trans('edit_tooltip', ['name' => e($model->name)])" />
+```
+
+**If you removed `e()` calls to work around the 2.0.0 double-escaping, restore them** — escaping untrusted content is your responsibility again.
+
+**If you extended a button or the confirm modal**, the `onAttributesSet()` + `??=` pattern keeps working unchanged; you may also pass these content values to `parent::__construct()` again.
+
+
 From 1.x to 2.0.0
 ------------------
 
@@ -23,6 +53,8 @@ All button base classes now have slim constructors. Constructor parameters have 
 All optional properties are now class properties, automatically hydrated from the Blade attribute bag.
 
 **Blade templates require no changes** — all attributes work the same way as before.
+
+> **Note:** in 2.0.0 this caused content properties rendered raw (`title`, `text`, `confirm`, `startContent`, `endContent`, …) to be double-escaped. This is fixed in 2.0.1 — see [From 2.0.0 to 2.0.1](#from-200-to-201).
 
 **If you extended a component and called `parent::__construct()` with named parameters**, you must migrate:
 

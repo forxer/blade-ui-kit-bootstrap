@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+2.0.1 (2026-06-17)
+------------------
+
+### Bug Fixes
+
+- Restore content properties (`title`, `text`, `confirm`, `confirmTitle`, `startContent`, `endContent`, `url`, `content`) as constructor parameters so Blade no longer double-escapes pre-escaped or HTML content passed to buttons and the confirm modal
+
+
 2.0.0 (2026-04-13)
 ------------------
 

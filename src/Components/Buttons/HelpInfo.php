@@ -16,13 +16,7 @@ class HelpInfo extends BladeComponent
     use BtnSize;
     use BtnVariant;
 
-    public ?string $content = null;
-
-    public ?string $text = null;
-
     public bool $hideText = false;
-
-    public ?string $title = null;
 
     public ?string $variant = 'link';
 
@@ -40,9 +34,18 @@ class HelpInfo extends BladeComponent
 
     public ?string $startIcon = null;
 
+    /**
+     * Content properties are declared as constructor parameters — not bare public properties — so
+     * Blade does NOT apply `sanitizeComponentAttribute()` (`e()`) to them. They are rendered raw
+     * (`{!! !!}`) to allow HTML, so the "caller escapes" contract is preserved and pre-escaped or
+     * HTML content is not double escaped.
+     */
     public function __construct(
         public bool $show = true,
         public bool $hide = false,
+        public ?string $content = null,
+        public ?string $text = null,
+        public ?string $title = null,
     ) {}
 
     protected function initAttributes(): void

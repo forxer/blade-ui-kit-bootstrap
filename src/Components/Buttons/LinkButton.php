@@ -16,13 +16,7 @@ class LinkButton extends BladeComponent
     use BtnSize;
     use BtnVariant;
 
-    public ?string $url = null;
-
-    public ?string $text = null;
-
     public bool $hideText = false;
-
-    public ?string $title = null;
 
     public ?string $variant = null;
 
@@ -38,17 +32,9 @@ class LinkButton extends BladeComponent
 
     public bool $disabled = false;
 
-    public ?string $confirm = null;
-
     public ?string $confirmId = null;
 
-    public ?string $confirmTitle = null;
-
     public ?string $confirmVariant = null;
-
-    public ?string $startContent = null;
-
-    public ?string $endContent = null;
 
     public ?string $icon = null;
 
@@ -56,9 +42,24 @@ class LinkButton extends BladeComponent
 
     public ?string $endIcon = null;
 
+    /**
+     * Content properties (title, text, confirm, start/end content, url) are declared as
+     * constructor parameters — not as bare public properties — on purpose: Blade applies
+     * `sanitizeComponentAttribute()` (i.e. `e()`) to bound attributes that are NOT constructor
+     * parameters. Since these values are rendered raw (`{!! !!}`) so the caller can pass HTML,
+     * keeping them as constructor parameters preserves the "caller escapes" contract and avoids
+     * the double escaping that would otherwise occur for pre-escaped or HTML content.
+     */
     public function __construct(
         public bool $show = true,
         public bool $hide = false,
+        public ?string $url = null,
+        public ?string $text = null,
+        public ?string $title = null,
+        public ?string $confirm = null,
+        public ?string $confirmTitle = null,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {}
 
     protected function initAttributes(): void

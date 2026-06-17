@@ -357,7 +357,7 @@ The `items-in-archives` attribute is automatically converted to `itemsInArchives
 
 The complete hook execution order is:
 
-1. Constructor — only truly required parameters (`$url`, `$id`, `$show`, `$hide`)
+1. Constructor — required parameters (`$url`, `$id`, `$show`, `$hide`) **and content properties** (`$title`, `$text`, `$confirm`, `$startContent`, `$endContent`, …). Content properties are constructor parameters so Blade does not apply `sanitizeComponentAttribute()` (`e()`) to them: they are rendered raw (`{!! !!}`) and escaping untrusted data is the caller's responsibility.
 2. `data()` — Blade captures a snapshot of public properties *(before attributes are set)*
 3. `withAttributes()` — Blade assigns non-constructor attributes
 4. `hydrateExtraProperties()` — automatic property hydration with type coercion
@@ -370,7 +370,8 @@ The complete hook execution order is:
 - Only **public** properties are hydrated. Private or protected properties are ignored.
 - Properties with `private(set)` or `protected(set)` asymmetric visibility are skipped.
 - Properties that are **constructor parameters** are handled by Blade normally and skipped by the hydration mechanism.
-- If an extra property name conflicts with an HTML attribute you need (e.g., `title`), the property will capture the attribute. Choose distinctive property names to avoid this.
+- If an extra property name conflicts with an HTML attribute you need, the property will capture the attribute (it will be hydrated into the property instead of being rendered on the element). Choose distinctive property names to avoid this.
+- Content properties (`title`, `text`, `confirm`, `startContent`, `endContent`, …) are constructor parameters, not extra properties, so they bypass this hydration mechanism and Blade does not escape them — pass already-escaped or trusted HTML.
 - Bound syntax (`:items-in-archives="$count"`) passes the PHP value directly. Unbound syntax (`items-in-archives="42"`) passes a string that gets coerced.
 - You can modify **any component property** in `onAttributesSet()` (e.g., `$this->endContent`) and the view will see the updated value.
 

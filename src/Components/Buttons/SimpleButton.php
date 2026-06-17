@@ -18,11 +18,7 @@ class SimpleButton extends BladeComponent
     use BtnType;
     use BtnVariant;
 
-    public ?string $text = null;
-
     public bool $hideText = false;
-
-    public ?string $title = null;
 
     public ?string $variant = null;
 
@@ -38,21 +34,11 @@ class SimpleButton extends BladeComponent
 
     public bool $disabled = false;
 
-    public ?string $confirm = null;
-
     public ?string $confirmId = null;
-
-    public ?string $confirmTitle = null;
 
     public ?string $confirmVariant = null;
 
-    public ?string $formId = null;
-
     public ?string $type = null;
-
-    public ?string $startContent = null;
-
-    public ?string $endContent = null;
 
     public ?string $icon = null;
 
@@ -60,9 +46,22 @@ class SimpleButton extends BladeComponent
 
     public ?string $endIcon = null;
 
+    /**
+     * Content properties are declared as constructor parameters — not bare public properties — so
+     * Blade does NOT apply `sanitizeComponentAttribute()` (`e()`) to them. They are rendered raw
+     * (`{!! !!}`) to allow HTML, so the "caller escapes" contract is preserved and pre-escaped or
+     * HTML content is not double escaped.
+     */
     public function __construct(
         public bool $show = true,
         public bool $hide = false,
+        public ?string $text = null,
+        public ?string $title = null,
+        public ?string $confirm = null,
+        public ?string $confirmTitle = null,
+        public ?string $formId = null,
+        public ?string $startContent = null,
+        public ?string $endContent = null,
     ) {}
 
     protected function initAttributes(): void
