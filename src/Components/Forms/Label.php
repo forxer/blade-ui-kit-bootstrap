@@ -8,6 +8,9 @@ use BladeUIKitBootstrap\Components\BladeComponent;
 
 class Label extends BladeComponent
 {
+    /**
+     * @param  string  $for  Label `for` attribute (id of the associated field).
+     */
     public function __construct(
         public string $for,
     ) {}

@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class Email extends LinkButton
 {
+    /** Target email address (used for the `mailto:` link). */
     public ?string $address = null;
 
     protected function initAttributes(): void

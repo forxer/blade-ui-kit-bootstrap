@@ -15,6 +15,13 @@ class Input extends BladeComponent
 
     public private(set) ?string $value;
 
+    /**
+     * @param  string  $name  Field `name` attribute (also the default `id`).
+     * @param  string  $type  HTML input type. Defaults to `text`.
+     * @param  string|null  $value  Initial value (overridden by `old($name)` if present).
+     * @param  string|null  $id  `id` attribute. Defaults to the `name` value.
+     * @param  string|null  $errorBag  Name of the validation error bag to use.
+     */
     public function __construct(
         public string $name,
         public string $type = 'text',

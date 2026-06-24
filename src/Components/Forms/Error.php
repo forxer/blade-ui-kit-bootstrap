@@ -11,6 +11,10 @@ class Error extends BladeComponent
 {
     use CanHaveErrors;
 
+    /**
+     * @param  string  $field  Name of the field whose validation errors are displayed.
+     * @param  string  $bag  Name of the error bag to use. Defaults to `default`.
+     */
     public function __construct(
         public string $field,
         public string $bag = 'default',

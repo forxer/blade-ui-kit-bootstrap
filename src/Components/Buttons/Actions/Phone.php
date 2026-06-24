@@ -9,8 +9,10 @@ use Illuminate\Support\Str;
 
 class Phone extends LinkButton
 {
+    /** Target phone number (used for the `tel:` link). */
     public ?string $phoneNumber = null;
 
+    /** Phone number as displayed on screen (if different from `phoneNumber`). */
     public ?string $phoneNumberDisplayed = null;
 
     protected function initAttributes(): void

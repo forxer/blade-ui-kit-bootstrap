@@ -9,8 +9,10 @@ use Illuminate\Support\Str;
 
 class Copy extends SimpleButton
 {
+    /** CSS selector of the element whose content will be copied to the clipboard. */
     public ?string $target = null;
 
+    /** Literal string to copy to the clipboard (alternative to `target`). */
     public ?string $string = null;
 
     protected function initAttributes(): void
