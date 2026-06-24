@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Concerns;
 
+use BladeUIKitBootstrap\Enums\BtnSize as BtnSizeEnum;
 use InvalidArgumentException;
 
 trait BtnSize
 {
-    private const ALLOWED_BUTTON_SIZE = [
-        'lg',
-        'sm',
-    ];
-
     private function validBtnSize(): void
     {
         if ($this->size !== null) {
@@ -27,11 +23,11 @@ trait BtnSize
             return;
         }
 
-        if (! \in_array($this->size, self::ALLOWED_BUTTON_SIZE, true)) {
+        if (! \in_array($this->size, BtnSizeEnum::values(), true)) {
             throw new InvalidArgumentException(\sprintf(
                 'The button size "%s" is not allowed. Allowed size are: %s.',
                 e($this->size),
-                implode(', ', self::ALLOWED_BUTTON_SIZE)
+                implode(', ', BtnSizeEnum::values())
             ));
         }
     }
