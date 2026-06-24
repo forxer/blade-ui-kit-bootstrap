@@ -42,6 +42,8 @@ The `variant` attribute defines the color and style of the alert. All Bootstrap 
 - `light`
 - `dark`
 
+> Only these variants are accepted; any other value throws an `InvalidArgumentException`.
+
 ```blade
 <x-alert variant="danger">
     A simple danger alert—check it out!

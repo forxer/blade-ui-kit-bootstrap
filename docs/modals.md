@@ -105,6 +105,8 @@ Available sizes:
 - `lg` - Large modal
 - `xl` - Extra large modal
 
+Only these sizes are accepted; any other value throws an `InvalidArgumentException`.
+
 ### Vertically centered modal
 
 You can vertically center the modal on the page using the `:centered="true"` attribute:
@@ -144,7 +146,7 @@ This modal allows you to integrate a form into its content.
 ```blade
 <x-form-modal id="exampleFormModal" title="Example Form Modal" action="http://example.com">
     <p>Modal form example content</p>
-</x-modal>
+</x-form-modal>
 ```
 
 As for the basic modal the `id` and `title` attributes are required. But also the `action` attribute.

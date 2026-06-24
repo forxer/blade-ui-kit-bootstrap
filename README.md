@@ -9,6 +9,7 @@ Features
 --------
 
 - **Many pre-built components** ready to use with Bootstrap 4 and 5
+- **IDE support** - Attribute descriptions on hover and value autocompletion (variants, sizes, types) in PhpStorm and VS Code
 - **Automatic validation error handling** with Bootstrap's `is-invalid` class
 - **Old value persistence** for form inputs after validation
 - **Dual Bootstrap support** - Switch between Bootstrap 4 and 5 with a single configuration

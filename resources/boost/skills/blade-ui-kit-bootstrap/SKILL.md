@@ -127,6 +127,10 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 | `btn_end_icon_format` | `null` | Format `sprintf` pour icône après le texte |
 | `enable_test_routes` | `APP_DEBUG` | Active les routes de test/démo des composants |
 
+## Valeurs contraintes & support IDE
+
+Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de modale) sont définies par des enums référentiels dans `BladeUIKitBootstrap\Enums` (`BtnVariant`, `AlertVariant`, `BadgeVariant`, `BtnSize`, `BtnType`, `HttpMethod`, `ModalSize`) : ils sont la source de vérité de la validation (valeur invalide → `InvalidArgumentException`) et sont documentés en PHPDoc `@var`/`@param` sur les composants → descriptions au survol et autocomplétion des valeurs dans PhpStorm et VS Code.
+
 ## Liste complète des action buttons
 
 `btn-save`, `btn-create`, `btn-edit`, `btn-duplicate`, `btn-delete`, `btn-destroy`, `btn-cancel`,

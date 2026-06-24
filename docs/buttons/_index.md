@@ -272,6 +272,8 @@ Possible values are the variants provided by Bootstrap. With [Bootstrap 4](https
 - `dark`
 - `link`
 
+> Only these variants (plus their `outline-*` counterparts in Bootstrap 5) are accepted; any other value throws an `InvalidArgumentException`.
+
 ```blade
 <x-btn variant="success" />
 ```
@@ -390,6 +392,8 @@ You also have at your disposal the `size` attribute which must return one of the
 ```
 
 Note that the `size` attribute *has priority* over the other two attributes `lg` and `sm`.
+
+Only `lg` or `sm` are accepted for the `size` attribute; any other value throws an `InvalidArgumentException`.
 
 ### Title
 

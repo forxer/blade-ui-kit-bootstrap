@@ -42,6 +42,8 @@ The `variant` attribute defines the color of the badge. All Bootstrap badge vari
 - `light`
 - `dark`
 
+> Only these variants are accepted; any other value throws an `InvalidArgumentException`.
+
 ```blade
 <x-badge variant="success">Active</x-badge>
 <x-badge variant="danger">Urgent</x-badge>

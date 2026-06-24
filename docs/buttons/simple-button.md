@@ -69,7 +69,7 @@ But this is not ideal, it is preferable that you identify yourself the target on
 
 ### Type
 
-The default type is "button" but you can obviously modify it. Possible values are: `button`, `submit` or `reset`.
+The default type is "button" but you can obviously modify it. Possible values are: `button`, `submit` or `reset`. Any other value throws an `InvalidArgumentException`.
 
 ```blade
     <x-btn type="submit" text="Do something" />
