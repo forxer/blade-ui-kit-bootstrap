@@ -1,6 +1,21 @@
 CHANGELOG
 =========
 
+2.2.0-RC.1 (2026-06-24)
+-----------------------
+
+### Features
+
+- **IDE support**: added English PHPDoc descriptions and `@var`/`@param` literal-union types to all components, so PhpStorm/Laravel Idea and the VS Code Laravel extension show attribute descriptions on hover and autocomplete constrained values (variants, sizes, types, HTTP methods). No API change — constrained properties remain `?string`, and Blade usage is unchanged.
+- Added referential string-backed enums as the single source of truth for constrained values: `BtnVariant`, `AlertVariant`, `BadgeVariant`, `BtnSize`, `BtnType`, `HttpMethod` and `ModalSize`. The validation traits now derive their allowed values from these enums instead of local array constants.
+- Modal sizes (`sm`, `lg`, `xl`) are now validated against the new `ModalSize` enum on `<x-modal>` and the form modal. An invalid size now throws an `InvalidArgumentException` (it was previously ignored silently).
+- Added the package's first test suite (Pest + Orchestra Testbench), including two guard tests: a synchronization guard keeping each `@var` union aligned with its enum, and a completeness guard ensuring every public attribute and promoted constructor parameter is documented.
+
+### Refactor
+
+- Removed the unused `$default` parameter from the internal `validBtnType()` method (dead code; `FormButton` keeps its `submit` default via its property initializer).
+
+
 2.1.0 (2026-06-24)
 ------------------
 
