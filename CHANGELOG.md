@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+2.1.0 (2026-06-24)
+------------------
+
+### Features
+
+- Added `btn-duplicate` action button (extends `LinkButton`, `warning` variant, text from `action.duplicate`)
+
+
 2.0.1 (2026-06-17)
 ------------------
 

@@ -25,6 +25,7 @@
         <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-crud-buttons">
             <x-btn-create url="#" />
             <x-btn-edit url="#" />
+            <x-btn-duplicate url="#" />
             <x-btn-show url="#" />
             <x-btn-save />
             <x-btn-delete url="#" />
@@ -33,6 +34,7 @@
             <x-slot:code>
 &lt;x-btn-create url="#" /&gt;
 &lt;x-btn-edit url="#" /&gt;
+&lt;x-btn-duplicate url="#" /&gt;
 &lt;x-btn-show url="#" /&gt;
 &lt;x-btn-save /&gt;
 &lt;x-btn-delete url="#" /&gt;

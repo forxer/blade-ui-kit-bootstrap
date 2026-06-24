@@ -18,6 +18,7 @@ use BladeUIKitBootstrap\Components\Buttons\Actions\Delete;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Destroy;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Disable;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Disabled;
+use BladeUIKitBootstrap\Components\Buttons\Actions\Duplicate;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Edit;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Email;
 use BladeUIKitBootstrap\Components\Buttons\Actions\Enable;
@@ -89,6 +90,7 @@ class DefaultComponents
             'btn-destroy' => Destroy::class,
             'btn-disable' => Disable::class,
             'btn-disabled' => Disabled::class,
+            'btn-duplicate' => Duplicate::class,
             'btn-edit' => Edit::class,
             'btn-email' => Email::class,
             'btn-enable' => Enable::class,

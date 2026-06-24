@@ -129,7 +129,7 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 
 ## Liste complète des action buttons
 
-`btn-save`, `btn-create`, `btn-edit`, `btn-delete`, `btn-destroy`, `btn-cancel`,
+`btn-save`, `btn-create`, `btn-edit`, `btn-duplicate`, `btn-delete`, `btn-destroy`, `btn-cancel`,
 `btn-back`, `btn-back-list`, `btn-back-home`, `btn-show`, `btn-copy`, `btn-preview`,
 `btn-logout`, `btn-email`, `btn-phone`, `btn-website`, `btn-archive`, `btn-archives`,
 `btn-restore`, `btn-recycle-bin`, `btn-enable`, `btn-enabled`, `btn-disable`, `btn-disabled`,

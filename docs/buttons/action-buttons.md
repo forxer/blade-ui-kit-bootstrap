@@ -16,6 +16,7 @@ Action buttons extends either [Form button](./form-button.md), the [Link button]
 - [Resource buttons](#resource-buttons)
     - [Create button](#create-button)
     - [Edit button](#edit-button)
+    - [Duplicate button](#duplicate-button)
     - [Archive button](#archive-button)
     - [Delete button](#delete-button)
     - [Restore button](#restore-button)
@@ -180,6 +181,27 @@ This will output the following HTML:
 ```html
 <a href="https://localhost/posts/42/edit" role="button" class="btn btn-primary">
     Edit
+</a>
+```
+
+### Duplicate button
+
+Behind the scenes, the "Duplicate Button" component extends the [Link Button](./link-button.md) component with the following default properties:
+- Text: "Duplicate"
+- Variant: `warning`
+- Confirm Variant: `warning`
+
+Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-text), [Show or hide](./buttons.md#show-or-hide), [Start and end content](./buttons.md#start-and-end-content), [Icons](./buttons.md#icons), [Variant](./buttons.md#variant), [Outline and no-outline](./buttons.md#outline-and-no-outline), [Sizes](./buttons.md#sizes), [Title](./buttons.md#title), [Confirm](./buttons.md#confirm), [Confirm Variant](./buttons.md#confirm-variant),  [Disabled](./buttons.md#disabled), [Confirm ID](./link-button.md#confirm-id).
+
+```blade
+<x-btn-duplicate :url="route('posts.duplicate', $post)" />
+```
+
+This will output the following HTML:
+
+```html
+<a href="https://localhost/posts/42/duplicate" role="button" class="btn btn-warning">
+    Duplicate
 </a>
 ```
 
