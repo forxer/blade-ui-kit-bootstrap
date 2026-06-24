@@ -14,7 +14,6 @@ class Password extends Input
         parent::__construct(
             name: $name,
             type: 'password',
-            value: null,
             id: $id,
             errorBag: $errorBag,
         );

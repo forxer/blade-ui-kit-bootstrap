@@ -24,7 +24,7 @@ trait BtnType
 
         $this->type = strtolower(trim($this->type));
 
-        if (! \in_array($this->type, self::ALLOWED_BUTTON_TYPE)) {
+        if (! \in_array($this->type, self::ALLOWED_BUTTON_TYPE, true)) {
             throw new InvalidArgumentException(\sprintf(
                 'The button type "%s" is not allowed. Allowed type are: %s.',
                 e($this->type),

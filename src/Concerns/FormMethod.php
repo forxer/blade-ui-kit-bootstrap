@@ -29,7 +29,7 @@ trait FormMethod
 
         $this->method = strtoupper(trim($this->method));
 
-        if (! \in_array($this->method, self::ALLOWED_FORM_METHOD)) {
+        if (! \in_array($this->method, self::ALLOWED_FORM_METHOD, true)) {
             throw new InvalidArgumentException(\sprintf(
                 'The HTTP method "%s" is not allowed. Allowed method are: %s.',
                 e($this->method),
