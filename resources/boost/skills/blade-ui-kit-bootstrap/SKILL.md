@@ -129,7 +129,7 @@ Enregistrement dans `config/blade-ui-kit-bootstrap.php` :
 
 ## Valeurs contraintes & support IDE
 
-Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de modale) sont définies par des enums référentiels dans `BladeUIKitBootstrap\Enums` (`BtnVariant`, `AlertVariant`, `BadgeVariant`, `BtnSize`, `BtnType`, `HttpMethod`, `ModalSize`) : ils sont la source de vérité de la validation (valeur invalide → `InvalidArgumentException`) et sont documentés en PHPDoc `@var`/`@param` sur les composants → descriptions au survol et autocomplétion des valeurs dans PhpStorm et VS Code.
+Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de modale) sont définies par des enums référentiels dans `BladeUIKitBootstrap\Enums` (`BtnVariant`, `AlertVariant`, `BadgeVariant`, `BtnSize`, `BtnType`, `HttpMethod`, `ModalSize`) : ils sont la source de vérité de la validation (valeur invalide → `InvalidArgumentException`) et sont documentés en PHPDoc `@var`/`@param` sur les composants (IntelliSense au niveau PHP). Note : les IDE complètent les noms de composants/attributs dans les balises `<x-…>`, mais ne remontent pas la complétion des valeurs ni les descriptions PHPDoc à l'intérieur des balises Blade.
 
 ## Liste complète des action buttons
 
