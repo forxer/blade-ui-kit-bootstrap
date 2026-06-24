@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+2.2.0-RC.2 (2026-06-24)
+-----------------------
+
+### Documentation
+
+- Corrected the IDE-support claim from RC.1. The PHPDoc `@var`/`@param` hints power PHP-level IDE IntelliSense — hover and value completion when working with the component classes in PHP — and document the allowed values in-source, but **current IDEs do not surface attribute value completion or PHPDoc hover inside `<x-...>` Blade tags**: PhpStorm/Laravel Idea and the VS Code Laravel extension autocomplete component and attribute *names* only. Updated the README and Laravel Boost assets accordingly. All RC.1 functional changes (referential enums, modal-size validation, first test suite, `validBtnType` cleanup) remain unchanged.
+
+
 2.2.0-RC.1 (2026-06-24)
 -----------------------
 
