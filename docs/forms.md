@@ -51,7 +51,7 @@ This will output the following HTML:
 
 ### HTTP method
 
-By default a `POST` HTTP method will be set. Of course, you can customize this:
+By default a `POST` HTTP method will be set. Of course, you can customize this. Accepted methods are `GET`, `POST`, `PUT`, `PATCH` and `DELETE`; any other value throws an `InvalidArgumentException`:
 
 ```blade
 <x-form :action="route('home')" method="PUT">
