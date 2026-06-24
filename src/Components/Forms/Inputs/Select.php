@@ -16,6 +16,16 @@ class Select extends BladeComponent
 
     public private(set) array $options;
 
+    /**
+     * @param  string  $name  Field `name` attribute (also the default `id`).
+     * @param  array<array-key, mixed>|Collection|null  $options  Options to render; nested arrays/collections become optgroups.
+     * @param  string|array|null  $selected  Currently selected value(s) (overridden by `old($name)` when present).
+     * @param  string|null  $placeholder  Optional placeholder option shown first.
+     * @param  string  $labelAttribute  Attribute used as the option label. Defaults to `name`.
+     * @param  string  $valueAttribute  Attribute used as the option value. Defaults to `id`.
+     * @param  string|null  $id  `id` attribute. Defaults to the `name` value.
+     * @param  string|null  $errorBag  Name of the validation error bag to use.
+     */
     public function __construct(
         public string $name,
         array|Collection|null $options = null,

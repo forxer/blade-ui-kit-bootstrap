@@ -15,6 +15,14 @@ class Radio extends BladeComponent
 
     public private(set) bool $isChecked;
 
+    /**
+     * @param  string  $name  Field `name` attribute.
+     * @param  string  $label  Label text displayed next to the radio.
+     * @param  string  $value  Value submitted when this radio is selected.
+     * @param  mixed  $checked  Initial selected value or boolean (overridden by `old($name)` when present).
+     * @param  string|null  $id  `id` attribute. Defaults to `{name}-{value}`.
+     * @param  string|null  $errorBag  Name of the validation error bag to use.
+     */
     public function __construct(
         public string $name,
         public string $label,

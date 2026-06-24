@@ -15,6 +15,14 @@ class Checkbox extends BladeComponent
 
     public private(set) bool $isChecked;
 
+    /**
+     * @param  string  $name  Field `name` attribute (also the default `id`).
+     * @param  string  $label  Label text displayed next to the checkbox.
+     * @param  string  $value  Value submitted when the checkbox is checked. Defaults to `1`.
+     * @param  bool|null  $checked  Initial checked state (overridden by `old($name)` when present).
+     * @param  string|null  $id  `id` attribute. Defaults to the `name` value.
+     * @param  string|null  $errorBag  Name of the validation error bag to use.
+     */
     public function __construct(
         public string $name,
         public string $label,
