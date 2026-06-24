@@ -114,7 +114,7 @@ class SimpleButton extends BladeComponent
             $this->confirmId ??= 'simple-button-'.Str::random(32);
         }
 
-        $this->validBtnType(self::DEFAULT_BUTTON_TYPE);
+        $this->validBtnType();
         $this->validBtnVariant();
         $this->validBtnSize();
         $this->validBtnStartIcon();

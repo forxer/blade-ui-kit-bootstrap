@@ -11,9 +11,7 @@ trait BtnType
 {
     private const DEFAULT_BUTTON_TYPE = 'button';
 
-    private const DEFAULT_FORM_BUTTON_TYPE = 'submit';
-
-    private function validBtnType(string $default): void
+    private function validBtnType(): void
     {
         $this->type ??= self::DEFAULT_BUTTON_TYPE;
 

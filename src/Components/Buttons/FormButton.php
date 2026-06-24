@@ -132,7 +132,7 @@ class FormButton extends BladeComponent
         }
 
         $this->validFormMethod();
-        $this->validBtnType(self::DEFAULT_FORM_BUTTON_TYPE);
+        $this->validBtnType();
         $this->validBtnVariant();
         $this->validBtnSize();
         $this->validBtnStartIcon();
