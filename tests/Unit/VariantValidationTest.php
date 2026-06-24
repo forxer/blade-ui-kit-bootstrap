@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use BladeUIKitBootstrap\Components\Alerts\Alert;
 use BladeUIKitBootstrap\Components\Buttons\SimpleButton;
+use BladeUIKitBootstrap\Components\Modals\Modal;
 
 it('rejects an invalid button variant', function () {
     $button = new SimpleButton();
@@ -30,3 +31,21 @@ it('rejects an invalid alert variant', function () {
     $method = new ReflectionMethod($alert, 'validAlertVariant');
     $method->invoke($alert);
 })->throws(InvalidArgumentException::class);
+
+it('rejects an invalid modal size', function () {
+    $modal = new Modal(id: 'm', title: 'T');
+    $modal->size = 'huge';
+
+    $method = new ReflectionMethod($modal, 'validModalSize');
+    $method->invoke($modal);
+})->throws(InvalidArgumentException::class);
+
+it('accepts a valid modal size', function () {
+    $modal = new Modal(id: 'm', title: 'T');
+    $modal->size = 'lg';
+
+    $method = new ReflectionMethod($modal, 'validModalSize');
+    $method->invoke($modal);
+
+    expect($modal->size)->toBe('lg');
+});

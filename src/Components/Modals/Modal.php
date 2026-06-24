@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace BladeUIKitBootstrap\Components\Modals;
 
 use BladeUIKitBootstrap\Components\BladeComponent;
+use BladeUIKitBootstrap\Concerns\ModalSize;
 
 class Modal extends BladeComponent
 {
+    use ModalSize;
+
     public private(set) string $titleLabel;
 
     /** Custom header slot of the modal. */
@@ -41,6 +44,11 @@ class Modal extends BladeComponent
         public string $title,
     ) {
         $this->titleLabel = str($id)->kebab()->append('-label')->toString();
+    }
+
+    protected function initAttributes(): void
+    {
+        $this->validModalSize();
     }
 
     public function viewName(): ?string
