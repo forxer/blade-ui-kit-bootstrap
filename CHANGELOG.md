@@ -1,6 +1,38 @@
 CHANGELOG
 =========
 
+2.2.0 (2026-06-25)
+------------------
+
+### Features
+
+- **IDE metadata generator**: new `blade-ui-kit-bs:ide` Artisan command that
+  introspects the registered components and generates IDE completion metadata in
+  three formats:
+  - `blade-ui-kit-bootstrap.code-snippets` — VS Code snippets (zero-install
+    fallback): constrained-value dropdowns and slot-aware open/close.
+  - `blade-ui-kit-bootstrap.html-data.json` — VS Code Custom Data
+    (`html.customData` schema), consumed by a **forthcoming dedicated VS Code
+    extension** to provide attribute name/value completion and hover docs inside
+    `<x-...>` Blade tags (the native `html.customData` setting alone does not
+    fire in Blade language mode).
+  - `blade-ui-kit-bootstrap.ide.json` — PhpStorm / Laravel Idea alias→class map.
+  Interactive (Laravel Prompts) or non-interactive (`--no-interaction`, for a
+  Composer `post-update-cmd` hook). Respects the configured `prefix` and any
+  `merge()`/`replace()` customisations.
+- Factored the component attribute reflection into a shared `AttributeReflector`,
+  giving the runtime hydration and the IDE generator a single source of truth.
+
+### Documentation
+
+- Added `docs/ide-autocomplete.md` (the command, the three outputs and their
+  consumers, team wiring); linked it from the README and index, and noted the
+  command in the Laravel Boost assets.
+
+> Finalises the 2.2.0-RC series (referential enums, modal-size validation, the
+> first test suite, and in-source PHPDoc IDE hints).
+
+
 2.2.0-RC.2 (2026-06-24)
 -----------------------
 
