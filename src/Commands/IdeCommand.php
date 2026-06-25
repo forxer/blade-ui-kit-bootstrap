@@ -19,7 +19,8 @@ use function Laravel\Prompts\text;
 class IdeCommand extends Command
 {
     protected $signature = 'blade-ui-kit-bs:ide
-                            {--output= : Output directory (relative to the project root)}
+                            {--output= : Output directory for the VS Code files (default: .vscode)}
+                            {--ide-output= : Output directory for ide.json (default: ide-helper/blade-ui-kit-bootstrap)}
                             {--snippets : Generate the VS Code snippets file}
                             {--json : Generate the VS Code Custom Data file}
                             {--ide-json : Generate the PhpStorm/Laravel Idea ide.json file}';
@@ -32,15 +33,21 @@ class IdeCommand extends Command
     private const array FILENAMES = [
         'snippets' => 'blade-ui-kit-bootstrap.code-snippets',
         'json' => 'blade-ui-kit-bootstrap.html-data.json',
-        'ide-json' => 'blade-ui-kit-bootstrap.ide.json',
+        // PhpStorm / Laravel Idea only reads files named exactly `ide.json`. It scans the
+        // project recursively and merges every `ide.json` it finds, so this one lives in a
+        // package-owned subfolder: it never collides with an app's own root `ide.json`, and
+        // is always safe to overwrite on regeneration.
+        'ide-json' => 'ide.json',
     ];
+
+    private const string DEFAULT_IDE_DIRECTORY = 'ide-helper/blade-ui-kit-bootstrap';
 
     public function handle(Filesystem $files): int
     {
         $formats = $this->resolveFormats();
-        $directory = $this->resolveDirectory();
 
-        $files->ensureDirectoryExists($directory);
+        $vscodeDirectory = array_intersect($formats, ['snippets', 'json']) !== [] ? $this->resolveDirectory() : null;
+        $ideDirectory = \in_array('ide-json', $formats, true) ? $this->resolveIdeDirectory() : null;
 
         $components = config('blade-ui-kit-bootstrap.components', []);
         $prefix = (string) config('blade-ui-kit-bootstrap.prefix', '');
@@ -51,18 +58,21 @@ class IdeCommand extends Command
         $written = [];
 
         foreach ($formats as $format) {
+            $directory = $format === 'ide-json' ? $ideDirectory : $vscodeDirectory;
+
             $payload = match ($format) {
                 'snippets' => SnippetsEmitter::emit($model),
                 'json' => HtmlDataEmitter::emit($model),
                 'ide-json' => IdeJsonEmitter::emit($this->tagToClass($components, $prefix)),
             };
 
+            $files->ensureDirectoryExists($directory);
             $path = $directory.DIRECTORY_SEPARATOR.self::FILENAMES[$format];
             $files->put($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR).PHP_EOL);
             $written[] = $path;
         }
 
-        info('Generated '.\count($written).' IDE metadata file(s) in '.$directory);
+        info('Generated '.\count($written).' IDE metadata file(s):');
 
         foreach ($written as $path) {
             $this->line('  • '.$path);
@@ -70,8 +80,9 @@ class IdeCommand extends Command
 
         note(
             "Commit these files so your team gets completion without re-running this command.\n".
-            "• Snippets work out of the box (fallback).\n".
-            '• The .html-data.json feeds the VS Code extension (primary).'
+            "• Snippets (.vscode) work out of the box (fallback).\n".
+            "• The .html-data.json feeds the VS Code extension (primary).\n".
+            '• ide.json lives in its own folder and is auto-detected (and merged) by Laravel Idea (PhpStorm).'
         );
 
         return self::SUCCESS;
@@ -112,12 +123,19 @@ class IdeCommand extends Command
         $output = $this->option('output');
 
         if ($output === null && $this->input->isInteractive()) {
-            $output = text(label: 'Output directory', default: '.vscode');
+            $output = text(label: 'VS Code output directory', default: '.vscode');
         }
 
         $output ??= '.vscode';
 
         return str_starts_with((string) $output, DIRECTORY_SEPARATOR) ? $output : base_path($output);
+    }
+
+    private function resolveIdeDirectory(): string
+    {
+        $output = $this->option('ide-output') ?? self::DEFAULT_IDE_DIRECTORY;
+
+        return str_starts_with($output, DIRECTORY_SEPARATOR) ? $output : base_path($output);
     }
 
     /**

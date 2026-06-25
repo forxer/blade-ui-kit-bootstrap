@@ -155,20 +155,20 @@ Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de mod
 # Interactif (TTY) — choisir fichiers + dossier de sortie via Laravel Prompts
 php artisan blade-ui-kit-bs:ide
 
-# Non-interactif — génère les 3 fichiers dans .vscode/
+# Non-interactif — génère les 3 fichiers
 php artisan blade-ui-kit-bs:ide --no-interaction
 
 # Flags de sélection : --snippets, --json, --ide-json
-# Option de répertoire : --output=DIR (défaut : .vscode/)
+# Répertoires : --output=DIR (fichiers VS Code, défaut .vscode/) ; --ide-output=DIR (ide.json, défaut ide-helper/blade-ui-kit-bootstrap/)
 ```
 
-Fichiers générés (dans `.vscode/` par défaut) :
+Fichiers générés :
 
-| Fichier | Consommateur | Rôle |
-|---------|-------------|------|
-| `blade-ui-kit-bootstrap.code-snippets` | VS Code (natif) | Snippets — fallback sans installation d'extension |
-| `blade-ui-kit-bootstrap.html-data.json` | Extension VS Code dédiée (à venir) | Complétion attributs/valeurs + hover en mode Blade |
-| `blade-ui-kit-bootstrap.ide.json` | PhpStorm / Laravel Idea | Mapping alias→classe |
+| Fichier | Emplacement | Consommateur | Rôle |
+|---------|-------------|--------------|------|
+| `blade-ui-kit-bootstrap.code-snippets` | `.vscode/` | VS Code (natif) | Snippets — fallback sans installation d'extension |
+| `blade-ui-kit-bootstrap.html-data.json` | `.vscode/` | Extension VS Code dédiée (à venir) | Complétion attributs/valeurs + hover en mode Blade |
+| `ide.json` | `ide-helper/blade-ui-kit-bootstrap/` | PhpStorm / Laravel Idea | Mapping alias→classe (auto-détecté, scan récursif + fusion ; coexiste avec un ide.json racine de l'app) |
 
 - La commande respecte le `prefix` configuré et les personnalisations `merge()`/`replace()`.
 - Committer les fichiers générés pour que toute l'équipe en bénéficie.
