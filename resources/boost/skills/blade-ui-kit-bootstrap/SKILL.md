@@ -149,6 +149,32 @@ Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de mod
 - ✅ Enregistrer via `config/blade-ui-kit-bootstrap.php`
 - ✅ Échapper soi-même les données non sûres passées aux attributs de contenu (`title`, `text`, `confirm`, `startContent`, `endContent`, `content`) avec `e()` — rendus en brut (HTML autorisé), le composant ne les auto-échappe pas
 
+## Génération de métadonnées IDE
+
+```bash
+# Interactif (TTY) — choisir fichiers + dossier de sortie via Laravel Prompts
+php artisan blade-ui-kit-bs:ide
+
+# Non-interactif — génère les 3 fichiers dans .vscode/
+php artisan blade-ui-kit-bs:ide --no-interaction
+
+# Flags de sélection : --snippets, --json, --ide-json
+# Option de répertoire : --output=DIR (défaut : .vscode/)
+```
+
+Fichiers générés (dans `.vscode/` par défaut) :
+
+| Fichier | Consommateur | Rôle |
+|---------|-------------|------|
+| `blade-ui-kit-bootstrap.code-snippets` | VS Code (natif) | Snippets — fallback sans installation d'extension |
+| `blade-ui-kit-bootstrap.html-data.json` | Extension VS Code dédiée (à venir) | Complétion attributs/valeurs + hover en mode Blade |
+| `blade-ui-kit-bootstrap.ide.json` | PhpStorm / Laravel Idea | Mapping alias→classe |
+
+- La commande respecte le `prefix` configuré et les personnalisations `merge()`/`replace()`.
+- Committer les fichiers générés pour que toute l'équipe en bénéficie.
+- Automatiser via `composer.json` `post-update-cmd` : `@php artisan blade-ui-kit-bs:ide --no-interaction`.
+- Voir `docs/ide-autocomplete.md` pour la documentation complète.
+
 ## Références internes
 
 - `docs/forms.md` — form, label, error
@@ -157,3 +183,4 @@ Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de mod
 - `docs/modals.md` — modal, form-modal, confirm-modal
 - `docs/extending-components.md` — guide complet d'extension
 - `docs/configuration.md` — toutes les options de config
+- `docs/ide-autocomplete.md` — commande `blade-ui-kit-bs:ide`, snippets VS Code, Custom Data, PhpStorm
