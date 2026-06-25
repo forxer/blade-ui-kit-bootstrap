@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap;
 
+use BladeUIKitBootstrap\Commands\IdeCommand;
 use BladeUIKitBootstrap\Commands\MakeComponent;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -77,6 +78,7 @@ class ServiceProvider extends BaseServiceProvider
     private function configureCommands(): void
     {
         $this->commands([
+            IdeCommand::class,
             MakeComponent::class,
         ]);
     }
