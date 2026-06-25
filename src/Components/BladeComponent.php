@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components;
 
+use BladeUIKitBootstrap\Reflection\AttributeReflector;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 use Illuminate\View\Component as IlluminateComponent;
-use ReflectionClass;
 use ReflectionException;
-use ReflectionNamedType;
 use ReflectionProperty;
 
 abstract class BladeComponent extends IlluminateComponent
@@ -181,52 +179,8 @@ abstract class BladeComponent extends IlluminateComponent
      */
     private function resolveExtraProperties(): array
     {
-        if (isset(self::$extraPropertiesCache[static::class])) {
-            return self::$extraPropertiesCache[static::class];
-        }
-
-        $constructorParams = static::extractConstructorParameters();
-        $reflection = new ReflectionClass($this);
-        $properties = [];
-
-        foreach ($reflection->getProperties(ReflectionProperty::IS_PUBLIC) as $property) {
-            if ($property->isStatic()) {
-                continue;
-            }
-
-            $name = $property->getName();
-
-            if (\in_array($name, $constructorParams, true)) {
-                continue;
-            }
-
-            $declaringClass = $property->getDeclaringClass()->getName();
-
-            if ($declaringClass === IlluminateComponent::class) {
-                continue;
-            }
-
-            // Skip properties with asymmetric visibility (e.g., public private(set))
-            // These cannot be set from outside the declaring class
-            if ($property->isPrivateSet()) {
-                continue;
-            }
-
-            if ($property->isProtectedSet()) {
-                continue;
-            }
-
-            $type = $property->getType();
-            $typeName = $type instanceof ReflectionNamedType ? $type->getName() : null;
-
-            $properties[] = [
-                'name' => $name,
-                'kebab' => Str::kebab($name),
-                'type' => $typeName,
-            ];
-        }
-
-        return self::$extraPropertiesCache[static::class] = $properties;
+        return self::$extraPropertiesCache[static::class]
+            ??= AttributeReflector::settableProperties(static::class);
     }
 
     public static function flushCache(): void
