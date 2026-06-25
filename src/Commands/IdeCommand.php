@@ -58,7 +58,7 @@ class IdeCommand extends Command
             };
 
             $path = $directory.DIRECTORY_SEPARATOR.self::FILENAMES[$format];
-            $files->put($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE).PHP_EOL);
+            $files->put($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR).PHP_EOL);
             $written[] = $path;
         }
 
@@ -129,8 +129,7 @@ class IdeCommand extends Command
         $map = [];
 
         foreach ($components as $alias => $class) {
-            $tag = $prefix === '' ? 'x-'.$alias : 'x-'.$prefix.'-'.$alias;
-            $map[$tag] = $class;
+            $map[ComponentIntrospector::tagFor($prefix, $alias)] = $class;
         }
 
         return $map;

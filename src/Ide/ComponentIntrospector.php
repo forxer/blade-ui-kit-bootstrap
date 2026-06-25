@@ -35,9 +35,20 @@ final readonly class ComponentIntrospector
         return $metadata;
     }
 
+    /**
+     * Build the `<x-...>` tag name for an alias under a given prefix.
+     *
+     * Single source of truth for the tag rule, reused by the command when it
+     * builds the alias→class map for the PhpStorm `ide.json` output.
+     */
+    public static function tagFor(string $prefix, string $alias): string
+    {
+        return $prefix === '' ? 'x-'.$alias : 'x-'.$prefix.'-'.$alias;
+    }
+
     private function tag(string $alias): string
     {
-        return $this->prefix === '' ? 'x-'.$alias : 'x-'.$this->prefix.'-'.$alias;
+        return self::tagFor($this->prefix, $alias);
     }
 
     /**

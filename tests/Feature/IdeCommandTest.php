@@ -8,6 +8,17 @@ afterEach(function (): void {
     File::deleteDirectory(base_path('.vscode'));
 });
 
+it('honours the configured prefix in generated tags', function (): void {
+    config()->set('blade-ui-kit-bootstrap.prefix', 'bs');
+
+    $this->artisan('blade-ui-kit-bs:ide', ['--snippets' => true, '--no-interaction' => true])
+        ->assertSuccessful();
+
+    $snippets = json_decode(File::get(base_path('.vscode/blade-ui-kit-bootstrap.code-snippets')), true);
+
+    expect($snippets)->toHaveKey('x-bs-btn')->not->toHaveKey('x-btn');
+});
+
 it('generates all three files non-interactively', function (): void {
     $this->artisan('blade-ui-kit-bs:ide', ['--no-interaction' => true])
         ->assertSuccessful();
