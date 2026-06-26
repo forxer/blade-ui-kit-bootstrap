@@ -28,11 +28,29 @@ it('builds a blade-scoped snippet keyed by display name', function (): void {
         ->and($out['x-btn']['description'])->toBe('Bootstrap button.');
 });
 
-it('scaffolds constrained attributes as choices with a leading empty option', function (): void {
+it('scaffolds the variant as a choice dropdown without an (invalid) empty option', function (): void {
     $body = SnippetsEmitter::emit([btnMeta()])['x-btn']['body'][0];
 
-    expect($body)->toContain('variant="${1|,primary,secondary|}"')
+    // No leading empty option: `${1|,...|}` breaks VS Code tab-stop navigation.
+    expect($body)->toContain('variant="${1|primary,secondary|}"')
+        ->not->toContain('${1|,')
         ->not->toContain('disabled');
+});
+
+it('scaffolds only variant among constrained attributes, not size/type/confirm-variant', function (): void {
+    $meta = new ComponentMetadata('x-btn-archive', 'Archive button.', [
+        new AttributeMetadata('confirm-variant', 'Confirm variant.', ['primary', 'secondary'], false, false),
+        new AttributeMetadata('size', 'Size.', ['lg', 'sm'], false, false),
+        new AttributeMetadata('type', 'Type.', ['button', 'submit'], false, false),
+        new AttributeMetadata('variant', 'Variant.', ['primary', 'secondary'], false, false),
+    ], false);
+
+    $body = SnippetsEmitter::emit([$meta])['x-btn-archive']['body'][0];
+
+    expect($body)->toContain('variant="${1|primary,secondary|}"')
+        ->not->toContain('confirm-variant=')
+        ->not->toContain('size=')
+        ->not->toContain('type=');
 });
 
 it('self-closes when there is no slot', function (): void {
@@ -54,5 +72,5 @@ it('places required attributes before constrained ones as plain placeholders', f
     $body = SnippetsEmitter::emit([$meta])['x-text']['body'][0];
 
     expect($body)->toContain('name="${1:name}"')
-        ->and($body)->toContain('variant="${2|,a,b|}"');
+        ->and($body)->toContain('variant="${2|a,b|}"');
 });

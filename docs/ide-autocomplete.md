@@ -82,9 +82,9 @@ The Three Output Files
 This file is picked up automatically by VS Code from your `.vscode/` directory without any extension required. Type a component tag prefix (e.g. `x-btn`) to trigger a snippet that scaffolds the full tag:
 
 - Required attributes are pre-filled as tab stops.
-- Constrained-value attributes (variant, size, type, …) present their allowed values as a dropdown, with a leading empty option so you can leave them unset.
+- The `variant` attribute is offered as a value dropdown (its first value, `primary`, is the component default, so tabbing past it is harmless).
 
-Use this when you cannot or do not want to install a VS Code extension.
+Snippets stay deliberately lean: other constrained attributes (`size`, `type`, `confirm-variant`, …) are not scaffolded, because a snippet dropdown always keeps its first value when you tab past it, which would force unwanted defaults. Full, non-forcing value completion for every attribute is the dedicated extension's job (see below). Use snippets when you cannot or do not want to install that extension.
 
 ### 2. VS Code Custom Data — `blade-ui-kit-bootstrap.html-data.json`
 

@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.2.1 (2026-06-25)
+2.2.1 (2026-06-26)
 ------------------
 
 ### Bug Fixes
@@ -14,6 +14,13 @@ CHANGELOG
   maintains for itself — so the two never collide and the file is always safe to regenerate
   (e.g. from a Composer `post-update-cmd`). Added `--ide-output=DIR` to override its directory;
   `--output` now applies to the VS Code files only.
+- **VS Code snippets**: choice placeholders were emitted with a leading empty option
+  (`${1|,primary,…|}`) to keep constrained values optional, but VS Code does not support empty
+  choice options — it broke tab-stop navigation through the rest of the snippet. Snippets are
+  now lean: required attributes as tab stops plus the primary `variant` as a (valid) value
+  dropdown; `size`, `type`, `confirm-variant` and other constrained attributes are no longer
+  scaffolded (a snippet choice always keeps its first value when tabbed past, which forced
+  unwanted defaults). Full value completion for every attribute remains the extension's role.
 
 
 2.2.0 (2026-06-25)
