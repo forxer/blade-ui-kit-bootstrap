@@ -1,0 +1,418 @@
+{
+    "x-btn": {
+        "scope": "blade",
+        "prefix": "x-btn",
+        "description": "x-btn",
+        "body": [
+            "<x-btn variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-form-button": {
+        "scope": "blade",
+        "prefix": "x-form-button",
+        "description": "x-form-button",
+        "body": [
+            "<x-form-button url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-link-button": {
+        "scope": "blade",
+        "prefix": "x-link-button",
+        "description": "x-link-button",
+        "body": [
+            "<x-link-button variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-help-info": {
+        "scope": "blade",
+        "prefix": "x-help-info",
+        "description": "x-help-info",
+        "body": [
+            "<x-help-info variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\">$0</x-help-info>"
+        ]
+    },
+    "x-btn-back": {
+        "scope": "blade",
+        "prefix": "x-btn-back",
+        "description": "x-btn-back",
+        "body": [
+            "<x-btn-back variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-back-list": {
+        "scope": "blade",
+        "prefix": "x-btn-back-list",
+        "description": "x-btn-back-list",
+        "body": [
+            "<x-btn-back-list variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-back-home": {
+        "scope": "blade",
+        "prefix": "x-btn-back-home",
+        "description": "x-btn-back-home",
+        "body": [
+            "<x-btn-back-home variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-archive": {
+        "scope": "blade",
+        "prefix": "x-btn-archive",
+        "description": "x-btn-archive",
+        "body": [
+            "<x-btn-archive url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-archives": {
+        "scope": "blade",
+        "prefix": "x-btn-archives",
+        "description": "x-btn-archives",
+        "body": [
+            "<x-btn-archives variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-cancel": {
+        "scope": "blade",
+        "prefix": "x-btn-cancel",
+        "description": "x-btn-cancel",
+        "body": [
+            "<x-btn-cancel variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-copy": {
+        "scope": "blade",
+        "prefix": "x-btn-copy",
+        "description": "x-btn-copy",
+        "body": [
+            "<x-btn-copy variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-create": {
+        "scope": "blade",
+        "prefix": "x-btn-create",
+        "description": "x-btn-create",
+        "body": [
+            "<x-btn-create variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-delete": {
+        "scope": "blade",
+        "prefix": "x-btn-delete",
+        "description": "x-btn-delete",
+        "body": [
+            "<x-btn-delete url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-destroy": {
+        "scope": "blade",
+        "prefix": "x-btn-destroy",
+        "description": "x-btn-destroy",
+        "body": [
+            "<x-btn-destroy url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-disable": {
+        "scope": "blade",
+        "prefix": "x-btn-disable",
+        "description": "x-btn-disable",
+        "body": [
+            "<x-btn-disable url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-disabled": {
+        "scope": "blade",
+        "prefix": "x-btn-disabled",
+        "description": "x-btn-disabled",
+        "body": [
+            "<x-btn-disabled url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-duplicate": {
+        "scope": "blade",
+        "prefix": "x-btn-duplicate",
+        "description": "x-btn-duplicate",
+        "body": [
+            "<x-btn-duplicate variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-edit": {
+        "scope": "blade",
+        "prefix": "x-btn-edit",
+        "description": "x-btn-edit",
+        "body": [
+            "<x-btn-edit variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-email": {
+        "scope": "blade",
+        "prefix": "x-btn-email",
+        "description": "x-btn-email",
+        "body": [
+            "<x-btn-email variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-enable": {
+        "scope": "blade",
+        "prefix": "x-btn-enable",
+        "description": "x-btn-enable",
+        "body": [
+            "<x-btn-enable url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-enabled": {
+        "scope": "blade",
+        "prefix": "x-btn-enabled",
+        "description": "x-btn-enabled",
+        "body": [
+            "<x-btn-enabled url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-logout": {
+        "scope": "blade",
+        "prefix": "x-btn-logout",
+        "description": "x-btn-logout",
+        "body": [
+            "<x-btn-logout url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-confirm-modal-yes": {
+        "scope": "blade",
+        "prefix": "x-btn-confirm-modal-yes",
+        "description": "x-btn-confirm-modal-yes",
+        "body": [
+            "<x-btn-confirm-modal-yes variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-confirm-modal-no": {
+        "scope": "blade",
+        "prefix": "x-btn-confirm-modal-no",
+        "description": "x-btn-confirm-modal-no",
+        "body": [
+            "<x-btn-confirm-modal-no variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-move-down": {
+        "scope": "blade",
+        "prefix": "x-btn-move-down",
+        "description": "x-btn-move-down",
+        "body": [
+            "<x-btn-move-down url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-move-up": {
+        "scope": "blade",
+        "prefix": "x-btn-move-up",
+        "description": "x-btn-move-up",
+        "body": [
+            "<x-btn-move-up url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-phone": {
+        "scope": "blade",
+        "prefix": "x-btn-phone",
+        "description": "x-btn-phone",
+        "body": [
+            "<x-btn-phone variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-preview": {
+        "scope": "blade",
+        "prefix": "x-btn-preview",
+        "description": "x-btn-preview",
+        "body": [
+            "<x-btn-preview variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-recycle-bin": {
+        "scope": "blade",
+        "prefix": "x-btn-recycle-bin",
+        "description": "x-btn-recycle-bin",
+        "body": [
+            "<x-btn-recycle-bin variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-restore": {
+        "scope": "blade",
+        "prefix": "x-btn-restore",
+        "description": "x-btn-restore",
+        "body": [
+            "<x-btn-restore url=\"${1:url}\" variant=\"${2|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-save": {
+        "scope": "blade",
+        "prefix": "x-btn-save",
+        "description": "x-btn-save",
+        "body": [
+            "<x-btn-save variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-show": {
+        "scope": "blade",
+        "prefix": "x-btn-show",
+        "description": "x-btn-show",
+        "body": [
+            "<x-btn-show variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-btn-website": {
+        "scope": "blade",
+        "prefix": "x-btn-website",
+        "description": "x-btn-website",
+        "body": [
+            "<x-btn-website variant=\"${1|primary,secondary,success,danger,warning,info,light,dark,link,outline-primary,outline-secondary,outline-success,outline-danger,outline-warning,outline-info,outline-light,outline-dark|}\" />$0"
+        ]
+    },
+    "x-alert": {
+        "scope": "blade",
+        "prefix": "x-alert",
+        "description": "x-alert",
+        "body": [
+            "<x-alert variant=\"${1|primary,secondary,success,danger,warning,info,light,dark|}\">$0</x-alert>"
+        ]
+    },
+    "x-badge": {
+        "scope": "blade",
+        "prefix": "x-badge",
+        "description": "x-badge",
+        "body": [
+            "<x-badge variant=\"${1|primary,secondary,success,danger,warning,info,light,dark|}\">$0</x-badge>"
+        ]
+    },
+    "x-form": {
+        "scope": "blade",
+        "prefix": "x-form",
+        "description": "x-form",
+        "body": [
+            "<x-form action=\"${1:action}\">$0</x-form>"
+        ]
+    },
+    "x-label": {
+        "scope": "blade",
+        "prefix": "x-label",
+        "description": "x-label",
+        "body": [
+            "<x-label for=\"${1:for}\">$0</x-label>"
+        ]
+    },
+    "x-error": {
+        "scope": "blade",
+        "prefix": "x-error",
+        "description": "x-error",
+        "body": [
+            "<x-error field=\"${1:field}\">$0</x-error>"
+        ]
+    },
+    "x-input": {
+        "scope": "blade",
+        "prefix": "x-input",
+        "description": "x-input",
+        "body": [
+            "<x-input name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-text": {
+        "scope": "blade",
+        "prefix": "x-text",
+        "description": "x-text",
+        "body": [
+            "<x-text name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-textarea": {
+        "scope": "blade",
+        "prefix": "x-textarea",
+        "description": "x-textarea",
+        "body": [
+            "<x-textarea name=\"${1:name}\">$0</x-textarea>"
+        ]
+    },
+    "x-select": {
+        "scope": "blade",
+        "prefix": "x-select",
+        "description": "x-select",
+        "body": [
+            "<x-select name=\"${1:name}\">$0</x-select>"
+        ]
+    },
+    "x-checkbox": {
+        "scope": "blade",
+        "prefix": "x-checkbox",
+        "description": "x-checkbox",
+        "body": [
+            "<x-checkbox label=\"${1:label}\" name=\"${2:name}\" />$0"
+        ]
+    },
+    "x-radio": {
+        "scope": "blade",
+        "prefix": "x-radio",
+        "description": "x-radio",
+        "body": [
+            "<x-radio label=\"${1:label}\" name=\"${2:name}\" value=\"${3:value}\" />$0"
+        ]
+    },
+    "x-password": {
+        "scope": "blade",
+        "prefix": "x-password",
+        "description": "x-password",
+        "body": [
+            "<x-password name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-email": {
+        "scope": "blade",
+        "prefix": "x-email",
+        "description": "x-email",
+        "body": [
+            "<x-email name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-date": {
+        "scope": "blade",
+        "prefix": "x-date",
+        "description": "x-date",
+        "body": [
+            "<x-date name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-time": {
+        "scope": "blade",
+        "prefix": "x-time",
+        "description": "x-time",
+        "body": [
+            "<x-time name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-hidden": {
+        "scope": "blade",
+        "prefix": "x-hidden",
+        "description": "x-hidden",
+        "body": [
+            "<x-hidden name=\"${1:name}\" />$0"
+        ]
+    },
+    "x-modal": {
+        "scope": "blade",
+        "prefix": "x-modal",
+        "description": "x-modal",
+        "body": [
+            "<x-modal id=\"${1:id}\" title=\"${2:title}\">$0</x-modal>"
+        ]
+    },
+    "x-confirm-modal": {
+        "scope": "blade",
+        "prefix": "x-confirm-modal",
+        "description": "x-confirm-modal",
+        "body": [
+            "<x-confirm-modal id=\"${1:id}\" />$0"
+        ]
+    },
+    "x-form-modal": {
+        "scope": "blade",
+        "prefix": "x-form-modal",
+        "description": "x-form-modal",
+        "body": [
+            "<x-form-modal action=\"${1:action}\" id=\"${2:id}\" title=\"${3:title}\">$0</x-form-modal>"
+        ]
+    }
+}

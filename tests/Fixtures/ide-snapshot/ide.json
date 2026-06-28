@@ -1,0 +1,215 @@
+{
+    "$schema": "https://laravel-ide.com/schema/laravel-ide-v2.json",
+    "blade": {
+        "components": [
+            {
+                "name": "x-btn",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\SimpleButton"
+            },
+            {
+                "name": "x-form-button",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\FormButton"
+            },
+            {
+                "name": "x-link-button",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\LinkButton"
+            },
+            {
+                "name": "x-help-info",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\HelpInfo"
+            },
+            {
+                "name": "x-btn-back",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Back\\Back"
+            },
+            {
+                "name": "x-btn-back-list",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Back\\BackList"
+            },
+            {
+                "name": "x-btn-back-home",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Back\\BackHome"
+            },
+            {
+                "name": "x-btn-archive",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Archive"
+            },
+            {
+                "name": "x-btn-archives",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Archives"
+            },
+            {
+                "name": "x-btn-cancel",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Cancel"
+            },
+            {
+                "name": "x-btn-copy",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Copy"
+            },
+            {
+                "name": "x-btn-create",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Create"
+            },
+            {
+                "name": "x-btn-delete",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Delete"
+            },
+            {
+                "name": "x-btn-destroy",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Destroy"
+            },
+            {
+                "name": "x-btn-disable",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Disable"
+            },
+            {
+                "name": "x-btn-disabled",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Disabled"
+            },
+            {
+                "name": "x-btn-duplicate",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Duplicate"
+            },
+            {
+                "name": "x-btn-edit",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Edit"
+            },
+            {
+                "name": "x-btn-email",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Email"
+            },
+            {
+                "name": "x-btn-enable",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Enable"
+            },
+            {
+                "name": "x-btn-enabled",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Enabled"
+            },
+            {
+                "name": "x-btn-logout",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Logout"
+            },
+            {
+                "name": "x-btn-confirm-modal-yes",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Modal\\ConfirmYes"
+            },
+            {
+                "name": "x-btn-confirm-modal-no",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Modal\\ConfirmNo"
+            },
+            {
+                "name": "x-btn-move-down",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\MoveDown"
+            },
+            {
+                "name": "x-btn-move-up",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\MoveUp"
+            },
+            {
+                "name": "x-btn-phone",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Phone"
+            },
+            {
+                "name": "x-btn-preview",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Preview"
+            },
+            {
+                "name": "x-btn-recycle-bin",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\RecycleBin"
+            },
+            {
+                "name": "x-btn-restore",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Restore"
+            },
+            {
+                "name": "x-btn-save",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Save"
+            },
+            {
+                "name": "x-btn-show",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Show"
+            },
+            {
+                "name": "x-btn-website",
+                "class": "BladeUIKitBootstrap\\Components\\Buttons\\Actions\\Website"
+            },
+            {
+                "name": "x-alert",
+                "class": "BladeUIKitBootstrap\\Components\\Alerts\\Alert"
+            },
+            {
+                "name": "x-badge",
+                "class": "BladeUIKitBootstrap\\Components\\Badges\\Badge"
+            },
+            {
+                "name": "x-form",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Form"
+            },
+            {
+                "name": "x-label",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Label"
+            },
+            {
+                "name": "x-error",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Error"
+            },
+            {
+                "name": "x-input",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Input"
+            },
+            {
+                "name": "x-text",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Text"
+            },
+            {
+                "name": "x-textarea",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Textarea"
+            },
+            {
+                "name": "x-select",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Select"
+            },
+            {
+                "name": "x-checkbox",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Checkbox"
+            },
+            {
+                "name": "x-radio",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Radio"
+            },
+            {
+                "name": "x-password",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Password"
+            },
+            {
+                "name": "x-email",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Email"
+            },
+            {
+                "name": "x-date",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Date"
+            },
+            {
+                "name": "x-time",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Time"
+            },
+            {
+                "name": "x-hidden",
+                "class": "BladeUIKitBootstrap\\Components\\Forms\\Inputs\\Hidden"
+            },
+            {
+                "name": "x-modal",
+                "class": "BladeUIKitBootstrap\\Components\\Modals\\Modal"
+            },
+            {
+                "name": "x-confirm-modal",
+                "class": "BladeUIKitBootstrap\\Components\\Modals\\Confirm"
+            },
+            {
+                "name": "x-form-modal",
+                "class": "BladeUIKitBootstrap\\Components\\Modals\\Form"
+            }
+        ]
+    }
+}
