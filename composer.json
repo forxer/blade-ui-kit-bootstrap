@@ -19,8 +19,16 @@
         "issues": "https://github.com/forxer/blade-ui-kit-bootstrap/issues",
         "source": "https://github.com/forxer/blade-ui-kit-bootstrap"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../blade-components-ide-helper",
+            "options": { "symlink": true }
+        }
+    ],
     "require": {
         "php": "^8.4",
+        "forxer/blade-components-ide-helper": "@dev",
         "forxer/generic-term-translations-for-laravel": "^1.0",
         "laravel/framework": "^12.0 || ^13.0"
     },
