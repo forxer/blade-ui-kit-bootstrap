@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+2.3.0-RC.1 (2026-06-28)
+-----------------------
+
+### Changed
+
+- The IDE metadata generator (`blade-ui-kit-bs:ide`) is now powered by the standalone
+  `forxer/blade-components-ide-helper` package. Generated output (snippets, VS Code Custom
+  Data, PhpStorm `ide.json`) is byte-for-byte identical — this is an internal refactor with no
+  change in behavior.
+
+
 2.2.1 (2026-06-26)
 ------------------
 
