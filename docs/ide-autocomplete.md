@@ -17,6 +17,13 @@ Components in this package are class-based. IDEs do not surface attribute-name o
 
 To bridge this gap, the package ships an Artisan command that generates IDE metadata files from the registered components.
 
+> **Why `forxer/blade-components-ide-helper` is a runtime `require`, not `require-dev`.** Unlike a
+> package that only *generates* IDE metadata (which would use it as a dev dependency), this package
+> also calls the library at **runtime**: the `BladeComponent` base class uses
+> `Reflection\AttributeReflector` to resolve component attributes while rendering. The dependency
+> therefore belongs in `require` — it must be present in production. (A package that only ships the
+> `:ide` command, with no runtime use, declares it under `require-dev` instead.)
+
 The `blade-ui-kit-bs:ide` Command
 ----------------------------------
 
