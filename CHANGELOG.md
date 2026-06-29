@@ -1,6 +1,19 @@
 CHANGELOG
 =========
 
+2.3.0-RC.2 (2026-06-29)
+-----------------------
+
+### Changed
+
+- Requires `forxer/blade-components-ide-helper` ^1.0.0-RC.2.
+- The `blade-ui-kit-bs:ide` command now registers its target with the shared `IdeTargetRegistry`,
+  so the aggregate `blade-components-ide-helper:generate` command regenerates this package's
+  metadata too.
+- Internal: `IdeCommand` now implements `target(): IdeTarget` (the helper's new single-method API);
+  `ServiceProvider::ideTarget()` is the single source of truth for the target definition.
+
+
 2.3.0-RC.1 (2026-06-28)
 -----------------------
 

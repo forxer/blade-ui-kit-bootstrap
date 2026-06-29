@@ -6,6 +6,10 @@ namespace BladeUIKitBootstrap;
 
 use BladeUIKitBootstrap\Commands\IdeCommand;
 use BladeUIKitBootstrap\Commands\MakeComponent;
+use Forxer\BladeComponentsIdeHelper\Attributes\PropertiesAndConstructorSurface;
+use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
+use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
+use Forxer\BladeComponentsIdeHelper\Registry\IdeTargetRegistry;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -25,12 +29,25 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->configurePublishing();
             $this->configureCommands();
+            IdeTargetRegistry::register(self::ideTarget());
         }
     }
 
     public static function defaultComponents(): DefaultComponents
     {
         return new DefaultComponents();
+    }
+
+    public static function ideTarget(): IdeTarget
+    {
+        return new IdeTarget(
+            definition: new ComponentDefinition(
+                components: config('blade-ui-kit-bootstrap.components', []),
+                prefix: (string) config('blade-ui-kit-bootstrap.prefix', ''),
+                attributeSurface: new PropertiesAndConstructorSurface(),
+            ),
+            fileBaseName: 'blade-ui-kit-bootstrap',
+        );
     }
 
     private function bootResources(): void

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Commands;
 
-use Forxer\BladeComponentsIdeHelper\Attributes\PropertiesAndConstructorSurface;
+use BladeUIKitBootstrap\ServiceProvider;
 use Forxer\BladeComponentsIdeHelper\Commands\AbstractIdeCommand;
-use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
+use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 
 class IdeCommand extends AbstractIdeCommand
 {
@@ -19,17 +19,8 @@ class IdeCommand extends AbstractIdeCommand
 
     protected $description = 'Generate IDE metadata (snippets, VS Code Custom Data, PhpStorm) for the components';
 
-    protected function definition(): ComponentDefinition
+    protected function target(): IdeTarget
     {
-        return new ComponentDefinition(
-            components: config('blade-ui-kit-bootstrap.components', []),
-            prefix: (string) config('blade-ui-kit-bootstrap.prefix', ''),
-            attributeSurface: new PropertiesAndConstructorSurface(),
-        );
-    }
-
-    protected function fileBaseName(): string
-    {
-        return 'blade-ui-kit-bootstrap';
+        return ServiceProvider::ideTarget();
     }
 }
