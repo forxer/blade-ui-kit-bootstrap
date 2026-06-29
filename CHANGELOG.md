@@ -1,28 +1,18 @@
 CHANGELOG
 =========
 
-2.3.0-RC.2 (2026-06-29)
------------------------
-
-### Changed
-
-- Requires `forxer/blade-components-ide-helper` ^1.0.0-RC.2.
-- The `blade-ui-kit-bs:ide` command now registers its target with the shared `IdeTargetRegistry`,
-  so the aggregate `blade-components-ide-helper:generate` command regenerates this package's
-  metadata too.
-- Internal: `IdeCommand` now implements `target(): IdeTarget` (the helper's new single-method API);
-  `ServiceProvider::ideTarget()` is the single source of truth for the target definition.
-
-
-2.3.0-RC.1 (2026-06-28)
------------------------
+2.3.0 (2026-06-29)
+------------------
 
 ### Changed
 
 - The IDE metadata generator (`blade-ui-kit-bs:ide`) is now powered by the standalone
-  `forxer/blade-components-ide-helper` package. Generated output (snippets, VS Code Custom
-  Data, PhpStorm `ide.json`) is byte-for-byte identical — this is an internal refactor with no
-  change in behavior.
+  `forxer/blade-components-ide-helper` package (^1.0). Generated output (snippets, VS Code Custom
+  Data, PhpStorm `ide.json`) is byte-for-byte identical — an internal refactor with no behaviour change.
+- The command registers its target with the shared `IdeTargetRegistry`, so the aggregate
+  `blade-components-ide-helper:generate` command regenerates this package's metadata too.
+  `IdeCommand` implements `target(): IdeTarget`; `ServiceProvider::ideTarget()` is the single
+  source of truth for the target definition.
 
 
 2.2.1 (2026-06-26)
