@@ -7,6 +7,7 @@ namespace BladeUIKitBootstrap;
 use BladeUIKitBootstrap\Commands\IdeCommand;
 use BladeUIKitBootstrap\Commands\MakeComponent;
 use Forxer\BladeComponentsIdeHelper\Attributes\PropertiesAndConstructorSurface;
+use Forxer\BladeComponentsIdeHelper\Commands\AbstractIdeCommand;
 use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
 use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 use Forxer\BladeComponentsIdeHelper\Registry\IdeTargetRegistry;
@@ -29,7 +30,6 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->configurePublishing();
             $this->configureCommands();
-            IdeTargetRegistry::register(self::ideTarget());
         }
     }
 
@@ -95,8 +95,12 @@ class ServiceProvider extends BaseServiceProvider
     private function configureCommands(): void
     {
         $this->commands([
-            IdeCommand::class,
             MakeComponent::class,
         ]);
+
+        if (class_exists(AbstractIdeCommand::class)) {
+            IdeTargetRegistry::register(self::ideTarget());
+            $this->commands([IdeCommand::class]);
+        }
     }
 }
