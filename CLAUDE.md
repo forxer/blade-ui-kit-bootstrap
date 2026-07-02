@@ -8,7 +8,7 @@ This is a Laravel package that provides Blade components styled with Bootstrap (
 
 **Package name:** `forxer/blade-ui-kit-bootstrap`
 **PHP version:** ^8.4
-**Laravel version:** ^12.0
+**Laravel version:** ^12.0 || ^13.0
 **Main namespace:** `BladeUIKitBootstrap`
 
 ## Development Commands
@@ -204,6 +204,28 @@ The package provides Laravel Boost integration assets in `resources/boost/`:
 
 **Important:** These files must be kept up to date when components, configuration keys, or usage patterns change. When adding, renaming, or removing components or config options, update the corresponding Boost assets accordingly.
 
+### IDE Metadata Integration
+
+This package integrates with `forxer/blade-components-ide-helper` to generate IDE metadata (VS Code
+Custom Data, snippets, PhpStorm `ide.json`) for its `<x-…>` components.
+
+- **Runtime require (not dev):** `forxer/blade-components-ide-helper` is a plain `require` in
+  `composer.json`, on purpose — `BladeComponent::withAttributes()` calls
+  `AttributeReflector::settableProperties()` at runtime (see `src/Components/BladeComponent.php`), not
+  only during metadata generation.
+- **Target registration:** `ServiceProvider::ideTarget()` builds an `IdeTarget` (using
+  `PropertiesAndConstructorSurface`, since components hydrate public properties beyond the
+  constructor) and registers it with `IdeTargetRegistry` in `boot()`, so the aggregate command
+  `php artisan blade-components-ide-helper:generate` regenerates this package too.
+- **Per-package command:** `src/Commands/IdeCommand.php` (`blade-ui-kit-bs:ide`) extends
+  `AbstractIdeCommand` and returns that same target. Format flags: `--snippets`, `--json`,
+  `--ide-json`.
+- **Recommended completion is the VS Code extension** `forxer.blade-components-ide-helper` reading the
+  `.html-data.json`; the snippets are a zero-install fallback. **Generate only one VS Code output** —
+  snippets and the extension both complete `<x-…>` and, together, the snippets outrank the extension.
+  Use `--json --ide-json` when the team uses the extension, `--snippets --ide-json` otherwise.
+- **Docs:** `docs/ide-autocomplete.md`. Keep it and this section in sync when the wiring changes.
+
 ## Code Style
 
 ### Rector Configuration
@@ -324,3 +346,20 @@ The current documentation is functional but doesn't fully showcase the package's
 - **Interactive test pages**: Live component demonstrations with copy-to-clipboard
 
 The documentation should convey that this is a productivity tool for Laravel forms, not just a Bootstrap wrapper.
+
+## Git workflow
+
+Two long-lived branches: `main` (default, latest published) and `develop` (next version). Base work
+on `develop`, PR `develop → main`, tag the release on `main`.
+
+**Tag style:** this is a Packagist library, tagged **without a `v` prefix** (e.g. `2.3.0`). The
+sibling VS Code extension repo uses `v2.3.0`; match each repo's existing convention.
+
+## Working constraints
+
+- **Never tag/release or `git push` without an explicit request.** The user tests manually first and
+  drives all GitHub/Packagist actions himself.
+- **Never commit without proposing the message first** (Conventional Commits) and getting approval.
+- **No reference to Claude/AI** in commit messages.
+- Do **not** commit `docs/superpowers/**` (specs/plans are working documents).
+- English for code, comments, identifiers and docs; `lang/fr/` holds the French translations.
