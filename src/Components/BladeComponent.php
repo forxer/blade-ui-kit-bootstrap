@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladeUIKitBootstrap\Components;
 
-use Forxer\BladeComponentsIdeHelper\Reflection\AttributeReflector;
+use Forxer\BladeComponentsReflection\AttributeReflector;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component as IlluminateComponent;
 use ReflectionException;

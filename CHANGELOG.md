@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.4.0 (unreleased)
+------------------
+
+- Depend on `forxer/blade-components-reflection` for runtime property reflection; move
+  `forxer/blade-components-ide-helper` to `require-dev` (it is now a pure dev tool).
+
+
 2.3.0 (2026-06-29)
 ------------------
 
