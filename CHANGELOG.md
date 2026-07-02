@@ -6,6 +6,8 @@ CHANGELOG
 
 - Depend on `forxer/blade-components-reflection` for runtime property reflection; move
   `forxer/blade-components-ide-helper` to `require-dev` (it is now a pure dev tool).
+- Guard the IDE metadata registration behind `class_exists()` so the package boots cleanly when
+  installed with `--no-dev` (the now dev-only `blade-components-ide-helper` is absent in production).
 
 
 2.3.0 (2026-06-29)

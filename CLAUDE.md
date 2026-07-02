@@ -214,10 +214,13 @@ Custom Data, snippets, PhpStorm `ide.json`) for its `<x-…>` components.
   `AttributeReflector::settableProperties()` at runtime (see `src/Components/BladeComponent.php`), using
   `Forxer\BladeComponentsReflection\AttributeReflector`. `forxer/blade-components-ide-helper` is only
   needed for metadata generation, so it is a `require-dev`.
-- **Target registration:** `ServiceProvider::ideTarget()` builds an `IdeTarget` (using
+- **Target registration (guarded):** `ServiceProvider::ideTarget()` builds an `IdeTarget` (using
   `PropertiesAndConstructorSurface`, since components hydrate public properties beyond the
-  constructor) and registers it with `IdeTargetRegistry` in `boot()`, so the aggregate command
-  `php artisan blade-components-ide-helper:generate` regenerates this package too.
+  constructor). Registration with `IdeTargetRegistry` and the `blade-ui-kit-bs:ide` command happens in
+  `configureCommands()` behind `if (class_exists(AbstractIdeCommand::class))`, so a `--no-dev`
+  production install (where the dev-only `blade-components-ide-helper` is absent) does not fatal at
+  boot; `MakeComponent` stays registered unconditionally. When the helper is present, the aggregate
+  command `php artisan blade-components-ide-helper:generate` regenerates this package too.
 - **Per-package command:** `src/Commands/IdeCommand.php` (`blade-ui-kit-bs:ide`) extends
   `AbstractIdeCommand` and returns that same target. Format flags: `--snippets`, `--json`,
   `--ide-json`.
