@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.4.0 (unreleased)
+2.4.0 (2026-07-02)
 ------------------
 
 - Depend on `forxer/blade-components-reflection` for runtime property reflection; move
