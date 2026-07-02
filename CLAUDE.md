@@ -209,10 +209,11 @@ The package provides Laravel Boost integration assets in `resources/boost/`:
 This package integrates with `forxer/blade-components-ide-helper` to generate IDE metadata (VS Code
 Custom Data, snippets, PhpStorm `ide.json`) for its `<x-…>` components.
 
-- **Runtime require (not dev):** `forxer/blade-components-ide-helper` is a plain `require` in
-  `composer.json`, on purpose — `BladeComponent::withAttributes()` calls
-  `AttributeReflector::settableProperties()` at runtime (see `src/Components/BladeComponent.php`), not
-  only during metadata generation.
+- **Runtime require is the reflection package, not the IDE helper:** `forxer/blade-components-reflection`
+  is a plain `require` in `composer.json` — `BladeComponent::withAttributes()` calls
+  `AttributeReflector::settableProperties()` at runtime (see `src/Components/BladeComponent.php`), using
+  `Forxer\BladeComponentsReflection\AttributeReflector`. `forxer/blade-components-ide-helper` is only
+  needed for metadata generation, so it is a `require-dev`.
 - **Target registration:** `ServiceProvider::ideTarget()` builds an `IdeTarget` (using
   `PropertiesAndConstructorSurface`, since components hydrate public properties beyond the
   constructor) and registers it with `IdeTargetRegistry` in `boot()`, so the aggregate command
