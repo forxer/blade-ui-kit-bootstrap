@@ -99,7 +99,7 @@ Snippets stay deliberately lean: other constrained attributes (`size`, `type`, `
 
 This file follows the VS Code [Custom Data format](https://github.com/microsoft/vscode-custom-data) and contains attribute names, allowed values, and hover descriptions for every registered component.
 
-Because VS Code's HTML language service is not active in Blade language mode, this file cannot be wired up via the `html.customData` setting in `settings.json` alone — a dedicated VS Code extension is needed to consume it and inject completions into `.blade.php` files. That extension is a forthcoming, separate deliverable. Once available, it will be the recommended way to get full attribute-name and attribute-value completion with hover documentation inside `<x-...>` tags.
+Because VS Code's HTML language service is not active in Blade language mode, this file cannot be wired up via the `html.customData` setting in `settings.json` alone — a dedicated VS Code extension consumes it and injects completions into `.blade.php` files. Install **[Blade Components IDE Helper](https://marketplace.visualstudio.com/items?itemName=forxer.blade-components-ide-helper)** (also on [Open VSX](https://open-vsx.org/extension/forxer/blade-components-ide-helper) for VSCodium and compatible editors). It is the **recommended** way to get full attribute-name and attribute-value completion with hover documentation inside `<x-...>` tags.
 
 ### 3. PhpStorm / Laravel Idea — `ide-helper/blade-ui-kit-bootstrap/ide.json`
 
@@ -117,7 +117,7 @@ The two VS Code outputs serve different audiences:
 
 | | Snippets | Custom Data (via extension) |
 |---|---|---|
-| **Requires install** | No — picked up automatically from `.vscode/` | Yes — dedicated VS Code extension (forthcoming) |
+| **Requires install** | No — picked up automatically from `.vscode/` | Yes — [Blade Components IDE Helper](https://marketplace.visualstudio.com/items?itemName=forxer.blade-components-ide-helper) (VS Marketplace / Open VSX) |
 | **Completion trigger** | Type tag prefix, pick snippet | Type attribute name inside tag |
 | **Value completion** | Dropdown of allowed values in snippet | Inline dropdown while typing |
 | **Hover docs** | No | Yes |
@@ -128,22 +128,39 @@ Use one or the other — they are not designed to be used together.
 Wiring for the Whole Team
 -------------------------
 
-Commit the generated files so every developer benefits without having to run the command individually:
+Pick **one** of the two VS Code outputs (they conflict — see above) and commit the generated files so
+every developer benefits without running the command individually. The PhpStorm `ide.json` is
+committed in both cases.
+
+**Recommended — everyone installs the extension.** Generate the Custom Data + `ide.json` (no snippets):
 
 ```bash
-git add .vscode/blade-ui-kit-bootstrap.code-snippets
 git add .vscode/blade-ui-kit-bootstrap.html-data.json
 git add ide-helper/blade-ui-kit-bootstrap/ide.json
 ```
 
-To keep the files up to date automatically whenever Composer updates the package, add a `post-update-cmd` script to your `composer.json`:
-
 ```json
 "scripts": {
     "post-update-cmd": [
-        "@php artisan blade-ui-kit-bs:ide --no-interaction"
+        "@php artisan blade-ui-kit-bs:ide --no-interaction --json --ide-json"
     ]
 }
 ```
 
-This regenerates all three files after every `composer update`, picking up any new or changed components from the updated package.
+**Fallback — no extension.** Generate the snippets + `ide.json` instead:
+
+```bash
+git add .vscode/blade-ui-kit-bootstrap.code-snippets
+git add ide-helper/blade-ui-kit-bootstrap/ide.json
+```
+
+```json
+"scripts": {
+    "post-update-cmd": [
+        "@php artisan blade-ui-kit-bs:ide --no-interaction --snippets --ide-json"
+    ]
+}
+```
+
+Do **not** commit both `*.code-snippets` and `*.html-data.json`: generated together, the snippets
+outrank the extension's suggestions in the completion list.
