@@ -7440,7 +7440,7 @@
                 },
                 {
                     "name": "title",
-                    "description": "Title displayed at the top of the alert."
+                    "description": "Title displayed at the top of the alert (raw HTML allowed)."
                 },
                 {
                     "name": "variant",

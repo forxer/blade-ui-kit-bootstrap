@@ -1,6 +1,21 @@
 CHANGELOG
 =========
 
+2.4.1 (2026-07-03)
+------------------
+
+### Bug Fixes
+
+- **Alert title double-escaping**: the `Alert` component lost its constructor in 2.0.0, so `title`
+  became an auto-hydrated public property. Blade applies `sanitizeComponentAttribute()` (`e()`) to
+  bound attributes that are not constructor parameters, and the view renders the title raw
+  (`{!! !!}`), so a caller-escaped title (e.g. `:title="trans('...', ['name' => e($model->name)])"`)
+  was escaped twice — `Tom & Jerry` rendered as `Tom &amp;amp; Jerry`. The 2.0.1 fix moved the
+  button and confirm-modal content properties back to their constructors but missed `Alert`. The
+  `title` is now a constructor parameter again, so the "caller escapes" contract is restored and
+  the title is no longer double-escaped. See [Upgrade](UPGRADE.md#from-240-to-241).
+
+
 2.4.0 (2026-07-02)
 ------------------
 

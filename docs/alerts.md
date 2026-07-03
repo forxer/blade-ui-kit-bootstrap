@@ -90,6 +90,16 @@ This will output:
 </div>
 ```
 
+The title is rendered raw (`{!! !!}`) so you can pass HTML.
+
+**Warning:** it's up to YOU to escape the value if you pass untrusted data:
+
+```blade
+<x-alert variant="success" :title="e($data)">
+    ...
+</x-alert>
+```
+
 ### Icon
 
 Add an icon to your alert using the `icon` attribute. You must first configure the icon format in your configuration file.

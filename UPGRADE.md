@@ -1,6 +1,42 @@
 Upgrade
 =======
 
+From 2.4.0 to 2.4.1
+-------------------
+
+### Alert title is now rendered raw (caller escapes)
+
+The `Alert` `title` was the last content property still auto-escaped by the package: because
+`Alert` had no constructor, `title` was an auto-hydrated public property, so Blade applied
+`sanitizeComponentAttribute()` (`e()`) to it while the view rendered it raw. This caused a
+caller-escaped title to be **double-escaped** (`Tom & Jerry` → `Tom &amp;amp; Jerry`), and it made
+`Alert` inconsistent with every other component, where content properties are constructor
+parameters and escaping is the caller's responsibility.
+
+`title` is now a constructor parameter, so `Alert` follows the same "it's up to YOU to escape"
+contract as the buttons and modals.
+
+**If you pass a pre-escaped or translated title** (the common case), this fixes a bug — no change
+needed:
+
+```blade
+<x-alert variant="danger" :title="trans('error', ['name' => e($model->name)])">…</x-alert>
+```
+
+**If you passed raw, untrusted data to an alert title and relied on the package auto-escaping it,
+add `e()` yourself** — the package no longer escapes it:
+
+```blade
+{{-- before: auto-escaped by the package --}}
+<x-alert :title="$model->name">…</x-alert>
+
+{{-- now: escape it yourself, like every other component --}}
+<x-alert :title="e($model->name)">…</x-alert>
+```
+
+Static string titles (`title="Well done!"`) are unaffected.
+
+
 From 2.0.0 to 2.0.1
 -------------------
 
