@@ -1,6 +1,46 @@
 Upgrade
 =======
 
+From 2.x to 3.0.0
+-----------------
+
+### `<x-btn-copy>` now uses the native Clipboard API
+
+The copy button no longer relies on [clipboard.js](https://clipboardjs.com/): it now uses the
+browser's native Clipboard API (`navigator.clipboard.writeText()`) through a single delegated
+`click` listener, so buttons injected after page load (Livewire, modals) work out of the box.
+
+The Blade API of the component is unchanged (`target`, `string` and all common button attributes),
+but the rendered markup changed:
+
+- the `btn-clipboard` class is no longer applied;
+- `data-clipboard-target` / `data-clipboard-text` are replaced by `data-buk-copy-target` /
+  `data-buk-copy-text` (package-scoped, consistent with the `data-buk-confirm` attributes).
+
+What you need to do:
+
+- **Nothing** if you only used the component as documented: no markup of yours changes.
+- **Remove the ClipboardJS bootstrap** your application declared for this component, typically:
+
+  ```js
+  import ClipboardJS from 'clipboard'
+  window.ClipboardJS = new ClipboardJS('.btn-clipboard')
+  ```
+
+  It is no longer needed by the package. If your application uses clipboard.js for its own
+  buttons, you can keep it: the package buttons no longer match the `.btn-clipboard` selector,
+  so both mechanisms coexist without double-initialization.
+- **Update your selectors** if you styled or targeted `.btn-clipboard` or `data-clipboard-*`
+  on the package buttons.
+
+**Requirement:** the Clipboard API is only available in a secure context (HTTPS or `localhost`).
+In a non-secure context the button displays the error tooltip.
+
+Finally, the `clipboard.error` translation has been reworded from "Press Ctrl+C to copy" (a
+clipboard.js fallback that no longer exists) to "Copy failed" (FR: "Echec de la copie" with proper
+typography). If you published the package translations, update them accordingly.
+
+
 From 2.4.0 to 2.4.1
 -------------------
 

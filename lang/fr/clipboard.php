@@ -2,5 +2,5 @@
 
 return [
     'success' => 'Copié',
-    'error' => 'Appuyez sur Ctrl+C pour copier',
+    'error' => 'Échec de la copie',
 ];

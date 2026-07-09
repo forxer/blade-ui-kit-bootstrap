@@ -1,6 +1,35 @@
 CHANGELOG
 =========
 
+3.0.0 (2026-07-09)
+------------------
+
+### Breaking Changes
+
+- **`<x-btn-copy>` no longer depends on clipboard.js**: the copy button now uses the browser's
+  native Clipboard API (`navigator.clipboard.writeText()`). Applications no longer need to install
+  the `clipboard` npm package nor expose a `window.ClipboardJS` global for this component. The
+  Blade API of the component (`target`, `string` and the common button attributes) is unchanged.
+  See [Upgrade](UPGRADE.md#from-2x-to-300).
+- **Rendered markup changed**: the `btn-clipboard` class is no longer applied, and the
+  `data-clipboard-target` / `data-clipboard-text` attributes are replaced by
+  `data-buk-copy-target` / `data-buk-copy-text` (package-scoped, consistent with
+  `data-buk-confirm`). This removes collisions with application-level ClipboardJS initializers
+  bound to `.btn-clipboard`.
+- **Secure context required**: the Clipboard API is only available over HTTPS or on `localhost`.
+  In a non-secure context the button shows the error tooltip.
+- **`clipboard.error` translation reworded**: "Press Ctrl+C to copy" (a clipboard.js fallback that
+  no longer exists) becomes "Copy failed" (FR: "Echec de la copie" with proper typography). Update
+  your published translations if any.
+
+### Changed
+
+- The copy handler is now a single delegated `click` listener on `document`, so copy buttons
+  injected after page load (Livewire, modals) work without re-initialization.
+- The interactive test pages no longer load clipboard.js from a CDN; their "Copy code" buttons use
+  the native Clipboard API too (attribute `data-copy-target` instead of `data-clipboard-target`).
+
+
 2.4.1 (2026-07-03)
 ------------------
 

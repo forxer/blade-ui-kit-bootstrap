@@ -164,9 +164,6 @@
 
     @stack('blade-ui-kit-bs-html')
 
-    {{-- ClipboardJS for copy buttons --}}
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- Shiki for syntax highlighting --}}
@@ -215,32 +212,40 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Initialize ClipboardJS for copy buttons
-            const clipboard = new ClipboardJS('.copy-btn');
+            // Copy-to-clipboard for code examples (native Clipboard API)
+            document.addEventListener('click', function (event) {
+                const button = event.target.closest('.copy-btn');
 
-            clipboard.on('success', function(e) {
-                const button = e.trigger;
-                const icon = button.querySelector('i');
-                const text = button.querySelector('.copy-text');
-                const originalText = text.textContent;
+                if (button === null) {
+                    return;
+                }
 
-                // Change icon and text to show success
-                icon.classList.remove('bi-clipboard');
-                icon.classList.add('bi-clipboard-check');
-                text.textContent = 'Copied!';
+                const target = document.querySelector(button.getAttribute('data-copy-target'));
 
-                // Reset after 2 seconds
-                setTimeout(() => {
-                    icon.classList.remove('bi-clipboard-check');
-                    icon.classList.add('bi-clipboard');
-                    text.textContent = originalText;
-                }, 2000);
+                if (target === null || !navigator.clipboard) {
+                    console.error('Copy failed: target not found or clipboard unavailable');
+                    return;
+                }
 
-                e.clearSelection();
-            });
+                navigator.clipboard.writeText(target.textContent).then(function () {
+                    const icon = button.querySelector('i');
+                    const text = button.querySelector('.copy-text');
+                    const originalText = text.textContent;
 
-            clipboard.on('error', function(e) {
-                console.error('Copy failed:', e);
+                    // Change icon and text to show success
+                    icon.classList.remove('bi-clipboard');
+                    icon.classList.add('bi-clipboard-check');
+                    text.textContent = 'Copied!';
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        icon.classList.remove('bi-clipboard-check');
+                        icon.classList.add('bi-clipboard');
+                        text.textContent = originalText;
+                    }, 2000);
+                }, function (error) {
+                    console.error('Copy failed:', error);
+                });
             });
 
             // Handle code collapse toggle for all code blocks

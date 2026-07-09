@@ -8,7 +8,7 @@
         <button class="btn btn-sm btn-outline-secondary toggle-code-btn" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $id }}" aria-expanded="false" aria-controls="{{ $id }}" data-code-id="{{ $id }}">
             <i class="bi bi-code-slash me-1"></i><span class="toggle-text">View code</span>
         </button>
-        <button class="btn btn-sm btn-outline-secondary copy-btn d-none" type="button" data-clipboard-target="#{{ $id }} code" data-code-id="{{ $id }}">
+        <button class="btn btn-sm btn-outline-secondary copy-btn d-none" type="button" data-copy-target="#{{ $id }} code" data-code-id="{{ $id }}">
             <i class="bi bi-clipboard me-1"></i><span class="copy-text">Copy</span>
         </button>
     </div>

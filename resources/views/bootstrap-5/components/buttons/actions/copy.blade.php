@@ -1,7 +1,6 @@
 <button
     {{ $attributes->class([
         'btn btn-'.$variant.($size !== null ? ' btn-'.$size : ''),
-        'btn-clipboard' => !$disabled,
     ]) }}
     type="{{ $type }}"
     @if ($formId !== null)
@@ -9,9 +8,9 @@
     @endif
     @disabled($disabled)
     @if ($target !== null)
-        data-clipboard-target="{{ $target }}"
+        data-buk-copy-target="{{ $target }}"
     @elseif ($string !== null)
-        data-clipboard-text="{{ $string }}"
+        data-buk-copy-text="{{ $string }}"
     @endif
     @if ($title !== null)
         data-bs-toggle="tooltip"
@@ -30,49 +29,58 @@
 @push('blade-ui-kit-bs-scripts')
     @once
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const clipboard = new ClipboardJS('.btn-clipboard');
+            (function () {
+                function showCopyFeedback(button, message) {
+                    let originalTitle = button.getAttribute('data-bs-original-title');
 
-                clipboard.on('success', function(e) {
-                    let triggerButton = e.trigger;
+                    button.setAttribute('data-bs-original-title', message);
 
-                    let dataBsOriginalTitle = triggerButton.getAttribute("data-bs-original-title");
-
-                    triggerButton.setAttribute("data-bs-original-title", "{{ trans('blade-ui-kit-bootstrap::clipboard.success') }}");
-
-                    let bsTooltip = bootstrap.Tooltip.getInstance(triggerButton);
-                    if (!bsTooltip) {
-                        bsTooltip = new bootstrap.Tooltip(triggerButton);
+                    let tooltip = bootstrap.Tooltip.getInstance(button);
+                    if (!tooltip) {
+                        tooltip = new bootstrap.Tooltip(button);
                     }
-                    bsTooltip.show();
+                    tooltip.show();
 
-                    if (dataBsOriginalTitle !== null) {
-                        triggerButton.setAttribute("data-bs-original-title", dataBsOriginalTitle);
+                    if (originalTitle !== null) {
+                        button.setAttribute('data-bs-original-title', originalTitle);
+                    }
+                }
+
+                document.addEventListener('click', function (event) {
+                    if (event.defaultPrevented) {
+                        return;
                     }
 
-                    e.clearSelection();
+                    const button = event.target.closest('[data-buk-copy-text], [data-buk-copy-target]');
+
+                    if (button === null) {
+                        return;
+                    }
+
+                    let text = button.getAttribute('data-buk-copy-text');
+
+                    if (text === null) {
+                        const target = document.querySelector(button.getAttribute('data-buk-copy-target'));
+
+                        if (target === null) {
+                            showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
+                            return;
+                        }
+
+                        text = target.matches('input, textarea, select') ? target.value : target.textContent;
+                    }
+
+                    if (!navigator.clipboard) {
+                        showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
+                        return;
+                    }
+
+                    navigator.clipboard.writeText(text).then(
+                        () => showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.success') }}"),
+                        () => showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}")
+                    );
                 });
-
-                clipboard.on('error', function(e) {
-                    let triggerButton = e.trigger;
-
-                    let dataBsOriginalTitle = triggerButton.getAttribute("data-bs-original-title");
-
-                    triggerButton.setAttribute("data-bs-original-title", "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
-
-                    let bsTooltip = bootstrap.Tooltip.getInstance(triggerButton);
-                    if (!bsTooltip) {
-                        bsTooltip = new bootstrap.Tooltip(triggerButton);
-                    }
-                    bsTooltip.show();
-
-                    if (dataBsOriginalTitle !== null) {
-                        triggerButton.setAttribute("data-bs-original-title", dataBsOriginalTitle);
-                    }
-
-                    e.clearSelection();
-                });
-            });
+            })();
         </script>
     @endonce
 @endpush

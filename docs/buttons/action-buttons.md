@@ -844,14 +844,9 @@ This will output the following HTML:
 
 A simple button to copy a string or the content of another element to the clipboard.
 
-**Warning!** This button requires access to the [clipboard.js](https://clipboardjs.com/) package; this must be installed in your application and instantiated like this:
+This button uses the browser's native [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API) (`navigator.clipboard`); no external JavaScript library is required. A single delegated `click` listener handles all copy buttons, so buttons injected after page load (Livewire, modals) work out of the box.
 
-```js
-import ClipboardJS from 'clipboard'
-window.ClipboardJS = new ClipboardJS('.btn-clipboard')
-```
-
-**Warning!** We are phasing out support for Bootstrap 4, this button may not work properly with this version.
+**Warning!** The Clipboard API is only available in a secure context: the page must be served over HTTPS (or from `localhost`). In a non-secure context, clicking the button displays the error tooltip.
 
 This button has two additional attributes: `target` and `string`. Note that for this, and unlike most attributes, these attributes will be automatically escaped by the component.
 
@@ -869,7 +864,7 @@ Available attributes: [Text](./buttons.md#text), [Hide text](./buttons.md#hide-t
 This will output the following HTML:
 
 ```html
-<button class="btn btn-secondary btn-clipboard" type="button" data-clipboard-text="string to copy" data-bs-toggle="tooltip" title="Copy string to copy">
+<button class="btn btn-secondary" type="button" data-buk-copy-text="string to copy" data-bs-toggle="tooltip" title="Copy string to copy">
     Copy
 </button>
 ```
@@ -885,7 +880,7 @@ This will output the following HTML:
 
 ```html
 <input type="text" value="string to copy" id="element">
-<button class="btn btn-secondary btn-clipboard" type="button" data-clipboard-target="#element" data-bs-toggle="tooltip" title="Copy">
+<button class="btn btn-secondary" type="button" data-buk-copy-target="#element" data-bs-toggle="tooltip" title="Copy">
     Copy
 </button>
 ```

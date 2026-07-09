@@ -139,6 +139,11 @@ Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de mod
 `btn-restore`, `btn-recycle-bin`, `btn-enable`, `btn-enabled`, `btn-disable`, `btn-disabled`,
 `btn-move-up`, `btn-move-down`, `btn-confirm-modal-yes`, `btn-confirm-modal-no`
 
+`btn-copy` (props `target` ou `string`, mutuellement exclusives) utilise l'API native
+`navigator.clipboard` via des attributs `data-buk-copy-target`/`data-buk-copy-text` et un listener
+délégué sur `document` — aucune dépendance JS externe, fonctionne avec les boutons injectés après
+coup (Livewire). Nécessite un contexte sécurisé (HTTPS ou `localhost`).
+
 ## Règles
 
 - ❌ `initAttributes()` — supprimé en v2, utiliser `onAttributesSet()`
