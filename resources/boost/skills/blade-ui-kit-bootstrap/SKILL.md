@@ -139,10 +139,13 @@ Les valeurs contraintes (`variant`, `size`, `type`, méthode HTTP, taille de mod
 `btn-restore`, `btn-recycle-bin`, `btn-enable`, `btn-enabled`, `btn-disable`, `btn-disabled`,
 `btn-move-up`, `btn-move-down`, `btn-confirm-modal-yes`, `btn-confirm-modal-no`
 
-`btn-copy` (props `target` ou `string`, mutuellement exclusives) utilise l'API native
-`navigator.clipboard` via des attributs `data-buk-copy-target`/`data-buk-copy-text` et un listener
-délégué sur `document` — aucune dépendance JS externe, fonctionne avec les boutons injectés après
-coup (Livewire). Nécessite un contexte sécurisé (HTTPS ou `localhost`).
+`btn-copy` (props `target` ou `string` — exactement une des deux, sinon
+`InvalidArgumentException`) utilise l'API native `navigator.clipboard` via des attributs
+`data-buk-copy-target`/`data-buk-copy-text` et un listener délégué sur `document` — aucune
+dépendance JS externe, fonctionne avec les boutons injectés après coup (Livewire). Nécessite un
+contexte sécurisé (HTTPS ou `localhost`). Émet les `CustomEvent` `buk-copy:success` /
+`buk-copy:error` (`event.detail.text`). Pour une vue livrée en fragment AJAX (modale chargée à la
+demande), terminer la vue par `@stack('blade-ui-kit-bs-scripts')` — le script est idempotent.
 
 ## Règles
 

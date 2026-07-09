@@ -125,6 +125,19 @@
 &lt;x-btn-logout url="#" /&gt;
             </x-slot:code>
         </x-blade-ui-kit-bootstrap-tests::demo-with-code>
+
+        <h3 class="h5 mt-4">Copy button targeting another element</h3>
+        <x-blade-ui-kit-bootstrap-tests::demo-with-code id="code-copy-target">
+            <div class="input-group" style="max-width: 320px">
+                <input type="text" class="form-control" id="copy-target-example" value="Content to copy" readonly>
+                <x-btn-copy target="#copy-target-example" hide-text />
+            </div>
+
+            <x-slot:code>
+&lt;input type="text" id="copy-target-example" value="Content to copy" readonly&gt;
+&lt;x-btn-copy target="#copy-target-example" hide-text /&gt;
+            </x-slot:code>
+        </x-blade-ui-kit-bootstrap-tests::demo-with-code>
     </div>
 
     {{-- Modal Action Buttons --}}

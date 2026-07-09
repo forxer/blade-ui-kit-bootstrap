@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\View\ViewException;
 
 /**
  * The copy button relies on the native Clipboard API (`navigator.clipboard`)
@@ -28,6 +29,16 @@ it('renders a CSS selector as a data-buk-copy-target attribute', function () {
         ->not->toContain('btn-clipboard')
         ->not->toContain('data-clipboard');
 });
+
+// The InvalidArgumentException is thrown while Blade renders the component,
+// so it reaches the test wrapped in a ViewException.
+it('rejects a copy button defining both target and string', function () {
+    Blade::render('<x-btn-copy target="#element" string="foo" />');
+})->throws(ViewException::class, 'not both');
+
+it('rejects a copy button defining neither target nor string', function () {
+    Blade::render('<x-btn-copy />');
+})->throws(ViewException::class, 'requires either');
 
 it('pushes a script using the native Clipboard API instead of ClipboardJS', function () {
     $script = Blade::render(

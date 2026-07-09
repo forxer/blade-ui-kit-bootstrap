@@ -61,6 +61,20 @@ For example like this:
 </html>
 ```
 
+### Views delivered as AJAX fragments
+
+The stacks above are rendered by your layout, so they only contain what the initial page render pushed. When a view using components is fetched through AJAX and injected into the page (a modal body loaded on demand, for example), its pushed scripts never reach the layout stack: end the fragment view with the stack call so the scripts travel with the injected HTML.
+
+```blade
+{{-- resources/views/some/fragment.blade.php --}}
+<div>
+    <x-btn-copy :string="$value" />
+</div>
+@stack('blade-ui-kit-bs-scripts')
+```
+
+Most libraries used to inject HTML (jQuery's `html()`, for example) execute the embedded `<script>` tags. The package scripts are written to be idempotent, so loading the same fragment several times does not register duplicate listeners.
+
 Locales
 -------
 

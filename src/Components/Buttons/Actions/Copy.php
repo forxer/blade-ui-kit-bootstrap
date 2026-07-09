@@ -6,6 +6,7 @@ namespace BladeUIKitBootstrap\Components\Buttons\Actions;
 
 use BladeUIKitBootstrap\Components\Buttons\SimpleButton;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 class Copy extends SimpleButton
 {
@@ -17,6 +18,18 @@ class Copy extends SimpleButton
 
     protected function initAttributes(): void
     {
+        if ($this->target !== null && $this->string !== null) {
+            throw new InvalidArgumentException(
+                'The copy button accepts either a "target" or a "string" attribute, not both.'
+            );
+        }
+
+        if ($this->target === null && $this->string === null) {
+            throw new InvalidArgumentException(
+                'The copy button requires either a "target" or a "string" attribute.'
+            );
+        }
+
         $this->variant ??= 'secondary';
 
         $this->text ??= Str::ucfirst(trans('action.copy'));

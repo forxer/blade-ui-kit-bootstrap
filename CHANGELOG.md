@@ -21,11 +21,26 @@ CHANGELOG
 - **`clipboard.error` translation reworded**: "Press Ctrl+C to copy" (a clipboard.js fallback that
   no longer exists) becomes "Copy failed" (FR: "Echec de la copie" with proper typography). Update
   your published translations if any.
+- **`target` / `string` are now validated**: the copy button throws an `InvalidArgumentException`
+  when both attributes are defined, or when neither is. Previously an over-defined button silently
+  favoured `target` and an under-defined one silently did nothing.
+
+### Added
+
+- The copy button dispatches bubbling `CustomEvent`s after each copy attempt: `buk-copy:success`
+  and `buk-copy:error`, with the copied text in `event.detail.text`. Useful to plug custom
+  feedback (toast, icon swap...) on top of — or instead of — the built-in tooltip.
+- Documentation of the "AJAX fragment" pattern: end a fragment view with
+  `@stack('blade-ui-kit-bs-scripts')` so component scripts travel with the injected HTML
+  (see docs/installation.md).
 
 ### Changed
 
 - The copy handler is now a single delegated `click` listener on `document`, so copy buttons
   injected after page load (Livewire, modals) work without re-initialization.
+- The copy handler script is idempotent: the delegated listener is registered only once even when
+  the script is included several times, e.g. when a view containing copy buttons is delivered as
+  an AJAX fragment ending with `@stack('blade-ui-kit-bs-scripts')`.
 - The interactive test pages no longer load clipboard.js from a CDN; their "Copy code" buttons use
   the native Clipboard API too (attribute `data-copy-target` instead of `data-clipboard-target`).
 

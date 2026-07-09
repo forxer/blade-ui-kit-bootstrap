@@ -30,6 +30,13 @@
     @once
         <script>
             (function () {
+                // The script may be included more than once when views are delivered as
+                // AJAX fragments; the delegated listener must only be registered once.
+                if (window.__bukCopyListener) {
+                    return;
+                }
+                window.__bukCopyListener = true;
+
                 function showCopyFeedback(button, message) {
                     let originalTitle = button.getAttribute('data-bs-original-title');
 
@@ -44,6 +51,16 @@
                     if (originalTitle !== null) {
                         button.setAttribute('data-bs-original-title', originalTitle);
                     }
+                }
+
+                function copySucceeded(button, text) {
+                    showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.success') }}");
+                    button.dispatchEvent(new CustomEvent('buk-copy:success', { bubbles: true, detail: { text: text } }));
+                }
+
+                function copyFailed(button, text) {
+                    showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
+                    button.dispatchEvent(new CustomEvent('buk-copy:error', { bubbles: true, detail: { text: text } }));
                 }
 
                 document.addEventListener('click', function (event) {
@@ -63,7 +80,7 @@
                         const target = document.querySelector(button.getAttribute('data-buk-copy-target'));
 
                         if (target === null) {
-                            showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
+                            copyFailed(button, null);
                             return;
                         }
 
@@ -71,13 +88,13 @@
                     }
 
                     if (!navigator.clipboard) {
-                        showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}");
+                        copyFailed(button, text);
                         return;
                     }
 
                     navigator.clipboard.writeText(text).then(
-                        () => showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.success') }}"),
-                        () => showCopyFeedback(button, "{{ trans('blade-ui-kit-bootstrap::clipboard.error') }}")
+                        () => copySucceeded(button, text),
+                        () => copyFailed(button, text)
                     );
                 });
             })();

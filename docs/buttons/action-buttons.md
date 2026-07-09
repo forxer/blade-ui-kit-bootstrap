@@ -850,6 +850,8 @@ This button uses the browser's native [Clipboard API](https://developer.mozilla.
 
 This button has two additional attributes: `target` and `string`. Note that for this, and unlike most attributes, these attributes will be automatically escaped by the component.
 
+**Exactly one of them is required**: the component throws an `InvalidArgumentException` when both are defined, or when neither is.
+
 Behind the scenes, the "Copy button" component extends the [Simple button](./simple-button.md) component with the following default properties:
 - Text: "Copy"
 - Variant: `secondary`
@@ -884,3 +886,20 @@ This will output the following HTML:
     Copy
 </button>
 ```
+
+#### JavaScript events
+
+Besides the built-in tooltip feedback, the button dispatches a bubbling `CustomEvent` after each copy attempt, so you can plug in your own feedback (toast, icon swap...):
+
+- `buk-copy:success` — the text was copied; `event.detail.text` contains it.
+- `buk-copy:error` — the copy failed (Clipboard API unavailable, non-secure context, target not found...); `event.detail.text` contains the text that could not be copied, or `null` when the target element was not found.
+
+```js
+document.addEventListener('buk-copy:success', (event) => {
+    console.log('Copied:', event.detail.text);
+});
+```
+
+#### Views delivered as AJAX fragments
+
+The copy script is pushed to the `blade-ui-kit-bs-scripts` stack, which is normally rendered by your layout. When copy buttons live in a view fetched through AJAX and injected into the page (a modal body for example), that layout stack is not part of the fragment: end the fragment view with `@stack('blade-ui-kit-bs-scripts')` so the script travels with it. The script is idempotent — its delegated listener is registered only once no matter how many times the fragment is loaded.
