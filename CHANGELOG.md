@@ -1,12 +1,29 @@
 CHANGELOG
 =========
 
+3.0.2 (2026-07-24)
+------------------
+
+### Fixed
+
+- **Double escaping of bound value attributes on action buttons**: with a bound value containing
+  HTML-special characters, `<x-btn-copy :string="...">` put HTML entities in the clipboard
+  (e.g. `t&JY` was copied as `t&amp;JY`). The value was escaped a first time by Blade's attribute
+  bag (`sanitizeComponentAttribute()`, applied to bound attributes that are not constructor
+  parameters) and a second time by the component view. `Copy::$target`, `Copy::$string`,
+  `Email::$address`, `Phone::$phoneNumber` and `Phone::$phoneNumberDisplayed` are now declared
+  as constructor parameters — like the other content properties — so the component escapes
+  exactly once. This also fixes the double-escaped `mailto:`/`tel:` URLs (even with static
+  attributes) and the double/triple-escaped generated tooltips. Blade usage is unchanged.
+
+
 3.0.1 (2026-07-12)
 ------------------
 
 ### Changed
 
 - Slimmed Boost guidelines to pointer + critical pitfalls (details covered by the skill)
+
 
 3.0.0 (2026-07-09)
 ------------------
