@@ -18,8 +18,8 @@ class Website extends LinkButton
         if ($this->url !== null) {
             $this->url = e($this->url);
 
-            $this->title ??= Str::ucfirst(trans('action.see_website_addresss', [
-                'addresss' => parse_url($this->url, PHP_URL_HOST),
+            $this->title ??= Str::ucfirst(trans('action.see_website_address', [
+                'address' => parse_url($this->url, PHP_URL_HOST),
             ]));
         }
 

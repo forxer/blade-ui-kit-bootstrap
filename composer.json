@@ -22,7 +22,7 @@
     "require": {
         "php": "^8.4",
         "forxer/blade-components-reflection": "^1.0",
-        "forxer/generic-term-translations-for-laravel": "^1.0",
+        "forxer/generic-term-translations-for-laravel": "^2.0",
         "laravel/framework": "^12.0 || ^13.0"
     },
     "require-dev": {

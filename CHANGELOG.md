@@ -1,6 +1,28 @@
 CHANGELOG
 =========
 
+3.1.0 (2026-09-02)
+------------------
+
+### Fixed
+
+- **`<x-btn-website>` title**: the component used `action.see_website_addresss` and its `:addresss`
+  parameter, both misspelled with three `s` since `1.9.0` of
+  `forxer/generic-term-translations-for-laravel`. The `2.0` release of that package renamed them to
+  `action.see_website_address` / `:address`, and the component now uses the corrected key.
+
+### Changed
+
+- `forxer/generic-term-translations-for-laravel` now requires `^2.0`, dropping `^1.0`: the corrected
+  translation key only exists there. If you published your translations, run
+  `php artisan lang:update`, then delete the orphaned `see_website_addresss` entry left in your
+  `lang/{locale}/action.php` files. Nothing else changes in the package API.
+
+### Added
+
+- Test coverage for the website button title, including the case where no `url` is given.
+
+
 3.0.2 (2026-07-24)
 ------------------
 
