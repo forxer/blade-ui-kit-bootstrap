@@ -9,10 +9,11 @@
     @endif
     @if ($title !== null)
         data-bs-toggle="tooltip"
-        title="{!! $title !!}"
+        title="{!! e($title, false) !!}"
     @endif
     @if ($confirm !== null)
-        data-buk-confirm="{!! $confirm !!}"
+        data-buk-confirm="{{ $confirm }}"
+        data-buk-confirm-html
         data-buk-confirm-modal="confirm-modal-{!! $confirmId !!}"
     @endif
 >

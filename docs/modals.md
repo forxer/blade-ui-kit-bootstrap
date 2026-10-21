@@ -178,6 +178,18 @@ It is simply necessary to add the `data-buk-confirm` attribute to an actionable 
 <x-confirm-modal id="confirm-modal-do-something-{{ $model->id }}" />
 ```
 
+The `data-buk-confirm` attribute is plain text: the modal displays it as text, so let Blade escape your data with `{{ }}`, once:
+
+```blade
+<a href="{{ route('delete-something', $model) }}"
+    data-buk-confirm="Are you sure you want to delete « {{ $model->name }} »?"
+    data-buk-confirm-modal="confirm-modal-delete-something-{{ $model->id }}">
+        Delete
+</a>
+```
+
+To display HTML in the message, use the `confirm` attribute of the button components (see below). They write the message into `data-buk-confirm` themselves, encoded for the attribute, and flag it with `data-buk-confirm-html`: only a flagged message is injected as HTML. If you add `data-buk-confirm-html` by hand, the attribute must hold your HTML encoded for the attribute, e.g. `data-buk-confirm="{{ $html }}"` where `$html` is a plain string (an `HtmlString` would be written unencoded and the browser would decode your escaping away).
+
 For this modal the title is not mandatory because it will have a default value from the embedded translations. But you can enter the title of your choice using the `title` attribute.
 
 This is the low level implementation but in the vast majority of cases it is even simpler to use the "[Confirm](./buttons/buttons.md#confirm)" attribute of button components.

@@ -1,6 +1,31 @@
 CHANGELOG
 =========
 
+3.2.0 (2026-10-21)
+------------------
+
+### Security
+
+- **Escaped data no longer turns into HTML in confirmation modals and help-info popovers**: the
+  browser decodes an attribute before a script reads it, so a caller-escaped `e($name)` written
+  raw into `data-buk-confirm`, `data-bs-content` or `data-bs-title` came back as live HTML (stored
+  XSS through the confirmation modal). The components now encode these attributes, in Bootstrap 4
+  and 5. See [Upgrade](UPGRADE.md#from-31x-to-320), points 1 and 2.
+- **A button `title` can no longer leave its attribute**: it is now written without double
+  encoding, so an escaped title is unchanged and an unescaped quote stays inside the attribute.
+
+### Changed
+
+- **A hand-written `data-buk-confirm` is plain text**: the modal shows it as text, unless the
+  element also carries `data-buk-confirm-html`, which the button components now set. See
+  [Upgrade](UPGRADE.md#from-31x-to-320), point 3.
+
+### Added
+
+- Tests reading the rendered attributes as a browser decodes them (`Dom\HTMLDocument`), for the
+  confirm message, the button title and the help-info popover, in Bootstrap 4 and 5.
+
+
 3.1.0 (2026-09-02)
 ------------------
 

@@ -8,9 +8,9 @@
     type="button"
     data-bs-toggle="popover"
     @if ($title !== null)
-        data-bs-title="{!! $title !!}"
+        data-bs-title="{{ $title }}"
     @endif
-    data-bs-content="{!! $content ?? $slot !!}"
+    data-bs-content="{{ (string) ($content ?? $slot) }}"
 >
     @if ($startIcon !== null)
         {!! $startIcon !!}

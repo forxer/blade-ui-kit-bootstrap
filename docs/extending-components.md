@@ -357,7 +357,7 @@ The `items-in-archives` attribute is automatically converted to `itemsInArchives
 
 The complete hook execution order is:
 
-1. Constructor — required parameters (`$url`, `$id`, `$show`, `$hide`) **and content properties** (`$title`, `$text`, `$confirm`, `$startContent`, `$endContent`, …). Content properties are constructor parameters so Blade does not apply `sanitizeComponentAttribute()` (`e()`) to them: they are rendered raw (`{!! !!}`) and escaping untrusted data is the caller's responsibility.
+1. Constructor — required parameters (`$url`, `$id`, `$show`, `$hide`) **and content properties** (`$title`, `$text`, `$confirm`, `$startContent`, `$endContent`, …). Content properties are constructor parameters so Blade does not apply `sanitizeComponentAttribute()` (`e()`) to them: they are rendered raw (`{!! !!}`) and escaping untrusted data, once, is the caller's responsibility. When the view writes one of them into an attribute that a script reads back (`confirm`, the help-info `title` and `content`), it encodes it there, so the script receives exactly the HTML the caller wrote.
 2. `data()` — Blade captures a snapshot of public properties *(before attributes are set)*
 3. `withAttributes()` — Blade assigns non-constructor attributes
 4. `hydrateExtraProperties()` — automatic property hydration with type coercion
@@ -371,7 +371,7 @@ The complete hook execution order is:
 - Properties with `private(set)` or `protected(set)` asymmetric visibility are skipped.
 - Properties that are **constructor parameters** are handled by Blade normally and skipped by the hydration mechanism.
 - If an extra property name conflicts with an HTML attribute you need, the property will capture the attribute (it will be hydrated into the property instead of being rendered on the element). Choose distinctive property names to avoid this.
-- Content properties (`title`, `text`, `confirm`, `startContent`, `endContent`, …) are constructor parameters, not extra properties, so they bypass this hydration mechanism and Blade does not escape them — pass already-escaped or trusted HTML.
+- Content properties (`title`, `text`, `confirm`, `startContent`, `endContent`, …) are constructor parameters, not extra properties, so they bypass this hydration mechanism and Blade does not escape them: pass already-escaped or trusted HTML. If your own view writes one of them into an attribute, encode it there (`{{ }}`), or the browser decoding will undo the caller's escaping.
 - Bound syntax (`:items-in-archives="$count"`) passes the PHP value directly. Unbound syntax (`items-in-archives="42"`) passes a string that gets coerced.
 - You can modify **any component property** in `onAttributesSet()` (e.g., `$this->endContent`) and the view will see the updated value.
 

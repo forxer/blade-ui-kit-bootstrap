@@ -423,6 +423,8 @@ This will output the following HTML:
 <x-btn :title="e($data)" />
 ```
 
+The title is displayed as text in the tooltip: HTML entities such as `&nbsp;` are rendered, tags are not. The component writes it into the attribute without double encoding, so an escaped value is displayed as you escaped it, and an unescaped quote can never leave the `title` attribute.
+
 ### Confirm
 
 You can add the `confirm` attribute with the message you want to display in the [confirmation modal](./../modals.md#confirm-modal).
@@ -437,11 +439,15 @@ Or alternatively for a plain text string:
 <x-btn confirm="Are you sure you want to do this?" />
 ```
 
-**Warning:** it's up to YOU to escape the value if you pass untrusted data:
+The message is HTML: tags and entities are allowed (`<strong>`, `&nbsp;`).
+
+**Warning:** it's up to YOU to escape untrusted data, once, with `e()`:
 
 ```blade
-<x-btn :confirm="e($data)" />
+<x-btn :confirm="trans('confirm_delete', ['name' => e($model->name)])" />
 ```
+
+The component encodes the message when it writes it into the `data-buk-confirm` attribute, and flags it as HTML with `data-buk-confirm-html`: the confirmation modal displays exactly the HTML you passed, with your escaping intact. Do not escape twice: a doubly escaped value shows entities (`&lt;`, `&amp;`) in the modal.
 
 ### Confirm Variant
 

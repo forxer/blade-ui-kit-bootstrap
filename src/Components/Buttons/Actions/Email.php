@@ -13,7 +13,7 @@ class Email extends LinkButton
      * `address` is declared as a constructor parameter — not a bare public property — so
      * Blade does NOT apply `sanitizeComponentAttribute()` (`e()`) to bound values. The
      * value is kept raw: the `mailto:` URL is escaped once by the view (`{{ $url }}`)
-     * and the tooltip escapes it explicitly with `e()` (title is rendered raw).
+     * and the tooltip escapes it explicitly with `e()` (the title view does not double encode).
      *
      * @param  string|null  $address  Target email address (used for the `mailto:` link).
      * @param  bool  $show  Display the button. Defaults to `true`.

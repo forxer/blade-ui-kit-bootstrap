@@ -57,6 +57,10 @@ class HelpInfo extends BladeComponent
      * (`{!! !!}`) to allow HTML, so the "caller escapes" contract is preserved and pre-escaped or
      * HTML content is not double escaped.
      *
+     * `title` and `content` (or the slot) are written into the popover attributes and encoded
+     * whole there: the browser decodes an attribute before Bootstrap reads it, so the popover
+     * receives exactly the HTML the caller wrote, with the caller's escaping intact.
+     *
      * @param  bool  $show  Display the button. Defaults to `true`.
      * @param  bool  $hide  Force-hide the button (takes precedence over `show`).
      * @param  string|null  $content  Help content to display (raw HTML allowed).

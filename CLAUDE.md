@@ -336,6 +336,13 @@ $this->config('boostrap_version')   // INCORRECT (typo)
 
 5. **Test Views Location:** Never place test views in `resources/views/`. They must be in `resources/views-tests/` with the separate namespace.
 
+6. **Attributes read back by a script:** content properties are HTML that the caller escapes once.
+   When a view writes one into an attribute that a script reads (`data-buk-confirm`, the help-info
+   popover attributes), encode it whole with `{{ }}` (cast a slot to string first: `e()` does not
+   encode an `Htmlable`), otherwise the browser decoding turns the caller's escaping back into HTML.
+   A `title` read as tooltip text is written with `e($title, false)`. Tests read attributes through
+   `Dom\HTMLDocument` (`tests/Feature/AttributeEncodingTest.php`).
+
 ## Future Improvements
 
 ### Documentation Enhancement (TODO)

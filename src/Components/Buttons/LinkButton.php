@@ -75,6 +75,12 @@ class LinkButton extends BladeComponent
      * keeping them as constructor parameters preserves the "caller escapes" contract and avoids
      * the double escaping that would otherwise occur for pre-escaped or HTML content.
      *
+     * Values the view writes into an HTML attribute are encoded there: the browser decodes an
+     * attribute before a script reads it. `confirm` is encoded whole and flagged with
+     * `data-buk-confirm-html`, so the confirmation modal receives exactly the HTML the caller
+     * wrote. `title` is encoded without double encoding: a caller-escaped value is unchanged and
+     * an unescaped quote can no longer leave the attribute.
+     *
      * @param  bool  $show  Display the button. Defaults to `true`.
      * @param  bool  $hide  Force-hide the button (takes precedence over `show`).
      * @param  string|null  $url  Target URL of the link (`href` attribute).

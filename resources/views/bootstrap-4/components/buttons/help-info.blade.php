@@ -8,9 +8,9 @@
     type="button"
     data-toggle="popover"
     @if ($title !== null)
-        title="{!! $title !!}"
+        title="{{ $title }}"
     @endif
-    data-content="{!! $content ?? $slot !!}"
+    data-content="{{ (string) ($content ?? $slot) }}"
 >
     @if ($startIcon !== null)
         {!! $startIcon !!}

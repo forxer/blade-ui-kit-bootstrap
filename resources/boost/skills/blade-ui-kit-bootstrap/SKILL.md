@@ -156,6 +156,8 @@ demande), terminer la vue par `@stack('blade-ui-kit-bs-scripts')` — le script 
 - ✅ `onAttributesSet()` + `??=` pour toute extension (pas de `parent::` nécessaire)
 - ✅ Enregistrer via `config/blade-ui-kit-bootstrap.php`
 - ✅ Échapper soi-même les données non sûres passées aux attributs de contenu (`title`, `text`, `confirm`, `startContent`, `endContent`, `content`) avec `e()` — rendus en brut (HTML autorisé), le composant ne les auto-échappe pas
+- ✅ Échapper une seule fois : le composant encode lui-même ce qu'il écrit dans un attribut relu par un script (`confirm`, `title` et `content` de `help-info`) ; `e(e())` affiche des entités dans la modale
+- ✅ Un `data-buk-confirm` écrit à la main est du texte : y échapper les données avec `{{ }}` ; pour du HTML, passer par l'attribut `confirm` d'un bouton
 
 ## Génération de métadonnées IDE
 

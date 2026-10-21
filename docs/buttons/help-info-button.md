@@ -91,6 +91,23 @@ This will output:
 </button>
 ```
 
+Escaping
+--------
+
+The content, the slot and the title are HTML. **Warning:** it's up to YOU to escape untrusted data, once: with `e()` in an attribute, with `{{ }}` in the slot.
+
+```blade
+<x-help-info
+    :title="e($field->label)"
+    :content="'Value of <strong>'.e($field->name).'</strong>'" />
+
+<x-help-info>
+    Last updated by <strong>{{ $user->name }}</strong>
+</x-help-info>
+```
+
+The component encodes these values when it writes them into the popover attributes, so the popover receives exactly the HTML you passed, with your escaping intact. Bootstrap then filters it with its sanitizer.
+
 Common button attributes
 ------------------------
 

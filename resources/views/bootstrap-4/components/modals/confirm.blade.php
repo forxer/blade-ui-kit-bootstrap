@@ -20,7 +20,17 @@
 
                         let confirmModal = document.getElementById(element.dataset.bukConfirmModal);
 
-                        confirmModal.querySelector('.modal-body').innerHTML = '<p>'+element.dataset.bukConfirm+'</p>';
+                        let body = confirmModal.querySelector('.modal-body');
+
+                        // The button components flag their message as HTML (data-buk-confirm-html);
+                        // a hand-written data-buk-confirm attribute is plain text.
+                        if ('bukConfirmHtml' in element.dataset) {
+                            body.innerHTML = '<p>'+element.dataset.bukConfirm+'</p>';
+                        } else {
+                            let message = document.createElement('p');
+                            message.textContent = element.dataset.bukConfirm;
+                            body.replaceChildren(message);
+                        }
 
                         $(confirmModal).modal().show();
 

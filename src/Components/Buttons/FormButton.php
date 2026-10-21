@@ -97,6 +97,12 @@ class FormButton extends BladeComponent
      * (`{!! !!}`) to allow HTML, so the "caller escapes" contract is preserved and pre-escaped or
      * HTML content is not double escaped.
      *
+     * Values the view writes into an HTML attribute are encoded there: the browser decodes an
+     * attribute before a script reads it. `confirm` is encoded whole and flagged with
+     * `data-buk-confirm-html`, so the confirmation modal receives exactly the HTML the caller
+     * wrote. `title` is encoded without double encoding: a caller-escaped value is unchanged and
+     * an unescaped quote can no longer leave the attribute.
+     *
      * @param  string  $url  Target URL of the form (`action` attribute).
      * @param  bool  $show  Display the button. Defaults to `true`.
      * @param  bool  $hide  Force-hide the button (takes precedence over `show`).

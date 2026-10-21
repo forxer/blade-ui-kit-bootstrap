@@ -1,6 +1,58 @@
 Upgrade
 =======
 
+From 3.1.x to 3.2.0
+-------------------
+
+### Attributes read by a script are now encoded by the components
+
+The confirmation message (`confirm`) and the help-info popover (`content`, slot, `title`) are
+written into HTML attributes that a script reads back: the confirmation modal, Bootstrap's popover.
+The browser decodes an attribute before handing it to the script, so a value escaped once by the
+caller, as documented (`e($name)`), came back as live HTML. With a name such as
+`<img src=x onerror=alert(1)>`, clicking a delete button ran the script.
+
+The components now encode these attributes themselves. The contract does not change: these
+properties are still HTML, and you still escape untrusted data, **once**, with `e()`.
+
+1. **You escape untrusted data once with `e()`**: nothing to do. The modal and the popover display
+   the same text as before, and the data can no longer inject HTML.
+
+2. **You escaped twice to work around the defect** (`e(e($name))`): remove one `e()`. Otherwise
+   the modal now shows the entities (`&lt;`, `&amp;`) instead of the characters.
+
+   ```blade
+   {{-- before --}}
+   <x-btn-destroy :url="$url" :confirm="'Delete « '.e(e($item->name)).' »?'" />
+
+   {{-- now --}}
+   <x-btn-destroy :url="$url" :confirm="'Delete « '.e($item->name).' »?'" />
+   ```
+
+3. **You write `data-buk-confirm` by hand** (low-level confirm modal): the attribute is now plain
+   text, injected with `textContent`.
+   - With data escaped by Blade (`data-buk-confirm="Delete {{ $item->name }}?"`): nothing to do, it
+     is now safe.
+   - With HTML on purpose (`<br>`, `<strong>`): use the `confirm` attribute of a button component,
+     which flags its message as HTML. Or add `data-buk-confirm-html` to the element, and encode
+     your HTML for the attribute: `data-buk-confirm="{{ $html }}"`, where `$html` is a plain
+     string (see the [confirm modal documentation](docs/modals.md#confirm-modal)).
+
+4. **You published the package views**: report the changes into your copies, for each Bootstrap
+   version you use.
+   - `components/buttons/{simple-button,form-button,link-button,actions/copy}.blade.php`:
+     `title="{!! e($title, false) !!}"`, `data-buk-confirm="{{ $confirm }}"` and the
+     `data-buk-confirm-html` attribute.
+   - `components/buttons/help-info.blade.php`: `{{ $title }}` and
+     `{{ (string) ($content ?? $slot) }}` in the popover attributes. The `(string)` cast matters:
+     `{{ }}` does not encode a slot (an `Htmlable`).
+   - `components/modals/confirm.blade.php`: the script that fills the modal body.
+
+A button `title` is now written without double encoding: an escaped title is unchanged, and an
+unescaped quote can no longer leave the attribute. A `confirm` passed without `e()` remains
+injectable, as before: escaping untrusted data is still the caller's job.
+
+
 From 2.x to 3.0.0
 -----------------
 

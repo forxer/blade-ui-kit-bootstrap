@@ -14,7 +14,7 @@ class Phone extends LinkButton
      * not bare public properties — so Blade does NOT apply `sanitizeComponentAttribute()`
      * (`e()`) to bound values. The values are kept raw: the `tel:` URL is escaped once
      * by the view (`{{ $url }}`) and the tooltip escapes them explicitly with `e()`
-     * (title is rendered raw).
+     * (the title view does not double encode).
      *
      * @param  string|null  $phoneNumber  Target phone number (used for the `tel:` link).
      * @param  string|null  $phoneNumberDisplayed  Phone number as displayed on screen (if different from `phoneNumber`).
