@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+3.2.1 (2026-10-21)
+------------------
+
+### Fixed
+
+- **Boost guideline**: the 3.2.0 guideline wrote `{{ }}` as text in a Blade file. Blade compiled
+  it as an empty echo, so rendering the guidelines failed (`Too few arguments to function e()`).
+  The braces are now escaped (`@{{ }}`), and a test renders the guideline through Blade.
+
+
 3.2.0 (2026-10-21)
 ------------------
 
