@@ -52,7 +52,6 @@ Documentation
 - [Bootstrap version](./bootstrap-version.md)
 - [Extending Components](./extending-components.md)
 - [Testing Pages](./testing-pages.md)
-- [IDE Autocompletion](./ide-autocomplete.md)
 - [Forms](./forms.md)
 - [Alerts](./alerts.md)
 - [Badges](./badges.md)

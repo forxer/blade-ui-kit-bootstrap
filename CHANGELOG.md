@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+3.3.0 (2026-11-06)
+------------------
+
+### Removed
+
+- **IDE metadata generator**: the `blade-ui-kit-bs:ide` command, `ServiceProvider::ideTarget()`
+  and the abandoned `forxer/blade-components-ide-helper` dev dependency. Nothing changes at
+  runtime. See [Upgrade](UPGRADE.md#from-32x-to-330).
+
+
 3.2.1 (2026-10-21)
 ------------------
 

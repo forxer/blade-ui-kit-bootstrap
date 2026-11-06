@@ -17,7 +17,6 @@ Features
 - **Interactive test pages** - Browse all components with live examples and code snippets
 - **Translation support** - Works seamlessly with Laravel's localization
 - **Action buttons** - Pre-configured buttons for common CRUD operations
-- **IDE autocompletion** - Generate VS Code snippets / Custom Data and PhpStorm metadata for completion inside `<x-...>` tags (`php artisan blade-ui-kit-bs:ide`)
 
 Example
 -------
@@ -104,7 +103,6 @@ Index
     - [Confirm modal](./docs/modals.md#confirm-modal)
 - [Extending Components](./docs/extending-components.md)
 - [Testing Pages](./docs/testing-pages.md)
-- [IDE Autocompletion](./docs/ide-autocomplete.md)
 
 Why and thanks
 --------------

@@ -1,6 +1,20 @@
 Upgrade
 =======
 
+From 3.2.x to 3.3.0
+-------------------
+
+### The IDE metadata generator is removed
+
+`forxer/blade-components-ide-helper` is abandoned, and the `blade-ui-kit-bs:ide` command is gone
+with it. In your application:
+
+1. Remove `blade-ui-kit-bs:ide` or `blade-components-ide-helper:generate` from your Composer
+   scripts, and `forxer/blade-components-ide-helper` from your `require-dev`.
+2. Delete the generated files you committed: `.vscode/blade-ui-kit-bootstrap.code-snippets`,
+   `.vscode/blade-ui-kit-bootstrap.html-data.json` and `ide-helper/blade-ui-kit-bootstrap/ide.json`.
+
+
 From 3.1.x to 3.2.0
 -------------------
 

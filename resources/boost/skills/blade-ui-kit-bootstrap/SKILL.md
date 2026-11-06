@@ -159,32 +159,6 @@ demande), terminer la vue par `@stack('blade-ui-kit-bs-scripts')` — le script 
 - ✅ Échapper une seule fois : le composant encode lui-même ce qu'il écrit dans un attribut relu par un script (`confirm`, `title` et `content` de `help-info`) ; `e(e())` affiche des entités dans la modale
 - ✅ Un `data-buk-confirm` écrit à la main est du texte : y échapper les données avec `{{ }}` ; pour du HTML, passer par l'attribut `confirm` d'un bouton
 
-## Génération de métadonnées IDE
-
-```bash
-# Interactif (TTY) — choisir fichiers + dossier de sortie via Laravel Prompts
-php artisan blade-ui-kit-bs:ide
-
-# Non-interactif — génère les 3 fichiers
-php artisan blade-ui-kit-bs:ide --no-interaction
-
-# Flags de sélection : --snippets, --json, --ide-json
-# Répertoires : --output=DIR (fichiers VS Code, défaut .vscode/) ; --ide-output=DIR (ide.json, défaut ide-helper/blade-ui-kit-bootstrap/)
-```
-
-Fichiers générés :
-
-| Fichier | Emplacement | Consommateur | Rôle |
-|---------|-------------|--------------|------|
-| `blade-ui-kit-bootstrap.code-snippets` | `.vscode/` | VS Code (natif) | Snippets — fallback sans installation d'extension |
-| `blade-ui-kit-bootstrap.html-data.json` | `.vscode/` | Extension VS Code dédiée (à venir) | Complétion attributs/valeurs + hover en mode Blade |
-| `ide.json` | `ide-helper/blade-ui-kit-bootstrap/` | PhpStorm / Laravel Idea | Mapping alias→classe (auto-détecté, scan récursif + fusion ; coexiste avec un ide.json racine de l'app) |
-
-- La commande respecte le `prefix` configuré et les personnalisations `merge()`/`replace()`.
-- Committer les fichiers générés pour que toute l'équipe en bénéficie.
-- Automatiser via `composer.json` `post-update-cmd` : `@php artisan blade-ui-kit-bs:ide --no-interaction`.
-- Voir `docs/ide-autocomplete.md` pour la documentation complète.
-
 ## Références internes
 
 - `docs/forms.md` — form, label, error
@@ -193,4 +167,3 @@ Fichiers générés :
 - `docs/modals.md` — modal, form-modal, confirm-modal
 - `docs/extending-components.md` — guide complet d'extension
 - `docs/configuration.md` — toutes les options de config
-- `docs/ide-autocomplete.md` — commande `blade-ui-kit-bs:ide`, snippets VS Code, Custom Data, PhpStorm

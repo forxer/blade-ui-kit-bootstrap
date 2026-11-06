@@ -204,31 +204,15 @@ The package provides Laravel Boost integration assets in `resources/boost/`:
 
 **Important:** These files must be kept up to date when components, configuration keys, or usage patterns change. When adding, renaming, or removing components or config options, update the corresponding Boost assets accordingly.
 
-### IDE Metadata Integration
+### Attribute Reflection Dependency
 
-This package integrates with `forxer/blade-components-ide-helper` to generate IDE metadata (VS Code
-Custom Data, snippets, PhpStorm `ide.json`) for its `<x-…>` components.
+`forxer/blade-components-reflection` is a plain `require` in `composer.json`:
+`BladeComponent::withAttributes()` calls
+`Forxer\BladeComponentsReflection\AttributeReflector::settableProperties()` at runtime to find the
+public properties a tag can set (see `src/Components/BladeComponent.php`).
 
-- **Runtime require is the reflection package, not the IDE helper:** `forxer/blade-components-reflection`
-  is a plain `require` in `composer.json` — `BladeComponent::withAttributes()` calls
-  `AttributeReflector::settableProperties()` at runtime (see `src/Components/BladeComponent.php`), using
-  `Forxer\BladeComponentsReflection\AttributeReflector`. `forxer/blade-components-ide-helper` is only
-  needed for metadata generation, so it is a `require-dev`.
-- **Target registration (guarded):** `ServiceProvider::ideTarget()` builds an `IdeTarget` (using
-  `PropertiesAndConstructorSurface`, since components hydrate public properties beyond the
-  constructor). Registration with `IdeTargetRegistry` and the `blade-ui-kit-bs:ide` command happens in
-  `configureCommands()` behind `if (class_exists(AbstractIdeCommand::class))`, so a `--no-dev`
-  production install (where the dev-only `blade-components-ide-helper` is absent) does not fatal at
-  boot; `MakeComponent` stays registered unconditionally. When the helper is present, the aggregate
-  command `php artisan blade-components-ide-helper:generate` regenerates this package too.
-- **Per-package command:** `src/Commands/IdeCommand.php` (`blade-ui-kit-bs:ide`) extends
-  `AbstractIdeCommand` and returns that same target. Format flags: `--snippets`, `--json`,
-  `--ide-json`.
-- **Recommended completion is the VS Code extension** `forxer.blade-components-ide-helper` reading the
-  `.html-data.json`; the snippets are a zero-install fallback. **Generate only one VS Code output** —
-  snippets and the extension both complete `<x-…>` and, together, the snippets outrank the extension.
-  Use `--json --ide-json` when the team uses the extension, `--snippets --ide-json` otherwise.
-- **Docs:** `docs/ide-autocomplete.md`. Keep it and this section in sync when the wiring changes.
+The IDE metadata generator (`blade-ui-kit-bs:ide`, built on `forxer/blade-components-ide-helper`)
+was removed in 3.3.0, together with that dev dependency: do not reintroduce it.
 
 ## Code Style
 
